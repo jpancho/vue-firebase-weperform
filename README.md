@@ -27,3 +27,12 @@ pnpm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+### Tips
+```
+npm serve
+vue add vuetify
+vue add router
+v-app is root
+v-content is where we put our components
+```
