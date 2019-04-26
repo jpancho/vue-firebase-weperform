@@ -1,10 +1,6 @@
 <template>
   <v-form>
     <v-text-field
-      label="Full name"
-      v-model="fullname"
-    ></v-text-field>
-    <v-text-field
       label="Email"
       v-model="email"
     ></v-text-field>
@@ -14,7 +10,7 @@
       name="input-10-1"
       label="Password"
     ></v-text-field>
-    <v-btn class="sucess" @click="signup">Sign-up</v-btn>
+    <v-btn class="sucess" @click="login">Login</v-btn>
   </v-form>
 </template>
 
@@ -22,22 +18,21 @@
   const fb = require('../firebase');
 
   export default {
-    name: "Register",
+    name: "Login",
     data() {
       return {
-        fullname: '',
         email: '',
         password: ''
       }
     },
     methods: {
-      signup() {
+      login() {
         // eslint-disable-next-line no-unused-vars
-        fb.auth.createUserWithEmailAndPassword(this.email, this.password).then((user) => {
-          this.$router.replace('/home')
+        fb.auth.signInWithEmailAndPassword(this.email, this.password).then((user) => {
+          this.$router.replace('/admin')
         }).catch((err) => {
           alert(err.message)
-        });
+        })
       }
     }
   }

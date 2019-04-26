@@ -18,8 +18,16 @@
 			<v-btn flat color="grey" to="/admin">
 				<span>Admin</span>
 			</v-btn>
+			<v-spacer></v-spacer>
 			<v-btn flat color="grey" to="/register">
 				<span>Register</span>
+			</v-btn>
+			<v-btn flat color="grey" to="/login">
+				<span>Login</span>
+			</v-btn>
+			<v-btn flat color="grey" @click="signout">
+				<span>Sign Out</span>
+				<v-icon right>exit_to_app</v-icon>
 			</v-btn>
 		</v-toolbar>
 
@@ -39,6 +47,8 @@
 </template>
 
 <script>
+  const fb = require('../firebase');
+
 	export default {
 		data() {
 			return {
@@ -50,7 +60,14 @@
 					{ icon: 'person', text: 'Performers', route: '/performers' }
 				]
 			}
-		}
+		},
+    methods: {
+      signout() {
+        fb.auth.signOut().then(() => {
+          this.$router.replace('/login')
+        })
+      }
+    }
 	}
 </script>
 
