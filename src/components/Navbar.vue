@@ -12,6 +12,9 @@
 			<v-btn flat color="grey" to="/about">
 				<span>About</span>
 			</v-btn>
+			<v-btn flat color="grey" to="/performers">
+				<span>Performers</span>
+			</v-btn>
 			<v-btn flat color="grey" to="/admin">
 				<span>Admin</span>
 			</v-btn>
@@ -44,6 +47,7 @@
 					{ icon: 'home', text: 'Home', route: '/' },
 					{ icon: 'info', text: 'About', route: '/about' },
 					{ icon: 'person', text: 'User List', route: '/admin' },
+					{ icon: 'person', text: 'Performers', route: '/performers' }
 				]
 			}
 		}
