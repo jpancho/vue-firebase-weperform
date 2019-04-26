@@ -14,11 +14,13 @@
       name="input-10-1"
       label="Password"
     ></v-text-field>
-    <v-btn class="sucess" @click="submit">Sign-up</v-btn>
+    <v-btn class="sucess" @click="signup">Sign-up</v-btn>
   </v-form>
 </template>
 
 <script>
+  import auth from '@/firebase';
+
   export default {
     name: "Register",
     data() {
@@ -31,6 +33,13 @@
     methods: {
       submit() {
         console.log(this.fullname, this.email, this.password)
+      },
+      signup() {
+        auth.auth.createUserWithEmailAndPassword(this.email, this.password).then((user) => {
+          this.$router.replace('/home')
+        }).catch((err) => {
+          alert(err.message)
+        });
       }
     }
   }
