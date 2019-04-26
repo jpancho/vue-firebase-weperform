@@ -19,7 +19,7 @@
 </template>
 
 <script>
-  import auth from '@/firebase';
+  import { auth } from '../firebase';
 
   export default {
     name: "Register",
@@ -31,11 +31,9 @@
       }
     },
     methods: {
-      submit() {
-        console.log(this.fullname, this.email, this.password)
-      },
       signup() {
-        auth.auth.createUserWithEmailAndPassword(this.email, this.password).then((user) => {
+        // eslint-disable-next-line no-unused-vars
+        auth.createUserWithEmailAndPassword(this.email, this.password).then((user) => {
           this.$router.replace('/home')
         }).catch((err) => {
           alert(err.message)
