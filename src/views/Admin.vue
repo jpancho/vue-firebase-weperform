@@ -1,7 +1,6 @@
 <template>
 	<div class="admin">
 		<h1 class="subheading grey--text">User List</h1>
-
 		<v-container class="my-5">
 			<v-card flat class="pa-3" v-for="user in users" :key="user.username">
 				<v-layout row wrap>
