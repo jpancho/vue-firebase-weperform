@@ -15,6 +15,9 @@
 			<v-btn flat color="grey" to="/admin">
 				<span>Admin</span>
 			</v-btn>
+			<v-btn flat color="grey" to="/register">
+				<span>Register</span>
+			</v-btn>
 		</v-toolbar>
 
 		<v-navigation-drawer app v-model="drawer" class="black">
