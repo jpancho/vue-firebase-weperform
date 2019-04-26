@@ -19,7 +19,7 @@
 </template>
 
 <script>
-  import { auth } from '../firebase';
+  const fb = require('../firebase');
 
   export default {
     name: "Register",
@@ -27,13 +27,13 @@
       return {
         fullname: '',
         email: '',
-        password:''
+        password: ''
       }
     },
     methods: {
       signup() {
         // eslint-disable-next-line no-unused-vars
-        auth.createUserWithEmailAndPassword(this.email, this.password).then((user) => {
+        fb.auth.createUserWithEmailAndPassword(this.email, this.password).then((user) => {
           this.$router.replace('/home')
         }).catch((err) => {
           alert(err.message)
