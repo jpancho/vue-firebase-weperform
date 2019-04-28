@@ -55,27 +55,6 @@
             }
           })
         })
-
-            // .onSnapshot(res => {
-            //   const changes = res.docChanges();
-            //   changes.forEach(change => {
-            //     if(change.type == 'added'){
-            //       if(this.performers.length === 0){
-            //         this.performers.push({
-            //           ...change.doc.data(),
-            //           id: change.doc.id
-            //         })
-            //       }
-            //       else{
-            //         this.performers = [];
-            //         this.performers.push({
-            //           ...change.doc.data(),
-            //           id: change.doc.id
-            //         })
-            //       }
-            //     }
-            //   })
-            // })
       }
     }
   }
