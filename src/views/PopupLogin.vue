@@ -30,7 +30,8 @@
     data() {
       return {
         email: '',
-        password: ''
+        password: '',
+        dialog: false
       }
     },
     methods: {
