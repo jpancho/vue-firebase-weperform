@@ -42,7 +42,7 @@
       signup() {
         // eslint-disable-next-line no-unused-vars
         fb.auth.createUserWithEmailAndPassword(this.email, this.password).then((user) => {
-          this.$router.replace('/home')
+          this.$router.replace('/home');
         }).catch((err) => {
           alert(err.message)
         });
