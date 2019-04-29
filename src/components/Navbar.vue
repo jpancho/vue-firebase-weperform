@@ -18,9 +18,22 @@
 			<v-btn flat color="grey" to="/admin">
 				<span>Admin</span>
 			</v-btn>
-			<v-btn flat color="grey" to="/register">
-				<span>Register</span>
-			</v-btn>
+			<v-spacer></v-spacer>
+			<v-spacer></v-spacer>
+			<v-spacer></v-spacer>
+			<v-spacer></v-spacer>
+			<v-spacer></v-spacer>
+			<v-spacer></v-spacer>
+
+<!--			<v-btn flat color="grey" to="/register">-->
+<!--				<span>Register</span>-->
+<!--			</v-btn>-->
+<!--			<v-btn flat color="grey" to="/login">-->
+<!--				<span>Login</span>-->
+<!--			</v-btn>-->
+			<PopupRegister/>
+			<PopupLogin/>
+			<PopupSignout/>
 		</v-toolbar>
 
 		<v-navigation-drawer app v-model="drawer" class="black">
@@ -39,7 +52,12 @@
 </template>
 
 <script>
+  const fb = require('../firebase');
+	import PopupRegister from './PopupRegister'
+	import PopupLogin from './PopupLogin'
+	import PopupSignout from './PopupSignout'
 	export default {
+		components: { PopupRegister, PopupLogin, PopupSignout },
 		data() {
 			return {
 				drawer: false,
@@ -50,7 +68,14 @@
 					{ icon: 'person', text: 'Performers', route: '/performers' }
 				]
 			}
-		}
+		},
+    methods: {
+      signout() {
+        fb.auth.signOut().then(() => {
+          this.$router.replace('/login');
+        })
+      }
+    }
 	}
 </script>
 
