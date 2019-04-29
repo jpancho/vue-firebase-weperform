@@ -25,12 +25,12 @@
 			<v-spacer></v-spacer>
 			<v-spacer></v-spacer>
 
-<!--			<v-btn flat color="grey" to="/register">-->
-<!--				<span>Register</span>-->
-<!--			</v-btn>-->
-<!--			<v-btn flat color="grey" to="/login">-->
-<!--				<span>Login</span>-->
-<!--			</v-btn>-->
+			<!--<v-btn flat color="grey" to="/register">-->
+				<!--<span>Register</span>-->
+			<!--</v-btn>-->
+			<!--<v-btn flat color="grey" to="/login">-->
+				<!--<span>Login</span>-->
+			<!--</v-btn>-->
 			<PopupRegister/>
 			<PopupLogin/>
 			<PopupSignout/>
