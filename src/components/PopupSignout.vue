@@ -1,6 +1,6 @@
 <template>
   <v-layout row justify-center>
-      <v-btn flat color="grey" slot="activator" @click="home">
+      <v-btn flat color="grey" slot="activator" @click="signout">
         Sign Out
         <v-icon right>exit_to_app</v-icon>
       </v-btn>
@@ -8,10 +8,13 @@
 </template>
 
 <script>
+  const fb = require('../firebase');
   export default {
     methods: {
-      home() {
-        this.$router.replace('/')
+      signout() {
+        fb.auth.signOut().then(() => {
+          this.$router.replace('/');
+        })
       }
     }
   }
