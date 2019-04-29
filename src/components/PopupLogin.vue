@@ -29,7 +29,6 @@
     name: "Login",
     data() {
       return {
-        dialog: false,
         email: '',
         password: ''
       }
