@@ -64,7 +64,7 @@
     methods: {
       signout() {
         fb.auth.signOut().then(() => {
-          this.$router.replace('/login')
+          this.$router.replace('/login');
         })
       }
     }
