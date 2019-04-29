@@ -34,7 +34,7 @@ const router = new Router({
     {
       path: '/login',
       name: 'login',
-      component: () => import('./components/Navbar.vue')
+      component: () => import('./views/Login.vue')
     },
     {
       path: '/performers',
@@ -55,7 +55,7 @@ router.beforeEach((to, from, next) => {
   const currentUser = fb.auth().currentUser
 
   if (requiresAuth && !currentUser) {
-    //next('/login')
+    next('/login')
   } else if (requiresAuth && currentUser) {
     next()
   } else {
