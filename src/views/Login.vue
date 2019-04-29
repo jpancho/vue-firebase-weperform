@@ -1,17 +1,25 @@
 <template>
-  <v-form>
-    <v-text-field
-      label="Email"
-      v-model="email"
-    ></v-text-field>
-    <v-text-field
-      v-model="password"
-      :type="'password'"
-      name="input-10-1"
-      label="Password"
-    ></v-text-field>
-    <v-btn class="sucess" @click="login">Login</v-btn>
-  </v-form>
+    <v-layout row justify-center>
+      <v-dialog max-width="450">
+        <v-btn flat slot="activator">Login</v-btn>
+        <v-card>
+          <v-text-field
+            label="Email"
+            v-model="email"
+          ></v-text-field>
+          <v-text-field
+            v-model="password"
+            :type="'password'"
+            name="input-10-1"
+            label="Password"
+          ></v-text-field>
+          <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn class="success" @click="login">Login</v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
+    </v-layout>
 </template>
 
 <script>
