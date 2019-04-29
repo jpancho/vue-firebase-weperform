@@ -19,16 +19,19 @@
 				<span>Admin</span>
 			</v-btn>
 			<v-spacer></v-spacer>
-			<v-btn flat color="grey" to="/register">
-				<span>Register</span>
-			</v-btn>
+			<v-spacer></v-spacer>
+			<v-spacer></v-spacer>
+			<v-spacer></v-spacer>
+			<v-spacer></v-spacer>
+			<v-spacer></v-spacer>
+			<Popup_Register/>
+<!--			<v-btn flat color="grey" to="/register">-->
+<!--				<span>Register</span>-->
+<!--			</v-btn>-->
 			<v-btn flat color="grey" to="/login">
 				<span>Login</span>
 			</v-btn>
-			<v-btn flat color="grey" @click="signout">
-				<span>Sign Out</span>
-				<v-icon right>exit_to_app</v-icon>
-			</v-btn>
+			<Popup_Signout/>
 		</v-toolbar>
 
 		<v-navigation-drawer app v-model="drawer" class="black">
@@ -48,8 +51,10 @@
 
 <script>
   const fb = require('../firebase');
-
+	import Popup_Signout from './Popup_Signout'
+	import Popup_Register from './Popup_Register'
 	export default {
+		components: { Popup_Signout, Popup_Register },
 		data() {
 			return {
 				drawer: false,
