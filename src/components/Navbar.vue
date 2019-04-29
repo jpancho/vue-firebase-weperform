@@ -33,7 +33,7 @@
 <!--			</v-btn>-->
 			<PopupRegister/>
 			<PopupLogin/>
-			<PopupSignout/>
+			<Signout/>
 		</v-toolbar>
 
 		<v-navigation-drawer app v-model="drawer" class="black">
@@ -55,9 +55,9 @@
   const fb = require('../firebase');
 	import PopupRegister from '../views/PopupRegister'
 	import PopupLogin from '../views/PopupLogin'
-	import PopupSignout from '../views/Signout'
+	import Signout from '../views/Signout'
 	export default {
-		components: { PopupRegister, PopupLogin, PopupSignout },
+		components: { PopupRegister, PopupLogin, Signout },
 		data() {
 			return {
 				drawer: false,
