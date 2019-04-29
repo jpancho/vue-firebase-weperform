@@ -29,12 +29,12 @@ const router = new Router({
     {
       path: '/register',
       name: 'register',
-      component: () => import('./views/Register.vue')
+      component: () => import('./views/PopupRegister.vue')
     },
     {
       path: '/login',
       name: 'login',
-      component: () => import('./views/Login.vue')
+      component: () => import('./components/Navbar.vue')
     },
     {
       path: '/performers',
@@ -55,7 +55,7 @@ router.beforeEach((to, from, next) => {
   const currentUser = fb.auth().currentUser
 
   if (requiresAuth && !currentUser) {
-    next('/login')
+    //next('/login')
   } else if (requiresAuth && currentUser) {
     next()
   } else {

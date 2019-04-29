@@ -53,9 +53,9 @@
 
 <script>
   const fb = require('../firebase');
-	import PopupRegister from './PopupRegister'
-	import PopupLogin from './PopupLogin'
-	import PopupSignout from './PopupSignout'
+	import PopupRegister from '../views/PopupRegister'
+	import PopupLogin from '../views/PopupLogin'
+	import PopupSignout from '../views/Signout'
 	export default {
 		components: { PopupRegister, PopupLogin, PopupSignout },
 		data() {
