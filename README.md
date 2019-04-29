@@ -35,4 +35,5 @@ vue add vuetify
 vue add router
 v-app is root
 v-content is where we put our components
+firebase deploy
 ```
