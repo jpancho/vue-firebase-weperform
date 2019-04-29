@@ -50,11 +50,14 @@
   export default {
     data() {
       return {
+        //text and values for first dropdown menu
         talents: [
           { text: 'Dancer', value: "Dancer" },
           { text: 'Singer', value: "Singer" },
           { text: 'Musician', value: "Musician" },
         ],
+        //text and values for second dropdown menu
+        //each section is dependant on option selected in first dropdown menu
         styles: [
           { text: 'Ballet', value: "Ballet", dependency: "Dancer" },
           { text: 'Bhangra', value: "Bhangra", dependency: "Dancer" },
@@ -90,13 +93,15 @@
       }
     },
     computed: {
+      //matches style dependency with the corresponding talent
       filteredStyles() {
-        let styles = this.styles
+        let styles = this.styles;
         return styles.filter(o => o.dependency === this.selected_talent)
       }
     },
     methods: {
       display() {
+        //if no style is selected, display list of matching talent
         if(this.selected_style === ''){
           this.performers = [];
           db.collection('performers')
@@ -105,7 +110,7 @@
             .then(doc => {
               const changes = doc.docChanges();
               changes.forEach(change => {
-                if(change.type == 'added') {
+                if(change.type === 'added') {
                   this.performers.push({
                     ...change.doc.data(),
                     id: change.doc.id
@@ -114,16 +119,17 @@
               })
             })
         }
+        //if style is selected, display list of matching talent and style
         else {
           this.performers = [];
-          var query = db.collection('performers')
-          query = query.where('talent', '==', this.selected_talent)
-          query = query.where('style', '==', this.selected_style)
+          let query = db.collection('performers');
+          query = query.where('talent', '==', this.selected_talent);
+          query = query.where('style', '==', this.selected_style);
           query.get()
             .then(doc => {
               const changes = doc.docChanges();
               changes.forEach(change => {
-                if(change.type == 'added') {
+                if(change.type === 'added') {
                   this.performers.push({
                     ...change.doc.data(),
                     id: change.doc.id
@@ -133,10 +139,11 @@
             })
         }
       },
+      //resets talent and style dropdown
       clear(){
         this.$nextTick(() => {
-          this.selected_talent = ''
-          this.selected_style = ''
+          this.selected_talent = '';
+          this.selected_style = '';
         })
       },
     }
