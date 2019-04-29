@@ -25,15 +25,15 @@
 			<v-spacer></v-spacer>
 			<v-spacer></v-spacer>
 
-<!--			<v-btn flat color="grey" to="/register">-->
-<!--				<span>Register</span>-->
-<!--			</v-btn>-->
-<!--			<v-btn flat color="grey" to="/login">-->
-<!--				<span>Login</span>-->
-<!--			</v-btn>-->
+			<!--<v-btn flat color="grey" to="/register">-->
+				<!--<span>Register</span>-->
+			<!--</v-btn>-->
+			<!--<v-btn flat color="grey" to="/login">-->
+				<!--<span>Login</span>-->
+			<!--</v-btn>-->
 			<PopupRegister/>
 			<PopupLogin/>
-			<PopupSignout/>
+			<Signout/>
 		</v-toolbar>
 
 		<v-navigation-drawer app v-model="drawer" class="black">
@@ -53,11 +53,11 @@
 
 <script>
   const fb = require('../firebase');
-	import PopupRegister from './PopupRegister'
-	import PopupLogin from './PopupLogin'
-	import PopupSignout from './PopupSignout'
+	import PopupRegister from '../views/PopupRegister'
+	import PopupLogin from '../views/PopupLogin'
+	import Signout from '../views/Signout'
 	export default {
-		components: { PopupRegister, PopupLogin, PopupSignout },
+		components: { PopupRegister, PopupLogin, Signout },
 		data() {
 			return {
 				drawer: false,
