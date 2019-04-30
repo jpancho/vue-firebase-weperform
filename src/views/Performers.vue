@@ -102,7 +102,7 @@
     methods: {
       display() {
         //if no style is selected, display list of matching talent
-        if(this.selected_style === ''){
+        if (this.selected_style === '') {
           this.performers = [];
           db.collection('performers')
             .where('talent', '==', this.selected_talent)
@@ -110,7 +110,7 @@
             .then(doc => {
               const changes = doc.docChanges();
               changes.forEach(change => {
-                if(change.type === 'added') {
+                if (change.type === 'added') {
                   this.performers.push({
                     ...change.doc.data(),
                     id: change.doc.id
@@ -129,7 +129,7 @@
             .then(doc => {
               const changes = doc.docChanges();
               changes.forEach(change => {
-                if(change.type === 'added') {
+                if (change.type === 'added') {
                   this.performers.push({
                     ...change.doc.data(),
                     id: change.doc.id
@@ -140,7 +140,7 @@
         }
       },
       //resets talent and style dropdown
-      clear(){
+      clear() {
         this.$nextTick(() => {
           this.selected_talent = '';
           this.selected_style = '';
