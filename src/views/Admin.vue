@@ -2,15 +2,15 @@
 	<div class="admin">
 		<h1 class="subheading grey--text">User List</h1>
 			<v-container class="my-5">
-				<v-card flat class="pa-3" v-for="user in users" :key="user.username">
+				<v-card flat class="pa-3" v-for="user in users" :key="user.email">
 					<v-layout row wrap>
 						<v-flex xs6 sm4 md2>
-							<div class="caption grey--text">Username</div>
-							<div>{{ user.username }}</div>
+							<div class="caption grey--text">Email</div>
+							<div>{{ user.email }}</div>
 						</v-flex>
 						<v-flex xs6 sm4 md2>
-							<div class="caption grey--text">Full Name</div>
-							<div>{{ user.fullname }}</div>
+							<div class="caption grey--text">User ID</div>
+							<div>{{ user.uid }}</div>
 						</v-flex>
 						<v-flex xs6 sm4 md2>
 							<div class="caption grey--text">Admin</div>
