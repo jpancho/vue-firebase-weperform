@@ -19,10 +19,10 @@
           ></v-select>
         </v-flex>
         <v-flex xs12 sm6 d-flex>
-          <v-btn class="sucess" @click="display">Search</v-btn>
+          <v-btn class="success" @click="display">Search</v-btn>
         </v-flex>
         <v-flex xs12 sm6 d-flex>
-          <v-btn class="sucess" @click="clear">Clear</v-btn>
+          <v-btn class="success" @click="clear">Clear</v-btn>
         </v-flex>
         <v-card flat class="pa-3" v-for="performer in performers" :key="performer.fullname">
           <v-layout row wrap>

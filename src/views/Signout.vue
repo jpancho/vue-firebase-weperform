@@ -1,6 +1,6 @@
 <template>
   <v-layout row justify-center>
-      <v-btn flat color="grey" slot="activator" @click="signout">
+      <v-btn flat color="grey" @click="signout">
         Sign Out
         <v-icon right>exit_to_app</v-icon>
       </v-btn>
