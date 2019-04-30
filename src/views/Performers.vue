@@ -42,7 +42,7 @@
               <div class="caption grey--text">Booked</div>
               <div>{{ performer.isBooked}}</div>
             </v-flex>
-            <v-btn flat color="green" @click="book">
+            <v-btn flat color="green" @click="book(performer.uid)">
               Book
             </v-btn>
           </v-layout>
@@ -97,6 +97,7 @@
         selected_talent: '',
         selected_style: '',
         performers: [],
+        uid: '',
       }
     },
     computed: {
@@ -153,11 +154,16 @@
           this.selected_style = '';
         })
       },
-      book(){
-        // this.performers.push({
-        //
-        // })
-        this.$router.replace('/performers');
+      book(uid){
+        let ref = db.collection('performers').doc(uid);
+
+        return ref.set({
+          isBooked: true
+        }, { merge: true })
+          .then(function() {
+            // eslint-disable-next-line no-console
+            console.log("Performer booked!")
+          })
       }
     }
   }
