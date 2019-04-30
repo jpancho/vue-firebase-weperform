@@ -34,7 +34,7 @@ const router = new Router({
     {
       path: '/login',
       name: 'login',
-      // component: () => import('./views/PopupLogin.vue')
+      component: () => import('./views/Login.vue')
     },
     {
       path: '/performers',

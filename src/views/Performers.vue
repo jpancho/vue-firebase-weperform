@@ -38,6 +38,13 @@
               <div class="caption grey--text">Experience</div>
               <div>{{ performer.experience }}</div>
             </v-flex>
+            <v-flex xs6 sm4 md2>
+              <div class="caption grey--text">Booked</div>
+              <div>{{ performer.isBooked}}</div>
+            </v-flex>
+            <v-btn flat color="green" @click="book">
+              Book
+            </v-btn>
           </v-layout>
         </v-card>
       </v-container>
@@ -146,6 +153,12 @@
           this.selected_style = '';
         })
       },
+      book(){
+        // this.performers.push({
+        //
+        // })
+        this.$router.replace('/performers');
+      }
     }
   }
 </script>
