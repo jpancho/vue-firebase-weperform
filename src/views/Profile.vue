@@ -14,6 +14,9 @@
           </v-flex>
         </v-layout>
       </v-card>
+      <v-btn flat @click="bePerformer">
+        Become a Performer
+      </v-btn>
     </v-container>
   </div>
 </template>
@@ -44,6 +47,20 @@
             }
           })
         })
+    },
+    methods:{
+      bePerformer() {
+        let user = fb.auth.currentUser;
+        db.collection('performers').doc(user.uid).set({
+          uid: user.uid,
+          email: user.email,
+          isBooked: false
+        })
+          .then(function() {
+            // eslint-disable-next-line no-console
+            console.log("Performer created!")
+          })
+      }
     }
   }
 </script>
