@@ -18,9 +18,6 @@
 			<v-btn flat color="grey" to="/admin">
 				<span>Admin</span>
 			</v-btn>
-      <v-btn flat color="grey" to="/team">
-        <span>Team</span>
-      </v-btn>
 			<v-spacer></v-spacer>
 			<v-spacer></v-spacer>
 			<v-spacer></v-spacer>
@@ -68,8 +65,7 @@
 					{ icon: 'home', text: 'Home', route: '/' },
 					{ icon: 'info', text: 'About', route: '/about' },
 					{ icon: 'list', text: 'User List', route: '/admin' },
-					{ icon: 'people', text: 'Performers', route: '/performers' },
-          { icon: 'web', text: 'Team', route: '/team' }
+					{ icon: 'people', text: 'Performers', route: '/performers' }
 				]
 			}
 		},
