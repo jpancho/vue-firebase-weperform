@@ -23,6 +23,10 @@
           label="Experience"
           v-model="experience"
         ></v-text-field>
+        <v-text-field
+          label="Price"
+          v-model="price"
+        ></v-text-field>
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn class="success" @click="bePerformer">Become a Performer</v-btn>
@@ -78,6 +82,7 @@
         ],
         fullname: '',
         experience: '',
+        price: '',
         selected_talent: '',
         selected_style: '',
       }
@@ -99,6 +104,7 @@
           talent: this.selected_talent,
           style: this.selected_style,
           experience: this.experience,
+          price: this.price,
           isBooked: false
         })
           .then(function() {

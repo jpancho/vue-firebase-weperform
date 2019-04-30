@@ -42,7 +42,7 @@
               <div class="caption grey--text">Booked</div>
               <div>{{ performer.isBooked}}</div>
             </v-flex>
-            <v-btn flat color="green" @click="book(performer.uid)">
+            <v-btn flat color="green" @click="book(performer.uid, performer.email)">
               Book
             </v-btn>
           </v-layout>
@@ -53,6 +53,7 @@
 
 <script>
   import { db } from '../firebase';
+  const fb = require('../firebase');
 
   export default {
     data() {
@@ -154,15 +155,26 @@
           this.selected_style = '';
         })
       },
-      book(uid){
+      book(uid, email){
         let ref = db.collection('performers').doc(uid);
+
+        let user = fb.auth.currentUser;
+        db.collection('users').doc(user.uid)
+          .collection('performersBooked').doc(uid).set({
+          uid: uid,
+          email: email,
+        })
+          .then(function() {
+            // eslint-disable-next-line no-console
+            console.log("Performer booked!")
+          })
 
         return ref.set({
           isBooked: true
         }, { merge: true })
           .then(function() {
             // eslint-disable-next-line no-console
-            console.log("Performer booked!")
+            console.log("isBook set to true!")
           })
       }
     }
