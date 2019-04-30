@@ -19,6 +19,11 @@ const router = new Router({
       component: () => import('./views/About.vue')
     },
     {
+      path: '/team',
+      name: 'team',
+      component: () => import('./views/Team.vue'),
+    },
+    {
       path: '/admin',
       name: 'admin',
       component: () => import('./views/Admin.vue'),
