@@ -14,9 +14,7 @@
           </v-flex>
         </v-layout>
       </v-card>
-      <v-btn flat @click="bePerformer">
-        Become a Performer
-      </v-btn>
+      <PopupPerformer/>
     </v-container>
   </div>
 </template>
@@ -24,8 +22,10 @@
 <script>
   const fb = require('../firebase');
   import { db } from '../firebase';
+  import PopupPerformer from '../views/PopupPerformer'
 
   export default {
+    components: { PopupPerformer },
     data() {
       return {
         profile: []
@@ -47,20 +47,6 @@
             }
           })
         })
-    },
-    methods:{
-      bePerformer() {
-        let user = fb.auth.currentUser;
-        db.collection('performers').doc(user.uid).set({
-          uid: user.uid,
-          email: user.email,
-          isBooked: false
-        })
-          .then(function() {
-            // eslint-disable-next-line no-console
-            console.log("Performer created!")
-          })
-      }
     }
   }
 </script>
