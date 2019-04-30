@@ -38,7 +38,7 @@
       login() {
         // eslint-disable-next-line no-unused-vars
         fb.auth.signInWithEmailAndPassword(this.email, this.password).then((user) => {
-          this.$router.replace('/admin')
+          this.$router.replace('/')
         }).catch((err) => {
           alert(err.message)
         })
