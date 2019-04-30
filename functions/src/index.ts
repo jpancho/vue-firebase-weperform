@@ -10,13 +10,14 @@ export const getUsers = functions.https.onRequest((request, response) => {
 
 export const addUsers = functions.auth
   .user()
-  .onCreate((user) => {
+  .onCreate((user : any) => {
     const userRef = db.doc(`users/${user.uid}`);
 
     // @ts-ignore
     return userRef.set({
       uid: user.uid,
-      email: user.email
+      email: user.email,
+      bookings: []
     });
   });
 
