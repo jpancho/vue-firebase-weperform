@@ -2,9 +2,6 @@
     <div class="Booking">
         <h1>Booked Performers</h1>
         <v-container class="my-5">
-            <v-flex xs12 sm6 d-flex>
-                <v-btn class="success" @click="show()">Show</v-btn>
-            </v-flex>
             <v-card flat class="pa-3" v-for="performer in performers" :key="performer.fullname">
                 <v-layout row wrap>
                     <v-flex xs6 sm4 md2>
@@ -85,7 +82,6 @@
         show()
         {
             // let ref = db.collection('performers').doc(uid);
-
             let user = fb.auth.currentUser;
             this.performers = [];
             db.collection('users').doc(user.uid)
@@ -102,7 +98,10 @@
                     })
                 })
         }
-    }
+     },
+        created: function(){
+            this.show()
+        }
     }
 </script>
 
