@@ -39,10 +39,14 @@
               <div>{{ performer.experience }}</div>
             </v-flex>
             <v-flex xs6 sm4 md2>
+              <div class="caption grey--text">Price</div>
+              <div>{{ performer.price}}</div>
+            </v-flex>
+            <v-flex xs6 sm4 md2>
               <div class="caption grey--text">Booked</div>
               <div>{{ performer.isBooked}}</div>
             </v-flex>
-            <v-btn flat color="green" @click="book(performer.uid, performer.email)">
+            <v-btn flat color="green" @click="book(performer.uid, performer.email, performer.fullname)">
               Book
             </v-btn>
           </v-layout>
@@ -105,7 +109,7 @@
       //matches style dependency with the corresponding talent
       filteredStyles() {
         let styles = this.styles;
-        return styles.filter(o => o.dependency === this.selected_talent)
+        return styles.filter(o => o.depen5dency === this.selected_talent)
       }
     },
     methods: {
@@ -155,7 +159,7 @@
           this.selected_style = '';
         })
       },
-      book(uid, email){
+      book(uid, email,fullname){
         let ref = db.collection('performers').doc(uid);
 
         let user = fb.auth.currentUser;
@@ -163,6 +167,7 @@
           .collection('performersBooked').doc(uid).set({
           uid: uid,
           email: email,
+          fullname: fullname
         })
           .then(function() {
             // eslint-disable-next-line no-console
