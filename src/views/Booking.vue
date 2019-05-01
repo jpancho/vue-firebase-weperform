@@ -12,6 +12,14 @@
                         <div>{{ performer.fullname }}</div>
                     </v-flex>
                     <v-flex xs6 sm4 md2>
+                        <div class="caption grey--text">Talent</div>
+                        <div>{{ performer.talent }}</div>
+                    </v-flex>
+                    <v-flex xs6 sm4 md2>
+                        <div class="caption grey--text">Style</div>
+                        <div>{{ performer.style }}</div>
+                    </v-flex>
+                    <v-flex xs6 sm4 md2>
                         <div class="caption grey--text">Email</div>
                         <div>{{ performer.email }}</div>
                     </v-flex>
