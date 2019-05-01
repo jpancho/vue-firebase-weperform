@@ -68,7 +68,8 @@
 					{ icon: 'home', text: 'Home', route: '/' },
 					{ icon: 'info', text: 'About', route: '/about' },
 					{ icon: 'list', text: 'User List', route: '/admin' },
-					{ icon: 'people', text: 'Performers', route: '/performers' }
+					{ icon: 'people', text: 'Performers', route: '/performers' },
+					{ icon: 'shopping_cart', text: 'Bookings', route: '/bookings' }
 				]
 			}
 		},
