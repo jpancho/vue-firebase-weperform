@@ -3,17 +3,17 @@
 		<v-toolbar flat app>
 			<v-toolbar-side-icon class="grey--text" @click="drawer = !drawer"></v-toolbar-side-icon>
 			<v-toolbar-title class="text-uppercase grey--text">
-				<span class="font-weight-light">We</span>
-				<span>Perform</span>
+				<span class="font-weight-light"><router-link to="/">We</router-link></span>
+				<span><router-link to="/">Perform</router-link></span>
 			</v-toolbar-title>
-			<v-btn flat color="grey" to="/">
-				<span>Home</span>
+			<!--<v-btn flat color="grey" to="/">-->
+				<!--<span>Home</span>-->
+			<!--</v-btn>-->
+			<v-btn flat color="grey" to="/performers">
+				<span>Performers</span>
 			</v-btn>
 			<v-btn flat color="grey" to="/about">
 				<span>About</span>
-			</v-btn>
-			<v-btn flat color="grey" to="/performers">
-				<span>Performers</span>
 			</v-btn>
 			<v-btn flat color="grey" to="/admin">
 				<span>Admin</span>
@@ -84,5 +84,8 @@
 </script>
 
 <style scoped>
-
+	a {
+		text-decoration: none;
+		color: grey;
+	}
 </style>
