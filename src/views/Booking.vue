@@ -24,6 +24,9 @@
                         <div class="caption grey--text">Uid</div>
                         <div>{{ performer.uid }}</div>
                     </v-flex>
+                    <v-btn flat color="red" @click="cancel(performer.uid)">
+                       cancel
+                    </v-btn>
                 </v-layout>
             </v-card>
         </v-container>
@@ -96,6 +99,21 @@
                             })
                         }
                     })
+                })
+        },
+        cancel(uid){
+            let ref =  db.collection('performers').doc(uid);
+            let user = fb.auth.currentUser;
+            db.collection('users').doc(user.uid)
+                .collection('performersBooked').doc(uid).delete();
+
+            return ref.set({
+                isBooked: false
+            }, { merge: true })
+                .then(function() {
+                    // eslint-disable-next-line no-console
+                    console.log("Booking is canceled!");
+                    //window.location.reload()
                 })
         }
      },
