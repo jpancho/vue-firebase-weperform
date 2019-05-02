@@ -39,10 +39,14 @@
               <div>{{ performer.experience }}</div>
             </v-flex>
             <v-flex xs6 sm4 md2>
+              <div class="caption grey--text">Price</div>
+              <div>{{ performer.price}}</div>
+            </v-flex>
+            <v-flex xs6 sm4 md2>
               <div class="caption grey--text">Booked</div>
               <div>{{ performer.isBooked}}</div>
             </v-flex>
-            <v-btn flat color="green" @click="book(performer.uid, performer.email)">
+            <v-btn flat color="green" @click="book(performer.uid, performer.email, performer.fullname, performer.talent, performer.style)">
               Book
             </v-btn>
           </v-layout>
@@ -155,7 +159,7 @@
           this.selected_style = '';
         })
       },
-      book(uid, email){
+      book(uid, email,fullname,talent,style){
         let ref = db.collection('performers').doc(uid);
 
         let user = fb.auth.currentUser;
@@ -163,6 +167,9 @@
           .collection('performersBooked').doc(uid).set({
           uid: uid,
           email: email,
+          fullname: fullname,
+          talent: talent,
+          style: style
         })
           .then(function() {
             // eslint-disable-next-line no-console

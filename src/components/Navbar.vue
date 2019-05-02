@@ -3,17 +3,17 @@
 		<v-toolbar flat app>
 			<v-toolbar-side-icon class="grey--text" @click="drawer = !drawer"></v-toolbar-side-icon>
 			<v-toolbar-title class="text-uppercase grey--text">
-				<span class="font-weight-light">We</span>
-				<span>Perform</span>
+				<span class="font-weight-light"><router-link to="/">We</router-link></span>
+				<span><router-link to="/">Perform</router-link></span>
 			</v-toolbar-title>
-			<v-btn flat color="grey" to="/">
-				<span>Home</span>
+			<!--<v-btn flat color="grey" to="/">-->
+				<!--<span>Home</span>-->
+			<!--</v-btn>-->
+			<v-btn flat color="grey" to="/performers">
+				<span>Performers</span>
 			</v-btn>
 			<v-btn flat color="grey" to="/about">
 				<span>About</span>
-			</v-btn>
-			<v-btn flat color="grey" to="/performers">
-				<span>Performers</span>
 			</v-btn>
 			<v-btn flat color="grey" to="/admin">
 				<span>Admin</span>
@@ -24,16 +24,12 @@
 			<v-spacer></v-spacer>
 			<v-spacer></v-spacer>
 			<v-spacer></v-spacer>
-
-			<!--<v-btn flat color="grey" to="/register">-->
-				<!--<span>Register</span>-->
-			<!--</v-btn>-->
-			<!--<v-btn flat color="grey" to="/login">-->
-				<!--<span>Login</span>-->
-			<!--</v-btn>-->
 			<v-btn flat color="grey" to="/profile">
 				<span>Profile</span>
 			</v-btn>
+			<!--<v-btn flat color="grey" to="/login">-->
+				<!--<span>log</span>-->
+			<!--</v-btn>-->
 			<PopupRegister/>
 			<PopupLogin/>
 			<Signout/>
@@ -68,7 +64,8 @@
 					{ icon: 'home', text: 'Home', route: '/' },
 					{ icon: 'info', text: 'About', route: '/about' },
 					{ icon: 'list', text: 'User List', route: '/admin' },
-					{ icon: 'people', text: 'Performers', route: '/performers' }
+					{ icon: 'people', text: 'Performers', route: '/performers' },
+					{ icon: 'shopping_cart', text: 'Bookings', route: '/bookings' }
 				]
 			}
 		},
@@ -83,5 +80,8 @@
 </script>
 
 <style scoped>
-
+	a {
+		text-decoration: none;
+		color: grey;
+	}
 </style>

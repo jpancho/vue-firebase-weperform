@@ -45,6 +45,14 @@ const router = new Router({
       }
     },
     {
+      path: '/bookings',
+      name: 'bookings',
+      component: () => import('./views/Booking.vue'),
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
       path: '/profile',
       name: 'profile',
       component: () => import('./views/Profile.vue'),
@@ -54,7 +62,6 @@ const router = new Router({
     }
   ]
 });
-
 
 const fb = require('firebase');
 
