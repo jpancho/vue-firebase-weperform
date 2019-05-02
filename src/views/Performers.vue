@@ -109,7 +109,7 @@
       //matches style dependency with the corresponding talent
       filteredStyles() {
         let styles = this.styles;
-        return styles.filter(o => o.depen5dency === this.selected_talent)
+        return styles.filter(o => o.dependency === this.selected_talent)
       }
     },
     methods: {
