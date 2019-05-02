@@ -63,13 +63,12 @@ const router = new Router({
   ]
 })
 
-
 const fb = require('firebase');
 
 router.beforeEach((to, from, next) => {
   const requiresAuth = to.matched.some(x => x.meta.requiresAuth)
   const currentUser = fb.auth().currentUser
-
+//authentication
   if (requiresAuth && !currentUser) {
     next('/login')
   } else if (requiresAuth && currentUser) {
