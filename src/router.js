@@ -61,14 +61,14 @@ const router = new Router({
       }
     }
   ]
-})
+});
 
 const fb = require('firebase');
 
 router.beforeEach((to, from, next) => {
-  const requiresAuth = to.matched.some(x => x.meta.requiresAuth)
-  const currentUser = fb.auth().currentUser
-//authentication
+  const requiresAuth = to.matched.some(x => x.meta.requiresAuth);
+  const currentUser = fb.auth().currentUser;
+
   if (requiresAuth && !currentUser) {
     next('/login')
   } else if (requiresAuth && currentUser) {
@@ -76,6 +76,6 @@ router.beforeEach((to, from, next) => {
   } else {
     next()
   }
-})
+});
 
 export default router

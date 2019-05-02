@@ -1,4 +1,4 @@
-<template>
+<template xmlns:slot="http://www.w3.org/1999/XSL/Transform">
   <div class="about">
     <v-toolbar-title class="text-uppercase grey--text">
       <h1>
@@ -27,6 +27,16 @@
             <v-divider color="grey"></v-divider>
             <v-card-actions>
               <v-layout align-center justify-space-around>
+<!--                <v-btn flat icon-->
+<!--                       :loading="loading4"-->
+<!--                       :disabled="loading4"-->
+<!--                       color="info"-->
+<!--                       @click="loader = 'loading4'">-->
+<!--                  <template slot:loader="true">-->
+<!--                    <span class="custom-loader">-->
+<!--                      <v-icon light>cached</v-icon>-->
+<!--                    </span>-->
+<!--                  </template>-->
                 <v-btn flat icon>
                   <a :href="person.url">
                     <v-avatar size="36">

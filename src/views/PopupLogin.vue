@@ -14,8 +14,8 @@
           label="Password"
         ></v-text-field>
         <v-card-actions>
-          <v-spacer></v-spacer>
           <v-btn class="success" @click="login">Login</v-btn>
+          <v-btn v-if="isLoggedIn"> Logout </v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -31,7 +31,8 @@
       return {
         email: '',
         password: '',
-        dialog: false
+        dialog: false,
+        isLoggedIn: false
       }
     },
     methods: {
