@@ -113,7 +113,7 @@
                 .then(function() {
                     // eslint-disable-next-line no-console
                     console.log("Booking is canceled!");
-                    //window.location.reload()
+                    window.location.reload()
                 })
         }
      },
