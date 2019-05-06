@@ -12,6 +12,9 @@
 			<v-btn flat color="grey" to="/performers">
 				<span>Performers</span>
 			</v-btn>
+			<v-btn flat color="grey" to="/bookings">
+				<span>Bookings</span>
+			</v-btn>
 			<v-btn flat color="grey" to="/about">
 				<span>About</span>
 			</v-btn>
