@@ -1,30 +1,78 @@
 <template>
   <div class="performer">
     <h1 class="subheading grey--text">Performers List</h1>
-    <div class="md-layout">
-      <div class="md-layout-item md-size-66 mx-auto md-small-size-100">
-        <v-carousel
-          :per-page="1"
-          loop
-          :speed="1000"
-          autoplay
-          :autoplay-timeout="4000"
-          :mouse-drag="true"
-          navigationEnabled
-          navigationNextLabel="<i class='material-icons'>keyboard_arrow_right</i>"
-          navigationPrevLabel="<i class='material-icons'>keyboard_arrow_left</i>"
-        >
-         <md-card>
-          <v-carousel-item
-            v-for="(item,i) in items"
-            :key="i"
-            :src="item.src"
-          ></v-carousel-item>
-         </md-card>
-        </v-carousel>
-      </div>
-    </div>
-    <div></div>
+<!--        <v-talents-->
+<!--          :per-page="1"-->
+<!--          loop-->
+<!--          :speed="1000"-->
+<!--          autoplay-->
+<!--          :autoplay-timeout="4000"-->
+<!--          :mouse-drag="true"-->
+<!--          navigationEnabled-->
+<!--          navigationNextLabel="<i class='material-icons'>keyboard_arrow_right</i>"-->
+<!--          navigationPrevLabel="<i class='material-icons'>keyboard_arrow_left</i>"-->
+<!--        >-->
+<!--          <v-select-list>-->
+<!--           <v-talents-item-->
+<!--             v-for="(item,i) in items"-->
+<!--             :key="i"-->
+<!--             :src="item.src"-->
+<!--           ></v-talents-item>-->
+<!--          </v-select-list>-->
+<!--        </v-talents>-->
+    <v-layout>
+      <v-flex xs4 sm12 sm8>
+        <v-card>
+          <v-img
+            class="white--text"
+            height="200px"
+            src="/talents/dancer.jpg"
+          >
+            <v-container fill-height fluid>
+              <v-layout fill-height>
+                <v-flex xs12 align-end flexbox>
+                  <span class="headline">Dancer</span>
+                </v-flex>
+              </v-layout>
+            </v-container>
+          </v-img>
+        </v-card>
+      </v-flex>
+      <v-flex xs6 sm12 offset-sm1>
+        <v-card>
+          <v-img
+            class="white--text"
+            height="200px"
+            src="/talents/musician.jpg"
+          >
+            <v-container fill-height fluid>
+              <v-layout fill-height>
+                <v-flex xs12 align-end flexbox>
+                  <span class="headline">Musician</span>
+                </v-flex>
+              </v-layout>
+            </v-container>
+          </v-img>
+        </v-card>
+      </v-flex>
+      <v-flex xs8 sm12 offset-sm1>
+        <v-card>
+          <v-img
+            class="white--text"
+            height="200px"
+            src="/talents/singer.jpg"
+          >
+            <v-container fill-height fluid>
+              <v-layout fill-height>
+                <v-flex xs12 align-end flexbox>
+                  <span class="headline">Singer</span>
+                </v-flex>
+              </v-layout>
+            </v-container>
+          </v-img>
+        </v-card>
+      </v-flex>
+    </v-layout>
       <v-container class="my-5">
         <v-flex xs12 sm6 d-flex>
           <v-select
@@ -76,7 +124,7 @@
           </v-layout>
         </v-card>
       </v-container>
-  </div>
+    </div>
 </template>
 
 <script>
@@ -88,13 +136,16 @@
       return {
         items: [
           {
-            src: '/carousel/dancer.jpg'
+            src: '/talents/dancer.jpg',
+            dependency: "Dancer"
           },
           {
-            src: '/carousel/musicians.jpg'
+            src: '/talents/musician.jpg',
+            dependency: "Musician"
           },
           {
-            src: '/carousel/singer.jpg'
+            src: '/talents/singer.jpg',
+            dependency: "Singer"
           }
         ],
         //text and values for first dropdown menu
