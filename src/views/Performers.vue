@@ -1,25 +1,34 @@
 <template>
   <div class="performer">
     <h1 class="subheading grey--text">Performers List</h1>
-<!--        <v-talents-->
-<!--          :per-page="1"-->
-<!--          loop-->
-<!--          :speed="1000"-->
-<!--          autoplay-->
-<!--          :autoplay-timeout="4000"-->
-<!--          :mouse-drag="true"-->
-<!--          navigationEnabled-->
-<!--          navigationNextLabel="<i class='material-icons'>keyboard_arrow_right</i>"-->
-<!--          navigationPrevLabel="<i class='material-icons'>keyboard_arrow_left</i>"-->
-<!--        >-->
-<!--          <v-select-list>-->
-<!--           <v-talents-item-->
-<!--             v-for="(item,i) in items"-->
-<!--             :key="i"-->
-<!--             :src="item.src"-->
-<!--           ></v-talents-item>-->
-<!--          </v-select-list>-->
-<!--        </v-talents>-->
+<!--        <v-card row-->
+<!--                justify-space-between>-->
+<!--          <v-layout>-->
+<!--            <v-flex-->
+<!--              v-for="card in cards"-->
+<!--              :key="card.title"-->
+<!--              v-bind="{ [`xs${card.flex}`]: true }"-->
+<!--              v-divider-->
+<!--            >-->
+<!--                <v-img-->
+<!--                  :src="card.src"-->
+<!--                  height="200px"-->
+<!--                >-->
+<!--                  <v-container-->
+<!--                    fill-height-->
+<!--                    fluid-->
+<!--                    pa-2-->
+<!--                  >-->
+<!--                    <v-layout fill-height>-->
+<!--                      <v-flex xs12 align-end flexbox>-->
+<!--                        <span class="headline white&#45;&#45;text" v-text="card.title"></span>-->
+<!--                      </v-flex>-->
+<!--                    </v-layout>-->
+<!--                  </v-container>-->
+<!--                </v-img>-->
+<!--            </v-flex>-->
+<!--          </v-layout>-->
+<!--        </v-card>-->
     <v-layout>
       <v-flex xs4 sm12 sm8>
         <v-card>
@@ -37,6 +46,9 @@
             </v-container>
           </v-img>
         </v-card>
+<!--        <v-toolbar class="light-grey">-->
+<!--          <v-btn class="justify-center">Dancer</v-btn>-->
+<!--        </v-toolbar>-->
       </v-flex>
       <v-flex xs6 sm12 offset-sm1>
         <v-card>
@@ -57,6 +69,7 @@
       </v-flex>
       <v-flex xs8 sm12 offset-sm1>
         <v-card>
+<!--          onclick={{console.log}}-->
           <v-img
             class="white--text"
             height="200px"
@@ -73,29 +86,37 @@
         </v-card>
       </v-flex>
     </v-layout>
-      <v-container class="my-5">
-        <v-flex xs12 sm6 d-flex>
-          <v-select
-            :items="talents"
-            label="Select talent"
-            v-model="selected_talent"
-            solo
-          ></v-select>
-        </v-flex>
-        <v-flex xs12 sm6 d-flex>
-          <v-select
-            :items="filteredStyles"
-            label="Select styles"
-            v-model="selected_style"
-            solo
-          ></v-select>
-        </v-flex>
-        <v-flex xs12 sm6 d-flex>
-          <v-btn round class="success" @click="display">Search</v-btn>
-        </v-flex>
-        <v-flex xs12 sm6 d-flex>
-          <v-btn round class="error" @click="clear">Clear</v-btn>
-        </v-flex>
+      <v-container>
+        <v-card-actions class="justify-center">
+          <v-flex xs12 sm8>
+            <v-select
+              :items="talents"
+              label="Select talent"
+              v-model="selected_talent"
+              solo
+            ></v-select>
+          </v-flex>
+        </v-card-actions>
+        <v-card-actions class="justify-center">
+          <v-flex xs12 sm8>
+            <v-select
+              :items="filteredStyles"
+              label="Select styles"
+              v-model="selected_style"
+              solo
+            ></v-select>
+          </v-flex>
+        </v-card-actions>
+        <v-card-actions class="justify-center">
+          <v-flex xs12 sm8 d-flex>
+            <v-btn round class="success" @click="display">Search</v-btn>
+          </v-flex>
+        </v-card-actions>
+        <v-card-actions class="justify-center">
+          <v-flex xs10 sm6 d-flex>
+            <v-btn round class="error" @click="clear">Clear</v-btn>
+          </v-flex>
+        </v-card-actions>
         <v-card flat class="pa-3" v-for="performer in performers" :key="performer.fullname">
           <v-layout row wrap>
             <v-flex xs6 sm4 md2>
@@ -124,7 +145,7 @@
           </v-layout>
         </v-card>
       </v-container>
-    </div>
+  </div>
 </template>
 
 <script>
@@ -134,19 +155,10 @@
   export default {
     data() {
       return {
-        items: [
-          {
-            src: '/talents/dancer.jpg',
-            dependency: "Dancer"
-          },
-          {
-            src: '/talents/musician.jpg',
-            dependency: "Musician"
-          },
-          {
-            src: '/talents/singer.jpg',
-            dependency: "Singer"
-          }
+        cards: [
+          { title: 'Dancer', src: '/talents/dancer.jpg', flex: 20 },
+          { title: 'Musician', src: '/talents/musician.jpg', flex: 20 },
+          { title: 'Singer', src: '/talents/singer.jpg', flex: 20 }
         ],
         //text and values for first dropdown menu
         talents: [
