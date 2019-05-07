@@ -1,6 +1,30 @@
 <template>
   <div class="performer">
     <h1 class="subheading grey--text">Performers List</h1>
+    <div class="md-layout">
+      <div class="md-layout-item md-size-66 mx-auto md-small-size-100">
+        <v-carousel
+          :per-page="1"
+          loop
+          :speed="1000"
+          autoplay
+          :autoplay-timeout="4000"
+          :mouse-drag="true"
+          navigationEnabled
+          navigationNextLabel="<i class='material-icons'>keyboard_arrow_right</i>"
+          navigationPrevLabel="<i class='material-icons'>keyboard_arrow_left</i>"
+        >
+         <md-card>
+          <v-carousel-item
+            v-for="(item,i) in items"
+            :key="i"
+            :src="item.src"
+          ></v-carousel-item>
+         </md-card>
+        </v-carousel>
+      </div>
+    </div>
+    <div></div>
       <v-container class="my-5">
         <v-flex xs12 sm6 d-flex>
           <v-select
@@ -62,6 +86,17 @@
   export default {
     data() {
       return {
+        items: [
+          {
+            src: '/carousel/dancer.jpg'
+          },
+          {
+            src: '/carousel/musicians.jpg'
+          },
+          {
+            src: '/carousel/singer.jpg'
+          }
+        ],
         //text and values for first dropdown menu
         talents: [
           { text: 'Dancer', value: "Dancer" },
