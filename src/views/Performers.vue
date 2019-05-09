@@ -1,4 +1,4 @@
-<template>
+<template xmlns:v-slot="http://www.w3.org/1999/XSL/Transform">
   <div class="performer">
     <h1 class="subheading grey--text">Performers List</h1>
 <!--        <v-card row-->
@@ -88,7 +88,7 @@
     </v-layout>
       <v-container>
         <v-card-actions class="justify-center">
-          <v-flex xs12 sm8>
+          <v-flex sm4>
             <v-select
               :items="talents"
               label="Select talent"
@@ -98,7 +98,7 @@
           </v-flex>
         </v-card-actions>
         <v-card-actions class="justify-center">
-          <v-flex xs12 sm8>
+          <v-flex sm4>
             <v-select
               :items="filteredStyles"
               label="Select styles"
@@ -108,12 +108,47 @@
           </v-flex>
         </v-card-actions>
         <v-card-actions class="justify-center">
-          <v-flex xs12 sm8 d-flex>
+          <v-flex sm4>
+            <v-select
+              :items="location"
+              label="Select location"
+              v-model="selected_location"
+              solo
+            ></v-select>
+          </v-flex>
+        </v-card-actions>
+        <v-layout class="justify-center">
+            <v-flex xs12 sm6 md4>
+              <v-menu
+                v-model="menu2"
+                :close-on-content-click="false"
+                :nudge-right="40"
+                lazy
+                transition="scale-transition"
+                offset-y
+                full-width
+                min-width="290px"
+              >
+                <template v-slot:activator="{ on }">
+                  <v-text-field
+                    v-model="date"
+                    label="Select date"
+                    prepend-icon="event"
+                    readonly
+                    v-on="on"
+                  ></v-text-field>
+                </template>
+                <v-date-picker v-model="date" @input="menu2 = false"></v-date-picker>
+              </v-menu>
+            </v-flex>
+        </v-layout>
+        <v-card-actions class="justify-center">
+          <v-flex sm4 d-flex>
             <v-btn round class="success" @click="display">Search</v-btn>
           </v-flex>
         </v-card-actions>
         <v-card-actions class="justify-center">
-          <v-flex xs10 sm6 d-flex>
+          <v-flex sm2 d-flex>
             <v-btn round class="error" @click="clear">Clear</v-btn>
           </v-flex>
         </v-card-actions>
@@ -197,8 +232,27 @@
           { text: 'Pop', value: "Pop", dependency: "Musician" },
           { text: 'Rock', value: "Rock", dependency: "Musician" },
         ],
+        location: [
+          { text: 'Abbotsford', value: "Abbotsford" },
+          { text: 'Burnaby', value: "Burnaby" },
+          { text: 'Chilliwack', value: "Chilliwack" },
+          { text: 'Delta', value: "Delta" },
+          { text: 'Langley', value: "Langley" },
+          { text: 'Maple Ridge', value: "Maple Ridge" },
+          { text: 'New Westminster', value: "New Westminster" },
+          { text: 'North Vancouver', value: "North Vancouver" },
+          { text: 'Port Coquitlam', value: "Port Coquitlam" },
+          { text: 'Richmond', value: "Richmond" },
+          { text: 'Surrey', value: "Surrey" },
+          { text: 'Vancouver', value: "Vancouver" },
+        ],
+        date: new Date().toISOString().substr(0, 10),
+        menu: false,
+        modal: false,
+        menu2: false,
         selected_talent: '',
         selected_style: '',
+        selected_location: '',
         performers: [],
         uid: '',
       }
@@ -230,12 +284,32 @@
               })
             })
         }
+        // else if(this.selected_style === '') {
+        //   this.performers = [];
+        //   let query = db.collection('performers');
+        //   query = query.where('talent', '==', this.selected_talent);
+        //   query = query.where('style', '==', this.selected_style);
+        //   query = query.where('location', '==', this.selected_location);
+        //   query.get()
+        //     .then(doc => {
+        //       const changes = doc.docChanges();
+        //       changes.forEach(change => {
+        //         if (change.type === 'added') {
+        //           this.performers.push({
+        //             ...change.doc.data(),
+        //             id: change.doc.id
+        //           })
+        //         }
+        //       })
+        //     })
+        // }
         //if style is selected, display list of matching talent and style
         else {
           this.performers = [];
           let query = db.collection('performers');
           query = query.where('talent', '==', this.selected_talent);
           query = query.where('style', '==', this.selected_style);
+          query = query.where('location', '==', this.selected_location);
           query.get()
             .then(doc => {
               const changes = doc.docChanges();
@@ -250,12 +324,13 @@
             })
         }
       },
-      //resets talent and style dropdown
+      //resets talent, style and location dropdown
       clear() {
         this.$nextTick(() => {
           this.selected_talent = '';
           this.selected_style = '';
-        })
+          this.selected_location = '';
+        });
       },
       book(uid, email,fullname,talent,style){
         let ref = db.collection('performers').doc(uid);
@@ -267,12 +342,13 @@
           email: email,
           fullname: fullname,
           talent: talent,
-          style: style
+          style: style,
+          location: location
         })
           .then(function() {
             // eslint-disable-next-line no-console
             console.log("Performer booked!")
-          })
+          });
 
         return ref.set({
           isBooked: true
@@ -280,7 +356,7 @@
           .then(function() {
             // eslint-disable-next-line no-console
             console.log("isBook set to true!")
-          })
+          });
       }
     }
   }
