@@ -51,13 +51,12 @@
 </template>
 
 <script>
-  import Login from "@/views/Login";
   const fb = require('../firebase');
 	import PopupRegister from '../views/PopupRegister'
 	import PopupLogin from '../views/PopupLogin'
 	import Signout from '../views/Signout'
 	export default {
-		components: {Login, PopupRegister, PopupLogin, Signout },
+		components: {PopupRegister, PopupLogin, Signout },
 		data() {
 			return {
 				drawer: false,

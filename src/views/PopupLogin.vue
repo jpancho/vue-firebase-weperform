@@ -32,7 +32,6 @@
           <v-spacer></v-spacer>
           <v-btn
             color="primary"
-            @
             @click="submitLogin"
           >Login
           </v-btn>
@@ -58,8 +57,9 @@
     methods: {
       login() {
         // eslint-disable-next-line no-unused-vars
-        fb.auth.signInWithEmailAndPassword(this.email, this.password).then((user) => {
-          this.$router.replace('/')
+        fb.auth.signInWithEmailAndPassword(this.email, this.password)
+          .then((user) => {
+          this.$router.replace('/performers')
         }).catch((err) => {
           alert(err.message)
         })
