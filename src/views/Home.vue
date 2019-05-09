@@ -29,15 +29,15 @@
                     :src="item.src"
                     :title="item.title"
             >
-                  <h2 class="title" @click="search">{{ item.title }}</h2>
+                  <p class="headline" @click="search">{{ item.title }}</p>
             </v-carousel-item>
           </md-card>
         </v-carousel>
       </div>
     </div>
     <h1 align="center">WePerform</h1>
-    <h2>WePerform is a web application (web app) designed to streamline the process of booking performers for events. Each performer has a profile describing their skill, expertise, and contact information, allowing patrons to search and book them with ease. This service saves the patrons time, effort, and money in search of their ideal performer, while also providing performers with a dedicated platform to promote themselves.
-    </h2>
+    <h3 class="font-weight-light">WePerform is a web application (web app) designed to streamline the process of booking performers for events. Each performer has a profile describing their skill, expertise, and contact information, allowing patrons to search and book them with ease. This service saves the patrons time, effort, and money in search of their ideal performer, while also providing performers with a dedicated platform to promote themselves.
+    </h3>
   </div>
 </template>
 
@@ -209,18 +209,18 @@ export default {
     -webkit-transition: all 0.3s 1s ease-out; /* Android 2.1+, Chrome 1-25, iOS 3.2-6.1, Safari 3.2-6  */
     transition: all 0.3s 1s ease-out; /* Chrome 26, Firefox 16+, iOS 7+, IE 10+, Opera, Safari 6.1+  */
   }
- .title{
-    color: #FFFFFF;
-   padding: 420px 0;
+ .headline{
+    color: honeydew;
+   padding: 410px 0;
    text-align: center;
-   font-size: 50px;
   }
-  h2{
+  h3{
     text-align: center;
     font-size: 18px;
     padding: 10px 0;
   }
   h1{
     padding: 10px 0;
+    color:gray;
   }
 </style>
