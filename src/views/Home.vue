@@ -48,15 +48,15 @@ export default {
     return {
       items: [
         {
-          src: '/carousel/dancer.jpg',
+          src: '/talents/dancer.jpg',
           title: "Dancer"
         },
         {
-          src: '/carousel/musicians.jpg',
+          src: '/talents/musician.jpg',
           title: "Musician"
         },
         {
-          src: '/carousel/singer.jpg',
+          src: '/talents/singer.jpg',
           title: "Singer"
         }
       ]
