@@ -23,7 +23,10 @@
 </template>
 
 <script>
-  import { db } from '../firebase';
+  import { db,
+    //functions
+    } from '../firebase';
+  //let getUsers = functions.httpsCallable('getUsers');
 
   export default {
     data() {
@@ -43,6 +46,6 @@
           }
         })
       })
-    }
+    },
   }
 </script>
