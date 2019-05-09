@@ -1,21 +1,40 @@
 <template>
   <v-layout row justify-center>
-    <v-dialog max-width="400">
-      <v-btn flat color="grey" slot="activator">Login</v-btn>
-      <v-card>
-        <v-text-field
-          label="Email"
-          v-model="email"
-        ></v-text-field>
-        <v-text-field
-          v-model="password"
-          :type="'password'"
-          name="input-10-1"
-          label="Password"
-        ></v-text-field>
+    <v-dialog v-model="dialog" max-width="400">
+      <template v-slot:activator="{ on }">
+        <v-btn flat color="grey" v-on="on">Login</v-btn>
+      </template>
+      <v-card class="elevation-12">
+        <v-toolbar dark color="primary">
+          <v-toolbar-title>Login</v-toolbar-title>
+          <v-spacer></v-spacer>
+        </v-toolbar>
+        <v-card-text>
+          <v-form>
+            <v-text-field
+              prepend-icon="person"
+              v-model="email"
+              name="email"
+              label="Email"
+              type="text">
+            </v-text-field>
+            <v-text-field
+              v-model="password"
+              id="password"
+              prepend-icon="lock"
+              name="password"
+              label="Password"
+              type="password">
+            </v-text-field>
+          </v-form>
+        </v-card-text>
         <v-card-actions>
-          <v-btn class="success" @click="login">Login</v-btn>
-          <v-btn v-if="isLoggedIn"> Logout </v-btn>
+          <v-spacer></v-spacer>
+          <v-btn
+            color="primary"
+            @click="submitLogin"
+          >Login
+          </v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -38,11 +57,16 @@
     methods: {
       login() {
         // eslint-disable-next-line no-unused-vars
-        fb.auth.signInWithEmailAndPassword(this.email, this.password).then((user) => {
-          this.$router.replace('/')
+        fb.auth.signInWithEmailAndPassword(this.email, this.password)
+          .then((user) => {
+          this.$router.replace('/performers')
         }).catch((err) => {
           alert(err.message)
         })
+      },
+      submitLogin() {
+        this.login();
+        this.dialog = false;
       }
     }
   }

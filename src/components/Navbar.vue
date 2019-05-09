@@ -30,9 +30,6 @@
 			<v-btn flat color="grey" to="/profile">
 				<span>Profile</span>
 			</v-btn>
-			<!--<v-btn flat color="grey" to="/login">-->
-				<!--<span>log</span>-->
-			<!--</v-btn>-->
 			<PopupRegister/>
 			<PopupLogin/>
 			<Signout/>
@@ -59,7 +56,7 @@
 	import PopupLogin from '../views/PopupLogin'
 	import Signout from '../views/Signout'
 	export default {
-		components: { PopupRegister, PopupLogin, Signout },
+		components: {PopupRegister, PopupLogin, Signout },
 		data() {
 			return {
 				drawer: false,
