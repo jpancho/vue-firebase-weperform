@@ -1,6 +1,5 @@
 <template>
   <div class="home">
-    <h1>Homepage</h1>
     <div id="loader-wrapper">
       <div id="quotes">
         <p>WePerform</p>
@@ -10,12 +9,64 @@
       <div class="loader-section section-left"></div>
       <div class="loader-section section-right"></div>
     </div>
+    <div class="md-layout">
+      <div class="md-layout-item md-size-66 mx-auto md-small-size-100">
+        <v-carousel
+                :per-page="1"
+                loop
+                :speed="1000"
+                autoplay
+                :autoplay-timeout="4000"
+                :mouse-drag="true"
+                navigationEnabled
+                navigationNextLabel="<i class='material-icons'>keyboard_arrow_right</i>"
+                navigationPrevLabel="<i class='material-icons'>keyboard_arrow_left</i>"
+        >
+          <md-card>
+            <v-carousel-item
+                    v-for="(item,i) in items"
+                    :key="i"
+                    :src="item.src"
+                    :title="item.title"
+            >
+                  <p class="headline" @click="search">{{ item.title }}</p>
+            </v-carousel-item>
+          </md-card>
+        </v-carousel>
+      </div>
+    </div>
+    <h1 align="center">WePerform</h1>
+    <h3 class="font-weight-light">WePerform is a web application (web app) designed to streamline the process of booking performers for events. Each performer has a profile describing their skill, expertise, and contact information, allowing patrons to search and book them with ease. This service saves the patrons time, effort, and money in search of their ideal performer, while also providing performers with a dedicated platform to promote themselves.
+    </h3>
   </div>
 </template>
 
 <script>
 
 export default {
+  data() {
+    return {
+      items: [
+        {
+          src: '/talents/dancer.jpg',
+          title: "Dancer"
+        },
+        {
+          src: '/talents/musician.jpg',
+          title: "Musician"
+        },
+        {
+          src: '/talents/singer.jpg',
+          title: "Singer"
+        }
+      ]
+    }
+  },
+  methods: {
+    search() {
+      this.$router.replace('/performers')
+    }
+  }
 }
 </script>
 
@@ -157,5 +208,19 @@ export default {
 
     -webkit-transition: all 0.3s 1s ease-out; /* Android 2.1+, Chrome 1-25, iOS 3.2-6.1, Safari 3.2-6  */
     transition: all 0.3s 1s ease-out; /* Chrome 26, Firefox 16+, iOS 7+, IE 10+, Opera, Safari 6.1+  */
+  }
+ .headline{
+    color: honeydew;
+   padding: 410px 0;
+   text-align: center;
+  }
+  h3{
+    text-align: center;
+    font-size: 18px;
+    padding: 10px 0;
+  }
+  h1{
+    padding: 10px 0;
+    color:gray;
   }
 </style>
