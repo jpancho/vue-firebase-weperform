@@ -1,4 +1,4 @@
-np<template>
+<template>
   <v-app class="grey lighten-4">
     <Navbar />
     <v-content class="mx-4">
