@@ -21,8 +21,8 @@
                         <div>{{ performer.email }}</div>
                     </v-flex>
                     <v-flex xs6 sm4 md2>
-                        <div class="caption grey--text">Uid</div>
-                        <div>{{ performer.uid }}</div>
+                        <div class="caption grey--text">Location</div>
+                        <div>{{ performer.location }}</div>
                     </v-flex>
                     <v-btn flat color="red" @click="cancel(performer.uid)">
                        cancel

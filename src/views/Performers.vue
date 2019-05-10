@@ -171,10 +171,10 @@
               <div>{{ performer.price}}</div>
             </v-flex>
             <v-flex xs6 sm4 md2>
-              <div class="caption grey--text">Booked</div>
-              <div>{{ performer.isBooked}}</div>
+              <div class="caption grey--text">Location</div>
+              <div>{{ performer.location}}</div>
             </v-flex>
-            <v-btn flat color="green" @click="book(performer.uid, performer.email, performer.fullname, performer.talent, performer.style)">
+            <v-btn flat color="green" @click="book(performer.uid, performer.email, performer.fullname, performer.talent, performer.style, performer.location)">
               Book
             </v-btn>
           </v-layout>
@@ -266,8 +266,8 @@
     },
     methods: {
       display() {
-        //if no style is selected, display list of matching talent
-        if (this.selected_style === '') {
+        //if no style and location is selected, display list of matching talent
+        if (this.selected_style === '' && this.selected_location === '') {
           this.performers = [];
           db.collection('performers')
             .where('talent', '==', this.selected_talent)
@@ -284,26 +284,44 @@
               })
             })
         }
-        // else if(this.selected_style === '') {
-        //   this.performers = [];
-        //   let query = db.collection('performers');
-        //   query = query.where('talent', '==', this.selected_talent);
-        //   query = query.where('style', '==', this.selected_style);
-        //   query = query.where('location', '==', this.selected_location);
-        //   query.get()
-        //     .then(doc => {
-        //       const changes = doc.docChanges();
-        //       changes.forEach(change => {
-        //         if (change.type === 'added') {
-        //           this.performers.push({
-        //             ...change.doc.data(),
-        //             id: change.doc.id
-        //           })
-        //         }
-        //       })
-        //     })
-        // }
-        //if style is selected, display list of matching talent and style
+        //if no talent and style is selected, display list of matching location
+        else if(this.selected_talent === '' && this.selected_style === '') {
+          this.performers = [];
+          db.collection('performers')
+                  .where('location', '==', this.selected_location)
+                  .get()
+                  .then(doc => {
+                    const changes = doc.docChanges();
+                    changes.forEach(change => {
+                      if (change.type === 'added') {
+                        this.performers.push({
+                          ...change.doc.data(),
+                          id: change.doc.id
+                        })
+                      }
+                    })
+                  })
+        }
+        //if no style is selected, display list of matching talent and location
+        else if(this.selected_style === '') {
+            this.performers = [];
+            db.collection('performers')
+                    .where('location', '==', this.selected_location)
+                    .where('talent', '==', this.selected_talent)
+                    .get()
+                    .then(doc => {
+                      const changes = doc.docChanges();
+                      changes.forEach(change => {
+                        if (change.type === 'added') {
+                          this.performers.push({
+                            ...change.doc.data(),
+                            id: change.doc.id
+                          })
+                        }
+                      })
+                    })
+          }
+        //if style and location is selected, display list of matching talent, style and location
         else {
           this.performers = [];
           let query = db.collection('performers');
@@ -332,7 +350,7 @@
           this.selected_location = '';
         });
       },
-      book(uid, email,fullname,talent,style){
+      book(uid, email,fullname,talent,style,location){
         let ref = db.collection('performers').doc(uid);
 
         let user = fb.auth.currentUser;

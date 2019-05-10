@@ -19,6 +19,12 @@
           v-model="selected_style"
           solo
         ></v-select>
+        <v-select
+                :items="location"
+                label="Select location"
+                v-model="selected_location"
+                solo
+        ></v-select>
         <v-text-field
           label="Experience"
           v-model="experience"
@@ -80,11 +86,26 @@
           { text: 'Pop', value: "Pop", dependency: "Musician" },
           { text: 'Rock', value: "Rock", dependency: "Musician" },
         ],
+        location: [
+          { text: 'Abbotsford', value: "Abbotsford" },
+          { text: 'Burnaby', value: "Burnaby" },
+          { text: 'Chilliwack', value: "Chilliwack" },
+          { text: 'Delta', value: "Delta" },
+          { text: 'Langley', value: "Langley" },
+          { text: 'Maple Ridge', value: "Maple Ridge" },
+          { text: 'New Westminster', value: "New Westminster" },
+          { text: 'North Vancouver', value: "North Vancouver" },
+          { text: 'Port Coquitlam', value: "Port Coquitlam" },
+          { text: 'Richmond', value: "Richmond" },
+          { text: 'Surrey', value: "Surrey" },
+          { text: 'Vancouver', value: "Vancouver" },
+        ],
         fullname: '',
         experience: '',
         price: '',
         selected_talent: '',
         selected_style: '',
+        selected_location: '',
       }
     },
     computed: {
@@ -103,6 +124,7 @@
           fullname: this.fullname,
           talent: this.selected_talent,
           style: this.selected_style,
+          location: this.selected_location,
           experience: this.experience,
           price: this.price,
           isBooked: false
