@@ -177,6 +177,9 @@
             <v-btn flat color="green" @click="book(performer.uid, performer.email, performer.fullname, performer.talent, performer.style, performer.location)">
               Book
             </v-btn>
+            <!--<v-dialog v-model="dialog" width="500">-->
+              <!--Performer booked-->
+            <!--</v-dialog>-->
           </v-layout>
         </v-card>
       </v-container>
@@ -322,6 +325,24 @@
                       })
                     })
           }
+        else if(this.selected_location === '') {
+          this.performers = [];
+          db.collection('performers')
+                  .where('talent', '==', this.selected_talent)
+                  .where('style', '==', this.selected_style)
+                  .get()
+                  .then(doc => {
+                    const changes = doc.docChanges();
+                    changes.forEach(change => {
+                      if (change.type === 'added') {
+                        this.performers.push({
+                          ...change.doc.data(),
+                          id: change.doc.id
+                        })
+                      }
+                    })
+                  })
+        }
         //if style and location is selected, display list of matching talent, style and location
         else {
           this.performers = [];
@@ -362,7 +383,8 @@
           fullname: fullname,
           talent: talent,
           style: style,
-          location: location
+          location: location,
+
         })
           .then(function() {
             // eslint-disable-next-line no-console
