@@ -122,7 +122,7 @@
               <v-menu
                 v-model="menu2"
                 :close-on-content-click="false"
-                :nudge-right="40"
+                :nudge-right="120"
                 lazy
                 transition="scale-transition"
                 offset-y
@@ -138,7 +138,7 @@
                     v-on="on"
                   ></v-text-field>
                 </template>
-                <v-date-picker v-model="date" @input="menu2 = false"></v-date-picker>
+                <v-date-picker v-model="date" @input="menu2 = false" landscape="landscape"></v-date-picker>
               </v-menu>
             </v-flex>
         </v-layout>
@@ -250,6 +250,7 @@
         menu: false,
         modal: false,
         menu2: false,
+        landscape: false,
         selected_talent: '',
         selected_style: '',
         selected_location: '',
