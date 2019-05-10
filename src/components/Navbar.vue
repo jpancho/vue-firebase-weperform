@@ -6,9 +6,6 @@
 				<span class="font-weight-light"><router-link to="/">We</router-link></span>
 				<span><router-link to="/">Perform</router-link></span>
 			</v-toolbar-title>
-			<!--<v-btn flat color="grey" to="/">-->
-				<!--<span>Home</span>-->
-			<!--</v-btn>-->
 			<v-btn flat color="grey" to="/performers">
 				<span>Performers</span>
 			</v-btn>
@@ -56,7 +53,7 @@
 	import PopupLogin from '../views/PopupLogin'
 	import Signout from '../views/Signout'
 	export default {
-		components: {PopupRegister, PopupLogin, Signout },
+		components: { PopupRegister, PopupLogin, Signout },
 		data() {
 			return {
 				drawer: false,

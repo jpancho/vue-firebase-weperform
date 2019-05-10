@@ -6,6 +6,7 @@ dependencies:
   vue-router: 3.0.6
   vue2-datepicker: 2.11.1
   vuetify: 1.5.14
+  vuex: 3.1.1
 devDependencies:
   '@vue/cli-plugin-babel': 3.7.0
   '@vue/cli-plugin-eslint': 3.7.0
@@ -5037,7 +5038,7 @@ packages:
       lodash: 4.17.11
       mute-stream: 0.0.7
       run-async: 2.3.0
-      rxjs: 6.5.1
+      rxjs: 6.5.2
       string-width: 2.1.1
       strip-ansi: 5.2.0
       through: 2.3.8
@@ -7737,14 +7738,14 @@ packages:
     dev: true
     resolution:
       integrity: sha1-Cx4Rr4vESDbwSmQH6S2kJGe3lEQ=
-  /rxjs/6.5.1:
+  /rxjs/6.5.2:
     dependencies:
       tslib: 1.9.3
     dev: true
     engines:
       npm: '>=2.0.0'
     resolution:
-      integrity: sha512-y0j31WJc83wPu31vS1VlAFW5JGrnGC+j+TtGAa1fRQphy48+fDYiDmX8tjGloToEsMkxnouOg/1IzXGKkJnZMg==
+      integrity: sha512-HUb7j3kvb7p7eCUHE3FqjoDsC1xfZQ4AHFWfTKSpZ+sAhhz5X1WX0ZuUqWbzB2QhSLp3DoLUG+hMdEDKqWo2Zg==
   /safe-buffer/5.1.2:
     resolution:
       integrity: sha512-Gd2UZBJDkXlY7GbJxfsE8/nvKkUEU1G38c1siN6QP6a9PT9MmHB8GnpscSmMJSoF8LOIrt8ud/wPtojys4G6+g==
@@ -9015,6 +9016,10 @@ packages:
       vue: ^2.5.18
     resolution:
       integrity: sha512-7iM+TfghR/wu/Gl+k37lKr0N8Ddr6SxzqHtoK1dIyHgCH6SJRkpaXPw2MC5/FsAg9aUDJbYNWrzSeu5eHw+Q/w==
+  /vuex/3.1.1:
+    dev: false
+    resolution:
+      integrity: sha512-ER5moSbLZuNSMBFnEBVGhQ1uCBNJslH9W/Dw2W7GZN23UQA69uapP5GTT9Vm8Trc0PzBSVt6LzF3hGjmv41xcg==
   /walkdir/0.3.2:
     dev: false
     engines:
@@ -9409,3 +9414,4 @@ specifiers:
   vue2-datepicker: ^2.11.1
   vuetify: ^1.5.5
   vuetify-loader: ^1.0.5
+  vuex: ^3.0.1
