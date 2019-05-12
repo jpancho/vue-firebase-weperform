@@ -116,6 +116,7 @@
       }
     },
     methods:{
+      //Be Performer
       bePerformer() {
         let user = fb.auth.currentUser;
         db.collection('performers').doc(user.uid).set({
