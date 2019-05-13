@@ -38,8 +38,9 @@
             src="/talents/dancer.jpg"
             v-model="selected_talent"
             @click="dancer"
+            id = "d"
           >
-            <v-container fill-height fluid>
+            <v-container fill-height fluid >
               <v-layout fill-height>
                 <v-flex xs12 align-end flexbox>
                   <span class="headline">Dancer</span>
@@ -60,6 +61,7 @@
             src="/talents/musician.jpg"
             v-model="selected_talent"
             @click="musician"
+            id = "m"
           >
             <v-container fill-height fluid>
               <v-layout fill-height>
@@ -80,6 +82,7 @@
             src="/talents/singer.jpg"
             v-model="selected_talent"
             @click="singer"
+            id = "s"
           >
             <v-container fill-height fluid>
               <v-layout fill-height>
@@ -275,13 +278,22 @@
     },
     methods: {
       dancer(){
-        this.selected_talent="Dancer"
+        this.selected_talent="Dancer";
+        document.getElementById("d").style.border = "5px solid orange";
+        document.getElementById("m").style.border = "none";
+        document.getElementById("s").style.border = "none";
       },
       musician(){
-        this.selected_talent="Musician"
+        this.selected_talent="Musician";
+        document.getElementById("m").style.border = "5px solid orange";
+        document.getElementById("d").style.border = "none";
+        document.getElementById("s").style.border = "none";
       },
       singer(){
-        this.selected_talent="Singer"
+        this.selected_talent="Singer";
+        document.getElementById("s").style.border = "5px solid orange";
+        document.getElementById("m").style.border = "none";
+        document.getElementById("d").style.border = "none";
       },
       display() {
         //if no style and location is selected, display list of matching talent
