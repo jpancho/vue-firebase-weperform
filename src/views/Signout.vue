@@ -39,7 +39,6 @@
       }
     },
     methods: {
-
       logout() {
         this.signOut();
         this.dialog = false;

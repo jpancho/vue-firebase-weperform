@@ -23,10 +23,7 @@
 </template>
 
 <script>
-  import { db,
-    //functions
-    } from '../firebase';
-  //let getUsers = functions.httpsCallable('getUsers');
+  import { db } from '../firebase';
 
   export default {
     data() {
