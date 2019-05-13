@@ -36,6 +36,7 @@
             class="white--text"
             height="200px"
             src="/talents/dancer.jpg"
+            v-model="selected_talent"
             @click="dancer"
           >
             <v-container fill-height fluid>
@@ -57,6 +58,7 @@
             class="white--text"
             height="200px"
             src="/talents/musician.jpg"
+            v-model="selected_talent"
             @click="musician"
           >
             <v-container fill-height fluid>
@@ -76,6 +78,7 @@
             class="white--text"
             height="200px"
             src="/talents/singer.jpg"
+            v-model="selected_talent"
             @click="singer"
           >
             <v-container fill-height fluid>
@@ -90,16 +93,16 @@
       </v-flex>
     </v-layout>
       <v-container>
-        <v-card-actions class="justify-center">
-          <v-flex sm4>
-            <v-select
-              :items="talents"
-              label="Select talent"
-              v-model="selected_talent"
-              solo
-            ></v-select>
-          </v-flex>
-        </v-card-actions>
+        <!--<v-card-actions class="justify-center">-->
+          <!--<v-flex sm4>-->
+            <!--<v-select-->
+              <!--:items="talents"-->
+              <!--label="Select talent"-->
+              <!--v-model="selected_talent"-->
+              <!--solo-->
+            <!--&gt;</v-select>-->
+          <!--</v-flex>-->
+        <!--</v-card-actions>-->
         <v-card-actions class="justify-center">
           <v-flex sm4>
             <v-select
