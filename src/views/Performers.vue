@@ -36,6 +36,7 @@
             class="white--text"
             height="200px"
             src="/talents/dancer.jpg"
+            @click="dancer"
           >
             <v-container fill-height fluid>
               <v-layout fill-height>
@@ -56,6 +57,7 @@
             class="white--text"
             height="200px"
             src="/talents/musician.jpg"
+            @click="musician"
           >
             <v-container fill-height fluid>
               <v-layout fill-height>
@@ -74,6 +76,7 @@
             class="white--text"
             height="200px"
             src="/talents/singer.jpg"
+            @click="singer"
           >
             <v-container fill-height fluid>
               <v-layout fill-height>
@@ -269,6 +272,15 @@
       }
     },
     methods: {
+      dancer(){
+        this.selected_talent="Dancer"
+      },
+      musician(){
+        this.selected_talent="Musician"
+      },
+      singer(){
+        this.selected_talent="Singer"
+      },
       display() {
         //if no style and location is selected, display list of matching talent
         if (this.selected_style === '' && this.selected_location === '') {
