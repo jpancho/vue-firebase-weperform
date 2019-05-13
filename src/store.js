@@ -10,7 +10,7 @@ const vuexLocal = new VuexPersist({
 
 export default new Vuex.Store({
   state: {
-    user: JSON.parse(localStorage.getItem('vuex'))['user'],
+    user: JSON.parse(localStorage.getItem('vuex'))['user'] || null,
     status: null,
     error: null
   },
