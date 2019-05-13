@@ -27,9 +27,13 @@
 			<v-btn flat color="grey" to="/profile">
 				<span>Profile</span>
 			</v-btn>
-			<PopupRegister/>
-			<PopupLogin/>
-			<Signout/>
+      <template v-if="user == null">
+        <PopupRegister/>
+        <PopupLogin/>
+      </template>
+      <template v-else>
+        <Signout/>
+      </template>
 		</v-toolbar>
 
 		<v-navigation-drawer app v-model="drawer" class="black">
@@ -52,6 +56,8 @@
 	import PopupRegister from '../views/PopupRegister'
 	import PopupLogin from '../views/PopupLogin'
 	import Signout from '../views/Signout'
+  import { mapState } from 'vuex';
+
 	export default {
 		components: { PopupRegister, PopupLogin, Signout },
 		data() {
@@ -66,6 +72,9 @@
 				]
 			}
 		},
+    computed: mapState([
+      'user'
+    ]),
     methods: {
       signout() {
         fb.auth.signOut().then(() => {

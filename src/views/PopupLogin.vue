@@ -42,7 +42,6 @@
 </template>
 
 <script>
-  const fb = require('../firebase');
 
   export default {
     name: "Login",
@@ -55,18 +54,17 @@
       }
     },
     methods: {
-      login() {
-        // eslint-disable-next-line no-unused-vars
-        fb.auth.signInWithEmailAndPassword(this.email, this.password)
-          .then((user) => {
-          this.$router.replace('/performers')
-        }).catch((err) => {
-          alert(err.message)
-        })
-      },
       submitLogin() {
-        this.login();
+        this.signIn();
         this.dialog = false;
+      },
+      signIn() {
+        const user = {
+          email: this.email,
+          password: this.password
+        };
+        this.$store.dispatch('signInAction', user);
+        this.$router.replace('/performers');
       }
     }
   }
