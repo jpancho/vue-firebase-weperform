@@ -9,26 +9,28 @@ export default new Vuex.Store({
     user: null,
     status: null,
     error: null
+
   },
+
   mutations: {
-    setUser(state, payload) {
-      state.user = payload;
+    setUser (state, payload) {
+      state.user = payload
     },
-    removeUser(state) {
-      state.user = null;
+    removeUser (state) {
+      state.user = null
     },
-    setStatus(state, payload) {
-      state.status = payload;
+    setStatus (state, payload) {
+      state.status = payload
     },
-    setError(state, payload) {
-      state.error = payload;
+    setError (state, payload) {
+      state.error = payload
     }
   },
+
   actions: {
-    signUp({ commit }, payload) {
+    signUpAction ({ commit }, payload) {
       commit('setStatus', 'loading');
-      firebase.auth()
-        .createUserWithEmailAndPassword(payload.email, payload.password)
+      firebase.auth().createUserWithEmailAndPassword(payload.email, payload.password)
         .then((response) => {
           alert('Successfully signed up!');
           commit('setUser', response.user.uid);
@@ -40,9 +42,8 @@ export default new Vuex.Store({
           commit('setError', error.message);
         })
     },
-    signIn({ commit }, payload) {
-      firebase.auth()
-        .signInWithEmailAndPassword(payload.email, payload.password)
+    signInAction ({ commit }, payload) {
+      firebase.auth().signInWithEmailAndPassword(payload.email, payload.password)
         .then((response) => {
           alert('Successfully signed in!');
           commit('setUser', response.user.uid);
@@ -54,10 +55,10 @@ export default new Vuex.Store({
           commit('setError', error.message);
         })
     },
-    signOut({ commit }) {
-      firebase.auth()
-        .signOut()
+    signOutAction ({ commit }) {
+      firebase.auth().signOut()
         .then((response) => {
+          alert('Signed out!');
           commit('setUser', null);
           commit('setStatus', 'success');
           commit('setError', null);
@@ -66,17 +67,18 @@ export default new Vuex.Store({
           commit('setStatus', 'failure');
           commit('setError', error.message);
         })
+    }
+  },
+
+  getters: {
+    status (state) {
+      return state.status;
     },
-    getters: {
-      status(state) {
-        return state.status;
-      },
-      user(state) {
-        return state.user;
-      },
-      error(state) {
-        return state.error;
-      }
+    user (state) {
+      return state.user;
+    },
+    error (state) {
+      return state.error;
     }
   }
 });
