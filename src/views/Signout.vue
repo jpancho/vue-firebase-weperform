@@ -31,7 +31,7 @@
 </template>
 
 <script>
-  const fb = require('../firebase');
+
   export default {
     data() {
       return {
@@ -39,17 +39,14 @@
       }
     },
     methods: {
-      signout() {
-        fb.auth.signOut().then(() => {
-          this.$router.replace('/');
-        })
-      },
+
       logout() {
-        this.signout();
+        this.signOut();
         this.dialog = false;
       },
       signOut() {
-
+        this.$store.dispatch('signOutAction');
+        this.$router.replace('/home');
       }
     }
   }
