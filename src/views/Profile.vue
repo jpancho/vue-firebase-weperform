@@ -46,8 +46,8 @@
 </template>
 
 <script>
-  const fb = require('../firebase');
-  import { db } from '../firebase';
+
+  import { db, auth } from '../firebase';
   import PopupPerformer from '../views/PopupPerformer'
 
   export default {
@@ -58,7 +58,7 @@
       }
     },
     created() {
-      let user = fb.auth.currentUser;
+      let user = auth.currentUser;
       db.collection('users')
         .where('uid', '==', user.uid)
         .get()

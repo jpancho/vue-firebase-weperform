@@ -27,12 +27,12 @@
 			<v-btn flat color="grey" to="/profile">
 				<span>Profile</span>
 			</v-btn>
-      <template v-if="user == null">
-        <PopupRegister/>
-        <PopupLogin/>
+      <template v-if="user !== null">
+        <Signout/>
       </template>
       <template v-else>
-        <Signout/>
+        <PopupRegister/>
+        <PopupLogin/>
       </template>
 		</v-toolbar>
 
@@ -52,10 +52,9 @@
 </template>
 
 <script>
-  const fb = require('../firebase');
-	import PopupRegister from '../views/PopupRegister'
-	import PopupLogin from '../views/PopupLogin'
-	import Signout from '../views/Signout'
+	import PopupRegister from '../views/PopupRegister';
+	import PopupLogin from '../views/PopupLogin';
+  import Signout from '../views/Signout';
   import { mapState } from 'vuex';
 
 	export default {
@@ -76,11 +75,6 @@
       'user'
     ]),
     methods: {
-      signout() {
-        fb.auth.signOut().then(() => {
-          this.$router.replace('/login');
-        })
-      }
     }
 	}
 </script>

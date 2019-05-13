@@ -193,8 +193,7 @@
 </template>
 
 <script>
-  import { db } from '../firebase';
-  const fb = require('../firebase');
+  import { db, auth } from '../firebase';
 
   export default {
     data() {
@@ -390,7 +389,7 @@
       book(uid, email,fullname,talent,style,location){
         let ref = db.collection('performers').doc(uid);
 
-        let user = fb.auth.currentUser;
+        let user = auth.currentUser;
         db.collection('users').doc(user.uid)
           .collection('performersBooked').doc(uid).set({
           uid: uid,

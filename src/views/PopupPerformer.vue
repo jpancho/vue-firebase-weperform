@@ -43,8 +43,7 @@
 </template>
 
 <script>
-  const fb = require('../firebase');
-  import { db } from '../firebase';
+  import { db, auth } from '../firebase';
 
   export default {
     data() {
@@ -118,7 +117,7 @@
     methods:{
       //Be Performer
       bePerformer() {
-        let user = fb.auth.currentUser;
+        let user = auth.currentUser;
         db.collection('performers').doc(user.uid).set({
           uid: user.uid,
           email: user.email,
