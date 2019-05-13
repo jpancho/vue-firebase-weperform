@@ -19,7 +19,7 @@
         ></v-text-field>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn class="success" @click="signup">Sign-up</v-btn>
+          <v-btn class="success" @click="register">Sign-up</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -27,7 +27,6 @@
 </template>
 
 <script>
-  const fb = require('../firebase');
 
   export default {
     name: "Register",
@@ -39,13 +38,13 @@
       }
     },
     methods: {
-      signup() {
-        // eslint-disable-next-line no-unused-vars
-        fb.auth.createUserWithEmailAndPassword(this.email, this.password).then((user) => {
-          this.$router.replace('/home')
-        }).catch((err) => {
-          alert(err.message)
-        });
+      register() {
+        const user = {
+          email: this.email,
+          password: this.password
+        };
+        this.$store.dispatch('signUpAction', user);
+        this.$router.replace('/home');
       }
     }
   }

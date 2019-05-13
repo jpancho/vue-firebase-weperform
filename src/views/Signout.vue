@@ -47,6 +47,9 @@
       logout() {
         this.signout();
         this.dialog = false;
+      },
+      signOut() {
+
       }
     }
   }
