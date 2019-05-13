@@ -1,7 +1,8 @@
-const admin = require('firebase-admin');
-const functions = require('firebase-functions');
-admin.initializeApp();
-const db = admin.firestore();
+// const admin = require('firebase-admin');
+// const functions = require('firebase-functions');
+// admin.initializeApp();
+// const db = admin.firestore();
+import { db, functions } from 'src/firebase';
 
 const getUsers = (req, res) => {
   let users = [];

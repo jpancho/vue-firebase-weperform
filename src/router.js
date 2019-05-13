@@ -27,11 +27,6 @@ const router = new Router({
       }
     },
     {
-      path: '/register',
-      name: 'register',
-      component: () => import('./views/PopupRegister.vue')
-    },
-    {
       path: '/performers',
       name: 'performers',
       component: () => import('./views/Performers.vue'),
@@ -58,11 +53,11 @@ const router = new Router({
   ]
 });
 
-const fb = require('firebase');
+import { auth } from './firebase';
 
 router.beforeEach((to, from, next) => {
   const requiresAuth = to.matched.some(x => x.meta.requiresAuth);
-  const currentUser = fb.auth().currentUser;
+  const currentUser = auth.currentUser;
 
   if (requiresAuth && !currentUser) {
     next('/login')
