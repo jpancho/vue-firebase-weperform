@@ -4,6 +4,7 @@ import VuexPersist from 'vuex-persist';
 import { auth } from './firebase';
 
 Vue.use(Vuex);
+
 const vuexLocal = new VuexPersist({
   storage: window.localStorage
 });

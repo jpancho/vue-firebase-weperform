@@ -27,7 +27,7 @@
 			<v-btn flat color="grey" to="/profile">
 				<span>Profile</span>
 			</v-btn>
-      <template v-if="user !== null">
+      <template v-if="user">
         <Signout/>
       </template>
       <template v-else>
