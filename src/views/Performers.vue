@@ -1,34 +1,6 @@
 <template xmlns:v-slot="http://www.w3.org/1999/XSL/Transform">
   <div class="performer">
     <h1 class="subheading grey--text">Performers List</h1>
-<!--        <v-card row-->
-<!--                justify-space-between>-->
-<!--          <v-layout>-->
-<!--            <v-flex-->
-<!--              v-for="card in cards"-->
-<!--              :key="card.title"-->
-<!--              v-bind="{ [`xs${card.flex}`]: true }"-->
-<!--              v-divider-->
-<!--            >-->
-<!--                <v-img-->
-<!--                  :src="card.src"-->
-<!--                  height="200px"-->
-<!--                >-->
-<!--                  <v-container-->
-<!--                    fill-height-->
-<!--                    fluid-->
-<!--                    pa-2-->
-<!--                  >-->
-<!--                    <v-layout fill-height>-->
-<!--                      <v-flex xs12 align-end flexbox>-->
-<!--                        <span class="headline white&#45;&#45;text" v-text="card.title"></span>-->
-<!--                      </v-flex>-->
-<!--                    </v-layout>-->
-<!--                  </v-container>-->
-<!--                </v-img>-->
-<!--            </v-flex>-->
-<!--          </v-layout>-->
-<!--        </v-card>-->
     <v-layout>
       <v-flex xs4 sm12 sm8>
         <v-card>
@@ -49,9 +21,6 @@
             </v-container>
           </v-img>
         </v-card>
-<!--        <v-toolbar class="light-grey">-->
-<!--          <v-btn class="justify-center">Dancer</v-btn>-->
-<!--        </v-toolbar>-->
       </v-flex>
       <v-flex xs6 sm12 offset-sm1>
         <v-card>
@@ -75,7 +44,6 @@
       </v-flex>
       <v-flex xs8 sm12 offset-sm1>
         <v-card>
-<!--          onclick={{console.log}}-->
           <v-img
             class="white--text"
             height="200px"
@@ -96,16 +64,6 @@
       </v-flex>
     </v-layout>
       <v-container>
-        <!--<v-card-actions class="justify-center">-->
-          <!--<v-flex sm4>-->
-            <!--<v-select-->
-              <!--:items="talents"-->
-              <!--label="Select talent"-->
-              <!--v-model="selected_talent"-->
-              <!--solo-->
-            <!--&gt;</v-select>-->
-          <!--</v-flex>-->
-        <!--</v-card-actions>-->
         <v-card-actions class="justify-center">
           <v-flex sm4>
             <v-select
@@ -186,9 +144,6 @@
             <v-btn flat color="green" @click="book(performer.uid, performer.email, performer.fullname, performer.talent, performer.style, performer.location)">
               Book
             </v-btn>
-            <!--<v-dialog v-model="dialog" width="500">-->
-              <!--Performer booked-->
-            <!--</v-dialog>-->
           </v-layout>
         </v-card>
       </v-container>
