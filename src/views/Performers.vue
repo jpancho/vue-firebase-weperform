@@ -362,6 +362,9 @@
           this.selected_style = '';
           this.selected_location = '';
           this.date = '';
+          document.getElementById("d").style.border = "none";
+          document.getElementById("m").style.border = "none";
+          document.getElementById("s").style.border = "none";
         });
       },
       book(uid, email,fullname,talent,style,location){
