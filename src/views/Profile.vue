@@ -28,9 +28,9 @@
             <p></p>
             <p class="font-italic font-weight-light">DESCRIPTION</p><v-btn id = "edit" @click="edit" color="primary" fab small dark> <v-icon>edit</v-icon></v-btn>
             <div id="des">
-            <input type="text" id="description" v-model="description">
+              <textarea id="description" v-model="description" readonly></textarea>
             <p></p>
-            <v-btn @click="save" small>Save</v-btn><v-btn @click="cancel" small>Cancel</v-btn>
+            <v-btn @click="save" id="save" small>Save</v-btn><v-btn @click="cancel" id="cancel" small>Cancel</v-btn>
             </div>
           </v-card>
         </v-flex>
@@ -83,17 +83,27 @@
     },
     methods: {
       cancel() {
+        document.getElementById("description").style.border="none";
         document.getElementById("description").value = "";
-        document.getElementById("des").style.visibility= "hidden" ;
         document.getElementById("edit").style.visibility= "visible" ;
+        document.getElementById("save").style.visibility= "hidden" ;
+        document.getElementById("cancel").style.visibility= "hidden" ;
+        document.getElementById("description").readOnly = true;
       },
       save() {
-        document.getElementById("des").style.visibility= "hidden" ;
+        document.getElementById("description").style.border="none"
+        document.getElementById("save").style.visibility= "hidden" ;
+        document.getElementById("cancel").style.visibility= "hidden" ;
         document.getElementById("edit").style.visibility= "visible" ;
+        document.getElementById("description").readOnly = true;
       },
       edit(){
+        document.getElementById("description").style.border="1px solid white"
+        document.getElementById("description").readOnly = false;
         document.getElementById("des").style.visibility= "visible" ;
         document.getElementById("edit").style.visibility= "hidden" ;
+        document.getElementById("save").style.visibility= "visible" ;
+        document.getElementById("cancel").style.visibility= "visible" ;
       }
     }
   }
@@ -102,14 +112,21 @@
 <style scoped>
 
 #description{
-  border: 1px solid white;
-  width: 300px;
-  height: 100px;
+  width: 500px;
+  height: 167px;
   text-align: left;
 }
-#des{
+#save{
   visibility: hidden
 }
+#cancel{
+  visibility: hidden
+}
+/*#description*/
+/*{*/
+/*readonly: true;*/
+/*}*/
+
   #edit{
     display:inline-block;
   }
