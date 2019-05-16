@@ -26,8 +26,12 @@
             <v-divider color="grey"></v-divider>
             <v-divider color="grey"></v-divider>
             <p></p>
-            <p class="font-italic font-weight-light">DESCRIPTION</p>
-            <p>...</p>
+            <p class="font-italic font-weight-light">DESCRIPTION</p><v-btn id = "edit" @click="edit" color="primary" fab small dark> <v-icon>edit</v-icon></v-btn>
+            <div id="des">
+            <input type="text" id="description" v-model="description">
+            <p></p>
+            <v-btn @click="save" small>Save</v-btn><v-btn @click="cancel" small>Cancel</v-btn>
+            </div>
           </v-card>
         </v-flex>
       </v-layout>
@@ -76,10 +80,37 @@
             }
           })
         })
+    },
+    methods: {
+      cancel() {
+        document.getElementById("description").value = "";
+        document.getElementById("des").style.visibility= "hidden" ;
+        document.getElementById("edit").style.visibility= "visible" ;
+      },
+      save() {
+        document.getElementById("des").style.visibility= "hidden" ;
+        document.getElementById("edit").style.visibility= "visible" ;
+      },
+      edit(){
+        document.getElementById("des").style.visibility= "visible" ;
+        document.getElementById("edit").style.visibility= "hidden" ;
+      }
     }
   }
 </script>
 
 <style scoped>
 
+#description{
+  border: 1px solid white;
+  width: 300px;
+  height: 100px;
+  text-align: left;
+}
+#des{
+  visibility: hidden
+}
+  #edit{
+    display:inline-block;
+  }
 </style>
