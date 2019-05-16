@@ -1,11 +1,12 @@
 <template>
   <div class="about">
-
-    <v-toolbar-title class="text-uppercase blue--text" style="text-align: center">
+    <v-toolbar-title class="text-uppercase blue--text">
       <h1>
         <span class="font-weight-light display-1" >Solution</span>
         <span class="display-1"> Team</span>
       </h1>
+      <v-divider color="grey"></v-divider>
+      <v-divider color="grey"></v-divider>
     </v-toolbar-title>
     <v-container class="my-5">
       <v-layout row wrap>
