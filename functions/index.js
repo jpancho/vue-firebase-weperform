@@ -35,6 +35,6 @@ exports.addUsers = functions.auth
     return userRef.set({
       uid: user.uid,
       email: user.email,
-      bookings: []
+      fullname: user.fullname
     });
   });

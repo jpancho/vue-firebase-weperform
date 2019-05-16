@@ -391,7 +391,8 @@
         }, { merge: true })
           .then(function() {
             // eslint-disable-next-line no-console
-            console.log("isBook set to true!")
+            console.log("isBook set to true!");
+            alert('Successfully booked');
           });
       }
     }
