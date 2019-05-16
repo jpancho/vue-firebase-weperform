@@ -1,6 +1,8 @@
 {
   "name": "functions",
-  "engines": { "node": "8" },
+  "engines": {
+    "node": "8"
+  },
   "description": "Cloud Functions for Firebase",
   "scripts": {
     "lint": "eslint .",

@@ -21,13 +21,17 @@
             <div class="caption grey--text">Style</div>
             <div>{{ performer.style }}</div>
           </v-flex>
-          <v-flex xs6 sm4 md2>
-            <div class="caption grey--text">Email</div>
-            <div>{{ performer.email }}</div>
-          </v-flex>
+          <!--<v-flex xs6 sm4 md2>-->
+            <!--<div class="caption grey&#45;&#45;text">Email</div>-->
+            <!--<div>{{ performer.email }}</div>-->
+          <!--</v-flex>-->
           <v-flex xs6 sm4 md2>
             <div class="caption grey--text">Location</div>
             <div>{{ performer.location }}</div>
+          </v-flex>
+          <v-flex xs6 sm4 md2>
+            <div class="caption grey--text">Date</div>
+            <div>{{ performer.date }}</div>
           </v-flex>
           <v-btn flat color="red" @click="cancel(performer.uid)">
             cancel

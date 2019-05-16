@@ -41,7 +41,8 @@
       register() {
         const user = {
           email: this.email,
-          password: this.password
+          password: this.password,
+          fullname: this.fullname
         };
         this.$store.dispatch('signUpAction', user);
         this.$router.replace('/home');
