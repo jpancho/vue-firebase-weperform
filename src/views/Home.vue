@@ -52,11 +52,11 @@ export default {
           title: "Dancer"
         },
         {
-          src: '/assets/img/talents/musician.jpg',
+          src: '/assets/img/talents/musicians_stage.jpg',
           title: "Musician"
         },
         {
-          src: '/assets/img/talents/singer.jpg',
+          src: '/assets/img/talents/singer_stage.jpg',
           title: "Singer"
         }
       ]
