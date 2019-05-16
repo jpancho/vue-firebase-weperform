@@ -1,15 +1,12 @@
 <template xmlns:v-slot="http://www.w3.org/1999/XSL/Transform">
   <div class="performer">
-    <v-toolbar-title class="text-uppercase grey--text">
+    <v-toolbar-title class="text-uppercase">
       <h1 class="blue--text">
         <span class="font-weight-light display-1">Book your</span>
         <span class="display-1"> Performer</span>
       </h1>
-      <v-divider color="grey"></v-divider>
-      <v-divider color="grey"></v-divider>
     </v-toolbar-title>
-    <p></p>
-    <p class="grey--text title" style="text-align: center">Select talent</p>
+    <p class="grey--text title font-weight-regular" style="text-align: center">Select talent</p>
     <v-layout align-center justify-space-around>
       <!--talent images-->
       <v-flex xs4 sm12 sm8>
@@ -165,8 +162,10 @@
 
 <script>
   import { db, auth } from '../firebase';
+  // import PopupPerformer from '../views/PopupPerformer';
 
   export default {
+    // components: { PopupPerformer },
     data() {
       return {
         cards: [

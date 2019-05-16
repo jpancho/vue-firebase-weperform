@@ -5,8 +5,6 @@
         <span class="font-weight-light display-1" >Solution</span>
         <span class="display-1"> Team</span>
       </h1>
-      <v-divider color="grey"></v-divider>
-      <v-divider color="grey"></v-divider>
     </v-toolbar-title>
     <v-container class="my-5">
       <v-layout row wrap>
