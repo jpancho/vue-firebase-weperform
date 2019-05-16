@@ -1,6 +1,11 @@
 <template>
 	<div class="admin">
-		<h1 class="subheading grey--text">User List</h1>
+		<v-toolbar-title class="text-uppercase blue--text" style="text-align: center">
+			<h1>
+				<span class="font-weight-light display-1">User</span>
+				<span class="display-1"> List</span>
+			</h1>
+		</v-toolbar-title>
 			<v-container class="my-5">
 				<v-card flat class="pa-3" v-for="user in users" :key="user.email">
 					<v-layout row wrap>

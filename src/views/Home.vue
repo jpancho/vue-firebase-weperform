@@ -2,7 +2,7 @@
   <div class="home">
     <div id="loader-wrapper">
       <div id="quotes">
-        <p>WePerform</p>
+        <p class="blue--text">WePerform</p>
         <p >We’re all connected by a love for perform!</p>
       </div>
       <div id="loader"></div>
