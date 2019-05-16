@@ -27,7 +27,6 @@
 </template>
 
 <script>
-
   export default {
     name: "Register",
     data() {
@@ -44,6 +43,7 @@
           password: this.password,
           fullname: this.fullname
         };
+
         this.$store.dispatch('signUpAction', user);
         this.$router.replace('/home');
       }
