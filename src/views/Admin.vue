@@ -5,8 +5,6 @@
 				<span class="font-weight-light display-1">User</span>
 				<span class="display-1"> List</span>
 			</h1>
-			<v-divider color="grey"></v-divider>
-			<v-divider color="grey"></v-divider>
 		</v-toolbar-title>
 			<v-container class="my-5">
 				<v-card flat class="pa-3" v-for="user in users" :key="user.email">

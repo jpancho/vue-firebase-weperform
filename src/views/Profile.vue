@@ -4,8 +4,6 @@
       <h1>
         <span class="font-weight-light blue--text display-1" >Profile</span>
       </h1>
-      <v-divider color="grey"></v-divider>
-      <v-divider color="grey"></v-divider>
     </v-toolbar-title>
     <v-container class="my-5">
       <v-layout column>

@@ -5,8 +5,6 @@
         <span class="font-weight-light display-1">Booked</span>
         <span class="display-1"> Performers</span>
       </h1>
-      <v-divider color="grey"></v-divider>
-      <v-divider color="grey"></v-divider>
     </v-toolbar-title>
     <v-container class="my-5">
       <v-card flat class="pa-3" v-for="performer in performers" :key="performer.fullname">
