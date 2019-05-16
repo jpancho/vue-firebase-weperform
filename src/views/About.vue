@@ -1,13 +1,12 @@
 <template>
   <div class="about">
 
-    <v-toolbar-title class="text-uppercase grey--text">
+    <v-toolbar-title class="text-uppercase blue--text" style="text-align: center">
       <h1>
-        <span class="font-weight-light blue--text display-1" >Solution</span>
-        <span class="blue--text display-1"> Team</span>
+        <span class="font-weight-light display-1" >Solution</span>
+        <span class="display-1"> Team</span>
       </h1>
     </v-toolbar-title>
-
     <v-container class="my-5">
       <v-layout row wrap>
         <v-flex xs12 sm6 md4 lg3 v-for="person in team" :key="person.name">
