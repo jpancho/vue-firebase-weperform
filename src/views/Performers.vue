@@ -362,6 +362,9 @@
           this.selected_style = '';
           this.selected_location = '';
           this.date = '';
+          document.getElementById("d").style.border = "none";
+          document.getElementById("m").style.border = "none";
+          document.getElementById("s").style.border = "none";
         });
       },
       book(uid, email,fullname,talent,style,location){
@@ -388,7 +391,8 @@
         }, { merge: true })
           .then(function() {
             // eslint-disable-next-line no-console
-            console.log("isBook set to true!")
+            console.log("isBook set to true!");
+            alert('Successfully booked');
           });
       }
     }
