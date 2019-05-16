@@ -1,6 +1,11 @@
 <template>
   <div class="Booking">
-    <h1>Booked Performers</h1>
+    <v-toolbar-title class="text-uppercase blue--text" style="text-align: center">
+      <h1>
+        <span class="font-weight-light display-1">Booked</span>
+        <span class="display-1"> Performers</span>
+      </h1>
+    </v-toolbar-title>
     <v-container class="my-5">
       <v-card flat class="pa-3" v-for="performer in performers" :key="performer.fullname">
         <v-layout row wrap>

@@ -1,6 +1,14 @@
 <template xmlns:v-slot="http://www.w3.org/1999/XSL/Transform">
   <div class="performer">
-    <h1 class="subheading grey--text">Performers List</h1>
+    <v-toolbar-title
+      class="text-uppercase grey--text"
+      style="text-align: center;"
+    >
+      <h1 class="blue--text">
+        <span class="font-weight-light display-1">Book your</span>
+        <span class="display-1"> Performer</span>
+      </h1>
+    </v-toolbar-title>
     <v-layout>
       <!--talent images-->
       <v-flex xs4 sm12 sm8>
