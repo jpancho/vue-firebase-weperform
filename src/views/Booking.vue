@@ -40,43 +40,6 @@
     name: "Booking",
     data() {
       return {
-        // //text and values for first dropdown menu
-        // talents: [
-        //     { text: 'Dancer', value: "Dancer" },
-        //     { text: 'Singer', value: "Singer" },
-        //     { text: 'Musician', value: "Musician" },
-        // ],
-        // //text and values for second dropdown menu
-        // //each section is dependant on option selected in first dropdown menu
-        // styles: [
-        //     { text: 'Ballet', value: "Ballet", dependency: "Dancer" },
-        //     { text: 'Bhangra', value: "Bhangra", dependency: "Dancer" },
-        //     { text: 'Bollywood', value: "Bollywood", dependency: "Dancer" },
-        //     { text: 'Break', value: "Break", dependency: "Dancer" },
-        //     { text: 'Hip-Hop', value: "Hiphop", dependency: "Dancer" },
-        //     { text: 'Pop', value: "Pop", dependency: "Dancer" },
-        //
-        //     { text: 'Acoustic Blues', value: "Blues", dependency: "Singer" },
-        //     { text: 'Americana', value: "Americana", dependency: "Singer" },
-        //     { text: 'Classical', value: "Classical", dependency: "Singer" },
-        //     { text: 'Comedy', value: "Comedy", dependency: "Singer" },
-        //     { text: 'Country', value: "Country", dependency: "Singer" },
-        //     { text: 'Dubstep', value: "Dubstep", dependency: "Singer" },
-        //     { text: 'Glitch House', value: "Glitch", dependency: "Singer" },
-        //     { text: 'Hip-Hop', value: "Hiphop", dependency: "Singer" },
-        //     { text: 'Jazz', value: "Jazz", dependency: "Singer" },
-        //     { text: 'Novelty', value: "Novelty", dependency: "Singer" },
-        //     { text: 'Parody Music', value: "Parody", dependency: "Singer" },
-        //     { text: 'Rock', value: "Rock", dependency: "Singer"},
-        //
-        //     { text: 'Blues', value: "Blues", dependency: "Musician" },
-        //     { text: 'Classical', value: "Classical", dependency: "Musician" },
-        //     { text: 'Hip-Hop', value: "Hiphop", dependency: "Musician" },
-        //     { text: 'Jazz', value: "Jazz", dependency: "Musician" },
-        //     { text: 'Opera', value: "Opera", dependency: "Musician" },
-        //     { text: 'Pop', value: "Pop", dependency: "Musician" },
-        //     { text: 'Rock', value: "Rock", dependency: "Musician" },
-        // ],
         performers: [],
         uid: '',
       }

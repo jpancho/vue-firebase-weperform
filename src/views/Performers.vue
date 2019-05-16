@@ -2,12 +2,13 @@
   <div class="performer">
     <h1 class="subheading grey--text">Performers List</h1>
     <v-layout>
+      <!--talent images-->
       <v-flex xs4 sm12 sm8>
         <v-card>
           <v-img
             class="white--text"
             height="200px"
-            src="/talents/dancer.jpg"
+            src="/assets/img/talents/dancer.jpg"
             v-model="selected_talent"
             @click="dancer"
             id = "d"
@@ -27,7 +28,7 @@
           <v-img
             class="white--text"
             height="200px"
-            src="/talents/musician.jpg"
+            src="/assets/img/talents/musician.jpg"
             v-model="selected_talent"
             @click="musician"
             id = "m"
@@ -47,7 +48,7 @@
           <v-img
             class="white--text"
             height="200px"
-            src="/talents/singer.jpg"
+            src="/assets/img/talents/singer.jpg"
             v-model="selected_talent"
             @click="singer"
             id = "s"
@@ -63,6 +64,7 @@
         </v-card>
       </v-flex>
     </v-layout>
+    <!--Dropdown-->
       <v-container>
         <v-card-actions class="justify-center">
           <v-flex sm4>
@@ -84,6 +86,7 @@
             ></v-select>
           </v-flex>
         </v-card-actions>
+        <!--date-->
         <v-layout class="justify-center">
             <v-flex xs12 sm6 md4>
               <v-menu
@@ -119,6 +122,7 @@
             <v-btn round class="error" @click="clear">Clear</v-btn>
           </v-flex>
         </v-card-actions>
+        <!--Performer list-->
         <v-card flat class="pa-3" v-for="performer in performers" :key="performer.fullname">
           <v-layout row wrap>
             <v-flex xs6 sm4 md2>
@@ -229,7 +233,13 @@
       filteredStyles() {
         let styles = this.styles;
         return styles.filter(o => o.dependency === this.selected_talent)
-      }
+      },
+      // submittableDate(){
+      //   const date = new Date(this.date)
+      //   date.setHours(this.time.getHours())
+      //   console.log(date)
+      //   return date
+      // }
     },
     methods: {
       dancer(){
@@ -351,6 +361,7 @@
           this.selected_talent = '';
           this.selected_style = '';
           this.selected_location = '';
+          this.date = '';
         });
       },
       book(uid, email,fullname,talent,style,location){
@@ -365,7 +376,7 @@
           talent: talent,
           style: style,
           location: location,
-
+          date: this.date
         })
           .then(function() {
             // eslint-disable-next-line no-console

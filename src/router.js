@@ -60,7 +60,7 @@ router.beforeEach((to, from, next) => {
   const currentUser = auth.currentUser;
 
   if (requiresAuth && !currentUser) {
-    next()
+    next('/')
   } else if (requiresAuth && currentUser) {
     next()
   } else {
