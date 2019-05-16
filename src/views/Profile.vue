@@ -13,18 +13,18 @@
           <v-card class="text-xs-center ma-3 white--text font-weight-bold black">
             <v-responsive class="pt-4">
               <v-avatar size="100" class="grey lighten-2">
-                <img
-                  src="/assets/img/logos/person_logo.png"
-                >
+                <img :src="imageUrl" alt="">
               </v-avatar>
             </v-responsive>
             <v-card-text>
-              <h1 class="title">Parm Dhaliwal</h1>
+              <h1 class="title">{{ info.fullname }}</h1>
               <h4 class="grey--text">{{ info.email }}</h4>
               <p></p>
               <div>ID</div>
-              <div class="grey--text">{{ info.fullname }}</div>
+              <div class="grey--text">{{ info.id }}</div>
             </v-card-text>
+            <input type="file" ref="fileInput" accept="image/*" @change="onFilePicked">
+<!--            <v-btn raised class="primary" @click="onPickFile">Upload Image</v-btn>-->
             <v-divider color="grey"></v-divider>
             <v-divider color="grey"></v-divider>
             <p></p>
@@ -53,17 +53,24 @@
 <script>
   const fb = require('../firebase');
   import { db } from '../firebase';
-  import PopupPerformer from '../views/PopupPerformer'
+  import PopupPerformer from '../views/PopupPerformer';
+  let user = fb.auth.currentUser;
 
   export default {
     components: { PopupPerformer },
     data() {
       return {
-        profile: []
+        profile: [],
+        fullname: '',
+        imageUrl: '',
+        image: null
       }
     },
     created() {
-      let user = fb.auth.currentUser;
+      db.collection('users').doc(user.uid).get().then(doc => {
+          this.imageUrl = doc.data().imageUrl;
+          this.fullname = doc.data().fullname;
+      });
       db.collection('users')
         .where('uid', '==', user.uid)
         .get()
@@ -78,6 +85,31 @@
             }
           })
         })
+    },
+    methods: {
+      // onPickFile() {
+      //   this.$refs.fileInput.click()
+      // },
+      onFilePicked(event) {
+        const files = event.target.files;
+        let filename = files[0].name;
+        if(filename.lastIndexOf('.') <= 0) {
+          return alert('Please add a valid file!')
+        }
+        const fileReader = new FileReader();
+        fileReader.addEventListener('load', () => {
+          this.imageUrl = fileReader.result;
+          db.collection('users').doc(user.uid).update({
+            imageUrl: fileReader.result
+          })
+            .then(function() {
+              // eslint-disable-next-line no-console
+              console.log("New image url set!")
+            })
+        });
+        fileReader.readAsDataURL(files[0]);
+        this.image = files[0]
+      }
     }
   }
 </script>
