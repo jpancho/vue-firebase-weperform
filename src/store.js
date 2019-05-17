@@ -41,7 +41,17 @@ export default new Vuex.Store({
           commit('setUser', response.user.uid);
           commit('setStatus', 'success');
           commit('setError', null);
-          db.collection("users").doc(response.user.uid).set({ fullname: payload.fullname })
+          const image = '/assets/img/logos/person_logo.png';
+          db.collection("users")
+            .doc(response.user.uid)
+            .set({
+              uid: response.user.uid,
+              email: payload.email,
+              fullname: payload.fullname,
+              description: payload.description,
+              bookings: payload.bookings,
+              imageUrl: image
+            })
             .then(function() {
 
             })

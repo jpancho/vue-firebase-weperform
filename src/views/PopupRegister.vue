@@ -33,7 +33,9 @@
       return {
         fullname: '',
         email: '',
-        password: ''
+        password: '',
+        description: '',
+        bookings: []
       }
     },
     methods: {
@@ -41,7 +43,9 @@
         const user = {
           email: this.email,
           password: this.password,
-          fullname: this.fullname
+          fullname: this.fullname,
+          description: this.description,
+          bookings: this.bookings
         };
 
         this.$store.dispatch('signUpAction', user);
