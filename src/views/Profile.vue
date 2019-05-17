@@ -10,7 +10,7 @@
         <v-flex xs12 sm6 md4 lg12>
           <v-card class="text-xs-center ma-3 white--text font-weight-bold black">
             <v-responsive class="pt-4">
-              <v-avatar size="150" @click="onPickFile" class="grey lighten-2">
+              <v-avatar size="150" style="cursor: pointer" @click="onPickFile" class="grey lighten-2">
                 <img :src="imageUrl" alt="">
               </v-avatar>
             </v-responsive>
@@ -22,7 +22,6 @@
               <div class="grey--text">{{ uid }}</div>
             </v-card-text>
             <input type="file" ref="fileInput" hidden accept="image/*" @change="onFilePicked">
-            <v-btn raised class="primary" @click="onPickFile">Upload Image</v-btn>
             <p></p>
             <v-divider color="grey"></v-divider>
             <v-divider color="grey"></v-divider>
