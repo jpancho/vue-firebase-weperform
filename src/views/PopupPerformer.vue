@@ -133,7 +133,7 @@
             // eslint-disable-next-line no-console
             console.log("Performer created!")
           });
-        db.collection('users').doc(user.uid).set({
+        db.collection('users').doc(user.uid).update({
           isPerformer: true
         })
           .then(function() {
