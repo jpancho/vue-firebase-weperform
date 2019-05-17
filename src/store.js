@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import VuexPersist from 'vuex-persist';
 import { auth } from './firebase';
+import { db } from './firebase';
 
 Vue.use(Vuex);
 
@@ -40,6 +41,10 @@ export default new Vuex.Store({
           commit('setUser', response.user.uid);
           commit('setStatus', 'success');
           commit('setError', null);
+          db.collection("users").doc(response.user.uid).set({ fullname: payload.fullname })
+            .then(function() {
+
+            })
         })
         .catch((error) => {
           commit('setStatus', 'failure');
