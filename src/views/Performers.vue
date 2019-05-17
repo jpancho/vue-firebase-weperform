@@ -151,6 +151,9 @@
               <div class="caption grey--text">Location</div>
               <div>{{ performer.location}}</div>
             </v-flex>
+            <router-link flat color="blue" :to="'/profile/' + performer.uid">
+              View More
+            </router-link>
             <v-btn flat color="green" @click="book(performer.uid, performer.email, performer.fullname, performer.talent, performer.style, performer.location)">
               Book
             </v-btn>
@@ -375,7 +378,7 @@
           document.getElementById("s").style.border = "none";
         });
       },
-      book(uid, email,fullname,talent,style,location){
+      book(uid, email,fullname,talent,style,location) {
         let ref = db.collection('performers').doc(uid);
 
         let user = auth.currentUser;
@@ -389,15 +392,15 @@
           location: location,
           date: this.date
         })
-          .then(function() {
+          .then(function () {
             // eslint-disable-next-line no-console
             console.log("Performer booked!")
           });
 
         return ref.set({
           isBooked: true
-        }, { merge: true })
-          .then(function() {
+        }, {merge: true})
+          .then(function () {
             // eslint-disable-next-line no-console
             console.log("isBook set to true!");
             alert('Successfully booked');
