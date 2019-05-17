@@ -10,7 +10,9 @@
     <v-layout align-center justify-space-around>
       <!--talent images-->
       <v-flex xs4 sm12 sm8>
-        <v-card>
+        <v-hover>
+        <v-card slot-scope="{ hover }"
+                :class="`elevation-${hover ? 12 : 2}`">
           <v-img
             class="white--text"
             height="200px"
@@ -28,9 +30,13 @@
             </v-container>
           </v-img>
         </v-card>
+        </v-hover>
       </v-flex>
+      <!--Musician-->
       <v-flex xs6 sm12 offset-sm1>
-        <v-card>
+        <v-hover>
+        <v-card slot-scope="{ hover }"
+                :class="`elevation-${hover ? 12 : 2}`">
           <v-img
             class="white--text"
             height="200px"
@@ -48,9 +54,12 @@
             </v-container>
           </v-img>
         </v-card>
+        </v-hover>
       </v-flex>
       <v-flex xs8 sm12 offset-sm1>
-        <v-card>
+        <v-hover>
+        <v-card slot-scope="{ hover }"
+                :class="`elevation-${hover ? 12 : 2}`">
           <v-img
             class="white--text"
             height="200px"
@@ -68,6 +77,7 @@
             </v-container>
           </v-img>
         </v-card>
+        </v-hover>
       </v-flex>
     </v-layout>
     <!--Dropdown-->
@@ -255,21 +265,21 @@
     methods: {
       dancer(){
         this.selected_talent="Dancer";
-        document.getElementById("d").style.border = "5px solid orange";
-        document.getElementById("m").style.border = "none";
-        document.getElementById("s").style.border = "none";
+        document.getElementById("d").style.outline = "5px solid orange";
+        document.getElementById("m").style.outline = "none";
+        document.getElementById("s").style.outline = "none";
       },
       musician(){
         this.selected_talent="Musician";
-        document.getElementById("m").style.border = "5px solid orange";
-        document.getElementById("d").style.border = "none";
-        document.getElementById("s").style.border = "none";
+        document.getElementById("m").style.outline = "5px solid orange";
+        document.getElementById("d").style.outline = "none";
+        document.getElementById("s").style.outline = "none";
       },
       singer(){
         this.selected_talent="Singer";
-        document.getElementById("s").style.border = "5px solid orange";
-        document.getElementById("m").style.border = "none";
-        document.getElementById("d").style.border = "none";
+        document.getElementById("s").style.outline = "5px solid orange";
+        document.getElementById("m").style.outline = "none";
+        document.getElementById("d").style.outline = "none";
       },
       display() {
         //if no style and location is selected, display list of matching talent
@@ -366,6 +376,10 @@
             })
         }
       },
+      // mouseOver: function(){
+      //   this.active = !this.active;
+      // },
+
       //resets talent, style and location dropdown
       clear() {
         this.$nextTick(() => {
@@ -373,9 +387,9 @@
           this.selected_style = '';
           this.selected_location = '';
           this.date = '';
-          document.getElementById("d").style.border = "none";
-          document.getElementById("m").style.border = "none";
-          document.getElementById("s").style.border = "none";
+          document.getElementById("d").style.outline = "none";
+          document.getElementById("m").style.outline = "none";
+          document.getElementById("s").style.outline = "none";
         });
       },
       book(uid, email,fullname,talent,style,location) {
