@@ -7,7 +7,7 @@
     </v-toolbar-title>
     <v-container class="my-5">
       <v-layout column>
-        <v-flex xs12 sm6 md4 lg12 v-for="info in profile" :key="info.uid">
+        <v-flex xs12 sm6 md4 lg12>
           <v-card class="text-xs-center ma-3 white--text font-weight-bold black">
             <v-responsive class="pt-4">
               <v-avatar size="100" class="grey lighten-2">
@@ -15,14 +15,14 @@
               </v-avatar>
             </v-responsive>
             <v-card-text>
-              <h1 class="title">{{ info.fullname }}</h1>
-              <h4 class="grey--text">{{ info.email }}</h4>
+              <h1 class="title">{{ fullname }}</h1>
+              <h4 class="grey--text">{{ email }}</h4>
               <p></p>
               <div>ID</div>
-              <div class="grey--text">{{ info.id }}</div>
+              <div class="grey--text">{{ uid }}</div>
             </v-card-text>
-            <input type="file" ref="fileInput" accept="image/*" @change="onFilePicked">
-<!--            <v-btn raised class="primary" @click="onPickFile">Upload Image</v-btn>-->
+            <input type="file" ref="fileInput" hidden accept="image/*" @change="onFilePicked">
+            <v-btn raised class="primary" @click="onPickFile">Upload Image</v-btn>
             <v-divider color="grey"></v-divider>
             <v-divider color="grey"></v-divider>
             <p></p>
@@ -36,18 +36,6 @@
           </v-card>
         </v-flex>
       </v-layout>
-      <v-card flat class="pa-3" v-for="info in profile" :key="info.uid">
-        <v-layout row wrap>
-          <v-flex xs6 sm4 md2>
-            <div class="caption grey--text">Email</div>
-            <div>{{ info.email }}</div>
-          </v-flex>
-          <v-flex xs6 sm4 md2>
-            <div class="caption grey--text">User ID</div>
-            <div>{{ info.uid }}</div>
-          </v-flex>
-        </v-layout>
-      </v-card>
       <PopupPerformer/>
     </v-container>
   </div>
@@ -65,31 +53,21 @@
       return {
         profile: [],
         fullname: '',
+        email: '',
+        uid: '',
         imageUrl: '',
         image: null,
-        description:''
+        description: ''
       }
     },
     created() {
       db.collection('users').doc(user.uid).get().then(doc => {
         this.imageUrl = doc.data().imageUrl;
         this.fullname = doc.data().fullname;
+        this.email = doc.data().email;
+        this.uid = user.uid;
         this.description = doc.data().description;
       });
-      db.collection('users')
-              .where('uid', '==', user.uid)
-              .get()
-              .then(doc => {
-                const changes = doc.docChanges();
-                changes.forEach(change => {
-                  if (change.type === 'added') {
-                    this.profile.push({
-                      ...change.doc.data(),
-                      id: change.doc.id
-                    })
-                  }
-                })
-              })
     },
     methods: {
       cancel() {
@@ -98,9 +76,9 @@
         document.getElementById("save").style.visibility = "hidden";
         document.getElementById("cancel").style.visibility = "hidden";
         document.getElementById("description").readOnly = true;
-          db.collection('users').doc(user.uid).get().then(doc => {
+        db.collection('users').doc(user.uid).get().then(doc => {
           this.description = doc.data().description;
-          });
+        });
       },
       save() {
         db.collection('users').doc(user.uid).update({
@@ -119,33 +97,36 @@
         document.getElementById("edit").style.visibility = "hidden";
         document.getElementById("save").style.visibility = "visible";
         document.getElementById("cancel").style.visibility = "visible";
-        // onPickFile() {
-        //   this.$refs.fileInput.click()
-        // },
       },
-        onFilePicked(event)
-        {
-          const files = event.target.files;
-          let filename = files[0].name;
-          if (filename.lastIndexOf('.') <= 0) {
-            return alert('Please add a valid file!')
-          }
-          const fileReader = new FileReader();
-          fileReader.addEventListener('load', () => {
-            this.imageUrl = fileReader.result;
-            db.collection('users').doc(user.uid).update({
-              imageUrl: fileReader.result
-            })
-                    .then(function () {
-                      // eslint-disable-next-line no-console
-                      console.log("New image url set!")
-                    })
-          });
-          fileReader.readAsDataURL(files[0]);
-          this.image = files[0]
+      onPickFile() {
+        this.$refs.fileInput.click()
+      },
+      onFilePicked(event) {
+        const files = event.target.files;
+        let filename = files[0].name;
+        if (filename.lastIndexOf('.') <= 0) {
+          return alert('Please add a valid file!')
         }
+        const fileReader = new FileReader();
+        fileReader.addEventListener('load', () => {
+          this.imageUrl = fileReader.result;
+          db.collection('users').doc(user.uid).update({
+            imageUrl: fileReader.result
+          })
+                  .then(function () {
+                    // eslint-disable-next-line no-console
+                    console.log("New image url set!")
+                  })
+                  .then(function () {
+                    // eslint-disable-next-line no-console
+                    console.log("New image url set!")
+                  })
+        });
+        fileReader.readAsDataURL(files[0]);
+        this.image = files[0]
       }
-    }
+    },
+  }
 
 </script>
 
