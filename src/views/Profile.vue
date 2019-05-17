@@ -10,7 +10,7 @@
         <v-flex xs12 sm6 md4 lg12>
           <v-card class="text-xs-center ma-3 white--text font-weight-bold black">
             <v-responsive class="pt-4">
-              <v-avatar size="100" class="grey lighten-2">
+              <v-avatar size="100" @click="onPickFile" class="grey lighten-2">
                 <img :src="imageUrl" alt="">
               </v-avatar>
             </v-responsive>
@@ -154,6 +154,6 @@
   /*margin: auto;*/
 /*}*/
   #edit{
-   
+
   }
 </style>
