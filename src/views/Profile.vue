@@ -26,9 +26,10 @@
             <v-divider color="grey"></v-divider>
             <v-divider color="grey"></v-divider>
             <p></p>
-            <p class="font-italic font-weight-light">DESCRIPTION</p><v-btn id = "edit" @click="edit" color="primary" fab small dark> <v-icon>edit</v-icon></v-btn>
+            <p class="font-italic font-weight-light">DESCRIPTION</p>
+              <v-btn id = "edit" @click="edit" color="black" fab small dark> <v-icon>edit</v-icon></v-btn>
             <div id="des">
-              <textarea id="description" v-model="description" readonly></textarea>
+              <textarea id="description" v-model="description" spellcheck="false" readonly></textarea>
             <p></p>
             <v-btn @click="save" id="save" small>Save</v-btn><v-btn @click="cancel" id="cancel" small>Cancel</v-btn>
             </div>
@@ -93,11 +94,13 @@
     methods: {
       cancel() {
         document.getElementById("description").style.border = "none";
-        document.getElementById("description").value = "";
         document.getElementById("edit").style.visibility = "visible";
         document.getElementById("save").style.visibility = "hidden";
         document.getElementById("cancel").style.visibility = "hidden";
         document.getElementById("description").readOnly = true;
+          db.collection('users').doc(user.uid).get().then(doc => {
+          this.description = doc.data().description;
+          });
       },
       save() {
         db.collection('users').doc(user.uid).update({
@@ -110,7 +113,7 @@
         document.getElementById("description").readOnly = true;
       },
       edit() {
-        document.getElementById("description").style.border = "1px solid white"
+        document.getElementById("description").style.border = "1px solid #4D90FE"
         document.getElementById("description").readOnly = false;
         document.getElementById("des").style.visibility = "visible";
         document.getElementById("edit").style.visibility = "hidden";
@@ -152,6 +155,7 @@
   width: 500px;
   height: 167px;
   text-align: left;
+    outline: none;
 }
 #save{
   visibility: hidden
@@ -165,6 +169,6 @@
 /*}*/
 
   #edit{
-    display:inline-block;
+   
   }
 </style>
