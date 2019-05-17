@@ -10,7 +10,7 @@
         <v-flex xs12 sm6 md4 lg12>
           <v-card class="text-xs-center ma-3 white--text font-weight-bold black">
             <v-responsive class="pt-4">
-              <v-avatar size="100" @click="onPickFile" class="grey lighten-2">
+              <v-avatar size="150" @click="onPickFile" class="grey lighten-2">
                 <img :src="imageUrl" alt="">
               </v-avatar>
             </v-responsive>
@@ -23,11 +23,15 @@
             </v-card-text>
             <input type="file" ref="fileInput" hidden accept="image/*" @change="onFilePicked">
             <v-btn raised class="primary" @click="onPickFile">Upload Image</v-btn>
+            <p></p>
             <v-divider color="grey"></v-divider>
             <v-divider color="grey"></v-divider>
             <p></p>
-            <p class="font-italic font-weight-light" id="ddd">DESCRIPTION</p>
-            <v-btn id = "edit" @click="edit" color="black" fab small dark> <v-icon>edit</v-icon></v-btn>
+            <p class="font-weight-regular">DESCRIPTION
+              <v-btn id = "edit" @click="edit" icon>
+                <v-icon color="white">edit</v-icon>
+              </v-btn>
+            </p>
             <div id="des">
               <textarea id="description" v-model="description" spellcheck="false" readonly></textarea>
             <p></p>
@@ -149,10 +153,6 @@
 /*readonly: true;*/
 /*}*/
 
-/*#ddd{*/
-  /*width: 100px;*/
-  /*margin: auto;*/
-/*}*/
   #edit{
 
   }
