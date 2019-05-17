@@ -161,8 +161,8 @@
               <div class="caption grey--text">Location</div>
               <div>{{ performer.location}}</div>
             </v-flex>
-            <router-link flat color="blue" :to="'/profile/' + performer.uid">
-              View More
+            <router-link flat color="blue" tag="button" :to="'/profile/' + performer.uid">
+              <v-btn flat color="blue">View More</v-btn>
             </router-link>
             <v-btn flat color="green" @click="book(performer.uid, performer.email, performer.fullname, performer.talent, performer.style, performer.location)">
               Book
