@@ -26,8 +26,8 @@
             <v-divider color="grey"></v-divider>
             <v-divider color="grey"></v-divider>
             <p></p>
-            <p class="font-italic font-weight-light">DESCRIPTION</p>
-              <v-btn id = "edit" @click="edit" color="black" fab small dark> <v-icon>edit</v-icon></v-btn>
+            <p class="font-italic font-weight-light" id="ddd">DESCRIPTION</p>
+            <v-btn id = "edit" @click="edit" color="black" fab small dark> <v-icon>edit</v-icon></v-btn>
             <div id="des">
               <textarea id="description" v-model="description" spellcheck="false" readonly></textarea>
             <p></p>
@@ -149,6 +149,10 @@
 /*readonly: true;*/
 /*}*/
 
+/*#ddd{*/
+  /*width: 100px;*/
+  /*margin: auto;*/
+/*}*/
   #edit{
 
   }
