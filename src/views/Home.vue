@@ -3,7 +3,7 @@
     <div id="loader-wrapper">
       <div id="quotes">
         <p class="blue--text">WePerform</p>
-        <p >We’re all connected by a love for perform!</p>
+        <p >"We’re all connected by a love for perform!"</p>
       </div>
       <div id="loader"></div>
       <div class="loader-section section-left"></div>
