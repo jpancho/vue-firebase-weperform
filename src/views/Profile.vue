@@ -20,19 +20,19 @@
               <p></p>
               <div>ID</div>
               <div class="grey--text">{{ uid }}</div>
-            </v-card-text>
             <input type="file" ref="fileInput" hidden accept="image/*" @change="onFilePicked">
             <v-btn raised class="primary" @click="onPickFile">Upload Image</v-btn>
             <v-divider color="grey"></v-divider>
             <v-divider color="grey"></v-divider>
-            <p></p>
             <p class="font-italic font-weight-light" id="ddd">DESCRIPTION</p>
             <v-btn id = "edit" @click="edit" color="black" fab small dark> <v-icon>edit</v-icon></v-btn>
             <div id="des">
               <textarea id="description" v-model="description" spellcheck="false" readonly></textarea>
-            <p></p>
+              <v-divider color="black"></v-divider>
+              <v-divider color="black"></v-divider>
             <v-btn @click="save" id="save" small>Save</v-btn><v-btn @click="cancel" id="cancel" small>Cancel</v-btn>
             </div>
+            </v-card-text>
           </v-card>
         </v-flex>
       </v-layout>

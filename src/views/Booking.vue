@@ -77,7 +77,7 @@
         let user = auth.currentUser;
         db.collection('users').doc(user.uid)
           .collection('performersBooked').doc(uid).delete();
-        
+
         return ref.set({
           isBooked: false
         }, {merge: true})
