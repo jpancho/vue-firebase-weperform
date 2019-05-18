@@ -94,7 +94,7 @@
           <v-flex sm4>
             <v-select
               :items="filteredStyles"
-              label="Select styles"
+              label="Select style"
               v-model="selected_style"
               solo
             ></v-select>
