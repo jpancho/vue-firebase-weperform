@@ -46,19 +46,22 @@
 						<v-list-tile-title class="white--text">{{ link.text }}</v-list-tile-title>
 					</v-list-tile-content>
 				</v-list-tile>
+				<p></p>
+				<PopupPerformer/>
 			</v-list>
 		</v-navigation-drawer>
 	</nav>
 </template>
 
 <script>
+	import PopupPerformer from '../views/PopupPerformer';
 	import PopupRegister from '../views/PopupRegister';
 	import PopupLogin from '../views/PopupLogin';
   import Signout from '../views/Signout';
   import { mapState } from 'vuex';
 
 	export default {
-		components: { PopupRegister, PopupLogin, Signout },
+		components: { PopupRegister, PopupLogin, Signout, PopupPerformer },
 		data() {
 			return {
 				drawer: false,
