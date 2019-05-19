@@ -46,7 +46,17 @@
             <v-layout row justify-center>
               <v-card-actions>
                 <v-spacer></v-spacer>
-                <v-btn class="success" @click="bePerformer">Become a Performer</v-btn>
+                <v-btn
+                  :loading="loading4"
+                  :disabled="loading4"
+                  color="info"
+                  @click="loader = 'loading4'"
+                  class="success"
+                  v-on:click="bePerformer"
+                >
+                  Become a Performer
+                  <span class="custom-loader"></span>
+                </v-btn>
               </v-card-actions>
             </v-layout>
           </v-form>
@@ -124,7 +134,19 @@
         selected_style: '',
         selected_location: '',
         selected_experience: '',
-        price: ''
+        price: '',
+        loader: null,
+        loading4: false,
+      }
+    },
+    watch: {
+      loader () {
+        const l = this.loader;
+        this[l] = !this[l];
+
+        setTimeout(() => (this[l] = false), 3000);
+
+        this.loader = null
       }
     },
     computed: {
@@ -168,10 +190,45 @@
             })
         }
       }
-    }
+    },
   }
 </script>
 
 <style scoped>
-
+  .custom-loader {
+    animation: loader 1s infinite;
+    display: flex;
+  }
+  @-moz-keyframes loader {
+    from {
+      transform: rotate(0);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  @-webkit-keyframes loader {
+    from {
+      transform: rotate(0);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  @-o-keyframes loader {
+    from {
+      transform: rotate(0);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes loader {
+    from {
+      transform: rotate(0);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
 </style>

@@ -6,13 +6,14 @@
         <span class="display-1"> Performer</span>
       </h1>
     </v-toolbar-title>
-    <p class="grey--text title font-weight-regular" style="text-align: center">Select talent</p>
+    <p class="grey--text headline font-weight-regular" style="text-align: center">Select talent</p>
     <v-layout align-center justify-space-around>
       <!--talent images-->
+      <!--Dancer-->
       <v-flex xs4 sm12 sm8>
         <v-hover>
-        <v-card slot-scope="{ hover }"
-                :class="`elevation-${hover ? 12 : 2}`">
+          <v-card slot-scope="{ hover }"
+                  :class="`elevation-${hover ? 12 : 2}`">
           <v-img
             class="white--text"
             height="200px"
@@ -21,13 +22,15 @@
             @click="dancer"
             id = "d"
           >
-            <v-container fill-height fluid >
-              <v-layout fill-height>
-                <v-flex xs12 align-end flexbox>
-                  <span class="headline">Dancer</span>
-                </v-flex>
-              </v-layout>
-            </v-container>
+            <v-expand-transition>
+              <div
+                v-if="hover"
+                class="d-flex transition-fast-in-fast-out lighten-2 v-card--reveal display-3 white--text font-weight-bold"
+                style="height: 100%;"
+              >
+                DANCER
+              </div>
+            </v-expand-transition>
           </v-img>
         </v-card>
         </v-hover>
@@ -45,17 +48,20 @@
             @click="musician"
             id = "m"
           >
-            <v-container fill-height fluid>
-              <v-layout fill-height>
-                <v-flex xs12 align-end flexbox>
-                  <span class="headline">Musician</span>
-                </v-flex>
-              </v-layout>
-            </v-container>
+            <v-expand-transition>
+              <div
+                v-if="hover"
+                class="d-flex transition-fast-in-fast-out lighten-2 v-card--reveal display-3 white--text font-weight-bold"
+                style="height: 100%;"
+              >
+                MUSICIAN
+              </div>
+            </v-expand-transition>
           </v-img>
         </v-card>
         </v-hover>
       </v-flex>
+      <!--Singer-->
       <v-flex xs8 sm12 offset-sm1>
         <v-hover>
         <v-card slot-scope="{ hover }"
@@ -68,13 +74,15 @@
             @click="singer"
             id = "s"
           >
-            <v-container fill-height fluid>
-              <v-layout fill-height>
-                <v-flex xs12 align-end flexbox>
-                  <span class="headline">Singer</span>
-                </v-flex>
-              </v-layout>
-            </v-container>
+            <v-expand-transition>
+              <div
+                v-if="hover"
+                class="d-flex transition-fast-in-fast-out lighten-2 v-card--reveal display-3 white--text font-weight-bold"
+                style="height: 100%;"
+              >
+                SINGER
+              </div>
+            </v-expand-transition>
           </v-img>
         </v-card>
         </v-hover>
@@ -86,7 +94,7 @@
           <v-flex sm4>
             <v-select
               :items="filteredStyles"
-              label="Select styles"
+              label="Select style"
               v-model="selected_style"
               solo
             ></v-select>
@@ -168,6 +176,8 @@
               Book
             </v-btn>
           </v-layout>
+          <v-divider color="black"></v-divider>
+          <v-divider color="black"></v-divider>
         </v-card>
       </v-container>
   </div>
@@ -265,19 +275,19 @@
     methods: {
       dancer(){
         this.selected_talent="Dancer";
-        document.getElementById("d").style.outline = "5px solid orange";
+        document.getElementById("d").style.outline = "7px solid orange";
         document.getElementById("m").style.outline = "none";
         document.getElementById("s").style.outline = "none";
       },
       musician(){
         this.selected_talent="Musician";
-        document.getElementById("m").style.outline = "5px solid orange";
+        document.getElementById("m").style.outline = "7px solid orange";
         document.getElementById("d").style.outline = "none";
         document.getElementById("s").style.outline = "none";
       },
       singer(){
         this.selected_talent="Singer";
-        document.getElementById("s").style.outline = "5px solid orange";
+        document.getElementById("s").style.outline = "7px solid orange";
         document.getElementById("m").style.outline = "none";
         document.getElementById("d").style.outline = "none";
       },
@@ -425,5 +435,12 @@
 </script>
 
 <style scoped>
-
+  .v-card--reveal {
+    align-items: center;
+    bottom: 0;
+    justify-content: center;
+    opacity: 0.90;
+    position: absolute;
+    width: 100%;
+  }
 </style>
