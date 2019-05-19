@@ -2,8 +2,11 @@
   <div class="home">
     <div id="loader-wrapper">
       <div id="quotes">
-        <p class="blue--text">WePerform</p>
-        <p >"We’re all connected by a love for perform!"</p>
+<!--        <p class="display-1">"We’re all connected by a love for perform!"</p>-->
+        <p class="display-1">Practice like you've never won.</p>
+        <p class="display-2">Perform like you've never lost.</p>
+        <span class="font-weight-light text--darken-4 display-4 text-uppercase blue--text">We</span>
+        <span class="display-4 text-uppercase blue--text">Perform</span>
       </div>
       <div id="loader"></div>
       <div class="loader-section section-left"></div>
@@ -35,7 +38,12 @@
         </v-carousel>
       </div>
     </div>
-    <h1 align="center">WePerform</h1>
+    <v-toolbar-title class="text-uppercase blue--text">
+      <h1 align="center">
+        <span class="font-weight-light display-1">We</span>
+        <span class="display-1">Perform</span>
+      </h1>
+    </v-toolbar-title>
     <h3 class="font-weight-light">WePerform is a web application (web app) designed to streamline the process of booking performers for events. Each performer has a profile describing their skill, expertise, and contact information, allowing patrons to search and book them with ease. This service saves the patrons time, effort, and money in search of their ideal performer, while also providing performers with a dedicated platform to promote themselves.
     </h3>
   </div>
@@ -197,8 +205,8 @@ export default {
   }
   .loaded #quotes{
     opacity: 0;
-     -webkit-transition: all 0.3s ease-out;  /* Android 2.1+, Chrome 1-25, iOS 3.2-6.1, Safari 3.2-6  */
-    transition: all 0.3s ease-out;  /* Chrome 26, Firefox 16+, iOS 7+, IE 10+, Opera, Safari 6.1+  */
+     -webkit-transition: all 0.7s ease-out;  /* Android 2.1+, Chrome 1-25, iOS 3.2-6.1, Safari 3.2-6  */
+    transition: all 0.7s ease-out;  /* Chrome 26, Firefox 16+, iOS 7+, IE 10+, Opera, Safari 6.1+  */
   }
   .loaded #loader-wrapper {
     visibility: hidden;
