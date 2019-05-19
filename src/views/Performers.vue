@@ -6,7 +6,7 @@
         <span class="display-1"> Performer</span>
       </h1>
     </v-toolbar-title>
-    <p class="grey--text title font-weight-regular" style="text-align: center">Select talent</p>
+    <p class="grey--text headline font-weight-regular" style="text-align: center">Select talent</p>
     <v-layout align-center justify-space-around>
       <!--talent images-->
       <!--Dancer-->
@@ -25,7 +25,7 @@
             <v-expand-transition>
               <div
                 v-if="hover"
-                class="d-flex transition-fast-in-fast-out blue-grey lighten-2 v-card--reveal display-3 black--text font-weight-bold"
+                class="d-flex transition-fast-in-fast-out lighten-2 v-card--reveal display-3 white--text font-weight-bold"
                 style="height: 100%;"
               >
                 DANCER
@@ -51,7 +51,7 @@
             <v-expand-transition>
               <div
                 v-if="hover"
-                class="d-flex transition-fast-in-fast-out blue-grey lighten-2 v-card--reveal display-3 black--text font-weight-bold"
+                class="d-flex transition-fast-in-fast-out lighten-2 v-card--reveal display-3 white--text font-weight-bold"
                 style="height: 100%;"
               >
                 MUSICIAN
@@ -77,7 +77,7 @@
             <v-expand-transition>
               <div
                 v-if="hover"
-                class="d-flex transition-fast-in-fast-out blue-grey lighten-2 v-card--reveal display-3 black--text font-weight-bold"
+                class="d-flex transition-fast-in-fast-out lighten-2 v-card--reveal display-3 white--text font-weight-bold"
                 style="height: 100%;"
               >
                 SINGER
@@ -275,19 +275,19 @@
     methods: {
       dancer(){
         this.selected_talent="Dancer";
-        document.getElementById("d").style.outline = "5px solid orange";
+        document.getElementById("d").style.outline = "7px solid orange";
         document.getElementById("m").style.outline = "none";
         document.getElementById("s").style.outline = "none";
       },
       musician(){
         this.selected_talent="Musician";
-        document.getElementById("m").style.outline = "5px solid orange";
+        document.getElementById("m").style.outline = "7px solid orange";
         document.getElementById("d").style.outline = "none";
         document.getElementById("s").style.outline = "none";
       },
       singer(){
         this.selected_talent="Singer";
-        document.getElementById("s").style.outline = "5px solid orange";
+        document.getElementById("s").style.outline = "7px solid orange";
         document.getElementById("m").style.outline = "none";
         document.getElementById("d").style.outline = "none";
       },
@@ -439,7 +439,7 @@
     align-items: center;
     bottom: 0;
     justify-content: center;
-    opacity: .75;
+    opacity: 0.90;
     position: absolute;
     width: 100%;
   }
