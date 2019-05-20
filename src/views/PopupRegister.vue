@@ -4,14 +4,17 @@
       <v-btn flat color="grey" slot="activator">Register</v-btn>
       <v-card>
         <v-text-field
+          prepend-icon="person"
           label="Full name"
           v-model="fullname"
         ></v-text-field>
         <v-text-field
+          prepend-icon="email"
           label="Email"
           v-model="email"
         ></v-text-field>
         <v-text-field
+          prepend-icon="lock"
           v-model="password"
           :type="'password'"
           name="input-10-1"
