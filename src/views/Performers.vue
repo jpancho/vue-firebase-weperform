@@ -6,11 +6,14 @@
         <span class="display-1"> Performer</span>
       </h1>
     </v-toolbar-title>
-    <p class="grey--text title font-weight-regular" style="text-align: center">Select talent</p>
+    <p class="grey--text headline font-weight-regular" style="text-align: center">Select talent</p>
     <v-layout align-center justify-space-around>
       <!--talent images-->
+      <!--Dancer-->
       <v-flex xs4 sm12 sm8>
-        <v-card>
+        <v-hover>
+          <v-card slot-scope="{ hover }"
+                  :class="`elevation-${hover ? 12 : 2}`">
           <v-img
             class="white--text"
             height="200px"
@@ -19,18 +22,24 @@
             @click="dancer"
             id = "d"
           >
-            <v-container fill-height fluid >
-              <v-layout fill-height>
-                <v-flex xs12 align-end flexbox>
-                  <span class="headline">Dancer</span>
-                </v-flex>
-              </v-layout>
-            </v-container>
+            <v-expand-transition>
+              <div
+                v-if="hover"
+                class="d-flex transition-fast-in-fast-out lighten-2 v-card--reveal display-3 white--text font-weight-bold"
+                style="height: 100%;"
+              >
+                DANCER
+              </div>
+            </v-expand-transition>
           </v-img>
         </v-card>
+        </v-hover>
       </v-flex>
+      <!--Musician-->
       <v-flex xs6 sm12 offset-sm1>
-        <v-card>
+        <v-hover>
+        <v-card slot-scope="{ hover }"
+                :class="`elevation-${hover ? 12 : 2}`">
           <v-img
             class="white--text"
             height="200px"
@@ -39,18 +48,24 @@
             @click="musician"
             id = "m"
           >
-            <v-container fill-height fluid>
-              <v-layout fill-height>
-                <v-flex xs12 align-end flexbox>
-                  <span class="headline">Musician</span>
-                </v-flex>
-              </v-layout>
-            </v-container>
+            <v-expand-transition>
+              <div
+                v-if="hover"
+                class="d-flex transition-fast-in-fast-out lighten-2 v-card--reveal display-3 white--text font-weight-bold"
+                style="height: 100%;"
+              >
+                MUSICIAN
+              </div>
+            </v-expand-transition>
           </v-img>
         </v-card>
+        </v-hover>
       </v-flex>
+      <!--Singer-->
       <v-flex xs8 sm12 offset-sm1>
-        <v-card>
+        <v-hover>
+        <v-card slot-scope="{ hover }"
+                :class="`elevation-${hover ? 12 : 2}`">
           <v-img
             class="white--text"
             height="200px"
@@ -59,15 +74,18 @@
             @click="singer"
             id = "s"
           >
-            <v-container fill-height fluid>
-              <v-layout fill-height>
-                <v-flex xs12 align-end flexbox>
-                  <span class="headline">Singer</span>
-                </v-flex>
-              </v-layout>
-            </v-container>
+            <v-expand-transition>
+              <div
+                v-if="hover"
+                class="d-flex transition-fast-in-fast-out lighten-2 v-card--reveal display-3 white--text font-weight-bold"
+                style="height: 100%;"
+              >
+                SINGER
+              </div>
+            </v-expand-transition>
           </v-img>
         </v-card>
+        </v-hover>
       </v-flex>
     </v-layout>
     <!--Dropdown-->
@@ -76,7 +94,7 @@
           <v-flex sm4>
             <v-select
               :items="filteredStyles"
-              label="Select styles"
+              label="Select style"
               v-model="selected_style"
               solo
             ></v-select>
@@ -151,10 +169,15 @@
               <div class="caption grey--text">Location</div>
               <div>{{ performer.location}}</div>
             </v-flex>
+            <router-link flat color="blue" tag="button" :to="'/profile/' + performer.uid">
+              <v-btn flat color="blue">View More</v-btn>
+            </router-link>
             <v-btn flat color="green" @click="book(performer.uid, performer.email, performer.fullname, performer.talent, performer.style, performer.location)">
               Book
             </v-btn>
           </v-layout>
+          <v-divider color="black"></v-divider>
+          <v-divider color="black"></v-divider>
         </v-card>
       </v-container>
   </div>
@@ -252,21 +275,21 @@
     methods: {
       dancer(){
         this.selected_talent="Dancer";
-        document.getElementById("d").style.border = "5px solid orange";
-        document.getElementById("m").style.border = "none";
-        document.getElementById("s").style.border = "none";
+        document.getElementById("d").style.outline = "7px solid orange";
+        document.getElementById("m").style.outline = "none";
+        document.getElementById("s").style.outline = "none";
       },
       musician(){
         this.selected_talent="Musician";
-        document.getElementById("m").style.border = "5px solid orange";
-        document.getElementById("d").style.border = "none";
-        document.getElementById("s").style.border = "none";
+        document.getElementById("m").style.outline = "7px solid orange";
+        document.getElementById("d").style.outline = "none";
+        document.getElementById("s").style.outline = "none";
       },
       singer(){
         this.selected_talent="Singer";
-        document.getElementById("s").style.border = "5px solid orange";
-        document.getElementById("m").style.border = "none";
-        document.getElementById("d").style.border = "none";
+        document.getElementById("s").style.outline = "7px solid orange";
+        document.getElementById("m").style.outline = "none";
+        document.getElementById("d").style.outline = "none";
       },
       display() {
         //if no style and location is selected, display list of matching talent
@@ -363,6 +386,10 @@
             })
         }
       },
+      // mouseOver: function(){
+      //   this.active = !this.active;
+      // },
+
       //resets talent, style and location dropdown
       clear() {
         this.$nextTick(() => {
@@ -370,12 +397,12 @@
           this.selected_style = '';
           this.selected_location = '';
           this.date = '';
-          document.getElementById("d").style.border = "none";
-          document.getElementById("m").style.border = "none";
-          document.getElementById("s").style.border = "none";
+          document.getElementById("d").style.outline = "none";
+          document.getElementById("m").style.outline = "none";
+          document.getElementById("s").style.outline = "none";
         });
       },
-      book(uid, email,fullname,talent,style,location){
+      book(uid, email,fullname,talent,style,location) {
         let ref = db.collection('performers').doc(uid);
 
         let user = auth.currentUser;
@@ -389,15 +416,15 @@
           location: location,
           date: this.date
         })
-          .then(function() {
+          .then(function () {
             // eslint-disable-next-line no-console
             console.log("Performer booked!")
           });
 
         return ref.set({
           isBooked: true
-        }, { merge: true })
-          .then(function() {
+        }, {merge: true})
+          .then(function () {
             // eslint-disable-next-line no-console
             console.log("isBook set to true!");
             alert('Successfully booked');
@@ -408,5 +435,12 @@
 </script>
 
 <style scoped>
-
+  .v-card--reveal {
+    align-items: center;
+    bottom: 0;
+    justify-content: center;
+    opacity: 0.90;
+    position: absolute;
+    width: 100%;
+  }
 </style>

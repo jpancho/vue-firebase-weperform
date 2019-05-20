@@ -1,7 +1,9 @@
-<template>
+<template xmlns:v-slot="http://www.w3.org/1999/XSL/Transform">
   <v-layout row justify-center>
     <v-dialog v-model="dialog" max-width="400">
-      <v-btn flat color="grey" slot="activator">Register</v-btn>
+      <template v-slot:activator="{ on }">
+        <v-btn flat color="grey" v-on="on">Register</v-btn>
+      </template>
       <v-card class="elevation-12">
         <v-toolbar dark color="primary">
           <v-toolbar-title>Register</v-toolbar-title>
