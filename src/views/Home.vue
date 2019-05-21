@@ -118,48 +118,6 @@
     <v-divider color="grey"></v-divider>
     <v-divider color="grey"></v-divider>
     <p></p>
-    <v-layout>
-      <!--talent images-->
-      <!--Dancer-->
-      <v-flex xs4 sm12 sm8>
-        <v-hover>
-          <v-card slot-scope="{ hover }"
-                  :class="`elevation-${hover ? 12 : 2}`">
-            <v-img
-              src="/assets/img/talents/dancer.jpg"
-              height="200px"
-            >
-            </v-img>
-          </v-card>
-        </v-hover>
-      </v-flex>
-      <!--Musician-->
-      <v-flex xs6 sm12 offset-sm1>
-        <v-hover>
-          <v-card slot-scope="{ hover }"
-                  :class="`elevation-${hover ? 12 : 2}`">
-            <v-img
-              src="/assets/img/talents/musician.jpg"
-              height="200px"
-            >
-            </v-img>
-          </v-card>
-        </v-hover>
-      </v-flex>
-      <!--Singer-->
-      <v-flex xs8 sm12 offset-sm1>
-        <v-hover>
-          <v-card slot-scope="{ hover }"
-                  :class="`elevation-${hover ? 12 : 2}`">
-            <v-img
-              src="/assets/img/talents/singer.jpg"
-              height="200px"
-            >
-            </v-img>
-          </v-card>
-        </v-hover>
-      </v-flex>
-    </v-layout>
   </div>
 </template>
 
