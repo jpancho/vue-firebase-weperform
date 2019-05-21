@@ -43,6 +43,8 @@
             cancel
           </v-btn>
         </v-layout>
+        <v-divider color="black"></v-divider>
+        <v-divider color="black"></v-divider>
       </v-card>
     </v-container>
   </div>
