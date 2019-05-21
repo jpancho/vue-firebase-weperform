@@ -12,35 +12,29 @@
         <v-card-text>
           <v-form>
             <v-text-field
-                    prepend-icon="person"
-                    v-model="fullname"
-                    name="fullname"
-                    label="Full Name"
-                    type="text">
-            </v-text-field>
+              prepend-icon="person"
+              label="Full name"
+              v-model="fullname"
+            ></v-text-field>
             <v-text-field
-                    prepend-icon="email"
-                    v-model="email"
-                    name="email"
-                    label="Email"
-                    type="text">
-            </v-text-field>
+              prepend-icon="email"
+              label="Email"
+              v-model="email"
+            ></v-text-field>
             <v-text-field
-                    v-model="password"
-                    id="password"
-                    prepend-icon="lock"
-                    name="password"
-                    label="Password"
-                    type="password">
-            </v-text-field>
+              prepend-icon="lock"
+              v-model="password"
+              :type="'password'"
+              name="input-10-1"
+              label="Password"
+            ></v-text-field>
           </v-form>
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn
-                  color="primary"
-                  @click="register"
-          >Sign up
+            color="primary"
+            @click="register">Register
           </v-btn>
         </v-card-actions>
       </v-card>
@@ -57,7 +51,6 @@
         email: '',
         password: '',
         description: '',
-        bookings: []
       }
     },
     methods: {
@@ -67,7 +60,6 @@
           password: this.password,
           fullname: this.fullname,
           description: this.description,
-          bookings: this.bookings
         };
 
         this.$store.dispatch('signUpAction', user);

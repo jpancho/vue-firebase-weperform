@@ -12,7 +12,7 @@
         <v-card-text>
           <v-form>
             <v-text-field
-              prepend-icon="person"
+              prepend-icon="email"
               v-model="email"
               name="email"
               label="Email"
