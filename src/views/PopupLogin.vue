@@ -5,7 +5,7 @@
         <v-btn flat color="grey" v-on="on">Login</v-btn>
       </template>
       <v-card class="elevation-12">
-        <v-toolbar dark color="primary">
+        <v-toolbar dark color="blue-grey">
           <v-toolbar-title>Login</v-toolbar-title>
           <v-spacer></v-spacer>
         </v-toolbar>
@@ -31,7 +31,7 @@
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn
-            color="primary"
+            color="success"
             @click="submitLogin"
           >Login
           </v-btn>
