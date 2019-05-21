@@ -61,7 +61,6 @@
         email: '',
         password: '',
         description: '',
-        bookings: [],
         valid: false,
         emailRules: [
           v => !!v || 'E-mail is required',
