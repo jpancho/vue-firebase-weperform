@@ -10,31 +10,41 @@
           <v-spacer></v-spacer>
         </v-toolbar>
         <v-card-text>
-          <v-form>
+          <v-form  v-model="valid" lazy-validation>
             <v-text-field
-              prepend-icon="person"
-              label="Full name"
-              v-model="fullname"
-            ></v-text-field>
+                    prepend-icon="person"
+                    v-model="fullname"
+                    name="fullname"
+                    label="Full Name"
+                    type="text"
+                    :rules="nameRules" required>
+            </v-text-field>
             <v-text-field
-              prepend-icon="email"
-              label="Email"
-              v-model="email"
-            ></v-text-field>
+                    prepend-icon="email"
+                    v-model="email"
+                    name="email"
+                    label="Email"
+                    type="text"
+                    :rules="emailRules" required>
+            </v-text-field>
             <v-text-field
-              prepend-icon="lock"
-              v-model="password"
-              :type="'password'"
-              name="input-10-1"
-              label="Password"
-            ></v-text-field>
+                    v-model="password"
+                    id="password"
+                    prepend-icon="lock"
+                    name="password"
+                    label="Password"
+                    type="password"
+                    :rules="passwordRules">
+            </v-text-field>
           </v-form>
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn
-            color="primary"
-            @click="register">Register
+                  color="primary"
+                  :disabled="!valid"
+                  @click="register"
+          >Sign up
           </v-btn>
         </v-card-actions>
       </v-card>
@@ -51,6 +61,21 @@
         email: '',
         password: '',
         description: '',
+        bookings: [],
+        valid: false,
+        emailRules: [
+          v => !!v || 'E-mail is required',
+          v => /.+@.+/.test(v) || 'E-mail must be valid'
+        ],
+        nameRules: [
+          v => !!v || 'Name is required'
+        ],
+        passwordRules: [
+          v => !!v || 'Password is required',
+          v =>
+                  v.length >= 6 ||
+                  'Password must be greater than 6 characters'
+        ]
       }
     },
     methods: {
@@ -60,6 +85,7 @@
           password: this.password,
           fullname: this.fullname,
           description: this.description,
+          bookings: this.bookings
         };
 
         this.$store.dispatch('signUpAction', user);
