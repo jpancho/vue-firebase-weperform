@@ -2,6 +2,7 @@
   <v-container grid-list-xl>
     <v-layout row justify-center>
       <v-dialog max-width="300">
+        <v-btn flat color="green" slot="activator">Post a Review</v-btn>
         <v-card>
           <v-toolbar dark color="blue-grey">
             <v-toolbar-title>Leave a review!</v-toolbar-title>

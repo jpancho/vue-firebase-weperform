@@ -30,16 +30,17 @@
             <div>{{ performer.date }}</div>
           </v-flex>
           <br/>
-          <router-link flat color="blue" tag="button" :to="'/profile/' + performer.uid">
-            <v-btn flat color="blue">View More</v-btn>
-          </router-link>
-          <v-btn flat color="green">
-            Post a Review
-            <PopupReview hidden :uid = performer.uid></PopupReview>
-          </v-btn>
-          <v-btn flat color="red" @click="cancel(performer.uid)">
-            cancel
-          </v-btn>
+          <v-flex xs6 sm4 md2>
+            <PopupProfile :uid = performer.uid :notBooked = false></PopupProfile>
+          </v-flex>
+          <v-flex xs6 sm4 md2>
+            <PopupReview :uid = performer.uid></PopupReview>
+          </v-flex>
+          <v-flex xs6 sm4 md2>
+            <v-btn flat color="red" @click="cancel(performer.uid)">
+              cancel
+            </v-btn>
+          </v-flex>
         </v-layout>
         <v-divider color="black"></v-divider>
         <v-divider color="black"></v-divider>
@@ -51,10 +52,11 @@
 <script>
   import { db, auth } from '../firebase';
   import PopupReview from '../views/PopupReview';
+  import PopupProfile from '../views/PopupProfile';
   let user = auth.currentUser;
 
   export default {
-    components: {PopupReview},
+    components: {PopupReview, PopupProfile},
     name: "Booking",
     data() {
       return {
