@@ -11,9 +11,9 @@
         <v-card-text>
           <v-form>
               <v-text-field
-                label="Full name"
+                label="Preferred name"
                 v-model="fullname"
-                placeholder="Chris Evans"
+                placeholder="your preferred name"
               ></v-text-field>
               <v-overflow-btn
                 :items="talents"
@@ -41,7 +41,6 @@
                 v-model="price"
                 prefix="$"
                 suffix="/hr"
-                placeholder="32.00"
               ></v-text-field>
             <v-layout row justify-center>
               <v-card-actions>
