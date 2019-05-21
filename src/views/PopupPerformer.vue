@@ -1,7 +1,7 @@
 <template>
   <v-container grid-list-xl>
   <v-layout row justify-center>
-    <v-dialog max-width="300">
+    <v-dialog max-width="400">
       <v-btn round class="grey" color="white" slot="activator">Become a Performer!</v-btn>
       <v-card>
         <v-toolbar dark color="blue-grey">

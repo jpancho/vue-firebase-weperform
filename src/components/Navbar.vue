@@ -1,20 +1,20 @@
 <template>
 	<nav>
 		<v-toolbar flat app>
-			<v-toolbar-side-icon class="grey--text" @click="drawer = !drawer"></v-toolbar-side-icon>
+<!--			<v-toolbar-side-icon class="grey&#45;&#45;text" @click="drawer = !drawer"></v-toolbar-side-icon>-->
 			<v-toolbar-title class="text-uppercase grey--text">
 				<span class="font-weight-light"><router-link to="/">We</router-link></span>
 				<span><router-link to="/">Perform</router-link></span>
 			</v-toolbar-title>
-			<v-btn flat color="grey" to="/performers">
-				<span>Search</span>
+      <v-btn flat color="grey" to="/performers">Search
+        <v-icon right small>search</v-icon>
 			</v-btn>
-			<v-btn flat color="grey" to="/bookings">
-				<span>Bookings</span>
+			<v-btn flat color="grey" to="/bookings">Bookings
+        <v-icon right small>shopping_cart</v-icon>
 			</v-btn>
-			<v-btn flat color="grey" to="/about">
-				<span>About</span>
-			</v-btn>
+<!--			<v-btn flat color="grey" to="/about">-->
+<!--				<span>About</span>-->
+<!--			</v-btn>-->
 			<!--<v-btn flat color="grey" to="/admin">-->
 				<!--<span>Admin</span>-->
 			<!--</v-btn>-->
@@ -24,8 +24,8 @@
 			<v-spacer></v-spacer>
 			<v-spacer></v-spacer>
 			<v-spacer></v-spacer>
-			<v-btn flat color="grey" to="/profile">
-				<span>Profile</span>
+			<v-btn flat color="grey" to="/profile">Profile
+        <v-icon right small>face</v-icon>
 			</v-btn>
       <template v-if="user">
         <Signout/>
@@ -36,20 +36,20 @@
       </template>
 		</v-toolbar>
 
-		<v-navigation-drawer app v-model="drawer" class="black">
-			<v-list>
-				<v-list-tile v-for="link in links" :key="link.text" router :to="link.route">
-					<v-list-tile-action>
-						<v-icon class="white--text">{{ link.icon }}</v-icon>
-					</v-list-tile-action>
-					<v-list-tile-content>
-						<v-list-tile-title class="white--text">{{ link.text }}</v-list-tile-title>
-					</v-list-tile-content>
-				</v-list-tile>
-				<p></p>
-				<PopupPerformer/>
-			</v-list>
-		</v-navigation-drawer>
+<!--		<v-navigation-drawer app v-model="drawer" class="black">-->
+<!--			<v-list>-->
+<!--				<v-list-tile v-for="link in links" :key="link.text" router :to="link.route">-->
+<!--					<v-list-tile-action>-->
+<!--						<v-icon class="white&#45;&#45;text">{{ link.icon }}</v-icon>-->
+<!--					</v-list-tile-action>-->
+<!--					<v-list-tile-content>-->
+<!--						<v-list-tile-title class="white&#45;&#45;text">{{ link.text }}</v-list-tile-title>-->
+<!--					</v-list-tile-content>-->
+<!--				</v-list-tile>-->
+<!--				<p></p>-->
+<!--				<PopupPerformer/>-->
+<!--			</v-list>-->
+<!--		</v-navigation-drawer>-->
 	</nav>
 </template>
 
