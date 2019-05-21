@@ -53,9 +53,11 @@
                         <v-list-tile-avatar>
                           <img :src="review.imageUrl">
                         </v-list-tile-avatar>
-
                         <v-list-tile-content>
-                          <v-list-tile-title v-html="review.rating"></v-list-tile-title>
+                          <v-list-tile-title>
+                            <v-rating v-model="review.rating" background-color="orange lighten-3" color="orange" small>
+                            </v-rating>
+                          </v-list-tile-title>
                           <v-list-tile-sub-title v-html="review.text"></v-list-tile-sub-title>
                         </v-list-tile-content>
                       </v-list-tile>

@@ -21,10 +21,6 @@
             <div class="caption grey--text">Style</div>
             <div>{{ performer.style }}</div>
           </v-flex>
-          <!--<v-flex xs6 sm4 md2>-->
-            <!--<div class="caption grey&#45;&#45;text">Email</div>-->
-            <!--<div>{{ performer.email }}</div>-->
-          <!--</v-flex>-->
           <v-flex xs6 sm4 md2>
             <div class="caption grey--text">Location</div>
             <div>{{ performer.location }}</div>
@@ -36,9 +32,7 @@
           <router-link flat color="blue" tag="button" :to="'/profile/' + performer.uid">
             <v-btn flat color="blue">View More</v-btn>
           </router-link>
-          <v-btn flat color="green" @click="review(performer.uid)">
-            review
-          </v-btn>
+          <PopupReview :uid = performer.uid></PopupReview>
           <v-btn flat color="red" @click="cancel(performer.uid)">
             cancel
           </v-btn>
@@ -52,9 +46,11 @@
 
 <script>
   import { db, auth } from '../firebase';
+  import PopupReview from '../views/PopupReview';
   let user = auth.currentUser;
 
   export default {
+    components: {PopupReview},
     name: "Booking",
     data() {
       return {
@@ -87,16 +83,6 @@
               }
             })
           })
-      },
-      review(uid) {
-        db.collection('performers').doc(uid)
-          .collection('reviews').doc(user.uid).update({
-            imageUrl: this.imageUrl
-        })
-          .then(function () {
-            // eslint-disable-next-line no-console
-            console.log("ImageUrl set!")
-        })
       },
       cancel(uid) {
         let ref = db.collection('performers').doc(uid);
