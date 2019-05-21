@@ -8,7 +8,7 @@
     <v-container class="my-5">
       <v-layout column>
         <v-flex xs12 sm6 md4 lg12>
-          <v-card class="text-xs-center ma-3 white--text font-weight-bold blue-grey">
+          <v-card class="text-xs-center ma-3 white--text font-weight-bold black">
             <v-responsive class="pt-4">
               <v-avatar size="100" class="grey lighten-2">
                 <img :src="imageUrl" alt="">
@@ -24,7 +24,8 @@
                 Book
               </v-btn>
             </v-card-text>
-            <p></p>
+            <v-divider color="white"></v-divider>
+            <v-divider color="white"></v-divider>
             <v-tabs v-model="active" color="black" centered dark slider-color="yellow">
               <v-tab :key="Description" ripple>
                 Description
@@ -35,7 +36,7 @@
               <v-tab-item
                 :key="Description"
               >
-                <v-card flat color="blue-grey" class="text-xs-center ma-3 white--text font-weight-bold black">
+                <v-card flat color="black" class="text-xs-center ma-3 white--text font-weight-bold black">
                   <div id="des">
                     <textarea id="description" v-model="description" spellcheck="false" readonly></textarea>
                   </div>

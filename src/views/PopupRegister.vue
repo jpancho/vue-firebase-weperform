@@ -60,7 +60,6 @@
         fullname: '',
         email: '',
         password: '',
-        description: '',
         valid: false,
         emailRules: [
           v => !!v || 'E-mail is required',
@@ -83,7 +82,6 @@
           email: this.email,
           password: this.password,
           fullname: this.fullname,
-          description: this.description,
         };
 
         this.$store.dispatch('signUpAction', user);
