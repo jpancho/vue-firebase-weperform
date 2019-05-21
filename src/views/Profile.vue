@@ -10,7 +10,7 @@
         <v-flex xs12 sm6 md4 lg12>
           <v-card class="text-xs-center ma-3 white--text font-weight-bold black">
             <v-responsive class="pt-4">
-              <v-avatar size="100" @click="onPickFile" class="grey lighten-2">
+              <v-avatar size="150" style="cursor: pointer" @click="onPickFile" class="grey lighten-2">
                 <img :src="imageUrl" alt="">
               </v-avatar>
             </v-responsive>
@@ -20,19 +20,22 @@
               <p></p>
               <div>ID</div>
               <div class="grey--text">{{ uid }}</div>
+            </v-card-text>
             <input type="file" ref="fileInput" hidden accept="image/*" @change="onFilePicked">
-            <v-btn raised class="primary" @click="onPickFile">Upload Image</v-btn>
+            <p></p>
             <v-divider color="grey"></v-divider>
             <v-divider color="grey"></v-divider>
-            <p class="font-italic font-weight-light" id="ddd">DESCRIPTION</p>
-            <v-btn id = "edit" @click="edit" color="black" fab small dark> <v-icon>edit</v-icon></v-btn>
+            <p></p>
+            <p class="font-weight-regular">DESCRIPTION
+              <v-btn id = "edit" @click="edit" icon>
+                <v-icon color="white">edit</v-icon>
+              </v-btn>
+            </p>
             <div id="des">
               <textarea id="description" v-model="description" spellcheck="false" readonly></textarea>
-              <v-divider color="black"></v-divider>
-              <v-divider color="black"></v-divider>
+            <p></p>
             <v-btn @click="save" id="save" small>Save</v-btn><v-btn @click="cancel" id="cancel" small>Cancel</v-btn>
             </div>
-            </v-card-text>
           </v-card>
         </v-flex>
       </v-layout>
@@ -149,10 +152,6 @@
 /*readonly: true;*/
 /*}*/
 
-/*#ddd{*/
-  /*width: 100px;*/
-  /*margin: auto;*/
-/*}*/
   #edit{
 
   }
