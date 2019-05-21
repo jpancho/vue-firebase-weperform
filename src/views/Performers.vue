@@ -15,11 +15,12 @@
           <v-card slot-scope="{ hover }"
                   :class="`elevation-${hover ? 12 : 2}`">
           <v-img
-            class="white--text"
-            height="200px"
             src="/assets/img/talents/dancer.jpg"
             v-model="selected_talent"
+            style="cursor: pointer"
+            class="white--text"
             @click="dancer"
+            height="200px"
             id = "d"
           >
             <v-expand-transition>
@@ -41,11 +42,12 @@
         <v-card slot-scope="{ hover }"
                 :class="`elevation-${hover ? 12 : 2}`">
           <v-img
-            class="white--text"
-            height="200px"
             src="/assets/img/talents/musician.jpg"
             v-model="selected_talent"
+            style="cursor: pointer"
+            class="white--text"
             @click="musician"
+            height="200px"
             id = "m"
           >
             <v-expand-transition>
@@ -67,11 +69,12 @@
         <v-card slot-scope="{ hover }"
                 :class="`elevation-${hover ? 12 : 2}`">
           <v-img
-            class="white--text"
-            height="200px"
             src="/assets/img/talents/singer.jpg"
             v-model="selected_talent"
+            style="cursor: pointer"
+            class="white--text"
             @click="singer"
+            height="200px"
             id = "s"
           >
             <v-expand-transition>
