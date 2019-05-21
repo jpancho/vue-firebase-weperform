@@ -1,11 +1,6 @@
 <template>
-  <div class="profile">
-    <v-toolbar-title class="text-uppercase grey--text">
-      <h1>
-        <span class="font-weight-light blue--text display-1" >Profile</span>
-      </h1>
-    </v-toolbar-title>
-    <v-container class="my-5">
+  <v-dialog max-width="1200">
+    <v-btn flat color="blue" slot="activator">View More</v-btn>
       <v-layout column>
         <v-flex xs12 sm6 md4 lg12>
           <v-card class="text-xs-center ma-3 white--text font-weight-bold black">
@@ -18,9 +13,7 @@
               <h1 class="title">{{ fullname }}</h1>
               <h4 class="black--text">{{ email }}</h4>
               <p></p>
-<!--              <div>ID</div>-->
-<!--              <div class="grey&#45;&#45;text">{{ uid }}</div>-->
-              <v-btn raised class="green" @click="book(uid, email, fullname, talent, style, location)">
+              <v-btn raised class="green" v-show="notBooked" @click="book(uid, email, fullname, talent, style, location)">
                 Book
               </v-btn>
             </v-card-text>
@@ -53,9 +46,11 @@
                         <v-list-tile-avatar>
                           <img :src="review.imageUrl">
                         </v-list-tile-avatar>
-
                         <v-list-tile-content>
-                          <v-list-tile-title v-html="review.rating"></v-list-tile-title>
+                          <v-list-tile-title>
+                            <v-rating v-model="review.rating" background-color="orange lighten-3" color="orange" small readonly="true">
+                            </v-rating>
+                          </v-list-tile-title>
                           <v-list-tile-sub-title v-html="review.text"></v-list-tile-sub-title>
                         </v-list-tile-content>
                       </v-list-tile>
@@ -67,20 +62,19 @@
           </v-card>
         </v-flex>
       </v-layout>
-    </v-container>
-  </div>
+  </v-dialog>
 </template>
 
 <script>
   import { db, auth } from '../firebase';
 
   export default {
-    props: ['profileId'],
+    name: 'PopupProfile',
+    props: { uid: String, notBooked: Boolean },
     data() {
       return {
         fullname: '',
         email: '',
-        uid: '',
         imageUrl: '',
         image: null,
         description: '',
@@ -94,29 +88,29 @@
       }
     },
     created() {
-      db.collection('users').doc(this.profileId).get().then(doc => {
+      db.collection('users').doc(this.uid).get().then(doc => {
         this.imageUrl = doc.data().imageUrl;
         this.fullname = doc.data().fullname;
         this.email = doc.data().email;
         this.uid = doc.data().uid;
         this.description = doc.data().description;
       });
-      db.collection('performers').doc(this.profileId).get().then(doc => {
+      db.collection('performers').doc(this.uid).get().then(doc => {
         this.talent = doc.data().talent;
         this.style = doc.data().style;
         this.location = doc.data().location;
       });
-      db.collection('performers').doc(this.profileId)
+      db.collection('performers').doc(this.uid)
         .collection('reviews').get().then(doc => {
-          const changes = doc.docChanges();
-          changes.forEach(change => {
-            if (change.type === 'added') {
-              this.reviewers.push({
-                ...change.doc.data(),
-                id: change.doc.id
-              })
-            }
-          })
+        const changes = doc.docChanges();
+        changes.forEach(change => {
+          if (change.type === 'added') {
+            this.reviewers.push({
+              ...change.doc.data(),
+              id: change.doc.id
+            })
+          }
+        })
       });
     },
     methods: {
@@ -183,4 +177,3 @@
 
   }
 </style>
-
