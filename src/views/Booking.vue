@@ -29,10 +29,14 @@
             <div class="caption grey--text">Date</div>
             <div>{{ performer.date }}</div>
           </v-flex>
+          <br/>
           <router-link flat color="blue" tag="button" :to="'/profile/' + performer.uid">
             <v-btn flat color="blue">View More</v-btn>
           </router-link>
-          <PopupReview :uid = performer.uid></PopupReview>
+          <v-btn flat color="green">
+            Post a Review
+            <PopupReview hidden :uid = performer.uid></PopupReview>
+          </v-btn>
           <v-btn flat color="red" @click="cancel(performer.uid)">
             cancel
           </v-btn>
