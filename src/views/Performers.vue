@@ -172,9 +172,9 @@
               <div class="caption grey--text">Location</div>
               <div>{{ performer.location}}</div>
             </v-flex>
-            <router-link flat color="blue" tag="button" :to="'/profile/' + performer.uid">
-              <v-btn flat color="blue">View More</v-btn>
-            </router-link>
+            <v-flex xs6 sm4 md2>
+              <PopupProfile :uid = performer.uid :notBooked = true></PopupProfile>
+            </v-flex>
             <v-btn flat color="green" @click="book(performer.uid, performer.email, performer.fullname, performer.talent, performer.style, performer.location)">
               Book
             </v-btn>
@@ -188,10 +188,10 @@
 
 <script>
   import { db, auth } from '../firebase';
-  // import PopupPerformer from '../views/PopupPerformer';
+  import PopupProfile from '../views/PopupProfile';
 
   export default {
-    // components: { PopupPerformer },
+    components: { PopupProfile },
     data() {
       return {
         cards: [

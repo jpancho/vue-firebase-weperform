@@ -49,16 +49,7 @@ const router = new Router({
       meta: {
         requiresAuth: true
       }
-    },
-    {
-      path: '/profile/:profileId',
-      name: 'otherProfile',
-      component: () => import('./views/OtherProfile.vue'),
-      props: true,
-      meta: {
-        requiresAuth: true
-      }
-    },
+    }
   ]
 });
 
