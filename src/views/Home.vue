@@ -2,8 +2,11 @@
   <div class="home">
     <div id="loader-wrapper">
       <div id="quotes">
-        <p class="blue--text">WePerform</p>
-        <p >"We’re all connected by a love for perform!"</p>
+<!--        <p class="display-1">"We’re all connected by a love for perform!"</p>-->
+        <p class="display-1">Practice like you've never won.</p>
+        <p class="display-2">Perform like you've never lost.</p>
+        <span class="font-weight-light text--darken-4 display-4 text-uppercase blue--text">We</span>
+        <span class="display-4 text-uppercase blue--text">Perform</span>
       </div>
       <div id="loader"></div>
       <div class="loader-section section-left"></div>
@@ -35,9 +38,128 @@
         </v-carousel>
       </div>
     </div>
-    <h1 align="center">WePerform</h1>
-    <h3 class="font-weight-light">WePerform is a web application (web app) designed to streamline the process of booking performers for events. Each performer has a profile describing their skill, expertise, and contact information, allowing patrons to search and book them with ease. This service saves the patrons time, effort, and money in search of their ideal performer, while also providing performers with a dedicated platform to promote themselves.
+    <v-toolbar-title class="text-uppercase">
+      <h2 align="center">
+        <span class="font-weight-light display-4 grey--text">We</span>
+        <span class="display-4">Perform</span>
+      </h2>
+    </v-toolbar-title>
+    <h3 class="font-weight-light">
+      WePerform is a web application (web app) designed to streamline the process of booking performers for events. Each performer has a profile describing their skill, expertise, and contact information, allowing patrons to search and book them with ease. This service saves the patrons time, effort, and money in search of their ideal performer, while also providing performers with a dedicated platform to promote themselves.
     </h3>
+    <p></p>
+    <v-divider color="grey"></v-divider>
+    <v-divider color="grey"></v-divider>
+    <p></p>
+    <v-layout row>
+      <h2 class="font-weight-light display-3 text--black">
+        Search. Save. Book.
+      </h2>
+      <v-spacer></v-spacer>
+      <v-flex md6>
+        <v-card>
+          <v-img
+            src="assets/img/talents/dancer_stage.jpg"
+            height="300px"
+          >
+          </v-img>
+        </v-card>
+      </v-flex>
+    </v-layout>
+    <p></p>
+    <v-divider color="grey"></v-divider>
+    <v-divider color="grey"></v-divider>
+    <p></p>
+    <v-layout row>
+      <v-flex sm12>
+        <v-card max-width="700px">
+          <v-img
+            src="assets/img/talents/dancer_stage.jpg"
+            height="300px"
+          >
+          </v-img>
+        </v-card>
+      </v-flex>
+      <v-flex xs2 sm12 sm6 align-end>
+        <h1 class="font-weight-light display-3 fill-height">
+          Filtered searching options
+        </h1>
+      </v-flex>
+    </v-layout>
+    <p></p>
+    <v-divider color="grey"></v-divider>
+    <v-divider color="grey"></v-divider>
+    <p></p>
+    <v-layout row>
+      <h1 class="font-weight-light display-3">
+        Save your time, effort & money
+      </h1>
+      <v-spacer></v-spacer>
+      <v-flex md6>
+        <v-card>
+          <v-img
+            src="assets/img/talents/dancer_stage.jpg"
+            height="300px"
+          >
+          </v-img>
+        </v-card>
+      </v-flex>
+    </v-layout>
+    <p></p>
+    <v-divider color="grey"></v-divider>
+    <v-divider color="grey"></v-divider>
+    <p></p>
+    <v-toolbar-title class="blue-grey--text text-uppercase">
+      <h2 align="center">
+        <span class="font-weight-light display-3">Platform promoting talent.</span>
+      </h2>
+    </v-toolbar-title>
+    <p></p>
+    <v-divider color="grey"></v-divider>
+    <v-divider color="grey"></v-divider>
+    <p></p>
+    <v-layout>
+      <!--talent images-->
+      <!--Dancer-->
+      <v-flex xs4 sm12 sm8>
+        <v-hover>
+          <v-card slot-scope="{ hover }"
+                  :class="`elevation-${hover ? 12 : 2}`">
+            <v-img
+              src="/assets/img/talents/dancer.jpg"
+              height="200px"
+            >
+            </v-img>
+          </v-card>
+        </v-hover>
+      </v-flex>
+      <!--Musician-->
+      <v-flex xs6 sm12 offset-sm1>
+        <v-hover>
+          <v-card slot-scope="{ hover }"
+                  :class="`elevation-${hover ? 12 : 2}`">
+            <v-img
+              src="/assets/img/talents/musician.jpg"
+              height="200px"
+            >
+            </v-img>
+          </v-card>
+        </v-hover>
+      </v-flex>
+      <!--Singer-->
+      <v-flex xs8 sm12 offset-sm1>
+        <v-hover>
+          <v-card slot-scope="{ hover }"
+                  :class="`elevation-${hover ? 12 : 2}`">
+            <v-img
+              src="/assets/img/talents/singer.jpg"
+              height="200px"
+            >
+            </v-img>
+          </v-card>
+        </v-hover>
+      </v-flex>
+    </v-layout>
   </div>
 </template>
 
@@ -197,8 +319,8 @@ export default {
   }
   .loaded #quotes{
     opacity: 0;
-     -webkit-transition: all 0.3s ease-out;  /* Android 2.1+, Chrome 1-25, iOS 3.2-6.1, Safari 3.2-6  */
-    transition: all 0.3s ease-out;  /* Chrome 26, Firefox 16+, iOS 7+, IE 10+, Opera, Safari 6.1+  */
+     -webkit-transition: all 0.7s ease-out;  /* Android 2.1+, Chrome 1-25, iOS 3.2-6.1, Safari 3.2-6  */
+    transition: all 0.7s ease-out;  /* Chrome 26, Firefox 16+, iOS 7+, IE 10+, Opera, Safari 6.1+  */
   }
   .loaded #loader-wrapper {
     visibility: hidden;

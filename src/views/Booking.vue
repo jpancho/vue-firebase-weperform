@@ -33,10 +33,18 @@
             <div class="caption grey--text">Date</div>
             <div>{{ performer.date }}</div>
           </v-flex>
+          <router-link flat color="blue" tag="button" :to="'/profile/' + performer.uid">
+            <v-btn flat color="blue">View More</v-btn>
+          </router-link>
+          <v-btn flat color="green" @click="review(performer.uid)">
+            review
+          </v-btn>
           <v-btn flat color="red" @click="cancel(performer.uid)">
             cancel
           </v-btn>
         </v-layout>
+        <v-divider color="black"></v-divider>
+        <v-divider color="black"></v-divider>
       </v-card>
     </v-container>
   </div>
@@ -44,6 +52,7 @@
 
 <script>
   import { db, auth } from '../firebase';
+  let user = auth.currentUser;
 
   export default {
     name: "Booking",
@@ -51,7 +60,14 @@
       return {
         performers: [],
         uid: '',
+        imageUrl: ''
       }
+    },
+    created() {
+      db.collection('users').doc(user.uid).get().then(doc => {
+        this.imageUrl = doc.data().imageUrl;
+      });
+      this.show()
     },
     methods: {
       show() {
@@ -72,6 +88,16 @@
             })
           })
       },
+      review(uid) {
+        db.collection('performers').doc(uid)
+          .collection('reviews').doc(user.uid).update({
+            imageUrl: this.imageUrl
+        })
+          .then(function () {
+            // eslint-disable-next-line no-console
+            console.log("ImageUrl set!")
+        })
+      },
       cancel(uid) {
         let ref = db.collection('performers').doc(uid);
         let user = auth.currentUser;
@@ -87,9 +113,6 @@
             window.location.reload()
           })
       }
-    },
-    created: function () {
-      this.show()
     }
   }
 </script>
