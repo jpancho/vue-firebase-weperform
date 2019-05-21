@@ -48,8 +48,6 @@ export default new Vuex.Store({
               uid: response.user.uid,
               email: payload.email,
               fullname: payload.fullname,
-              description: payload.description,
-              bookings: payload.bookings,
               imageUrl: image
             })
             .then(function() {

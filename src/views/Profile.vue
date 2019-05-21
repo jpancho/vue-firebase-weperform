@@ -8,7 +8,7 @@
     <v-container class="my-5">
       <v-layout column>
         <v-flex xs12 sm6 md4 lg12>
-          <v-card class="text-xs-center ma-3 white--text font-weight-bold grey">
+          <v-card class="text-xs-center ma-3 white--text font-weight-bold black">
             <v-responsive class="pt-4">
               <v-avatar size="150" style="cursor: pointer" @click="onPickFile" class="grey lighten-2">
                 <img :src="imageUrl" alt="Circle Image" class="img-raised rounded-circle img-fluid">
@@ -19,7 +19,7 @@
               <v-divider color="white"></v-divider>
               <p></p>
               <h1 class="title">{{ fullname }}</h1>
-              <h4 class="black--text">{{ email }}</h4>
+              <h4 class="grey--text">{{ email }}</h4>
             <input type="file" ref="fileInput" hidden accept="image/*" @change="onFilePicked">
             <p></p>
             <p class="font-weight-regular">DESCRIPTION

@@ -7,7 +7,7 @@
 				<span><router-link to="/">Perform</router-link></span>
 			</v-toolbar-title>
 			<v-btn flat color="grey" to="/performers">
-				<span>Performers</span>
+				<span>Search</span>
 			</v-btn>
 			<v-btn flat color="grey" to="/bookings">
 				<span>Bookings</span>
@@ -15,9 +15,9 @@
 			<v-btn flat color="grey" to="/about">
 				<span>About</span>
 			</v-btn>
-			<v-btn flat color="grey" to="/admin">
-				<span>Admin</span>
-			</v-btn>
+			<!--<v-btn flat color="grey" to="/admin">-->
+				<!--<span>Admin</span>-->
+			<!--</v-btn>-->
 			<v-spacer></v-spacer>
 			<v-spacer></v-spacer>
 			<v-spacer></v-spacer>
