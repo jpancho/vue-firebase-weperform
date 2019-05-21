@@ -84,7 +84,6 @@
           password: this.password,
           fullname: this.fullname,
           description: this.description,
-          bookings: this.bookings
         };
 
         this.$store.dispatch('signUpAction', user);
