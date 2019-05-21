@@ -9,45 +9,51 @@
           <v-spacer></v-spacer>
         </v-toolbar>
         <v-card-text>
-          <v-form>
+          <v-form  v-model="valid" lazy-validation>
               <v-text-field
                 label="Preferred name"
                 v-model="fullname"
                 placeholder="your preferred name"
+                :rules="nameRules" required
               ></v-text-field>
               <v-overflow-btn
                 :items="talents"
                 label="Select talent"
                 v-model="selected_talent"
+                :rules="talentRules" required
               ></v-overflow-btn>
               <v-overflow-btn
                 :items="filteredStyles"
                 label="Select styles"
                 v-model="selected_style"
+                :rules="styleRules" required
               ></v-overflow-btn>
               <v-overflow-btn
                 :items="location"
                 label="Select location"
                 v-model="selected_location"
+                :rules="locationRules"
               ></v-overflow-btn>
               <v-overflow-btn
                 :items="experience"
                 label="Select experience"
                 v-model="selected_experience"
                 placeholder="Intermediate"
+                :rules="experienceRules"
               ></v-overflow-btn>
               <v-text-field
                 label="Price"
                 v-model="price"
                 prefix="$"
                 suffix="/hr"
+                :rules="priceRules"
               ></v-text-field>
             <v-layout row justify-center>
               <v-card-actions>
                 <v-spacer></v-spacer>
                 <v-btn
                   :loading="loading4"
-                  :disabled="loading4"
+                  :disabled="!valid"
                   color="info"
                   @click="loader = 'loading4'"
                   class="success"
@@ -136,6 +142,28 @@
         price: '',
         loader: null,
         loading4: false,
+          valid: false,
+          nameRules: [
+              v => !!v || 'Name is required'
+          ],
+          talentRules: [
+              v => !!v || 'Talent is required'
+          ],
+          styleRules: [
+              v => !!v || 'Talent is required'
+          ],
+          locationRules: [
+              v => !!v || 'Location is required'
+          ],
+          experienceRules: [
+              v => !!v || 'Experience is required'
+          ],
+          priceRules: [
+              v => !!v || 'Price is required',
+              v =>
+                  v >= 0 ||
+                  'Price must be a positive number'
+          ]
       }
     },
     watch: {
