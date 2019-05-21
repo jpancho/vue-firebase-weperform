@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <!--Landing Page-->
     <div id="loader-wrapper">
       <div id="quotes">
 <!--        <p class="display-1">"We’re all connected by a love for perform!"</p>-->

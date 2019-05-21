@@ -63,8 +63,8 @@
           email: this.email,
           password: this.password
         };
-        this.$store.dispatch('signInAction', user);
-        this.$router.replace('/performers');
+          this.$store.dispatch('signInAction', user);
+          this.$router.replace('/performers');
       }
     }
   }

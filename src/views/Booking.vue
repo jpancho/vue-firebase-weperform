@@ -8,7 +8,7 @@
     </v-toolbar-title>
     <v-container class="my-5">
       <v-card flat class="pa-3" v-for="performer in performers" :key="performer.fullname">
-        <v-layout row wrap>
+        <v-layout row wrap >
           <v-flex xs6 sm4 md2>
             <div class="caption grey--text">Full Name</div>
             <div>{{ performer.fullname }}</div>
