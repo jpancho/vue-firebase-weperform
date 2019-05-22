@@ -2,7 +2,9 @@
   <v-layout row justify-center>
     <v-dialog v-model="dialog" max-width="400">
       <template v-slot:activator="{ on }">
-        <v-btn flat color="grey" v-on="on">Log out</v-btn>
+        <v-btn flat color="grey" v-on="on">Log out
+          <v-icon right small>power_settings_new</v-icon>
+        </v-btn>
       </template>
       <v-card class="elevation-12">
         <v-toolbar dark color="blue-grey">
