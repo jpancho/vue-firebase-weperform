@@ -122,24 +122,12 @@
         <h2 class="font-weight-light display-3 black--text">
           <pre>Filtered search options</pre>
           <v-flex xs2 sm12 sm6 align-end>
-<!--            <v-icon>-->
-<!--              check_circle-->
-<!--            </v-icon>-->
             <h4 class="title font-weight-light"><v-icon>check_circle</v-icon> Genre</h4>
             <p></p><h4 class="title font-weight-light"><v-icon>check_circle</v-icon> Styles</h4>
             <p></p><h4 class="title font-weight-light"><v-icon>check_circle</v-icon> Pricing</h4>
             <p></p><h4 class="title font-weight-light"><v-icon>check_circle</v-icon> Location</h4>
             <p></p><h4 class="title font-weight-light"><v-icon>check_circle</v-icon> Experience</h4>
             <p></p><h4 class="title font-weight-light"><v-icon>check_circle</v-icon> Availability</h4>
-<!--            <v-icon>-->
-<!--              check_circle <span>Styles</span>-->
-<!--            </v-icon>-->
-<!--            <v-icon>-->
-<!--              check_circle <span>Location</span>-->
-<!--            </v-icon>-->
-<!--            <v-icon>-->
-<!--              check_circle <span>Availability</span>-->
-<!--            </v-icon>-->
           </v-flex>
         </h2>
       </v-flex>
@@ -185,12 +173,7 @@
         <v-hover>
           <v-toolbar-title class="text-uppercase">
             <h2 align="center">
-
               <PopupPerformer/>
-<!--              <span class="headline black&#45;&#45;text" @click="search" style="cursor: pointer">-->
-<!--                Book your performer-->
-<!--                <v-icon x-large @click="search" style="cursor: pointer">keyboard_arrow_right</v-icon>-->
-<!--              </span>-->
             </h2>
           </v-toolbar-title>
         </v-hover>
@@ -225,9 +208,6 @@ export default {
   methods: {
     search() {
       this.$router.replace('/performers')
-    },
-    become() {
-      this.$router.replace('/becomePerformer')
     }
   }
 }
