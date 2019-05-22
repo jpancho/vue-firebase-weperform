@@ -31,10 +31,11 @@
 <script>
 	import PopupRegister from '../views/PopupRegister';
 	import PopupLogin from '../views/PopupLogin';
+  import Signout from '../views/Signout';
   import { mapState } from 'vuex';
 
 	export default {
-		components: { PopupRegister, PopupLogin },
+		components: { PopupRegister, PopupLogin, Signout },
 		data() {
 			return {
 				drawer: false,
