@@ -1,11 +1,14 @@
 <template>
+  <div class="becomePerformer">
   <v-container grid-list-xl>
   <v-layout row justify-center>
-    <v-dialog v-model = "dialog" max-width="300">
-      <v-btn round class="grey" color="white" slot="activator">Become a Performer!</v-btn>
+    <v-dialog v-model = "dialog" max-width="400">
+      <v-btn round class="grey" color="white" slot="activator">
+        <pre class="font-weight-bold subheading">Become a Performer</pre>
+      </v-btn>
       <v-card>
         <v-toolbar dark color="blue-grey">
-          <v-toolbar-title>Fill in your details</v-toolbar-title>
+          <v-toolbar-title><pre>Let's make you a performer...</pre></v-toolbar-title>
           <v-spacer></v-spacer>
         </v-toolbar>
         <v-card-text>
@@ -70,6 +73,7 @@
     </v-dialog>
   </v-layout>
   </v-container>
+  </div>
 </template>
 
 <script>
