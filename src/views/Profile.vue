@@ -15,23 +15,60 @@
               </v-avatar>
             </v-responsive>
             <v-card-text>
-              <v-divider color="white"></v-divider>
-              <v-divider color="white"></v-divider>
               <p></p>
               <h1 class="title">{{ fullname }}</h1>
               <h4 class="grey--text">{{ email }}</h4>
-            <input type="file" ref="fileInput" hidden accept="image/*" @change="onFilePicked">
-            <p></p>
-            <p class="font-weight-regular">DESCRIPTION
-              <v-btn id = "edit" @click="edit" icon>
-                <v-icon color="white">edit</v-icon>
-              </v-btn>
-            </p>
-            <div id="des">
-              <textarea id="description" v-model="description" spellcheck="false" readonly></textarea>
-            <v-divider color="black"></v-divider>
-            <v-btn @click="save" id="save" small>Save</v-btn><v-btn @click="cancel" id="cancel" small>Cancel</v-btn>
-            </div>
+              <input type="file" ref="fileInput" hidden accept="image/*" @change="onFilePicked">
+              <p></p>
+              <v-divider color="white"></v-divider>
+              <v-divider color="white"></v-divider>
+              <v-tabs v-model="active" color="black" centered dark slider-color="yellow">
+                <v-tab :key="Description" ripple>
+                  Description
+                </v-tab>
+                <v-tab :key="Reviews" ripple>
+                  Reviews
+                </v-tab>
+                <v-tab-item
+                  :key="Description"
+                >
+                  <v-card flat color="black" class="text-xs-center ma-3 white--text font-weight-bold black">
+                    <p class="font-weight-regular">DESCRIPTION
+                      <v-btn id = "edit" @click="edit" icon>
+                        <v-icon color="white">edit</v-icon>
+                      </v-btn>
+                    </p>
+                    <div id="des">
+                      <textarea id="description" v-model="description" spellcheck="false" readonly></textarea>
+                      <v-divider color="black"></v-divider>
+                      <v-btn @click="save" id="save" small>Save</v-btn><v-btn @click="cancel" id="cancel" small>Cancel</v-btn>
+                    </div>
+                  </v-card>
+                </v-tab-item>
+                <v-tab-item :key="Reviews">
+                  <v-card flat color="black" class="text-xs-center ma-3 white--text font-weight-bold black" v-for="review in reviewers" :key="review.fullname">
+                    <v-list dark two-line>
+                      <template>
+                        <v-list-tile
+                          :key="review.rating"
+                          avatar
+                        >
+                          <v-list-tile-avatar>
+                            <img :src="review.imageUrl">
+                          </v-list-tile-avatar>
+                          <v-list-tile-content>
+                            <v-list-tile-title>
+                              <v-rating v-model="review.rating" background-color="orange lighten-3" color="orange" small readonly>
+                              </v-rating>
+                            </v-list-tile-title>
+                            <v-list-tile-sub-title v-html="review.text"></v-list-tile-sub-title>
+                          </v-list-tile-content>
+                        </v-list-tile>
+                      </template>
+                    </v-list>
+                  </v-card>
+                </v-tab-item>
+              </v-tabs>
             </v-card-text>
           </v-card>
         </v-flex>
@@ -48,7 +85,7 @@
   let user = fb.auth.currentUser;
 
   export default {
-    components: {PopupPerformer},
+    components: { PopupPerformer },
     data() {
       return {
         profile: [],
@@ -57,7 +94,11 @@
         uid: '',
         imageUrl: '',
         image: null,
-        description: ''
+        description: '',
+        active: null,
+        reviewers: [],
+        Description: null,
+        Reviews: null
       }
     },
     created() {
@@ -67,6 +108,18 @@
         this.email = doc.data().email;
         this.uid = user.uid;
         this.description = doc.data().description;
+      });
+      db.collection('performers').doc(user.uid)
+        .collection('reviews').get().then(doc => {
+        const changes = doc.docChanges();
+        changes.forEach(change => {
+          if (change.type === 'added') {
+            this.reviewers.push({
+              ...change.doc.data(),
+              id: change.doc.id
+            })
+          }
+        })
       });
     },
     methods: {
