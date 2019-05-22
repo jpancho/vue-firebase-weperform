@@ -168,7 +168,7 @@
             </v-flex>
             <v-flex xs6 sm4 md2>
               <div class="caption grey--text">Price</div>
-              <div>{{ performer.price}}</div>
+              <div> ${{ performer.price}}</div>
             </v-flex>
             <v-flex xs6 sm4 md2>
               <div class="caption grey--text">Location</div>
@@ -395,7 +395,7 @@
           this.performers = [];
           db.collection('performers')
                   .where('talent', '==', this.selected_talent)
-                  .where('style', '==', this.selected_style)
+                  .where('style', 'array-contains', this.selected_style)
                   .get()
                   .then(doc => {
                     const changes = doc.docChanges();
@@ -424,7 +424,7 @@
           this.performers = [];
           let query = db.collection('performers');
           query = query.where('talent', '==', this.selected_talent);
-          query = query.where('style', '==', this.selected_style);
+          query = query.where('style', 'array-contains', this.selected_style);
           query = query.where('location', '==', this.selected_location);
           query.get()
             .then(doc => {
