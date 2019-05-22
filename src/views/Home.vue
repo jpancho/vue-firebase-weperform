@@ -13,7 +13,6 @@
       <div class="loader-section section-left"></div>
       <div class="loader-section section-right"></div>
     </div>
-    <p></p>
     <div class="md-layout">
       <div class="md-layout-item md-size-66 mx-auto md-small-size-100">
         <v-carousel
