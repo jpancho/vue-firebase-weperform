@@ -73,7 +73,8 @@
           </v-card>
         </v-flex>
       </v-layout>
-      <PopupPerformer/>
+      <PopupPerformer v-show="!isPerformer"/>
+      <PopupEditPerformer v-show="isPerformer"/>
     </v-container>
   </div>
 </template>
@@ -82,10 +83,11 @@
   const fb = require('../firebase');
   import { db } from '../firebase';
   import PopupPerformer from '../views/PopupPerformer';
+  import PopupEditPerformer from '../views/PopupEditPerformer'
   let user = fb.auth.currentUser;
 
   export default {
-    components: { PopupPerformer },
+    components: { PopupPerformer, PopupEditPerformer },
     data() {
       return {
         profile: [],
@@ -95,6 +97,7 @@
         imageUrl: '',
         image: null,
         description: '',
+        isPerformer: false,
         active: null,
         reviewers: [],
         Description: null,
@@ -108,6 +111,19 @@
         this.email = doc.data().email;
         this.uid = user.uid;
         this.description = doc.data().description;
+        this.isPerformer = doc.data().isPerformer;
+      });
+      db.collection('performers').doc(user.uid)
+        .collection('reviews').get().then(doc => {
+        const changes = doc.docChanges();
+        changes.forEach(change => {
+          if (change.type === 'added') {
+            this.reviewers.push({
+              ...change.doc.data(),
+              id: change.doc.id
+            })
+          }
+        })
       });
       db.collection('performers').doc(user.uid)
         .collection('reviews').get().then(doc => {
