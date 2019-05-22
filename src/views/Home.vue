@@ -49,21 +49,21 @@
         <v-flex xs4 sm12 sm8>
           <v-toolbar-title class="text-uppercase">
             <h2 align="center">
-              <span class="blue-grey--text font-weight-bold display-2">Search</span>
+              <span class="blue-grey--text font-weight-bold display-2"><pre>Search</pre></span>
             </h2>
           </v-toolbar-title>
         </v-flex>
         <v-flex xs6 sm12 offset-sm1>
           <v-toolbar-title class="text-uppercase">
             <h2 align="center">
-              <span class="blue-grey--text font-weight-bold display-2">Save</span>
+              <span class="blue-grey--text font-weight-bold display-2"><pre>Save</pre></span>
             </h2>
           </v-toolbar-title>
         </v-flex>
         <v-flex xs8 sm12 offset-sm1>
           <v-toolbar-title class="text-uppercase">
             <h2 align="center">
-              <span class="blue-grey--text font-weight-bold display-2">Book</span>
+              <span class="blue-grey--text font-weight-bold display-2"><pre>Book</pre></span>
             </h2>
           </v-toolbar-title>
 
@@ -81,7 +81,7 @@
 
     <v-layout row>
       <h2 class="font-weight-light display-3 black--text">
-        Performers based on needs
+        <pre>Performers based on your needs</pre>
       </h2>
       <v-spacer></v-spacer>
       <v-flex md6>
@@ -95,14 +95,24 @@
       </v-flex>
     </v-layout>
     <p></p>
-    <v-divider color="grey"></v-divider>
-    <v-divider color="grey"></v-divider>
+    <v-layout row>
+      <v-flex xs5>
+        <v-divider color="grey"></v-divider>
+        <v-divider color="grey"></v-divider>
+      </v-flex>
+      <v-flex xs2>
+      </v-flex>
+      <v-flex xs5>
+        <v-divider color="grey"></v-divider>
+        <v-divider color="grey"></v-divider>
+      </v-flex>
+    </v-layout>
     <p></p>
     <v-layout row>
       <v-flex sm12>
         <v-card max-width="700px">
           <v-img
-            src="assets/img/talents/dancer_stage.jpg"
+            src="assets/img/talents/dancer_perform.jpg"
             height="300px"
           >
           </v-img>
@@ -110,23 +120,53 @@
       </v-flex>
       <v-flex xs2 sm12 sm6 align-end>
         <h2 class="font-weight-light display-3 black--text">
-          Filtered search options
+          <pre>Filtered search options</pre>
+          <v-flex xs2 sm12 sm6 align-end>
+<!--            <v-icon>-->
+<!--              check_circle-->
+<!--            </v-icon>-->
+            <h4 class="title font-weight-light"><v-icon>check_circle</v-icon> Genre</h4>
+            <p></p><h4 class="title font-weight-light"><v-icon>check_circle</v-icon> Styles</h4>
+            <p></p><h4 class="title font-weight-light"><v-icon>check_circle</v-icon> Pricing</h4>
+            <p></p><h4 class="title font-weight-light"><v-icon>check_circle</v-icon> Location</h4>
+            <p></p><h4 class="title font-weight-light"><v-icon>check_circle</v-icon> Experience</h4>
+            <p></p><h4 class="title font-weight-light"><v-icon>check_circle</v-icon> Availability</h4>
+<!--            <v-icon>-->
+<!--              check_circle <span>Styles</span>-->
+<!--            </v-icon>-->
+<!--            <v-icon>-->
+<!--              check_circle <span>Location</span>-->
+<!--            </v-icon>-->
+<!--            <v-icon>-->
+<!--              check_circle <span>Availability</span>-->
+<!--            </v-icon>-->
+          </v-flex>
         </h2>
       </v-flex>
     </v-layout>
     <p></p>
-    <v-divider color="grey"></v-divider>
-    <v-divider color="grey"></v-divider>
-    <p></p>
     <v-layout row>
+      <v-flex xs5>
+        <v-divider color="grey"></v-divider>
+        <v-divider color="grey"></v-divider>
+      </v-flex>
+      <v-flex xs2>
+      </v-flex>
+      <v-flex xs5>
+        <v-divider color="grey"></v-divider>
+        <v-divider color="grey"></v-divider>
+      </v-flex>
+    </v-layout>
+    <p></p>
+    <v-layout>
       <h2 class="font-weight-light display-3 black--text">
-        Platform promoting talent
+        <pre>Platform promoting talent</pre>
       </h2>
       <v-spacer></v-spacer>
       <v-flex md6>
         <v-card>
           <v-img
-            src="assets/img/talents/dancer_stage.jpg"
+            src="assets/img/talents/singer_perform.jpg"
             height="300px"
           >
           </v-img>
@@ -145,10 +185,12 @@
         <v-hover>
           <v-toolbar-title class="text-uppercase">
             <h2 align="center">
-              <span class="font-weight-bold display-1 black--text" @click="search" style="cursor: pointer">
-                Let's get started
-              </span>
-              <v-icon x-large @click="search" style="cursor: pointer">keyboard_arrow_right</v-icon>
+
+              <PopupPerformer/>
+<!--              <span class="headline black&#45;&#45;text" @click="search" style="cursor: pointer">-->
+<!--                Book your performer-->
+<!--                <v-icon x-large @click="search" style="cursor: pointer">keyboard_arrow_right</v-icon>-->
+<!--              </span>-->
             </h2>
           </v-toolbar-title>
         </v-hover>
@@ -159,8 +201,9 @@
 </template>
 
 <script>
-
+  import PopupPerformer from '../views/PopupPerformer';
 export default {
+  components: {PopupPerformer},
   data() {
     return {
       items: [
@@ -182,6 +225,9 @@ export default {
   methods: {
     search() {
       this.$router.replace('/performers')
+    },
+    become() {
+      this.$router.replace('/becomePerformer')
     }
   }
 }
