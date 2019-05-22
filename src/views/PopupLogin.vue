@@ -2,7 +2,10 @@
   <v-layout row justify-center>
     <v-dialog v-model="dialog" max-width="400">
       <template v-slot:activator="{ on }">
-        <v-btn flat color="grey" v-on="on">Login</v-btn>
+        <v-btn flat color="grey" v-on="on">
+          Login
+          <v-icon right small>exit_to_app</v-icon>
+        </v-btn>
       </template>
       <v-card class="elevation-12">
         <v-toolbar dark color="blue-grey">
