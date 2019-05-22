@@ -1,6 +1,5 @@
 <template>
   <div class="home">
-    <!--Landing Page-->
     <div id="loader-wrapper">
       <div id="quotes">
         <p class="display-1">Practice like you've never won.</p>
@@ -12,7 +11,6 @@
       <div class="loader-section section-left"></div>
       <div class="loader-section section-right"></div>
     </div>
-    <p></p>
     <div class="md-layout">
       <div class="md-layout-item md-size-66 mx-auto md-small-size-100">
         <v-carousel
