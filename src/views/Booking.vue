@@ -21,10 +21,6 @@
             <div class="caption grey--text">Style</div>
             <div>{{ performer.style }}</div>
           </v-flex>
-          <!--<v-flex xs6 sm4 md2>-->
-            <!--<div class="caption grey&#45;&#45;text">Email</div>-->
-            <!--<div>{{ performer.email }}</div>-->
-          <!--</v-flex>-->
           <v-flex xs6 sm4 md2>
             <div class="caption grey--text">Location</div>
             <div>{{ performer.location }}</div>
@@ -33,15 +29,18 @@
             <div class="caption grey--text">Date</div>
             <div>{{ performer.date }}</div>
           </v-flex>
-          <router-link flat color="blue" tag="button" :to="'/profile/' + performer.uid">
-            <v-btn flat color="blue">View More</v-btn>
-          </router-link>
-          <v-btn flat color="green" @click="review(performer.uid)">
-            review
-          </v-btn>
-          <v-btn flat color="red" @click="cancel(performer.uid)">
-            cancel
-          </v-btn>
+          <br/>
+          <v-flex xs6 sm4 md2>
+            <PopupProfile :uid = performer.uid :notBooked = false></PopupProfile>
+          </v-flex>
+          <v-flex xs6 sm4 md2>
+            <PopupReview :uid = performer.uid></PopupReview>
+          </v-flex>
+          <v-flex xs6 sm4 md2>
+            <v-btn flat color="red" @click="cancel(performer.uid)">
+              cancel
+            </v-btn>
+          </v-flex>
         </v-layout>
         <v-divider color="black"></v-divider>
         <v-divider color="black"></v-divider>
@@ -52,9 +51,12 @@
 
 <script>
   import { db, auth } from '../firebase';
+  import PopupReview from '../views/PopupReview';
+  import PopupProfile from '../views/PopupProfile';
   let user = auth.currentUser;
 
   export default {
+    components: {PopupReview, PopupProfile},
     name: "Booking",
     data() {
       return {
@@ -87,16 +89,6 @@
               }
             })
           })
-      },
-      review(uid) {
-        db.collection('performers').doc(uid)
-          .collection('reviews').doc(user.uid).update({
-            imageUrl: this.imageUrl
-        })
-          .then(function () {
-            // eslint-disable-next-line no-console
-            console.log("ImageUrl set!")
-        })
       },
       cancel(uid) {
         let ref = db.collection('performers').doc(uid);

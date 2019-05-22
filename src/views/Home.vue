@@ -13,6 +13,7 @@
       <div class="loader-section section-left"></div>
       <div class="loader-section section-right"></div>
     </div>
+    <p></p>
     <div class="md-layout">
       <div class="md-layout-item md-size-66 mx-auto md-small-size-100">
         <v-carousel
@@ -25,6 +26,7 @@
                 navigationEnabled
                 navigationNextLabel="<i class='material-icons'>keyboard_arrow_right</i>"
                 navigationPrevLabel="<i class='material-icons'>keyboard_arrow_left</i>"
+                style="cursor: pointer"
         >
           <md-card>
             <v-carousel-item
@@ -39,22 +41,50 @@
         </v-carousel>
       </div>
     </div>
+    <p></p>
     <v-toolbar-title class="text-uppercase">
       <h2 align="center">
         <span class="font-weight-light display-4 grey--text">We</span>
-        <span class="display-4">Perform</span>
+        <span class="display-4 black--text">Perform</span>
       </h2>
+      <p></p>
+      <v-layout>
+        <v-flex xs4 sm12 sm8>
+          <v-toolbar-title class="text-uppercase">
+            <h2 align="center">
+              <span class="blue-grey--text font-weight-bold display-2">Search</span>
+            </h2>
+          </v-toolbar-title>
+        </v-flex>
+        <v-flex xs6 sm12 offset-sm1>
+          <v-toolbar-title class="text-uppercase">
+            <h2 align="center">
+              <span class="blue-grey--text font-weight-bold display-2">Save</span>
+            </h2>
+          </v-toolbar-title>
+        </v-flex>
+        <v-flex xs8 sm12 offset-sm1>
+          <v-toolbar-title class="text-uppercase">
+            <h2 align="center">
+              <span class="blue-grey--text font-weight-bold display-2">Book</span>
+            </h2>
+          </v-toolbar-title>
+
+        </v-flex>
+      </v-layout>
+      <p></p>
     </v-toolbar-title>
-    <h3 class="font-weight-light">
-      WePerform is a web application (web app) designed to streamline the process of booking performers for events. Each performer has a profile describing their skill, expertise, and contact information, allowing patrons to search and book them with ease. This service saves the patrons time, effort, and money in search of their ideal performer, while also providing performers with a dedicated platform to promote themselves.
+    <h3 class="font-weight-light black--text">
+      Designed to streamline the process of booking performers for events. Each performer has a profile describing their skill, expertise, and contact information, allowing patrons to search and book them with ease. This service saves the patrons time, effort, and money in search of their ideal performer, while also providing performers with a dedicated platform to promote themselves.
     </h3>
     <p></p>
     <v-divider color="grey"></v-divider>
     <v-divider color="grey"></v-divider>
     <p></p>
+
     <v-layout row>
-      <h2 class="font-weight-light display-3 text--black">
-        Search. Save. Book.
+      <h2 class="font-weight-light display-3 black--text">
+        Performers based on needs
       </h2>
       <v-spacer></v-spacer>
       <v-flex md6>
@@ -82,9 +112,9 @@
         </v-card>
       </v-flex>
       <v-flex xs2 sm12 sm6 align-end>
-        <h1 class="font-weight-light display-3 fill-height">
-          Filtered searching options
-        </h1>
+        <h2 class="font-weight-light display-3 black--text">
+          Filtered search options
+        </h2>
       </v-flex>
     </v-layout>
     <p></p>
@@ -92,9 +122,9 @@
     <v-divider color="grey"></v-divider>
     <p></p>
     <v-layout row>
-      <h1 class="font-weight-light display-3">
-        Save your time, effort & money
-      </h1>
+      <h2 class="font-weight-light display-3 black--text">
+        Platform promoting talent
+      </h2>
       <v-spacer></v-spacer>
       <v-flex md6>
         <v-card>
@@ -109,15 +139,24 @@
     <p></p>
     <v-divider color="grey"></v-divider>
     <v-divider color="grey"></v-divider>
-    <p></p>
-    <v-toolbar-title class="blue-grey--text text-uppercase">
-      <h2 align="center">
-        <span class="font-weight-light display-3">Platform promoting talent.</span>
-      </h2>
-    </v-toolbar-title>
-    <p></p>
     <v-divider color="grey"></v-divider>
     <v-divider color="grey"></v-divider>
+    <v-divider color="grey"></v-divider>
+    <p></p>
+    <v-layout>
+      <v-flex xs4 sm12 sm8>
+        <v-hover>
+          <v-toolbar-title class="text-uppercase">
+            <h2 align="center">
+              <span class="font-weight-bold display-1 black--text" @click="search" style="cursor: pointer">
+                Let's get started
+              </span>
+              <v-icon x-large @click="search" style="cursor: pointer">keyboard_arrow_right</v-icon>
+            </h2>
+          </v-toolbar-title>
+        </v-hover>
+      </v-flex>
+    </v-layout>
     <p></p>
   </div>
 </template>

@@ -7,7 +7,7 @@
         </v-btn>
       </template>
       <v-card class="elevation-12">
-        <v-toolbar dark color="primary">
+        <v-toolbar dark color="blue-grey">
           <v-toolbar-title>Log out</v-toolbar-title>
           <v-spacer></v-spacer>
         </v-toolbar>
@@ -17,12 +17,12 @@
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn
-            color="primary"
+            color="error"
             @click="logout"
-          >Log out
+          >
+            Log out
           </v-btn>
           <v-btn
-            color="primary"
             @click="dialog = false"
           >Cancel
           </v-btn>
@@ -47,7 +47,7 @@
       },
       signOut() {
         this.$store.dispatch('signOutAction');
-        this.$router.replace('/home');
+        this.$router.replace('/');
       }
     }
   }
