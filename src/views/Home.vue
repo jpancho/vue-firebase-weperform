@@ -1,9 +1,7 @@
 <template>
   <div class="home">
-    <!--Landing Page-->
     <div id="loader-wrapper">
       <div id="quotes">
-<!--        <p class="display-1">"We’re all connected by a love for perform!"</p>-->
         <p class="display-1">Practice like you've never won.</p>
         <p class="display-2">Perform like you've never lost.</p>
         <span class="font-weight-light text--darken-4 display-4 text-uppercase blue--text">We</span>
