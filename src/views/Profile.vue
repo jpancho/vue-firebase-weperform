@@ -125,6 +125,18 @@
           }
         })
       });
+      db.collection('performers').doc(user.uid)
+        .collection('reviews').get().then(doc => {
+        const changes = doc.docChanges();
+        changes.forEach(change => {
+          if (change.type === 'added') {
+            this.reviewers.push({
+              ...change.doc.data(),
+              id: change.doc.id
+            })
+          }
+        })
+      });
     },
     methods: {
       cancel() {
