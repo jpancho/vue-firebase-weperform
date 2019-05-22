@@ -1,7 +1,7 @@
 <template>
   <v-container grid-list-xl>
   <v-layout row justify-center>
-    <v-dialog max-width="400">
+    <v-dialog v-model = "dialog" max-width="300">
       <v-btn round class="grey" color="white" slot="activator">Become a Performer!</v-btn>
       <v-card>
         <v-toolbar dark color="blue-grey">
@@ -140,30 +140,31 @@
         selected_location: '',
         selected_experience: '',
         price: '',
+        dialog: false,
         loader: null,
         loading4: false,
-          valid: false,
-          nameRules: [
-              v => !!v || 'Name is required'
-          ],
-          talentRules: [
-              v => !!v || 'Talent is required'
-          ],
-          styleRules: [
-              v => !!v || 'Talent is required'
-          ],
-          locationRules: [
-              v => !!v || 'Location is required'
-          ],
-          experienceRules: [
-              v => !!v || 'Experience is required'
-          ],
-          priceRules: [
-              v => !!v || 'Price is required',
-              v =>
-                  v >= 0 ||
-                  'Price must be a positive number'
-          ]
+        valid: false,
+        nameRules: [
+            v => !!v || 'Name is required'
+        ],
+        talentRules: [
+            v => !!v || 'Talent is required'
+        ],
+        styleRules: [
+            v => !!v || 'Talent is required'
+        ],
+        locationRules: [
+            v => !!v || 'Location is required'
+        ],
+        experienceRules: [
+            v => !!v || 'Experience is required'
+        ],
+        priceRules: [
+            v => !!v || 'Price is required',
+            v =>
+                v >= 0 ||
+                'Price must be a positive number'
+        ]
       }
     },
     watch: {
@@ -173,7 +174,9 @@
 
         setTimeout(() => (this[l] = false), 3000);
 
-        this.loader = null
+        this.loader = null;
+
+        setTimeout(() => this.dialog = false, 3000);
       }
     },
     computed: {

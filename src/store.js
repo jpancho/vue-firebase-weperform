@@ -37,7 +37,7 @@ export default new Vuex.Store({
       commit('setStatus', 'loading');
       auth.createUserWithEmailAndPassword(payload.email, payload.password)
         .then((response) => {
-          alert('Successfully signed up!');
+          // alert('Successfully signed up!');
           commit('setUser', response.user.uid);
           commit('setStatus', 'success');
           commit('setError', null);
@@ -51,7 +51,8 @@ export default new Vuex.Store({
               imageUrl: image
             })
             .then(function() {
-
+              // eslint-disable-next-line no-console
+              console.log("Sign up successful!")
             })
         })
         .catch((error) => {
@@ -62,7 +63,7 @@ export default new Vuex.Store({
     signInAction ({ commit }, payload) {
       auth.signInWithEmailAndPassword(payload.email, payload.password)
         .then((response) => {
-          alert('Successfully signed in!');
+          // alert('Successfully signed in!');
           commit('setUser', response.user.uid);
           commit('setStatus', 'success');
           commit('setError', null);
@@ -76,7 +77,7 @@ export default new Vuex.Store({
       auth.signOut()
       // eslint-disable-next-line no-unused-vars
         .then((response) => {
-          alert('Signed out!');
+          // alert('Signed out!');
           commit('setUser', null);
           commit('setStatus', 'success');
           commit('setError', null);
