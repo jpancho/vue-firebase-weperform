@@ -17,7 +17,8 @@
           <v-btn
             color="error"
             @click="logout"
-          >Log out
+          >
+            Log out
           </v-btn>
           <v-btn
             @click="dialog = false"
@@ -44,7 +45,7 @@
       },
       signOut() {
         this.$store.dispatch('signOutAction');
-        this.$router.replace('/home');
+        this.$router.replace('/');
       }
     }
   }

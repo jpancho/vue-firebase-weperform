@@ -48,7 +48,7 @@
                         </v-list-tile-avatar>
                         <v-list-tile-content>
                           <v-list-tile-title>
-                            <v-rating v-model="review.rating" background-color="orange lighten-3" color="orange" small readonly="true">
+                            <v-rating v-model="review.rating" background-color="orange lighten-3" color="orange" small readonly>
                             </v-rating>
                           </v-list-tile-title>
                           <v-list-tile-sub-title v-html="review.text"></v-list-tile-sub-title>
@@ -84,7 +84,9 @@
         date: new Date().toISOString().substr(0, 10),
 
         active: null,
-        reviewers: []
+        reviewers: [],
+        Description: null,
+        Reviews: null
       }
     },
     created() {
