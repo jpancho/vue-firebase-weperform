@@ -1,18 +1,15 @@
-
 <template xmlns:v-slot="http://www.w3.org/1999/XSL/Transform">
   <v-container grid-list-xl>
-  <v-layout row justify-center>
-    <v-dialog v-model = "dialog" max-width="400">
-      <v-btn round class="grey" color="white" slot="activator">
-        <pre class="font-weight-bold subheading">Become a Performer</pre>
-      </v-btn>
-      <v-card>
-        <v-toolbar dark color="blue-grey">
-          <v-toolbar-title><pre>Let's make you a performer...</pre></v-toolbar-title>
-          <v-spacer></v-spacer>
-        </v-toolbar>
-        <v-card-text>
-          <v-form  v-model="valid" lazy-validation>
+    <v-layout row justify-center>
+      <v-dialog v-model = "dialog" max-width="300">
+        <v-btn round class="grey" color="white" slot="activator">Edit Performer Details</v-btn>
+        <v-card>
+          <v-toolbar dark color="blue-grey">
+            <v-toolbar-title>Performer Details</v-toolbar-title>
+            <v-spacer></v-spacer>
+          </v-toolbar>
+          <v-card-text>
+            <v-form  v-model="valid" lazy-validation>
               <v-text-field
                 label="Preferred name"
                 v-model="fullname"
@@ -44,13 +41,13 @@
                         v-on="on"
                       ></v-text-field>
                     </template>
-                    <v-card class="rg-popover">
-                      <v-card-text>
-                        <span v-bind:key="style.text" v-for='style in filteredStyles'>
-                          <v-checkbox v-model="selected_style" :label="style.text" :value="style.value" hide-details></v-checkbox>
-                        </span>
-                      </v-card-text>
-                    </v-card>
+                      <v-card class="rg-popover">
+                        <v-card-text>
+                      <span v-bind:key="style.text" v-for='style in filteredStyles'>
+                        <v-checkbox v-model="selected_style" :label="style.text" :value="style.value" hide-details></v-checkbox>
+                      </span>
+                        </v-card-text>
+                      </v-card>
                   </v-menu>
                 </v-flex>
               </v-layout>
@@ -74,33 +71,33 @@
                 suffix="/hr"
                 :rules="priceRules"
               ></v-text-field>
-            <v-layout row justify-center>
-              <v-card-actions>
-                <v-spacer></v-spacer>
-                <v-btn
-                  :loading="loading4"
-                  :disabled="!valid"
-                  color="info"
-                  @click="loader = 'loading4'"
-                  class="success"
-                  v-on:click="bePerformer"
-                >
-                  Become a Performer
-                  <span class="custom-loader"></span>
-                </v-btn>
-              </v-card-actions>
-            </v-layout>
-          </v-form>
-        </v-card-text>
-      </v-card>
-    </v-dialog>
-  </v-layout>
+              <v-layout row justify-center>
+                <v-card-actions>
+                  <v-spacer></v-spacer>
+                  <v-btn
+                    :loading="loading4"
+                    :disabled="!valid"
+                    color="info"
+                    @click="loader = 'loading4'"
+                    class="success"
+                    v-on:click="bePerformer"
+                  >
+                    Edit Details
+                    <span class="custom-loader"></span>
+                  </v-btn>
+                </v-card-actions>
+              </v-layout>
+            </v-form>
+          </v-card-text>
+        </v-card>
+      </v-dialog>
+    </v-layout>
   </v-container>
-  </div>
 </template>
 
 <script>
   import { db, auth } from '../firebase';
+  let user = auth.currentUser;
 
   export default {
     data() {
@@ -172,27 +169,37 @@
         loading4: false,
         valid: false,
         nameRules: [
-            v => !!v || 'Name is required'
+          v => !!v || 'Name is required'
         ],
         talentRules: [
-            v => !!v || 'Talent is required'
+          v => !!v || 'Talent is required'
         ],
         styleRules: [
-            v => !!v || 'Talent is required'
+          v => !!v || 'Talent is required'
         ],
         locationRules: [
-            v => !!v || 'Location is required'
+          v => !!v || 'Location is required'
         ],
         experienceRules: [
-            v => !!v || 'Experience is required'
+          v => !!v || 'Experience is required'
         ],
         priceRules: [
-            v => !!v || 'Price is required',
-            v =>
-                v >= 0 ||
-                'Price must be a positive number'
+          v => !!v || 'Price is required',
+          v =>
+            v >= 0 ||
+            'Price must be a positive number'
         ]
       }
+    },
+    created() {
+      db.collection('performers').doc(user.uid).get().then(doc => {
+        this.fullname = doc.data().fullname;
+        this.selected_talent = doc.data().talent;
+        this.selected_style = doc.data().style;
+        this.selected_location = doc.data().location;
+        this.selected_experience = doc.data().experience;
+        this.price = doc.data().price;
+      })
     },
     watch: {
       loader () {
@@ -222,29 +229,18 @@
         }
 
         else {
-          let user = auth.currentUser;
-          db.collection('performers').doc(user.uid).set({
-            uid: user.uid,
-            email: user.email,
+          db.collection('performers').doc(user.uid).update({
             fullname: this.fullname,
             talent: this.selected_talent,
             style: this.selected_style,
             location: this.selected_location,
             experience: this.selected_experience,
-            price: this.price,
-            isBooked: false
+            price: this.price
           })
             .then(function () {
               // eslint-disable-next-line no-console
-              console.log("Performer created!")
+              console.log("Performer updated!")
             });
-          db.collection('users').doc(user.uid).update({
-            isPerformer: true
-          })
-            .then(function () {
-              // eslint-disable-next-line no-console
-              console.log("isPerformer set to true")
-            })
         }
       }
     },

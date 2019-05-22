@@ -48,7 +48,8 @@ export default new Vuex.Store({
               uid: response.user.uid,
               email: payload.email,
               fullname: payload.fullname,
-              imageUrl: image
+              imageUrl: image,
+              isPerformer: false
             })
             .then(function() {
               // eslint-disable-next-line no-console

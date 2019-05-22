@@ -1,7 +1,7 @@
 <template>
   <v-container grid-list-xl>
     <v-layout row justify-center>
-      <v-dialog v-model = "dialog" max-width="300">
+      <v-dialog v-model = "dialog" max-width="500">
         <v-btn flat color="green" slot="activator">Post a Review</v-btn>
         <v-card>
           <v-toolbar dark color="blue-grey">
@@ -11,10 +11,10 @@
           <v-card-text>
             <v-form>
               <v-rating v-model="rating" background-color="orange lighten-3" color="orange" small></v-rating>
-              <v-text-field
-                label="Review"
+              <v-textarea outline auto-grow
+                label="Comment"
                 v-model="subtext"
-              ></v-text-field>
+              ></v-textarea>
               <v-layout row justify-center>
                 <v-card-actions>
                   <v-spacer></v-spacer>
