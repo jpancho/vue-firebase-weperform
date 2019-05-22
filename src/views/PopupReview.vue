@@ -11,10 +11,10 @@
           <v-card-text>
             <v-form>
               <v-rating v-model="rating" background-color="orange lighten-3" color="orange" small></v-rating>
-              <textarea rows="4" cols="66"
-                label="Review"
+              <v-textarea outline auto-grow
+                label="Comment"
                 v-model="subtext"
-              ></textarea>
+              ></v-textarea>
               <v-layout row justify-center>
                 <v-card-actions>
                   <v-spacer></v-spacer>

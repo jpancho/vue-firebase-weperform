@@ -6,7 +6,7 @@
         <span class="display-1"> Performer</span>
       </h1>
     </v-toolbar-title>
-    <p class="grey--text headline font-weight-regular" style="text-align: center">Select talent</p>
+    <p class="grey--text headline font-weight-regular" style="text-align: center">Select Category</p>
     <v-layout align-center justify-space-around>
       <!--talent images-->
       <!--Dancer-->
@@ -100,6 +100,7 @@
               label="Select style"
               v-model="selected_style"
               solo
+              v-show="categorySelected"
             ></v-select>
           </v-flex>
         </v-card-actions>
@@ -110,6 +111,7 @@
               label="Select location"
               v-model="selected_location"
               solo
+              v-show="categorySelected"
             ></v-select>
           </v-flex>
         </v-card-actions>
@@ -210,35 +212,35 @@
         //each section is dependant on option selected in first dropdown menu
         styles: [
           { text: 'Select style', value: '', dependency: "Dancer"},
-          { text: 'Ballet', value: "Ballet", dependency: "Dancer" },
-          { text: 'Bhangra', value: "Bhangra", dependency: "Dancer" },
-          { text: 'Bollywood', value: "Bollywood", dependency: "Dancer" },
-          { text: 'Break', value: "Break", dependency: "Dancer" },
-          { text: 'Hip-Hop', value: "Hiphop", dependency: "Dancer" },
-          { text: 'Pop', value: "Pop", dependency: "Dancer" },
+          { text: 'Ballet', value: " Ballet", dependency: "Dancer" },
+          { text: 'Bhangra', value: " Bhangra", dependency: "Dancer" },
+          { text: 'Bollywood', value: " Bollywood", dependency: "Dancer" },
+          { text: 'Break', value: " Break", dependency: "Dancer" },
+          { text: 'Hip-Hop', value: " Hiphop", dependency: "Dancer" },
+          { text: 'Pop', value: " Pop", dependency: "Dancer" },
 
           { text: 'Select style', value: '', dependency: "Singer"},
-          { text: 'Acoustic Blues', value: "Blues", dependency: "Singer" },
-          { text: 'Americana', value: "Americana", dependency: "Singer" },
-          { text: 'Classical', value: "Classical", dependency: "Singer" },
-          { text: 'Comedy', value: "Comedy", dependency: "Singer" },
-          { text: 'Country', value: "Country", dependency: "Singer" },
-          { text: 'Dubstep', value: "Dubstep", dependency: "Singer" },
-          { text: 'Glitch House', value: "Glitch", dependency: "Singer" },
-          { text: 'Hip-Hop', value: "Hiphop", dependency: "Singer" },
-          { text: 'Jazz', value: "Jazz", dependency: "Singer" },
-          { text: 'Novelty', value: "Novelty", dependency: "Singer" },
-          { text: 'Parody Music', value: "Parody", dependency: "Singer" },
-          { text: 'Rock', value: "Rock", dependency: "Singer"},
+          { text: 'Acoustic Blues', value: " Blues", dependency: "Singer" },
+          { text: 'Americana', value: " Americana", dependency: "Singer" },
+          { text: 'Classical', value: " Classical", dependency: "Singer" },
+          { text: 'Comedy', value: " Comedy", dependency: "Singer" },
+          { text: 'Country', value: " Country", dependency: "Singer" },
+          { text: 'Dubstep', value: " Dubstep", dependency: "Singer" },
+          { text: 'Glitch House', value: " Glitch", dependency: "Singer" },
+          { text: 'Hip-Hop', value: " Hiphop", dependency: "Singer" },
+          { text: 'Jazz', value: " Jazz", dependency: "Singer" },
+          { text: 'Novelty', value: " Novelty", dependency: "Singer" },
+          { text: 'Parody Music', value: " Parody", dependency: "Singer" },
+          { text: 'Rock', value: " Rock", dependency: "Singer"},
 
           { text: 'Select style', value: '', dependency: "Musician"},
-          { text: 'Blues', value: "Blues", dependency: "Musician" },
-          { text: 'Classical', value: "Classical", dependency: "Musician" },
-          { text: 'Hip-Hop', value: "Hiphop", dependency: "Musician" },
-          { text: 'Jazz', value: "Jazz", dependency: "Musician" },
-          { text: 'Opera', value: "Opera", dependency: "Musician" },
-          { text: 'Pop', value: "Pop", dependency: "Musician" },
-          { text: 'Rock', value: "Rock", dependency: "Musician" },
+          { text: 'Blues', value: " Blues", dependency: "Musician" },
+          { text: 'Classical', value: " Classical", dependency: "Musician" },
+          { text: 'Hip-Hop', value: " Hiphop", dependency: "Musician" },
+          { text: 'Jazz', value: " Jazz", dependency: "Musician" },
+          { text: 'Opera', value: " Opera", dependency: "Musician" },
+          { text: 'Pop', value: " Pop", dependency: "Musician" },
+          { text: 'Rock', value: " Rock", dependency: "Musician" },
         ],
         location: [
           { text: 'Select location', value: ''},
@@ -264,7 +266,8 @@
         selected_style: '',
         selected_location: '',
         performers: [],
-        uid: ''
+        uid: '',
+        categorySelected: false
       }
     },
     computed: {
@@ -286,18 +289,21 @@
         document.getElementById("d").style.outline = "7px solid orange";
         document.getElementById("m").style.outline = "none";
         document.getElementById("s").style.outline = "none";
+        this.categorySelected = true;
       },
       musician(){
         this.selected_talent="Musician";
         document.getElementById("m").style.outline = "7px solid orange";
         document.getElementById("d").style.outline = "none";
         document.getElementById("s").style.outline = "none";
+        this.categorySelected = true;
       },
       singer(){
         this.selected_talent="Singer";
         document.getElementById("s").style.outline = "7px solid orange";
         document.getElementById("m").style.outline = "none";
         document.getElementById("d").style.outline = "none";
+        this.categorySelected = true;
       },
       display() {
         //if no style and location is selected, display list of matching talent
