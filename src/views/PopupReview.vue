@@ -1,7 +1,7 @@
 <template>
   <v-container grid-list-xl>
     <v-layout row justify-center>
-      <v-dialog max-width="300">
+      <v-dialog v-model = "dialog" max-width="300">
         <v-btn flat color="green" slot="activator">Post a Review</v-btn>
         <v-card>
           <v-toolbar dark color="blue-grey">
@@ -55,6 +55,7 @@
         rating: 3,
         loader: null,
         loading4: false,
+        dialog: false
       }
     },
     created() {
@@ -70,7 +71,9 @@
 
         setTimeout(() => (this[l] = false), 2000);
 
-        this.loader = null
+        this.loader = null;
+
+        setTimeout(() => this.dialog = false, 2000);
       }
     },
     methods: {

@@ -175,7 +175,7 @@
             <v-flex xs6 sm4 md2>
               <PopupProfile :uid = performer.uid :notBooked = true></PopupProfile>
             </v-flex>
-            <v-btn flat color="green" @click="book(performer.uid, performer.email, performer.fullname, performer.talent, performer.style, performer.location)">
+            <v-btn flat color="green" :disabled="performer.sameUser" @click="book(performer.uid, performer.email, performer.fullname, performer.talent, performer.style, performer.location)">
               Book
             </v-btn>
           </v-layout>
@@ -190,6 +190,7 @@
   import { db, auth } from '../firebase';
   import PopupProfile from '../views/PopupProfile';
 
+  let user = auth.currentUser;
   export default {
     components: { PopupProfile },
     data() {
@@ -208,6 +209,7 @@
         //text and values for second dropdown menu
         //each section is dependant on option selected in first dropdown menu
         styles: [
+          { text: 'Select style', value: '', dependency: "Dancer"},
           { text: 'Ballet', value: "Ballet", dependency: "Dancer" },
           { text: 'Bhangra', value: "Bhangra", dependency: "Dancer" },
           { text: 'Bollywood', value: "Bollywood", dependency: "Dancer" },
@@ -215,6 +217,7 @@
           { text: 'Hip-Hop', value: "Hiphop", dependency: "Dancer" },
           { text: 'Pop', value: "Pop", dependency: "Dancer" },
 
+          { text: 'Select style', value: '', dependency: "Singer"},
           { text: 'Acoustic Blues', value: "Blues", dependency: "Singer" },
           { text: 'Americana', value: "Americana", dependency: "Singer" },
           { text: 'Classical', value: "Classical", dependency: "Singer" },
@@ -228,6 +231,7 @@
           { text: 'Parody Music', value: "Parody", dependency: "Singer" },
           { text: 'Rock', value: "Rock", dependency: "Singer"},
 
+          { text: 'Select style', value: '', dependency: "Musician"},
           { text: 'Blues', value: "Blues", dependency: "Musician" },
           { text: 'Classical', value: "Classical", dependency: "Musician" },
           { text: 'Hip-Hop', value: "Hiphop", dependency: "Musician" },
@@ -237,6 +241,7 @@
           { text: 'Rock', value: "Rock", dependency: "Musician" },
         ],
         location: [
+          { text: 'Select location', value: ''},
           { text: 'Abbotsford', value: "Abbotsford" },
           { text: 'Burnaby', value: "Burnaby" },
           { text: 'Chilliwack', value: "Chilliwack" },
@@ -259,7 +264,7 @@
         selected_style: '',
         selected_location: '',
         performers: [],
-        uid: '',
+        uid: ''
       }
     },
     computed: {
@@ -305,10 +310,20 @@
               const changes = doc.docChanges();
               changes.forEach(change => {
                 if (change.type === 'added') {
-                  this.performers.push({
-                    ...change.doc.data(),
-                    id: change.doc.id
-                  })
+                  if(change.doc.data().uid === user.uid) {
+                    this.performers.push({
+                      ...change.doc.data(),
+                      id: change.doc.id,
+                      sameUser: true
+                    })
+                  }
+                  else {
+                    this.performers.push({
+                      ...change.doc.data(),
+                      id: change.doc.id,
+                      sameUser: false
+                    })
+                  }
                 }
               })
             })
@@ -323,10 +338,20 @@
                     const changes = doc.docChanges();
                     changes.forEach(change => {
                       if (change.type === 'added') {
-                        this.performers.push({
-                          ...change.doc.data(),
-                          id: change.doc.id
-                        })
+                        if(change.doc.data().uid === user.uid) {
+                          this.performers.push({
+                            ...change.doc.data(),
+                            id: change.doc.id,
+                            sameUser: true
+                          })
+                        }
+                        else {
+                          this.performers.push({
+                            ...change.doc.data(),
+                            id: change.doc.id,
+                            sameUser: false
+                          })
+                        }
                       }
                     })
                   })
@@ -342,10 +367,20 @@
                       const changes = doc.docChanges();
                       changes.forEach(change => {
                         if (change.type === 'added') {
-                          this.performers.push({
-                            ...change.doc.data(),
-                            id: change.doc.id
-                          })
+                          if(change.doc.data().uid === user.uid) {
+                            this.performers.push({
+                              ...change.doc.data(),
+                              id: change.doc.id,
+                              sameUser: true
+                            })
+                          }
+                          else {
+                            this.performers.push({
+                              ...change.doc.data(),
+                              id: change.doc.id,
+                              sameUser: false
+                            })
+                          }
                         }
                       })
                     })
@@ -360,10 +395,20 @@
                     const changes = doc.docChanges();
                     changes.forEach(change => {
                       if (change.type === 'added') {
-                        this.performers.push({
-                          ...change.doc.data(),
-                          id: change.doc.id
-                        })
+                        if(change.doc.data().uid === user.uid) {
+                          this.performers.push({
+                            ...change.doc.data(),
+                            id: change.doc.id,
+                            sameUser: true
+                          })
+                        }
+                        else {
+                          this.performers.push({
+                            ...change.doc.data(),
+                            id: change.doc.id,
+                            sameUser: false
+                          })
+                        }
                       }
                     })
                   })
@@ -380,10 +425,20 @@
               const changes = doc.docChanges();
               changes.forEach(change => {
                 if (change.type === 'added') {
-                  this.performers.push({
-                    ...change.doc.data(),
-                    id: change.doc.id
-                  })
+                  if(change.doc.data().uid === user.uid) {
+                    this.performers.push({
+                      ...change.doc.data(),
+                      id: change.doc.id,
+                      sameUser: true
+                    })
+                  }
+                  else {
+                    this.performers.push({
+                      ...change.doc.data(),
+                      id: change.doc.id,
+                      sameUser: false
+                    })
+                  }
                 }
               })
             })
@@ -408,7 +463,6 @@
       book(uid, email,fullname,talent,style,location) {
         let ref = db.collection('performers').doc(uid);
 
-        let user = auth.currentUser;
         db.collection('users').doc(user.uid)
           .collection('performersBooked').doc(uid).set({
           uid: uid,

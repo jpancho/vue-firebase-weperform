@@ -41,10 +41,14 @@
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn
-                  color="success"
-                  :disabled="!valid"
-                  @click="register"
-          >Sign up
+            :loading="loading4"
+            :disabled="!valid"
+            color="success"
+            @click="loader = 'loading4'"
+            v-on:click="register"
+          >
+            Sign up
+            <span class="custom-loader"></span>
           </v-btn>
         </v-card-actions>
       </v-card>
@@ -61,6 +65,9 @@
         email: '',
         password: '',
         valid: false,
+        dialog: false,
+        loader: null,
+        loading4: false,
         emailRules: [
           v => !!v || 'E-mail is required',
           v => /.+@.+/.test(v) || 'E-mail must be valid'
@@ -76,6 +83,18 @@
         ]
       }
     },
+    watch: {
+      loader () {
+        const l = this.loader;
+        this[l] = !this[l];
+
+        setTimeout(() => (this[l] = false), 1000);
+
+        this.loader = null;
+
+        setTimeout(() => this.dialog = false, 1000);
+      }
+    },
     methods: {
       register() {
         const user = {
@@ -85,13 +104,46 @@
         };
 
         this.$store.dispatch('signUpAction', user);
-        this.$router.replace('/home');
       }
     }
   }
 </script>
 
-
 <style scoped>
-
+  .custom-loader {
+    animation: loader 1s infinite;
+    display: flex;
+  }
+  @-moz-keyframes loader {
+    from {
+      transform: rotate(0);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  @-webkit-keyframes loader {
+    from {
+      transform: rotate(0);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  @-o-keyframes loader {
+    from {
+      transform: rotate(0);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes loader {
+    from {
+      transform: rotate(0);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
 </style>
