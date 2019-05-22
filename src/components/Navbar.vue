@@ -25,33 +25,16 @@
         <PopupLogin v-if="user === null"/>
       </v-toolbar-items>
 		</v-toolbar>
-
-<!--		<v-navigation-drawer app v-model="drawer" class="black">-->
-<!--			<v-list>-->
-<!--				<v-list-tile v-for="link in links" :key="link.text" router :to="link.route">-->
-<!--					<v-list-tile-action>-->
-<!--						<v-icon class="white&#45;&#45;text">{{ link.icon }}</v-icon>-->
-<!--					</v-list-tile-action>-->
-<!--					<v-list-tile-content>-->
-<!--						<v-list-tile-title class="white&#45;&#45;text">{{ link.text }}</v-list-tile-title>-->
-<!--					</v-list-tile-content>-->
-<!--				</v-list-tile>-->
-<!--				<p></p>-->
-<!--				<PopupPerformer/>-->
-<!--			</v-list>-->
-<!--		</v-navigation-drawer>-->
 	</nav>
 </template>
 
 <script>
-	import PopupPerformer from '../views/PopupPerformer';
 	import PopupRegister from '../views/PopupRegister';
 	import PopupLogin from '../views/PopupLogin';
-  import Signout from '../views/Signout';
   import { mapState } from 'vuex';
 
 	export default {
-		components: { PopupRegister, PopupLogin, Signout, PopupPerformer },
+		components: { PopupRegister, PopupLogin },
 		data() {
 			return {
 				drawer: false,
