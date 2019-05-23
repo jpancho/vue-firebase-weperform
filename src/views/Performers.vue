@@ -132,6 +132,7 @@
                 prepend-icon="event"
                 readonly
                 v-on="on"
+                v-show="categorySelected"
               ></v-text-field>
             </template>
             <v-date-picker v-model="date" @input="menu2 = false" landscape="landscape"></v-date-picker>
@@ -140,7 +141,7 @@
       </v-layout>
       <v-card-actions class="justify-center">
         <v-flex sm4 d-flex>
-          <v-btn round class="success" @click="display">Search</v-btn>
+          <v-btn round class="success" @click="display(convertDate(date))">Search</v-btn>
         </v-flex>
       </v-card-actions>
       <v-card-actions class="justify-center">
@@ -304,12 +305,13 @@
         document.getElementById("d").style.outline = "none";
         this.categorySelected = true;
       },
-      display() {
+      display(availability) {
         //if no style and location is selected, display list of matching talent
         if (this.selected_style === '' && this.selected_location === '') {
           this.performers = [];
           db.collection('performers')
             .where('talent', '==', this.selected_talent)
+            .where('availability', 'array-contains', availability)
             .get()
             .then(doc => {
               const changes = doc.docChanges();
@@ -338,6 +340,7 @@
           this.performers = [];
           db.collection('performers')
             .where('location', '==', this.selected_location)
+            .where('availability', 'array-contains', availability)
             .get()
             .then(doc => {
               const changes = doc.docChanges();
@@ -367,6 +370,7 @@
           db.collection('performers')
             .where('location', '==', this.selected_location)
             .where('talent', '==', this.selected_talent)
+            .where('availability', 'array-contains', availability)
             .get()
             .then(doc => {
               const changes = doc.docChanges();
@@ -395,6 +399,7 @@
           db.collection('performers')
             .where('talent', '==', this.selected_talent)
             .where('style', 'array-contains', this.selected_style)
+            .where('availability', 'array-contains', availability)
             .get()
             .then(doc => {
               const changes = doc.docChanges();
@@ -425,6 +430,7 @@
           query = query.where('talent', '==', this.selected_talent);
           query = query.where('style', 'array-contains', this.selected_style);
           query = query.where('location', '==', this.selected_location);
+          query = query.where('availability', 'array-contains', availability);
           query.get()
             .then(doc => {
               const changes = doc.docChanges();
@@ -492,6 +498,33 @@
             alert('Successfully booked');
           });
       },
+      convertDate(date) {
+        let dt = new Date(date);
+        dt = dt.getDay();
+        switch(dt) {
+          case 0:
+            dt = " Monday";
+            break;
+          case 1:
+            dt = " Tuesday";
+            break;
+          case 2:
+            dt = " Wednesday";
+            break;
+          case 3:
+            dt = " Thursday";
+            break;
+          case 4:
+            dt = " Friday";
+            break;
+          case 5:
+            dt = " Saturday";
+            break;
+          case 6:
+            dt = " Sunday";
+        }
+        return dt;
+      }
     }
   }
 </script>
