@@ -91,7 +91,7 @@
         let user = auth.currentUser;
         db.collection('users').doc(user.uid)
           .collection('performersBooked').doc(uid).delete();
-
+        this.countBookings();
         return ref.set({
           isBooked: false
         }, {merge: true})
@@ -100,7 +100,14 @@
             console.log("Booking is canceled!");
             window.location.reload()
           })
-      }
+      },
+      countBookings() {
+        db.collection('users').doc(user.uid)
+          .collection('performersBooked')
+          .get().then(snapshot => {
+          this.$store.dispatch('countAction', snapshot.size);
+        });
+      },
     }
   }
 </script>

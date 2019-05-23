@@ -14,7 +14,8 @@ const store = new Vuex.Store({
   state: {
     user: localStorage.getItem('user') || null,
     status: null,
-    error: null
+    error: null,
+    count: 0
   },
 
   mutations: {
@@ -29,10 +30,16 @@ const store = new Vuex.Store({
     },
     setError (state, payload) {
       state.error = payload
+    },
+    setCount (state, payload) {
+      state.count = payload
     }
   },
 
   actions: {
+    countAction ({ commit }, payload) {
+      commit('setCount', payload)
+    },
     signUpAction ({ commit }, payload) {
       commit('setStatus', 'loading');
       auth.createUserWithEmailAndPassword(payload.email, payload.password)
@@ -99,6 +106,9 @@ const store = new Vuex.Store({
     },
     error (state) {
       return state.error;
+    },
+    count (state) {
+      return state.count;
     }
   },
 

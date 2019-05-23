@@ -176,7 +176,7 @@
           </v-flex>
           <v-flex xs6 sm4 md2>
             <PopupProfile :uid = performer.uid :notBooked = true></PopupProfile>
-            <v-btn flat color="green" :disabled="performer.sameUser" @click="book(performer.uid, performer.email, performer.fullname, performer.talent, performer.style, performer.location)">
+            <v-btn flat color="green" :disabled="performer.sameUser" @click="bookAndCount(performer.uid, performer.email, performer.fullname, performer.talent, performer.style, performer.location)">
               Book
             </v-btn>
           </v-flex>
@@ -268,7 +268,8 @@
         selected_location: '',
         performers: [],
         uid: '',
-        categorySelected: false
+        categorySelected: false,
+        count: ''
       }
     },
     computed: {
@@ -500,8 +501,18 @@
           .then(function () {
             // eslint-disable-next-line no-console
             console.log("isBook set to true!");
-            alert('Successfully booked');
           });
+      },
+      countBookings() {
+        db.collection('users').doc(user.uid)
+          .collection('performersBooked')
+          .get().then(snapshot => {
+            this.$store.dispatch('countAction', snapshot.size);
+        });
+      },
+      bookAndCount(uid, email,fullname,talent,style,location) {
+        this.book(uid, email,fullname,talent,style,location);
+        this.countBookings(uid);
       },
       convertDate(date) {
         let dt = new Date(date);

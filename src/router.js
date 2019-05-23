@@ -31,9 +31,6 @@ const router = new Router({
       path: '/performers',
       name: 'performers',
       component: () => import('./views/Performers.vue'),
-      // meta: {
-      //   requiresAuth: true
-      // }
     },
     {
       path: '/bookings',
