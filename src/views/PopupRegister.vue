@@ -106,6 +106,7 @@
         };
 
         this.$store.dispatch('signUpAction', user);
+        this.$router.push('/performers');
       }
     }
   }

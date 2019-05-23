@@ -10,11 +10,12 @@ const vuexLocal = new VuexPersist({
   storage: window.localStorage
 });
 
-export default new Vuex.Store({
+const store = new Vuex.Store({
   state: {
     user: localStorage.getItem('user') || null,
     status: null,
-    error: null
+    error: null,
+    count: 0
   },
 
   mutations: {
@@ -29,10 +30,16 @@ export default new Vuex.Store({
     },
     setError (state, payload) {
       state.error = payload
+    },
+    setCount (state, payload) {
+      state.count = payload
     }
   },
 
   actions: {
+    countAction ({ commit }, payload) {
+      commit('setCount', payload)
+    },
     signUpAction ({ commit }, payload) {
       commit('setStatus', 'loading');
       auth.createUserWithEmailAndPassword(payload.email, payload.password)
@@ -99,9 +106,14 @@ export default new Vuex.Store({
     },
     error (state) {
       return state.error;
+    },
+    count (state) {
+      return state.count;
     }
   },
 
   plugins:
     [vuexLocal.plugin]
 });
+
+export default store

@@ -11,7 +11,10 @@
           <v-icon right small>search</v-icon>
         </v-btn>
         <v-btn v-if="user" flat color="grey" to="/bookings">Bookings
-          <v-icon right small>shopping_cart</v-icon>
+          <v-badge>
+            <v-icon right small>shopping_cart</v-icon>
+            <span slot="badge">{{ count }}</span>
+          </v-badge>
         </v-btn>
       </v-toolbar-items>
 
@@ -49,7 +52,8 @@
 			}
 		},
     computed: mapState([
-      'user'
+      'user',
+      'count'
     ]),
     methods: {
     }
