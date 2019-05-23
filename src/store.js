@@ -10,7 +10,7 @@ const vuexLocal = new VuexPersist({
   storage: window.localStorage
 });
 
-export default new Vuex.Store({
+const store = new Vuex.Store({
   state: {
     user: localStorage.getItem('user') || null,
     status: null,
@@ -105,3 +105,5 @@ export default new Vuex.Store({
   plugins:
     [vuexLocal.plugin]
 });
+
+export default store
