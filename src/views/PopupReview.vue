@@ -42,7 +42,6 @@
 <script>
   import { db, auth } from '../firebase';
   let user = auth.currentUser;
-
   export default {
     name: 'PopupReview',
     props: { uid: String },
@@ -80,7 +79,7 @@
       postReview() {
         this.fulltext = '<span class=\'text--secondary\'>' + this.fullname + '</span> &mdash; ' + this.subtext;
         db.collection('performers').doc(this.uid)
-          .collection('reviews').doc(user.uid).set({
+          .collection('reviews').add({
           imageUrl: this.imageUrl,
           text: this.fulltext,
           uid: user.uid,

@@ -19,7 +19,8 @@
           </v-flex>
           <v-flex xs6 sm4 md2>
             <div class="caption grey--text">Style</div>
-            <div>{{ formattedStyles(performer.style) }}</div>
+            <div v-for="style in performer.style" :key="style">{{ style}}</div>
+            <div>{{style}}</div>
           </v-flex>
           <v-flex xs6 sm4 md2>
             <div class="caption grey--text">Location</div>
