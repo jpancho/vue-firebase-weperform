@@ -38,7 +38,7 @@
         </v-carousel>
       </div>
     </div>
-    <br>
+    <p></p>
     <v-toolbar-title class="text-uppercase">
       <h2 align="center">
         <span class="font-weight-light display-4 grey--text">We</span>
@@ -69,7 +69,7 @@
 
         </v-flex>
       </v-layout>
-      <br>
+      <p></p>
     </v-toolbar-title>
     <h5 class="font-weight-light black--text">
       Designed to streamline the process of booking performers for events. Each performer has a profile describing their skill, expertise, and contact information, allowing patrons to search and book them with ease. This service saves the patrons time, effort, and money in search of their ideal performer, while also providing performers with a dedicated platform to promote themselves.
@@ -77,7 +77,7 @@
     <br>
     <v-divider color="grey"></v-divider>
     <v-divider color="grey"></v-divider>
-    <br>
+    <p></p>
 
     <v-layout row>
       <h2 class="font-weight-light display-3 black--text">
@@ -116,7 +116,7 @@
         <v-divider color="grey"></v-divider>
       </v-flex>
     </v-layout>
-    <br>
+    <p></p>
     <v-layout row>
       <v-flex sm12>
         <v-card max-width="700px">
@@ -159,7 +159,7 @@
         <v-divider color="grey"></v-divider>
       </v-flex>
     </v-layout>
-    <br>
+    <p></p>
     <v-layout>
       <h2 class="font-weight-light display-3 black--text">
         <pre>Platform promoting talent</pre>

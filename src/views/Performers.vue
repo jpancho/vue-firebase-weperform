@@ -155,6 +155,7 @@
           <v-flex xs6 sm4 md2>
             <div class="caption grey--text">Full Name</div>
             <div>{{ performer.fullname }}</div>
+<!--            <v-rating v-model="4" background-color="orange lighten-3" color="orange" small readonly></v-rating>-->
           </v-flex>
           <v-flex xs6 sm4 md2>
             <div class="caption grey--text">Style</div>
@@ -275,12 +276,9 @@
       filteredStyles() {
         let styles = this.styles;
         return styles.filter(o => o.dependency === this.selected_talent)
-      }
-      // submittableDate(){
-      //   const date = new Date(this.date)
-      //   date.setHours(this.time.getHours())
-      //   console.log(date)
-      //   return date
+      },
+      // averageRatings() {
+      //
       // }
     },
     methods: {
@@ -405,19 +403,24 @@
               const changes = doc.docChanges();
               changes.forEach(change => {
                 if (change.type === 'added') {
-                  if(change.doc.data().uid === user.uid) {
-                    this.performers.push({
-                      ...change.doc.data(),
-                      id: change.doc.id,
-                      sameUser: true
-                    })
-                  }
-                  else {
-                    this.performers.push({
-                      ...change.doc.data(),
-                      id: change.doc.id,
-                      sameUser: false
-                    })
+                  let arrayLength = change.doc.data().availability.length;
+                  for (let i = 0; i < arrayLength; i++) {
+                    if (change.doc.data().availability[i] === availability) {
+                      if (change.doc.data().uid === user.uid) {
+                        this.performers.push({
+                          ...change.doc.data(),
+                          id: change.doc.id,
+                          sameUser: true
+                        })
+                      }
+                      else {
+                        this.performers.push({
+                          ...change.doc.data(),
+                          id: change.doc.id,
+                          sameUser: false
+                        })
+                      }
+                    }
                   }
                 }
               })
@@ -436,19 +439,23 @@
               const changes = doc.docChanges();
               changes.forEach(change => {
                 if (change.type === 'added') {
-                  if(change.doc.data().uid === user.uid) {
-                    this.performers.push({
-                      ...change.doc.data(),
-                      id: change.doc.id,
-                      sameUser: true
-                    })
-                  }
-                  else {
-                    this.performers.push({
-                      ...change.doc.data(),
-                      id: change.doc.id,
-                      sameUser: false
-                    })
+                  let arrayLength = change.doc.data().availability.length;
+                  for (let i = 0; i < arrayLength; i++) {
+                    if (change.doc.data().availability[i] === availability) {
+                      if (change.doc.data().uid === user.uid) {
+                        this.performers.push({
+                          ...change.doc.data(),
+                          id: change.doc.id,
+                          sameUser: true
+                        })
+                      } else {
+                        this.performers.push({
+                          ...change.doc.data(),
+                          id: change.doc.id,
+                          sameUser: false
+                        })
+                      }
+                    }
                   }
                 }
               })

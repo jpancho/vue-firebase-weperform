@@ -13,7 +13,7 @@
               <h1 class="title">{{ fullname }}</h1>
               <h4 class="black--text">{{ email }}</h4>
               <p></p>
-              <v-btn raised class="green" v-show="notBooked" @click="book(uid, email, fullname, talent, style, location)">
+              <v-btn raised class="green" v-show="notBooked" :disabled="sameUser" @click="book(uid, email, fullname, talent, style, location)">
                 Book
               </v-btn>
             </v-card-text>
@@ -67,6 +67,8 @@
 
 <script>
   import { db, auth } from '../firebase';
+  let user = auth.currentUser;
+
   export default {
     name: 'PopupProfile',
     props: { uid: String, notBooked: Boolean },
@@ -81,7 +83,7 @@
         style: '',
         location: '',
         date: new Date().toISOString().substr(0, 10),
-
+        sameUser: null,
         active: null,
         reviewers: [],
         Description: null,
@@ -95,6 +97,12 @@
         this.email = doc.data().email;
         this.uid = doc.data().uid;
         this.description = doc.data().description;
+        if(doc.data().uid === user.uid) {
+          this.sameUser = true;
+        }
+        else {
+          this.sameUser = false;
+        }
       });
       db.collection('performers').doc(this.uid).get().then(doc => {
         this.talent = doc.data().talent;
@@ -118,7 +126,6 @@
       book(uid,email,fullname,talent,style,location) {
         let ref = db.collection('performers').doc(uid);
 
-        let user = auth.currentUser;
         db.collection('users').doc(user.uid)
           .collection('performersBooked').doc(uid).set({
           uid: uid,
