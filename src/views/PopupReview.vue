@@ -1,42 +1,42 @@
 <template>
-  <v-container grid-list-xl>
-    <v-layout row justify-center>
-      <v-dialog v-model = "dialog" max-width="500">
-        <v-btn flat color="green" slot="activator">Post a Review</v-btn>
-        <v-card>
-          <v-toolbar dark color="blue-grey">
-            <v-toolbar-title>Leave a review!</v-toolbar-title>
-            <v-spacer></v-spacer>
-          </v-toolbar>
-          <v-card-text>
-            <v-form>
-              <v-rating v-model="rating" background-color="orange lighten-3" color="orange" small></v-rating>
-              <v-textarea outline auto-grow
-                label="Comment"
-                v-model="subtext"
-              ></v-textarea>
-              <v-layout row justify-center>
-                <v-card-actions>
-                  <v-spacer></v-spacer>
-                  <v-btn
-                    :loading="loading4"
-                    :disabled="loading4"
-                    color="info"
-                    @click="loader = 'loading4'"
-                    class="success"
-                    v-on:click="postReview"
-                  >
-                    Post
-                    <span class="custom-loader"></span>
-                  </v-btn>
-                </v-card-actions>
-              </v-layout>
-            </v-form>
-          </v-card-text>
-        </v-card>
-      </v-dialog>
-    </v-layout>
-  </v-container>
+  <v-dialog v-model = "dialog" max-width="1000">
+    <v-btn flat color="green" slot="activator">Post a Review</v-btn>
+      <v-container grid-list-xl>
+        <v-layout column justify-center>
+          <v-card>
+            <v-toolbar dark color="blue-grey">
+              <v-toolbar-title>Leave a review!</v-toolbar-title>
+              <v-spacer></v-spacer>
+            </v-toolbar>
+            <v-card-text>
+              <v-form>
+                <v-rating v-model="rating" background-color="orange lighten-3" color="orange" small></v-rating>
+                <v-textarea outline auto-grow
+                  label="Comment"
+                  v-model="subtext"
+                ></v-textarea>
+                <v-layout row justify-center>
+                  <v-card-actions>
+                    <v-spacer></v-spacer>
+                    <v-btn
+                      :loading="loading4"
+                      :disabled="loading4"
+                      color="info"
+                      @click="loader = 'loading4'"
+                      class="success"
+                      v-on:click="postReview"
+                    >
+                      Post
+                      <span class="custom-loader"></span>
+                    </v-btn>
+                  </v-card-actions>
+                </v-layout>
+              </v-form>
+            </v-card-text>
+          </v-card>
+        </v-layout>
+      </v-container>
+  </v-dialog>
 </template>
 
 <script>
