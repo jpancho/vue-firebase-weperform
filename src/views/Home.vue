@@ -82,12 +82,11 @@
     <v-layout row>
       <h2 class="font-weight-light display-3 black--text">
         <pre>Book a talent for your events</pre>
-        <li class="title font-weight-light">Festivals</li><p></p>
-        <li class="title font-weight-light">Birthday parties</li><p></p>
-        <li class="title font-weight-light">Stage shows</li><p></p>
-        <li class="title font-weight-light">Weddings</li><p></p>
-        <li class="title font-weight-light">Concerts</li><p></p>
-        <li class="title font-weight-light">Annual functions</li><p></p>
+        <h4 class="title font-weight-light"><v-icon>check_circle</v-icon> <label class="font-weight-bold"> Festivals</label></h4><p></p>
+        <h4 class="title font-weight-light"><v-icon>check_circle</v-icon> <label class="font-weight-bold"> Weddings</label></h4><p></p>
+        <h4 class="title font-weight-light"><v-icon>check_circle</v-icon> <label class="font-weight-bold"> Stage shows</label></h4><p></p>
+        <h4 class="title font-weight-light"><v-icon>check_circle</v-icon> <label class="font-weight-bold"> Birthday parties</label></h4><p></p>
+        <h4 class="title font-weight-light"><v-icon>check_circle</v-icon> <label class="font-weight-bold"> Annual functions</label></h4><p></p>
         <h4 class="title font-weight-light">You name it... We’ll help you book the
           <label class="font-weight-bold red--text"> perfect talent </label> based on your needs!
         </h4>
@@ -105,13 +104,7 @@
     </v-layout>
     <br>
     <v-layout row>
-      <v-flex xs5>
-        <v-divider color="grey"></v-divider>
-        <v-divider color="grey"></v-divider>
-      </v-flex>
-      <v-flex xs2>
-      </v-flex>
-      <v-flex xs5>
+      <v-flex xs12>
         <v-divider color="grey"></v-divider>
         <v-divider color="grey"></v-divider>
       </v-flex>
@@ -148,13 +141,7 @@
     </v-layout>
     <br>
     <v-layout row>
-      <v-flex xs5>
-        <v-divider color="grey"></v-divider>
-        <v-divider color="grey"></v-divider>
-      </v-flex>
-      <v-flex xs2>
-      </v-flex>
-      <v-flex xs5>
+      <v-flex xs12>
         <v-divider color="grey"></v-divider>
         <v-divider color="grey"></v-divider>
       </v-flex>

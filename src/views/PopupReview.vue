@@ -1,8 +1,8 @@
 <template>
   <v-dialog v-model = "dialog" max-width="1000">
     <v-btn flat color="green" slot="activator">Post a Review</v-btn>
-      <v-container grid-list-xl>
-        <v-layout column justify-center>
+    <v-container grid-list-xl>
+      <v-layout column justify-center>
           <v-card>
             <v-toolbar dark color="blue-grey">
               <v-toolbar-title>Leave a review!</v-toolbar-title>
@@ -34,14 +34,13 @@
               </v-form>
             </v-card-text>
           </v-card>
-        </v-layout>
-      </v-container>
+      </v-layout>
+    </v-container>
   </v-dialog>
 </template>
 
 <script>
   import { db, auth } from '../firebase';
-  // import * as firebase from 'firebase';
   let user = auth.currentUser;
   export default {
     name: 'PopupReview',
@@ -53,7 +52,6 @@
         fulltext: '',
         imageUrl: '',
         rating: 3,
-        oldrating: null,
         loader: null,
         loading4: false,
         dialog: false
@@ -90,43 +88,8 @@
           .then(function() {
             // eslint-disable-next-line no-console
               console.log("Review posted!");
-          });
-        db.collection('performers').doc(this.uid).get().then(doc => {
-          this.oldrating = doc.data().ratings;
-        });
-        if(this.oldrating > 0) {
-          this.oldrating += this.rating;
-          this.oldrating = this.oldrating/2;
-          this.oldrating = (Math.round(this.oldrating * 2) / 2).toFixed(1);
-        }
-        else {
-          this.oldrating += this.rating;
-        }
-        db.collection('performers').doc(this.uid).update({
-          ratings: this.oldrating
-        })
-          .then(function() {
-            // eslint-disable-next-line no-console
-            console.log("Aggregrate ratings updated!");
-        })
-        // db.collection('performers').doc(this.uid).update({
-        //   ratings: firebase.firestore.FieldValue.arrayUnion(user.uid + ": " + this.rating)
-        // })
-        //   .then(function() {
-        //     // eslint-disable-next-line no-console
-        //     console.log("Aggregrate rating updated!")
-        //   })
-      },
-      // aggregrateRatings(performer) {
-      //   let arrayLength = performer.ratings.length();
-      //   let aggregrateRatings = 0;
-      //   for(let i = 0; i < arrayLength; i++) {
-      //     aggregrateRatings += performer.ratings[i].charAt(30);
-      //   }
-      //   aggregrateRatings = aggregrateRatings/(arrayLength + 1);
-      //   aggregrateRatings = (Math.round(aggregrateRatings * 2) / 2).toFixed(1)
-      //   this.ratings = aggregrateRatings
-      // }
+          })
+      }
     }
   }
 </script>
