@@ -468,7 +468,7 @@
           this.selected_talent = '';
           this.selected_style = '';
           this.selected_location = '';
-          this.date = '';
+          this.date = new Date().toISOString().substr(0, 10);
           document.getElementById("d").style.outline = "none";
           document.getElementById("m").style.outline = "none";
           document.getElementById("s").style.outline = "none";
