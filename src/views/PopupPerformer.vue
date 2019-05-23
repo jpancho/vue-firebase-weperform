@@ -20,7 +20,7 @@
               ></v-text-field>
               <v-overflow-btn
                 :items="talents"
-                label="Select talent"
+                label="Select category"
                 v-model="selected_talent"
                 :rules="talentRules" required
               ></v-overflow-btn>
@@ -47,6 +47,35 @@
                       <v-card-text>
                         <span v-bind:key="style.text" v-for='style in filteredStyles'>
                           <v-checkbox v-model="selected_style" :label="style.text" :value="style.value" hide-details></v-checkbox>
+                        </span>
+                      </v-card-text>
+                    </v-card>
+                  </v-menu>
+                </v-flex>
+              </v-layout>
+              <v-layout>
+                <v-flex>
+                  <v-menu
+                    class="grow"
+                    v-model="menu1"
+                    :close-on-content-click="false"
+                    lazy
+                    transition="scale-transition"
+                    offset-y
+                    full-width
+                  >
+                    <template v-slot:activator="{ on }">
+                      <v-text-field
+                        v-model="availability"
+                        label="Availability"
+                        readonly
+                        v-on="on"
+                      ></v-text-field>
+                    </template>
+                    <v-card class="rg-popover">
+                      <v-card-text>
+                        <span v-bind:key="day.text" v-for='day in dayOfTheWeek'>
+                          <v-checkbox v-model="availability" :label="day.text" :value="day.value" hide-details></v-checkbox>
                         </span>
                       </v-card-text>
                     </v-card>
@@ -164,6 +193,7 @@
         selected_style: [],
         selected_location: '',
         selected_experience: '',
+        availability: [],
         price: '',
         dialog: false,
         loader: null,
@@ -215,7 +245,7 @@
       //Be Performer
       bePerformer() {
         if(this.fullname==='' || this.selected_talent==='' || this.selected_style=== '' ||
-          this.selected_location=== '' || this.selected_experience=== '' || this.price=== ''){
+          this.selected_location=== '' || this.selected_experience=== ''|| this.availability=== '' || this.price=== ''){
           alert('Please fill all the fields')
         }
 
@@ -229,6 +259,7 @@
             style: this.selected_style,
             location: this.selected_location,
             experience: this.selected_experience,
+            availability: this.availability,
             price: this.price,
             isBooked: false
           })

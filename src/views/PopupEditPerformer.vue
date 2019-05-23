@@ -1,7 +1,7 @@
 <template xmlns:v-slot="http://www.w3.org/1999/XSL/Transform">
   <v-container grid-list-xl>
     <v-layout row justify-center>
-      <v-dialog v-model = "dialog" max-width="400">
+      <v-dialog v-model = "dialog" max-width="500">
         <v-btn round class="grey" color="white" slot="activator">
           Edit Performer Details
         </v-btn>
@@ -20,7 +20,7 @@
               ></v-text-field>
               <v-overflow-btn
                 :items="talents"
-                label="Select talent"
+                label="Select category"
                 v-model="selected_talent"
                 :rules="talentRules" required
               ></v-overflow-btn>
@@ -50,6 +50,35 @@
                       </span>
                         </v-card-text>
                       </v-card>
+                  </v-menu>
+                </v-flex>
+              </v-layout>
+              <v-layout>
+                <v-flex>
+                  <v-menu
+                    class="grow"
+                    v-model="menu1"
+                    :close-on-content-click="false"
+                    lazy
+                    transition="scale-transition"
+                    offset-y
+                    full-width
+                  >
+                    <template v-slot:activator="{ on }">
+                      <v-text-field
+                        v-model="availability"
+                        label="Availability"
+                        readonly
+                        v-on="on"
+                      ></v-text-field>
+                    </template>
+                    <v-card class="rg-popover">
+                      <v-card-text>
+                      <span v-bind:key="day.text" v-for='day in dayOfTheWeek'>
+                        <v-checkbox v-model="availability" :label="day.text" :value="day.value" hide-details></v-checkbox>
+                      </span>
+                      </v-card-text>
+                    </v-card>
                   </v-menu>
                 </v-flex>
               </v-layout>
@@ -160,15 +189,26 @@
           { text: 'Intermediate', value: "Intermediate" },
           { text: 'Advanced', value: "Advanced" },
         ],
+        dayOfTheWeek: [
+          { text: 'Monday', value: " Monday" },
+          { text: 'Tuesday', value: " Tuesday" },
+          { text: 'Wednesday', value: " Wednesday" },
+          { text: 'Thursday', value: " Thursday" },
+          { text: 'Friday', value: " Friday" },
+          { text: 'Saturday', value: " Saturday" },
+          { text: 'Sunday', value: " Sunday" },
+        ],
         fullname: '',
         selected_talent: '',
         selected_style: [],
         selected_location: '',
         selected_experience: '',
+        availability: [],
         price: '',
         dialog: false,
         loader: null,
         loading4: false,
+        menu1: false,
         valid: false,
         nameRules: [
           v => !!v || 'Name is required'
@@ -200,6 +240,7 @@
         this.selected_style = doc.data().style;
         this.selected_location = doc.data().location;
         this.selected_experience = doc.data().experience;
+        this.availability = doc.data().availability;
         this.price = doc.data().price;
       })
     },
@@ -226,7 +267,7 @@
       //Be Performer
       bePerformer() {
         if(this.fullname==='' || this.selected_talent==='' || this.selected_style=== '' ||
-          this.selected_location=== '' || this.selected_experience=== '' || this.price=== ''){
+          this.selected_location=== '' || this.selected_experience=== ''|| this.availability=== '' || this.price=== ''){
           alert('Please fill all the fields')
         }
 
@@ -237,6 +278,7 @@
             style: this.selected_style,
             location: this.selected_location,
             experience: this.selected_experience,
+            availability: this.availability,
             price: this.price
           })
             .then(function () {
