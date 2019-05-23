@@ -71,9 +71,9 @@
       </v-layout>
       <p></p>
     </v-toolbar-title>
-    <h3 class="font-weight-light black--text">
+    <h5 class="font-weight-light black--text">
       Designed to streamline the process of booking performers for events. Each performer has a profile describing their skill, expertise, and contact information, allowing patrons to search and book them with ease. This service saves the patrons time, effort, and money in search of their ideal performer, while also providing performers with a dedicated platform to promote themselves.
-    </h3>
+    </h5>
     <p></p>
     <v-divider color="grey"></v-divider>
     <v-divider color="grey"></v-divider>
@@ -167,26 +167,117 @@
     <v-divider color="grey"></v-divider>
     <v-divider color="grey"></v-divider>
     <v-divider color="grey"></v-divider>
-    <p></p>
-    <v-layout>
-      <v-flex xs4 sm12 sm8>
-        <v-hover>
-          <v-toolbar-title class="text-uppercase">
-            <h2 align="center">
-              <PopupPerformer/>
-            </h2>
-          </v-toolbar-title>
-        </v-hover>
-      </v-flex>
-    </v-layout>
-    <p></p>
+    <!--<p></p>-->
+    <!--<v-layout>-->
+      <!--<v-flex xs4 sm12 sm8>-->
+        <!--<v-hover>-->
+          <!--<v-toolbar-title class="text-uppercase">-->
+            <!--<h2 align="center">-->
+              <!--<PopupPerformer/>-->
+            <!--</h2>-->
+          <!--</v-toolbar-title>-->
+        <!--</v-hover>-->
+      <!--</v-flex>-->
+    <!--</v-layout>-->
+    <!--<p></p>-->
+    <div class="footer">
+      <div class="footer_content">
+        <div>
+          <ul>
+            <li>
+              <h3><a href="#">FEATURE</a></h3>
+            </li>
+            <li>
+              <a href="#">Search</a>
+            </li>
+            <li>
+              <a href="#">Save</a>
+            </li>
+            <li>
+              <a href="#">Book</a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <ul>
+            <li>
+              <h3><a href="/performers">PERFORMERS</a></h3>
+            </li>
+            <li>
+              <a href="#">Dancer</a>
+            </li>
+            <li>
+              <a href="#">Musician</a>
+            </li>
+            <li>
+              <a href="#">Singer</a>
+            </li>
+            <li><p></p></li>
+          </ul>
+        </div>
+        <div>
+          <ul>
+            <li>
+              <h3><a href="#">EVENTS</a></h3>
+            </li>
+            <li>
+              <a href="#">Metro Vancouver</a>
+            </li>
+            <li>
+              <a href="#">Burnaby</a>
+            </li>
+            <li>
+              <a href="#">Surrey</a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <ul>
+            <li>
+              <h3><a href="#">CAREER</a></h3>
+            </li>
+            <li>
+              <a href="#">Full Time</a>
+            </li>
+            <li>
+              <a href="#">Part Time</a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <ul>
+            <li>
+              <h3><a href="/about">ABOUT</a></h3>
+            </li>
+            <li>
+              <a href="/about">About Us</a>
+            </li>
+            <li>
+              <a href="/about">About WePerform</a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <ul>
+            <li>
+              <h3><a href="#">FORUM</a></h3>
+            </li>
+            <li>
+              <a href="#">Comment</a>
+            </li>
+            <li>
+              <a href="#">Suggestion</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-  import PopupPerformer from '../views/PopupPerformer';
+
 export default {
-  components: {PopupPerformer},
   data() {
     return {
       items: [
@@ -357,7 +448,7 @@ export default {
    padding: 410px 0;
    text-align: center;
   }
-  h3{
+  h5{
     text-align: center;
     font-size: 18px;
     padding: 10px 0;
@@ -365,5 +456,37 @@ export default {
   h1{
     padding: 10px 0;
     color:gray;
+  }
+  .footer{
+    float: left;
+    width: 100%;
+    margin: 0 0 20px 0;
+    margin-bottom: 0;
+    background-color: black;
+  }
+  .footer ul{
+    margin: 0 10% 0 0;
+    font-size: 1vw;
+    float: left;
+  }
+  .footer_content{
+    width: 90%;
+    float: left;
+    margin: 0 10% 0 14%;
+  }
+  .footer_content div{
+    float: left;
+    width: 15%;
+  }
+  .footer_content ul{
+    padding-left: 0;
+    list-style: none;
+  }
+  .footer h3{
+    font-size: 1vw;
+    color: white;
+  }
+  .footer li a{
+    color: gainsboro;
   }
 </style>
