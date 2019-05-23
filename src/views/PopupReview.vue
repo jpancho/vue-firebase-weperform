@@ -52,6 +52,9 @@
         fulltext: '',
         imageUrl: '',
         rating: 3,
+        averagerating: null,
+        totalrating: null,
+        numberofreviews: 1,
         loader: null,
         loading4: false,
         dialog: false
@@ -88,8 +91,53 @@
           .then(function() {
             // eslint-disable-next-line no-console
               console.log("Review posted!");
-          })
-      }
+          });
+        db.collection('performers').doc(this.uid).get().then(doc => {
+          this.oldrating = doc.data().ratings;
+          this.numberofreviews = doc.data().numberofreviews;
+          this.totalrating = doc.data().totalrating;
+        });
+        if(this.oldrating > 0) {
+          // eslint-disable-next-line no-console
+          console.log("Bigger than zero");
+          this.numberofreviews += 1;
+          this.totalrating += this.rating;
+          this.averagerating = this.totalrating/this.numberofreviews;
+          this.averagerating = (Math.round(this.averagerating * 2) / 2).toFixed(1);
+        }
+        else {
+          // eslint-disable-next-line no-console
+          console.log("No previous ratings");
+          this.totalrating = this.rating;
+          this.averagerating = this.rating;
+        }
+        db.collection('performers').doc(this.uid).update({
+          totalrating: this.totalrating,
+          ratings: this.averagerating,
+          numberofreviews: this.numberofreviews
+        })
+          .then(function() {
+            // eslint-disable-next-line no-console
+            console.log("Aggregrate ratings updated!");
+        })
+        // db.collection('performers').doc(this.uid).update({
+        //   ratings: firebase.firestore.FieldValue.arrayUnion(user.uid + ": " + this.rating)
+        // })
+        //   .then(function() {
+        //     // eslint-disable-next-line no-console
+        //     console.log("Aggregrate rating updated!")
+        //   })
+      },
+      // aggregrateRatings(performer) {
+      //   let arrayLength = performer.ratings.length();
+      //   let aggregrateRatings = 0;
+      //   for(let i = 0; i < arrayLength; i++) {
+      //     aggregrateRatings += performer.ratings[i].charAt(30);
+      //   }
+      //   aggregrateRatings = aggregrateRatings/(arrayLength + 1);
+      //   aggregrateRatings = (Math.round(aggregrateRatings * 2) / 2).toFixed(1)
+      //   this.ratings = aggregrateRatings
+      // }
     }
   }
 </script>
