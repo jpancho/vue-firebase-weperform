@@ -1,67 +1,41 @@
 <template>
 	<nav>
 		<v-toolbar flat app>
-			<v-toolbar-side-icon class="grey--text" @click="drawer = !drawer"></v-toolbar-side-icon>
-			<v-toolbar-title class="text-uppercase grey--text">
+<!--			<v-toolbar-side-icon class="grey&#45;&#45;text" @click="drawer = !drawer"></v-toolbar-side-icon>-->
+			<v-toolbar-title class="text-uppercase grey--text pr-3">
 				<span class="font-weight-light"><router-link to="/">We</router-link></span>
 				<span><router-link to="/">Perform</router-link></span>
 			</v-toolbar-title>
-			<v-btn flat color="grey" to="/performers">
-				<span>Search</span>
-			</v-btn>
-			<v-btn flat color="grey" to="/bookings">
-				<span>Bookings</span>
-			</v-btn>
-			<v-btn flat color="grey" to="/about">
-				<span>About</span>
-			</v-btn>
-			<!--<v-btn flat color="grey" to="/admin">-->
-				<!--<span>Admin</span>-->
-			<!--</v-btn>-->
-			<v-spacer></v-spacer>
-			<v-spacer></v-spacer>
-			<v-spacer></v-spacer>
-			<v-spacer></v-spacer>
-			<v-spacer></v-spacer>
-			<v-spacer></v-spacer>
-			<v-btn flat color="grey" to="/profile">
-				<span>Profile</span>
-			</v-btn>
-      <template v-if="user">
-        <Signout/>
-      </template>
-      <template v-else>
-        <PopupRegister/>
-        <PopupLogin/>
-      </template>
-		</v-toolbar>
+      <v-toolbar-items class="hidden-sm-and-down">
+        <v-btn v-if="user" flat color="grey" to="/performers">Search
+          <v-icon right small>search</v-icon>
+        </v-btn>
+        <v-btn v-if="user" flat color="grey" to="/bookings">Bookings
+          <v-icon right small>shopping_cart</v-icon>
+        </v-btn>
+      </v-toolbar-items>
 
-		<v-navigation-drawer app v-model="drawer" class="black">
-			<v-list>
-				<v-list-tile v-for="link in links" :key="link.text" router :to="link.route">
-					<v-list-tile-action>
-						<v-icon class="white--text">{{ link.icon }}</v-icon>
-					</v-list-tile-action>
-					<v-list-tile-content>
-						<v-list-tile-title class="white--text">{{ link.text }}</v-list-tile-title>
-					</v-list-tile-content>
-				</v-list-tile>
-				<p></p>
-				<PopupPerformer/>
-			</v-list>
-		</v-navigation-drawer>
+        <v-spacer></v-spacer>
+      <v-toolbar-items>
+        <v-btn v-if="user" flat color="grey" to="/profile">Profile
+          <v-icon right small>face</v-icon>
+        </v-btn>
+        <Signout v-if="user"/>
+        <PopupRegister v-if="user === null"/>
+        <PopupLogin v-if="user === null"/>
+      </v-toolbar-items>
+		</v-toolbar>
 	</nav>
 </template>
 
 <script>
-	import PopupPerformer from '../views/PopupPerformer';
 	import PopupRegister from '../views/PopupRegister';
 	import PopupLogin from '../views/PopupLogin';
   import Signout from '../views/Signout';
   import { mapState } from 'vuex';
 
 	export default {
-		components: { PopupRegister, PopupLogin, Signout, PopupPerformer },
+		components: { PopupRegister, PopupLogin, Signout },
 		data() {
 			return {
 				drawer: false,

@@ -6,7 +6,7 @@
         <span class="display-1"> Performer</span>
       </h1>
     </v-toolbar-title>
-    <p class="grey--text headline font-weight-regular" style="text-align: center">Select Catalogue</p>
+    <p class="grey--text headline font-weight-regular" style="text-align: center">Select Category</p>
     <v-layout align-center justify-space-around>
       <!--talent images-->
       <!--Dancer-->
@@ -25,6 +25,7 @@
           >
             <v-expand-transition>
               <div
+                v-if="hover"
                 class="d-flex transition-fast-in-fast-out lighten-2 v-card--reveal display-3 white--text font-weight-bold"
                 style="height: 100%;"
               >
@@ -51,6 +52,7 @@
           >
             <v-expand-transition>
               <div
+                v-if="hover"
                 class="d-flex transition-fast-in-fast-out lighten-2 v-card--reveal display-3 white--text font-weight-bold"
                 style="height: 100%;"
               >
@@ -77,6 +79,7 @@
           >
             <v-expand-transition>
               <div
+                v-if="hover"
                 class="d-flex transition-fast-in-fast-out lighten-2 v-card--reveal display-3 white--text font-weight-bold"
                 style="height: 100%;"
               >
@@ -97,6 +100,7 @@
               label="Select style"
               v-model="selected_style"
               solo
+              v-show="categorySelected"
             ></v-select>
           </v-flex>
         </v-card-actions>
@@ -107,6 +111,7 @@
               label="Select location"
               v-model="selected_location"
               solo
+              v-show="categorySelected"
             ></v-select>
           </v-flex>
         </v-card-actions>
@@ -163,16 +168,16 @@
             </v-flex>
             <v-flex xs6 sm4 md2>
               <div class="caption grey--text">Price</div>
-              <div>{{ performer.price}}</div>
+              <div> ${{ performer.price}}</div>
             </v-flex>
             <v-flex xs6 sm4 md2>
               <div class="caption grey--text">Location</div>
               <div>{{ performer.location}}</div>
             </v-flex>
-            <router-link flat color="blue" tag="button" :to="'/profile/' + performer.uid">
-              <v-btn flat color="blue">View More</v-btn>
-            </router-link>
-            <v-btn flat color="green" @click="book(performer.uid, performer.email, performer.fullname, performer.talent, performer.style, performer.location)">
+            <v-flex xs6 sm4 md2>
+              <PopupProfile :uid = performer.uid :notBooked = true></PopupProfile>
+            </v-flex>
+            <v-btn flat color="green" :disabled="performer.sameUser" @click="book(performer.uid, performer.email, performer.fullname, performer.talent, performer.style, performer.location)">
               Book
             </v-btn>
           </v-layout>
@@ -185,10 +190,11 @@
 
 <script>
   import { db, auth } from '../firebase';
-  // import PopupPerformer from '../views/PopupPerformer';
+  import PopupProfile from '../views/PopupProfile';
 
+  let user = auth.currentUser;
   export default {
-    // components: { PopupPerformer },
+    components: { PopupProfile },
     data() {
       return {
         cards: [
@@ -205,35 +211,39 @@
         //text and values for second dropdown menu
         //each section is dependant on option selected in first dropdown menu
         styles: [
-          { text: 'Ballet', value: "Ballet", dependency: "Dancer" },
-          { text: 'Bhangra', value: "Bhangra", dependency: "Dancer" },
-          { text: 'Bollywood', value: "Bollywood", dependency: "Dancer" },
-          { text: 'Break', value: "Break", dependency: "Dancer" },
-          { text: 'Hip-Hop', value: "Hiphop", dependency: "Dancer" },
-          { text: 'Pop', value: "Pop", dependency: "Dancer" },
+          { text: 'Select style', value: '', dependency: "Dancer"},
+          { text: 'Ballet', value: " Ballet", dependency: "Dancer" },
+          { text: 'Bhangra', value: " Bhangra", dependency: "Dancer" },
+          { text: 'Bollywood', value: " Bollywood", dependency: "Dancer" },
+          { text: 'Break', value: " Break", dependency: "Dancer" },
+          { text: 'Hip-Hop', value: " Hiphop", dependency: "Dancer" },
+          { text: 'Pop', value: " Pop", dependency: "Dancer" },
 
-          { text: 'Acoustic Blues', value: "Blues", dependency: "Singer" },
-          { text: 'Americana', value: "Americana", dependency: "Singer" },
-          { text: 'Classical', value: "Classical", dependency: "Singer" },
-          { text: 'Comedy', value: "Comedy", dependency: "Singer" },
-          { text: 'Country', value: "Country", dependency: "Singer" },
-          { text: 'Dubstep', value: "Dubstep", dependency: "Singer" },
-          { text: 'Glitch House', value: "Glitch", dependency: "Singer" },
-          { text: 'Hip-Hop', value: "Hiphop", dependency: "Singer" },
-          { text: 'Jazz', value: "Jazz", dependency: "Singer" },
-          { text: 'Novelty', value: "Novelty", dependency: "Singer" },
-          { text: 'Parody Music', value: "Parody", dependency: "Singer" },
-          { text: 'Rock', value: "Rock", dependency: "Singer"},
+          { text: 'Select style', value: '', dependency: "Singer"},
+          { text: 'Acoustic Blues', value: " Blues", dependency: "Singer" },
+          { text: 'Americana', value: " Americana", dependency: "Singer" },
+          { text: 'Classical', value: " Classical", dependency: "Singer" },
+          { text: 'Comedy', value: " Comedy", dependency: "Singer" },
+          { text: 'Country', value: " Country", dependency: "Singer" },
+          { text: 'Dubstep', value: " Dubstep", dependency: "Singer" },
+          { text: 'Glitch House', value: " Glitch", dependency: "Singer" },
+          { text: 'Hip-Hop', value: " Hiphop", dependency: "Singer" },
+          { text: 'Jazz', value: " Jazz", dependency: "Singer" },
+          { text: 'Novelty', value: " Novelty", dependency: "Singer" },
+          { text: 'Parody Music', value: " Parody", dependency: "Singer" },
+          { text: 'Rock', value: " Rock", dependency: "Singer"},
 
-          { text: 'Blues', value: "Blues", dependency: "Musician" },
-          { text: 'Classical', value: "Classical", dependency: "Musician" },
-          { text: 'Hip-Hop', value: "Hiphop", dependency: "Musician" },
-          { text: 'Jazz', value: "Jazz", dependency: "Musician" },
-          { text: 'Opera', value: "Opera", dependency: "Musician" },
-          { text: 'Pop', value: "Pop", dependency: "Musician" },
-          { text: 'Rock', value: "Rock", dependency: "Musician" },
+          { text: 'Select style', value: '', dependency: "Musician"},
+          { text: 'Blues', value: " Blues", dependency: "Musician" },
+          { text: 'Classical', value: " Classical", dependency: "Musician" },
+          { text: 'Hip-Hop', value: " Hiphop", dependency: "Musician" },
+          { text: 'Jazz', value: " Jazz", dependency: "Musician" },
+          { text: 'Opera', value: " Opera", dependency: "Musician" },
+          { text: 'Pop', value: " Pop", dependency: "Musician" },
+          { text: 'Rock', value: " Rock", dependency: "Musician" },
         ],
         location: [
+          { text: 'Select location', value: ''},
           { text: 'Abbotsford', value: "Abbotsford" },
           { text: 'Burnaby', value: "Burnaby" },
           { text: 'Chilliwack', value: "Chilliwack" },
@@ -257,6 +267,7 @@
         selected_location: '',
         performers: [],
         uid: '',
+        categorySelected: false
       }
     },
     computed: {
@@ -278,18 +289,21 @@
         document.getElementById("d").style.outline = "7px solid orange";
         document.getElementById("m").style.outline = "none";
         document.getElementById("s").style.outline = "none";
+        this.categorySelected = true;
       },
       musician(){
         this.selected_talent="Musician";
         document.getElementById("m").style.outline = "7px solid orange";
         document.getElementById("d").style.outline = "none";
         document.getElementById("s").style.outline = "none";
+        this.categorySelected = true;
       },
       singer(){
         this.selected_talent="Singer";
         document.getElementById("s").style.outline = "7px solid orange";
         document.getElementById("m").style.outline = "none";
         document.getElementById("d").style.outline = "none";
+        this.categorySelected = true;
       },
       display() {
         //if no style and location is selected, display list of matching talent
@@ -302,10 +316,20 @@
               const changes = doc.docChanges();
               changes.forEach(change => {
                 if (change.type === 'added') {
-                  this.performers.push({
-                    ...change.doc.data(),
-                    id: change.doc.id
-                  })
+                  if(change.doc.data().uid === user.uid) {
+                    this.performers.push({
+                      ...change.doc.data(),
+                      id: change.doc.id,
+                      sameUser: true
+                    })
+                  }
+                  else {
+                    this.performers.push({
+                      ...change.doc.data(),
+                      id: change.doc.id,
+                      sameUser: false
+                    })
+                  }
                 }
               })
             })
@@ -320,10 +344,20 @@
                     const changes = doc.docChanges();
                     changes.forEach(change => {
                       if (change.type === 'added') {
-                        this.performers.push({
-                          ...change.doc.data(),
-                          id: change.doc.id
-                        })
+                        if(change.doc.data().uid === user.uid) {
+                          this.performers.push({
+                            ...change.doc.data(),
+                            id: change.doc.id,
+                            sameUser: true
+                          })
+                        }
+                        else {
+                          this.performers.push({
+                            ...change.doc.data(),
+                            id: change.doc.id,
+                            sameUser: false
+                          })
+                        }
                       }
                     })
                   })
@@ -339,10 +373,20 @@
                       const changes = doc.docChanges();
                       changes.forEach(change => {
                         if (change.type === 'added') {
-                          this.performers.push({
-                            ...change.doc.data(),
-                            id: change.doc.id
-                          })
+                          if(change.doc.data().uid === user.uid) {
+                            this.performers.push({
+                              ...change.doc.data(),
+                              id: change.doc.id,
+                              sameUser: true
+                            })
+                          }
+                          else {
+                            this.performers.push({
+                              ...change.doc.data(),
+                              id: change.doc.id,
+                              sameUser: false
+                            })
+                          }
                         }
                       })
                     })
@@ -351,16 +395,26 @@
           this.performers = [];
           db.collection('performers')
                   .where('talent', '==', this.selected_talent)
-                  .where('style', '==', this.selected_style)
+                  .where('style', 'array-contains', this.selected_style)
                   .get()
                   .then(doc => {
                     const changes = doc.docChanges();
                     changes.forEach(change => {
                       if (change.type === 'added') {
-                        this.performers.push({
-                          ...change.doc.data(),
-                          id: change.doc.id
-                        })
+                        if(change.doc.data().uid === user.uid) {
+                          this.performers.push({
+                            ...change.doc.data(),
+                            id: change.doc.id,
+                            sameUser: true
+                          })
+                        }
+                        else {
+                          this.performers.push({
+                            ...change.doc.data(),
+                            id: change.doc.id,
+                            sameUser: false
+                          })
+                        }
                       }
                     })
                   })
@@ -370,17 +424,27 @@
           this.performers = [];
           let query = db.collection('performers');
           query = query.where('talent', '==', this.selected_talent);
-          query = query.where('style', '==', this.selected_style);
+          query = query.where('style', 'array-contains', this.selected_style);
           query = query.where('location', '==', this.selected_location);
           query.get()
             .then(doc => {
               const changes = doc.docChanges();
               changes.forEach(change => {
                 if (change.type === 'added') {
-                  this.performers.push({
-                    ...change.doc.data(),
-                    id: change.doc.id
-                  })
+                  if(change.doc.data().uid === user.uid) {
+                    this.performers.push({
+                      ...change.doc.data(),
+                      id: change.doc.id,
+                      sameUser: true
+                    })
+                  }
+                  else {
+                    this.performers.push({
+                      ...change.doc.data(),
+                      id: change.doc.id,
+                      sameUser: false
+                    })
+                  }
                 }
               })
             })
@@ -403,37 +467,31 @@
         });
       },
       book(uid, email,fullname,talent,style,location) {
-        if(this.date==''){
-          alert('Please enter the data')
-        }
-        else {
-          let ref = db.collection('performers').doc(uid);
+        let ref = db.collection('performers').doc(uid);
 
-          let user = auth.currentUser;
-          db.collection('users').doc(user.uid)
-                  .collection('performersBooked').doc(uid).set({
-            uid: uid,
-            email: email,
-            fullname: fullname,
-            talent: talent,
-            style: style,
-            location: location,
-            date: this.date
-          })
-                  .then(function () {
-                    // eslint-disable-next-line no-console
-                    console.log("Performer booked!")
-                  });
+        db.collection('users').doc(user.uid)
+          .collection('performersBooked').doc(uid).set({
+          uid: uid,
+          email: email,
+          fullname: fullname,
+          talent: talent,
+          style: style,
+          location: location,
+          date: this.date
+        })
+          .then(function () {
+            // eslint-disable-next-line no-console
+            console.log("Performer booked!")
+          });
 
-          return ref.set({
-            isBooked: true
-          }, {merge: true})
-                  .then(function () {
-                    // eslint-disable-next-line no-console
-                    console.log("isBook set to true!");
-                    alert('Successfully booked');
-                  });
-        }
+        return ref.set({
+          isBooked: true
+        }, {merge: true})
+          .then(function () {
+            // eslint-disable-next-line no-console
+            console.log("isBook set to true!");
+            alert('Successfully booked');
+          });
       }
     }
   }

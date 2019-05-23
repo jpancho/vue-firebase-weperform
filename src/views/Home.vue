@@ -1,9 +1,7 @@
 <template>
   <div class="home">
-    <!--Landing Page-->
     <div id="loader-wrapper">
       <div id="quotes">
-<!--        <p class="display-1">"We’re all connected by a love for perform!"</p>-->
         <p class="display-1">Practice like you've never won.</p>
         <p class="display-2">Perform like you've never lost.</p>
         <span class="font-weight-light text--darken-4 display-4 text-uppercase blue--text">We</span>
@@ -25,6 +23,7 @@
                 navigationEnabled
                 navigationNextLabel="<i class='material-icons'>keyboard_arrow_right</i>"
                 navigationPrevLabel="<i class='material-icons'>keyboard_arrow_left</i>"
+                style="cursor: pointer"
         >
           <md-card>
             <v-carousel-item
@@ -39,22 +38,50 @@
         </v-carousel>
       </div>
     </div>
+    <p></p>
     <v-toolbar-title class="text-uppercase">
       <h2 align="center">
         <span class="font-weight-light display-4 grey--text">We</span>
-        <span class="display-4">Perform</span>
+        <span class="display-4 black--text">Perform</span>
       </h2>
+      <p></p>
+      <v-layout>
+        <v-flex xs4 sm12 sm8>
+          <v-toolbar-title class="text-uppercase">
+            <h2 align="center">
+              <span class="blue-grey--text font-weight-bold display-2"><pre>Search</pre></span>
+            </h2>
+          </v-toolbar-title>
+        </v-flex>
+        <v-flex xs6 sm12 offset-sm1>
+          <v-toolbar-title class="text-uppercase">
+            <h2 align="center">
+              <span class="blue-grey--text font-weight-bold display-2"><pre>Save</pre></span>
+            </h2>
+          </v-toolbar-title>
+        </v-flex>
+        <v-flex xs8 sm12 offset-sm1>
+          <v-toolbar-title class="text-uppercase">
+            <h2 align="center">
+              <span class="blue-grey--text font-weight-bold display-2"><pre>Book</pre></span>
+            </h2>
+          </v-toolbar-title>
+
+        </v-flex>
+      </v-layout>
+      <p></p>
     </v-toolbar-title>
-    <h3 class="font-weight-light">
-      WePerform is a web application (web app) designed to streamline the process of booking performers for events. Each performer has a profile describing their skill, expertise, and contact information, allowing patrons to search and book them with ease. This service saves the patrons time, effort, and money in search of their ideal performer, while also providing performers with a dedicated platform to promote themselves.
+    <h3 class="font-weight-light black--text">
+      Designed to streamline the process of booking performers for events. Each performer has a profile describing their skill, expertise, and contact information, allowing patrons to search and book them with ease. This service saves the patrons time, effort, and money in search of their ideal performer, while also providing performers with a dedicated platform to promote themselves.
     </h3>
     <p></p>
     <v-divider color="grey"></v-divider>
     <v-divider color="grey"></v-divider>
     <p></p>
+
     <v-layout row>
-      <h2 class="font-weight-light display-3 text--black">
-        Search. Save. Book.
+      <h2 class="font-weight-light display-3 black--text">
+        <pre>Performers based on your needs</pre>
       </h2>
       <v-spacer></v-spacer>
       <v-flex md6>
@@ -68,38 +95,66 @@
       </v-flex>
     </v-layout>
     <p></p>
-    <v-divider color="grey"></v-divider>
-    <v-divider color="grey"></v-divider>
+    <v-layout row>
+      <v-flex xs5>
+        <v-divider color="grey"></v-divider>
+        <v-divider color="grey"></v-divider>
+      </v-flex>
+      <v-flex xs2>
+      </v-flex>
+      <v-flex xs5>
+        <v-divider color="grey"></v-divider>
+        <v-divider color="grey"></v-divider>
+      </v-flex>
+    </v-layout>
     <p></p>
     <v-layout row>
       <v-flex sm12>
         <v-card max-width="700px">
           <v-img
-            src="assets/img/talents/dancer_stage.jpg"
+            src="assets/img/talents/dancer_perform.jpg"
             height="300px"
           >
           </v-img>
         </v-card>
       </v-flex>
       <v-flex xs2 sm12 sm6 align-end>
-        <h1 class="font-weight-light display-3 fill-height">
-          Filtered searching options
-        </h1>
+        <h2 class="font-weight-light display-3 black--text">
+          <pre>Filtered search options</pre>
+          <v-flex xs2 sm12 sm6 align-end>
+            <h4 class="title font-weight-light"><v-icon>check_circle</v-icon> Genre</h4>
+            <p></p><h4 class="title font-weight-light"><v-icon>check_circle</v-icon> Styles</h4>
+            <p></p><h4 class="title font-weight-light"><v-icon>check_circle</v-icon> Pricing</h4>
+            <p></p><h4 class="title font-weight-light"><v-icon>check_circle</v-icon> Location</h4>
+            <p></p><h4 class="title font-weight-light"><v-icon>check_circle</v-icon> Experience</h4>
+            <p></p><h4 class="title font-weight-light"><v-icon>check_circle</v-icon> Availability</h4>
+          </v-flex>
+        </h2>
       </v-flex>
     </v-layout>
     <p></p>
-    <v-divider color="grey"></v-divider>
-    <v-divider color="grey"></v-divider>
-    <p></p>
     <v-layout row>
-      <h1 class="font-weight-light display-3">
-        Save your time, effort & money
-      </h1>
+      <v-flex xs5>
+        <v-divider color="grey"></v-divider>
+        <v-divider color="grey"></v-divider>
+      </v-flex>
+      <v-flex xs2>
+      </v-flex>
+      <v-flex xs5>
+        <v-divider color="grey"></v-divider>
+        <v-divider color="grey"></v-divider>
+      </v-flex>
+    </v-layout>
+    <p></p>
+    <v-layout>
+      <h2 class="font-weight-light display-3 black--text">
+        <pre>Platform promoting talent</pre>
+      </h2>
       <v-spacer></v-spacer>
       <v-flex md6>
         <v-card>
           <v-img
-            src="assets/img/talents/dancer_stage.jpg"
+            src="assets/img/talents/singer_perform.jpg"
             height="300px"
           >
           </v-img>
@@ -109,22 +164,29 @@
     <p></p>
     <v-divider color="grey"></v-divider>
     <v-divider color="grey"></v-divider>
-    <p></p>
-    <v-toolbar-title class="blue-grey--text text-uppercase">
-      <h2 align="center">
-        <span class="font-weight-light display-3">Platform promoting talent.</span>
-      </h2>
-    </v-toolbar-title>
-    <p></p>
     <v-divider color="grey"></v-divider>
     <v-divider color="grey"></v-divider>
+    <v-divider color="grey"></v-divider>
+    <p></p>
+    <v-layout>
+      <v-flex xs4 sm12 sm8>
+        <v-hover>
+          <v-toolbar-title class="text-uppercase">
+            <h2 align="center">
+              <PopupPerformer/>
+            </h2>
+          </v-toolbar-title>
+        </v-hover>
+      </v-flex>
+    </v-layout>
     <p></p>
   </div>
 </template>
 
 <script>
-
+  import PopupPerformer from '../views/PopupPerformer';
 export default {
+  components: {PopupPerformer},
   data() {
     return {
       items: [

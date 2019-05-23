@@ -2,10 +2,13 @@
   <v-layout row justify-center>
     <v-dialog v-model="dialog" max-width="400">
       <template v-slot:activator="{ on }">
-        <v-btn flat color="grey" v-on="on">Login</v-btn>
+        <v-btn flat color="grey" v-on="on">
+          Login
+          <v-icon right small>exit_to_app</v-icon>
+        </v-btn>
       </template>
       <v-card class="elevation-12">
-        <v-toolbar dark color="primary">
+        <v-toolbar dark color="blue-grey">
           <v-toolbar-title>Login</v-toolbar-title>
           <v-spacer></v-spacer>
         </v-toolbar>
@@ -31,7 +34,7 @@
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn
-            color="primary"
+            color="success"
             @click="submitLogin"
           >Login
           </v-btn>
@@ -64,7 +67,7 @@
           password: this.password
         };
           this.$store.dispatch('signInAction', user);
-          this.$router.replace('/performers');
+          this.$router.replace('/');
       }
     }
   }

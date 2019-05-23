@@ -2,10 +2,12 @@
   <v-layout row justify-center>
     <v-dialog v-model="dialog" max-width="400">
       <template v-slot:activator="{ on }">
-        <v-btn flat color="grey" v-on="on">Register</v-btn>
+        <v-btn flat color="grey" v-on="on">Register
+          <v-icon right small>create</v-icon>
+        </v-btn>
       </template>
       <v-card class="elevation-12">
-        <v-toolbar dark color="primary">
+        <v-toolbar dark color="blue-grey">
           <v-toolbar-title>Register</v-toolbar-title>
           <v-spacer></v-spacer>
         </v-toolbar>
@@ -41,10 +43,14 @@
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn
-                  color="primary"
-                  :disabled="!valid"
-                  @click="register"
-          >Sign up
+            :loading="loading4"
+            :disabled="!valid"
+            color="success"
+            @click="loader = 'loading4'"
+            v-on:click="register"
+          >
+            Sign up
+            <span class="custom-loader"></span>
           </v-btn>
         </v-card-actions>
       </v-card>
@@ -61,6 +67,9 @@
         email: '',
         password: '',
         valid: false,
+        dialog: false,
+        loader: null,
+        loading4: false,
         emailRules: [
           v => !!v || 'E-mail is required',
           v => /.+@.+/.test(v) || 'E-mail must be valid'
@@ -76,6 +85,18 @@
         ]
       }
     },
+    watch: {
+      loader () {
+        const l = this.loader;
+        this[l] = !this[l];
+
+        setTimeout(() => (this[l] = false), 1000);
+
+        this.loader = null;
+
+        setTimeout(() => this.dialog = false, 1000);
+      }
+    },
     methods: {
       register() {
         const user = {
@@ -85,13 +106,46 @@
         };
 
         this.$store.dispatch('signUpAction', user);
-        this.$router.replace('/home');
       }
     }
   }
 </script>
 
-
 <style scoped>
-
+  .custom-loader {
+    animation: loader 1s infinite;
+    display: flex;
+  }
+  @-moz-keyframes loader {
+    from {
+      transform: rotate(0);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  @-webkit-keyframes loader {
+    from {
+      transform: rotate(0);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  @-o-keyframes loader {
+    from {
+      transform: rotate(0);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes loader {
+    from {
+      transform: rotate(0);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
 </style>
