@@ -6,7 +6,7 @@
         <span class="display-1"> Performer</span>
       </h1>
     </v-toolbar-title>
-    <p class="grey--text headline font-weight-regular" style="text-align: center">Select talent</p>
+    <p class="grey--text headline font-weight-regular" style="text-align: center">Select Catalogue</p>
     <v-layout align-center justify-space-around>
       <!--talent images-->
       <!--Dancer-->
@@ -25,7 +25,6 @@
           >
             <v-expand-transition>
               <div
-                v-if="hover"
                 class="d-flex transition-fast-in-fast-out lighten-2 v-card--reveal display-3 white--text font-weight-bold"
                 style="height: 100%;"
               >
@@ -52,7 +51,6 @@
           >
             <v-expand-transition>
               <div
-                v-if="hover"
                 class="d-flex transition-fast-in-fast-out lighten-2 v-card--reveal display-3 white--text font-weight-bold"
                 style="height: 100%;"
               >
@@ -79,7 +77,6 @@
           >
             <v-expand-transition>
               <div
-                v-if="hover"
                 class="d-flex transition-fast-in-fast-out lighten-2 v-card--reveal display-3 white--text font-weight-bold"
                 style="height: 100%;"
               >
@@ -406,32 +403,37 @@
         });
       },
       book(uid, email,fullname,talent,style,location) {
-        let ref = db.collection('performers').doc(uid);
+        if(this.date==''){
+          alert('Please enter the data')
+        }
+        else {
+          let ref = db.collection('performers').doc(uid);
 
-        let user = auth.currentUser;
-        db.collection('users').doc(user.uid)
-          .collection('performersBooked').doc(uid).set({
-          uid: uid,
-          email: email,
-          fullname: fullname,
-          talent: talent,
-          style: style,
-          location: location,
-          date: this.date
-        })
-          .then(function () {
-            // eslint-disable-next-line no-console
-            console.log("Performer booked!")
-          });
+          let user = auth.currentUser;
+          db.collection('users').doc(user.uid)
+                  .collection('performersBooked').doc(uid).set({
+            uid: uid,
+            email: email,
+            fullname: fullname,
+            talent: talent,
+            style: style,
+            location: location,
+            date: this.date
+          })
+                  .then(function () {
+                    // eslint-disable-next-line no-console
+                    console.log("Performer booked!")
+                  });
 
-        return ref.set({
-          isBooked: true
-        }, {merge: true})
-          .then(function () {
-            // eslint-disable-next-line no-console
-            console.log("isBook set to true!");
-            alert('Successfully booked');
-          });
+          return ref.set({
+            isBooked: true
+          }, {merge: true})
+                  .then(function () {
+                    // eslint-disable-next-line no-console
+                    console.log("isBook set to true!");
+                    alert('Successfully booked');
+                  });
+        }
       }
     }
   }

@@ -150,7 +150,7 @@
               v => !!v || 'Talent is required'
           ],
           styleRules: [
-              v => !!v || 'Talent is required'
+              v => !!v || 'Style is required'
           ],
           locationRules: [
               v => !!v || 'Location is required'
