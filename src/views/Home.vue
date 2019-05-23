@@ -38,13 +38,13 @@
         </v-carousel>
       </div>
     </div>
-    <p></p>
+    <br>
     <v-toolbar-title class="text-uppercase">
       <h2 align="center">
         <span class="font-weight-light display-4 grey--text">We</span>
         <span class="display-4 black--text">Perform</span>
       </h2>
-      <p></p>
+      <br>
       <v-layout>
         <v-flex xs4 sm12 sm8>
           <v-toolbar-title class="text-uppercase">
@@ -66,22 +66,21 @@
               <span class="blue-grey--text font-weight-bold display-2"><pre>Book</pre></span>
             </h2>
           </v-toolbar-title>
-
         </v-flex>
       </v-layout>
-      <p></p>
+      <br>
     </v-toolbar-title>
     <h3 class="font-weight-light black--text">
       Designed to streamline the process of booking performers for events. Each performer has a profile describing their skill, expertise, and contact information, allowing patrons to search and book them with ease. This service saves the patrons time, effort, and money in search of their ideal performer, while also providing performers with a dedicated platform to promote themselves.
     </h3>
-    <p></p>
+    <br>
     <v-divider color="grey"></v-divider>
     <v-divider color="grey"></v-divider>
-    <p></p>
+    <br>
 
     <v-layout row>
-      <h2 class="font-weight-light display-3 black--text">
-        <pre>Performers based on your needs</pre>
+      <h2 class="font-weight-light display-3 black--text 24sp">
+        Book based on your needs
       </h2>
       <v-spacer></v-spacer>
       <v-flex md6>
@@ -94,20 +93,18 @@
         </v-card>
       </v-flex>
     </v-layout>
-    <p></p>
-    <v-layout row>
+    <br>
+    <v-layout row justify-space-around>
       <v-flex xs5>
         <v-divider color="grey"></v-divider>
         <v-divider color="grey"></v-divider>
-      </v-flex>
-      <v-flex xs2>
       </v-flex>
       <v-flex xs5>
         <v-divider color="grey"></v-divider>
         <v-divider color="grey"></v-divider>
       </v-flex>
     </v-layout>
-    <p></p>
+    <br>
     <v-layout row>
       <v-flex sm12>
         <v-card max-width="700px">
@@ -120,11 +117,10 @@
       </v-flex>
       <v-flex xs2 sm12 sm6 align-end>
         <h2 class="font-weight-light display-3 black--text">
-          <pre>Filtered search options</pre>
+          Filtered search options
           <v-flex xs2 sm12 sm6 align-end>
             <h4 class="title font-weight-light"><v-icon>check_circle</v-icon> Genre</h4>
             <p></p><h4 class="title font-weight-light"><v-icon>check_circle</v-icon> Styles</h4>
-            <p></p><h4 class="title font-weight-light"><v-icon>check_circle</v-icon> Pricing</h4>
             <p></p><h4 class="title font-weight-light"><v-icon>check_circle</v-icon> Location</h4>
             <p></p><h4 class="title font-weight-light"><v-icon>check_circle</v-icon> Experience</h4>
             <p></p><h4 class="title font-weight-light"><v-icon>check_circle</v-icon> Availability</h4>
@@ -132,23 +128,21 @@
         </h2>
       </v-flex>
     </v-layout>
-    <p></p>
-    <v-layout row>
+    <br>
+    <v-layout row justify-space-around>
       <v-flex xs5>
         <v-divider color="grey"></v-divider>
         <v-divider color="grey"></v-divider>
-      </v-flex>
-      <v-flex xs2>
       </v-flex>
       <v-flex xs5>
         <v-divider color="grey"></v-divider>
         <v-divider color="grey"></v-divider>
       </v-flex>
     </v-layout>
-    <p></p>
+    <br>
     <v-layout>
       <h2 class="font-weight-light display-3 black--text">
-        <pre>Platform promoting talent</pre>
+        Platform promoting talent
       </h2>
       <v-spacer></v-spacer>
       <v-flex md6>
@@ -161,13 +155,12 @@
         </v-card>
       </v-flex>
     </v-layout>
-    <p></p>
+    <br>
     <v-divider color="grey"></v-divider>
     <v-divider color="grey"></v-divider>
     <v-divider color="grey"></v-divider>
     <v-divider color="grey"></v-divider>
-    <v-divider color="grey"></v-divider>
-    <p></p>
+    <br>
     <v-layout>
       <v-flex xs4 sm12 sm8>
         <v-hover>
@@ -179,7 +172,7 @@
         </v-hover>
       </v-flex>
     </v-layout>
-    <p></p>
+    <br>
   </div>
 </template>
 

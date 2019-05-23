@@ -158,6 +158,7 @@
             <v-flex xs6 sm4 md2>
               <div class="caption grey--text">Style</div>
               <div v-for="style in performer.style" :key="style">{{style }}</div>
+              <div>{{style}}</div>
             </v-flex>
             <v-flex xs6 sm4 md2>
               <div class="caption grey--text">Experience</div>
@@ -272,7 +273,7 @@
       filteredStyles() {
         let styles = this.styles;
         return styles.filter(o => o.dependency === this.selected_talent)
-      },
+      }
       // submittableDate(){
       //   const date = new Date(this.date)
       //   date.setHours(this.time.getHours())
@@ -489,7 +490,7 @@
             console.log("isBook set to true!");
             alert('Successfully booked');
           });
-      }
+      },
     }
   }
 </script>

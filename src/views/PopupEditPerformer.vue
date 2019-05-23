@@ -1,8 +1,10 @@
 <template xmlns:v-slot="http://www.w3.org/1999/XSL/Transform">
   <v-container grid-list-xl>
     <v-layout row justify-center>
-      <v-dialog v-model = "dialog" max-width="300">
-        <v-btn round class="grey" color="white" slot="activator">Edit Performer Details</v-btn>
+      <v-dialog v-model = "dialog" max-width="400">
+        <v-btn round class="grey" color="white" slot="activator">
+          Edit Performer Details
+        </v-btn>
         <v-card>
           <v-toolbar dark color="blue-grey">
             <v-toolbar-title>Performer Details</v-toolbar-title>
