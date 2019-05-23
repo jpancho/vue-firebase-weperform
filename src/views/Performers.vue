@@ -25,7 +25,6 @@
           >
             <v-expand-transition>
               <div
-                v-if="hover"
                 class="d-flex transition-fast-in-fast-out lighten-2 v-card--reveal display-3 white--text font-weight-bold"
                 style="height: 100%;"
               >
@@ -52,7 +51,6 @@
           >
             <v-expand-transition>
               <div
-                v-if="hover"
                 class="d-flex transition-fast-in-fast-out lighten-2 v-card--reveal display-3 white--text font-weight-bold"
                 style="height: 100%;"
               >
@@ -79,7 +77,6 @@
           >
             <v-expand-transition>
               <div
-                v-if="hover"
                 class="d-flex transition-fast-in-fast-out lighten-2 v-card--reveal display-3 white--text font-weight-bold"
                 style="height: 100%;"
               >
@@ -160,7 +157,7 @@
             </v-flex>
             <v-flex xs6 sm4 md2>
               <div class="caption grey--text">Style</div>
-              <div>{{ performer.style }}</div>
+              <div v-for="style in performer.style" :key="style">{{style }}</div>
             </v-flex>
             <v-flex xs6 sm4 md2>
               <div class="caption grey--text">Experience</div>
