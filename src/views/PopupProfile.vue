@@ -67,7 +67,6 @@
 
 <script>
   import { db, auth } from '../firebase';
-
   export default {
     name: 'PopupProfile',
     props: { uid: String, notBooked: Boolean },
