@@ -174,11 +174,12 @@
           </v-flex>
           <v-flex xs6 sm4 md2>
             <PopupProfile :uid = performer.uid :notBooked = true></PopupProfile>
+            <v-btn flat color="green" :disabled="performer.sameUser" @click="book(performer.uid, performer.email, performer.fullname, performer.talent, performer.style, performer.location)">
+              Book
+            </v-btn>
           </v-flex>
-          <v-btn flat color="green" :disabled="performer.sameUser" @click="book(performer.uid, performer.email, performer.fullname, performer.talent, performer.style, performer.location)">
-            Book
-          </v-btn>
         </v-layout>
+        <br>
         <v-divider color="black"></v-divider>
         <v-divider color="black"></v-divider>
       </v-card>
