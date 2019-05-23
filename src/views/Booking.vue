@@ -30,17 +30,12 @@
             <div class="caption grey--text">Date</div>
             <div>{{ performer.date }}</div>
           </v-flex>
-          <br/>
           <v-flex xs6 sm4 md2>
             <PopupProfile :uid = performer.uid :notBooked = false></PopupProfile>
-          </v-flex>
-          <v-flex xs6 sm4 md2>
-            <PopupReview :uid = performer.uid></PopupReview>
-          </v-flex>
-          <v-flex xs6 sm4 md2>
             <v-btn flat color="red" @click="cancel(performer.uid)">
-              cancel
+              Cancel
             </v-btn>
+            <PopupReview :uid = performer.uid></PopupReview>
           </v-flex>
         </v-layout>
         <v-divider color="black"></v-divider>
