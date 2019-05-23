@@ -53,7 +53,9 @@
         fulltext: '',
         imageUrl: '',
         rating: 3,
-        oldrating: null,
+        averagerating: null,
+        totalrating: null,
+        numberofreviews: 1,
         loader: null,
         loading4: false,
         dialog: false
@@ -93,17 +95,27 @@
           });
         db.collection('performers').doc(this.uid).get().then(doc => {
           this.oldrating = doc.data().ratings;
+          this.numberofreviews = doc.data().numberofreviews;
+          this.totalrating = doc.data().totalrating;
         });
         if(this.oldrating > 0) {
-          this.oldrating += this.rating;
-          this.oldrating = this.oldrating/2;
-          this.oldrating = (Math.round(this.oldrating * 2) / 2).toFixed(1);
+          // eslint-disable-next-line no-console
+          console.log("Bigger than zero");
+          this.numberofreviews += 1;
+          this.totalrating += this.rating;
+          this.averagerating = this.totalrating/this.numberofreviews;
+          this.averagerating = (Math.round(this.averagerating * 2) / 2).toFixed(1);
         }
         else {
-          this.oldrating += this.rating;
+          // eslint-disable-next-line no-console
+          console.log("No previous ratings");
+          this.totalrating = this.rating;
+          this.averagerating = this.rating;
         }
         db.collection('performers').doc(this.uid).update({
-          ratings: this.oldrating
+          totalrating: this.totalrating,
+          ratings: this.averagerating,
+          numberofreviews: this.numberofreviews
         })
           .then(function() {
             // eslint-disable-next-line no-console
