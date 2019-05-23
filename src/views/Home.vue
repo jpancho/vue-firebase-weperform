@@ -74,14 +74,23 @@
     <h5 class="font-weight-light black--text">
       Designed to streamline the process of booking performers for events. Each performer has a profile describing their skill, expertise, and contact information, allowing patrons to search and book them with ease. This service saves the patrons time, effort, and money in search of their ideal performer, while also providing performers with a dedicated platform to promote themselves.
     </h5>
-    <p></p>
+    <br>
     <v-divider color="grey"></v-divider>
     <v-divider color="grey"></v-divider>
     <p></p>
 
     <v-layout row>
       <h2 class="font-weight-light display-3 black--text">
-        <pre>Performers based on your needs</pre>
+        <pre>Book a talent for your events</pre>
+        <li class="title font-weight-light">Festivals</li><p></p>
+        <li class="title font-weight-light">Birthday parties</li><p></p>
+        <li class="title font-weight-light">Stage shows</li><p></p>
+        <li class="title font-weight-light">Weddings</li><p></p>
+        <li class="title font-weight-light">Concerts</li><p></p>
+        <li class="title font-weight-light">Annual functions</li><p></p>
+        <h4 class="title font-weight-light">You name it... We’ll help you book the
+          <label class="font-weight-bold red--text"> perfect talent </label> based on your needs!
+        </h4>
       </h2>
       <v-spacer></v-spacer>
       <v-flex md6>
@@ -94,7 +103,7 @@
         </v-card>
       </v-flex>
     </v-layout>
-    <p></p>
+    <br>
     <v-layout row>
       <v-flex xs5>
         <v-divider color="grey"></v-divider>
@@ -122,17 +131,22 @@
         <h2 class="font-weight-light display-3 black--text">
           <pre>Filtered search options</pre>
           <v-flex xs2 sm12 sm6 align-end>
-            <h4 class="title font-weight-light"><v-icon>check_circle</v-icon> Genre</h4>
-            <p></p><h4 class="title font-weight-light"><v-icon>check_circle</v-icon> Styles</h4>
-            <p></p><h4 class="title font-weight-light"><v-icon>check_circle</v-icon> Pricing</h4>
-            <p></p><h4 class="title font-weight-light"><v-icon>check_circle</v-icon> Location</h4>
-            <p></p><h4 class="title font-weight-light"><v-icon>check_circle</v-icon> Experience</h4>
-            <p></p><h4 class="title font-weight-light"><v-icon>check_circle</v-icon> Availability</h4>
+            <h4 class="title font-weight-light"><v-icon>check_circle</v-icon> <label class="font-weight-bold"> Genre:</label> Pick your category of artistic composition, as needed.</h4>
+            <p></p>
+            <h4 class="title font-weight-light"><v-icon>check_circle</v-icon> <label class="font-weight-bold"> Styles:</label> Choose various different styles, within specific genre.</h4>
+            <p></p>
+            <h4 class="title font-weight-light"><v-icon>check_circle</v-icon> <label class="font-weight-bold"> Pricing:</label> Each performer has their pricing listed depending on their level.</h4>
+            <p></p>
+            <h4 class="title font-weight-light"><v-icon>check_circle</v-icon> <label class="font-weight-bold"> Location:</label> Search your ideal performer based on your own chosen location.</h4>
+            <p></p>
+            <h4 class="title font-weight-light"><v-icon>check_circle</v-icon> <label class="font-weight-bold"> Experience:</label> Get to know more about your performer based on experience.</h4>
+            <p></p>
+            <h4 class="title font-weight-light"><v-icon>check_circle</v-icon> <label class="font-weight-bold"> Availability:</label> Search and Book performers within your time.</h4>
           </v-flex>
         </h2>
       </v-flex>
     </v-layout>
-    <p></p>
+    <br>
     <v-layout row>
       <v-flex xs5>
         <v-divider color="grey"></v-divider>

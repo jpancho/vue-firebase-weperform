@@ -397,6 +397,7 @@
           db.collection('performers')
             .where('talent', '==', this.selected_talent)
             .where('style', 'array-contains', this.selected_style)
+            .where('availability', 'array-contains', availability)
             .get()
             .then(doc => {
               const changes = doc.docChanges();
@@ -432,6 +433,7 @@
           query = query.where('talent', '==', this.selected_talent);
           query = query.where('style', 'array-contains', this.selected_style);
           query = query.where('location', '==', this.selected_location);
+          query = query.where('availability', 'array-contains', availability);
           query.get()
             .then(doc => {
               const changes = doc.docChanges();
