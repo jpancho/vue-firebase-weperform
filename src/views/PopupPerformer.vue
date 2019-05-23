@@ -3,11 +3,11 @@
   <v-layout row justify-center>
     <v-dialog v-model = "dialog" max-width="400">
       <v-btn round class="grey" color="white" slot="activator">
-        <pre class="font-weight-bold subheading">Become a Performer</pre>
+        Become a Performer
       </v-btn>
       <v-card>
         <v-toolbar dark color="blue-grey">
-          <v-toolbar-title><pre>Let's make you a performer...</pre></v-toolbar-title>
+          <v-toolbar-title>Let's make you a performer...</v-toolbar-title>
           <v-spacer></v-spacer>
         </v-toolbar>
         <v-card-text>
