@@ -1,7 +1,7 @@
 <template xmlns:v-slot="http://www.w3.org/1999/XSL/Transform">
   <v-container grid-list-xl>
   <v-layout row justify-center>
-    <v-dialog v-model = "dialog" max-width="400">
+    <v-dialog v-model = "dialog" max-width="500">
       <v-btn round class="grey" color="white" slot="activator">
         Become a Performer
       </v-btn>
