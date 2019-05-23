@@ -106,6 +106,10 @@
             window.location.reload()
           })
       },
+      formattedStyles(styles) {
+        let stylesArray = [styles];
+        return stylesArray.splice(0, stylesArray.length - 1).join(', ') + stylesArray.splice(-1);
+      }
     }
   }
 </script>
