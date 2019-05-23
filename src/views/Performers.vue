@@ -155,7 +155,7 @@
           <v-flex xs6 sm4 md2>
             <div class="caption grey--text">Full Name</div>
             <div>{{ performer.fullname }}</div>
-<!--            <v-rating v-model="4" background-color="orange lighten-3" color="orange" small readonly></v-rating>-->
+            <v-rating v-model="performer.ratings" background-color="orange lighten-3" color="orange" small half-increments readonly></v-rating>
           </v-flex>
           <v-flex xs6 sm4 md2>
             <div class="caption grey--text">Style</div>
@@ -277,10 +277,7 @@
       filteredStyles() {
         let styles = this.styles;
         return styles.filter(o => o.dependency === this.selected_talent)
-      },
-      // averageRatings() {
-      //
-      // }
+      }
     },
     methods: {
       dancer(){
@@ -398,7 +395,6 @@
           db.collection('performers')
             .where('talent', '==', this.selected_talent)
             .where('style', 'array-contains', this.selected_style)
-            .where('availability', 'array-contains', availability)
             .get()
             .then(doc => {
               const changes = doc.docChanges();
@@ -434,7 +430,6 @@
           query = query.where('talent', '==', this.selected_talent);
           query = query.where('style', 'array-contains', this.selected_style);
           query = query.where('location', '==', this.selected_location);
-          query = query.where('availability', 'array-contains', availability);
           query.get()
             .then(doc => {
               const changes = doc.docChanges();
@@ -473,7 +468,7 @@
           this.selected_talent = '';
           this.selected_style = '';
           this.selected_location = '';
-          this.date = '';
+          this.date = new Date().toISOString().substr(0, 10);
           document.getElementById("d").style.outline = "none";
           document.getElementById("m").style.outline = "none";
           document.getElementById("s").style.outline = "none";
