@@ -14,174 +14,175 @@
         <v-hover>
           <v-card slot-scope="{ hover }"
                   :class="`elevation-${hover ? 12 : 2}`">
-          <v-img
-            src="/assets/img/talents/dancer.jpg"
-            v-model="selected_talent"
-            style="cursor: pointer"
-            class="white--text"
-            @click="dancer"
-            height="200px"
-            id = "d"
-          >
-            <v-expand-transition>
-              <div
-                class="d-flex transition-fast-in-fast-out lighten-2 v-card--reveal display-3 white--text font-weight-bold"
-                style="height: 100%;"
-              >
-                DANCER
-              </div>
-            </v-expand-transition>
-          </v-img>
-        </v-card>
+            <v-img
+              src="/assets/img/talents/dancer.jpg"
+              v-model="selected_talent"
+              style="cursor: pointer"
+              class="white--text"
+              @click="dancer"
+              height="200px"
+              id = "d"
+            >
+              <v-expand-transition>
+                <div
+                  class="d-flex transition-fast-in-fast-out lighten-2 v-card--reveal display-3 white--text font-weight-bold"
+                  style="height: 100%;"
+                >
+                  DANCER
+                </div>
+              </v-expand-transition>
+            </v-img>
+          </v-card>
         </v-hover>
       </v-flex>
       <!--Musician-->
       <v-flex xs6 sm12 offset-sm1>
         <v-hover>
-        <v-card slot-scope="{ hover }"
-                :class="`elevation-${hover ? 12 : 2}`">
-          <v-img
-            src="/assets/img/talents/musician.jpg"
-            v-model="selected_talent"
-            style="cursor: pointer"
-            class="white--text"
-            @click="musician"
-            height="200px"
-            id = "m"
-          >
-            <v-expand-transition>
-              <div
-                class="d-flex transition-fast-in-fast-out lighten-2 v-card--reveal display-3 white--text font-weight-bold"
-                style="height: 100%;"
-              >
-                MUSICIAN
-              </div>
-            </v-expand-transition>
-          </v-img>
-        </v-card>
+          <v-card slot-scope="{ hover }"
+                  :class="`elevation-${hover ? 12 : 2}`">
+            <v-img
+              src="/assets/img/talents/musician.jpg"
+              v-model="selected_talent"
+              style="cursor: pointer"
+              class="white--text"
+              @click="musician"
+              height="200px"
+              id = "m"
+            >
+              <v-expand-transition>
+                <div
+                  class="d-flex transition-fast-in-fast-out lighten-2 v-card--reveal display-3 white--text font-weight-bold"
+                  style="height: 100%;"
+                >
+                  MUSICIAN
+                </div>
+              </v-expand-transition>
+            </v-img>
+          </v-card>
         </v-hover>
       </v-flex>
       <!--Singer-->
       <v-flex xs8 sm12 offset-sm1>
         <v-hover>
-        <v-card slot-scope="{ hover }"
-                :class="`elevation-${hover ? 12 : 2}`">
-          <v-img
-            src="/assets/img/talents/singer.jpg"
-            v-model="selected_talent"
-            style="cursor: pointer"
-            class="white--text"
-            @click="singer"
-            height="200px"
-            id = "s"
-          >
-            <v-expand-transition>
-              <div
-                class="d-flex transition-fast-in-fast-out lighten-2 v-card--reveal display-3 white--text font-weight-bold"
-                style="height: 100%;"
-              >
-                SINGER
-              </div>
-            </v-expand-transition>
-          </v-img>
-        </v-card>
+          <v-card slot-scope="{ hover }"
+                  :class="`elevation-${hover ? 12 : 2}`">
+            <v-img
+              src="/assets/img/talents/singer.jpg"
+              v-model="selected_talent"
+              style="cursor: pointer"
+              class="white--text"
+              @click="singer"
+              height="200px"
+              id = "s"
+            >
+              <v-expand-transition>
+                <div
+                  class="d-flex transition-fast-in-fast-out lighten-2 v-card--reveal display-3 white--text font-weight-bold"
+                  style="height: 100%;"
+                >
+                  SINGER
+                </div>
+              </v-expand-transition>
+            </v-img>
+          </v-card>
         </v-hover>
       </v-flex>
     </v-layout>
     <!--Dropdown-->
-      <v-container>
-        <v-card-actions class="justify-center">
-          <v-flex sm4>
-            <v-select
-              :items="filteredStyles"
-              label="Select style"
-              v-model="selected_style"
-              solo
-              v-show="categorySelected"
-            ></v-select>
+    <v-container>
+      <v-card-actions class="justify-center">
+        <v-flex sm4>
+          <v-select
+            :items="filteredStyles"
+            label="Select style"
+            v-model="selected_style"
+            solo
+            v-show="categorySelected"
+          ></v-select>
+        </v-flex>
+      </v-card-actions>
+      <v-card-actions class="justify-center">
+        <v-flex sm4>
+          <v-select
+            :items="location"
+            label="Select location"
+            v-model="selected_location"
+            solo
+            v-show="categorySelected"
+          ></v-select>
+        </v-flex>
+      </v-card-actions>
+      <!--date-->
+      <v-layout class="justify-center">
+        <v-flex xs12 sm6 md4>
+          <v-menu
+            v-model="menu2"
+            :close-on-content-click="false"
+            :nudge-right="120"
+            lazy
+            transition="scale-transition"
+            offset-y
+            full-width
+            min-width="290px"
+          >
+            <template v-slot:activator="{ on }">
+              <v-text-field
+                v-model="date"
+                label="Select date"
+                prepend-icon="event"
+                readonly
+                v-on="on"
+              ></v-text-field>
+            </template>
+            <v-date-picker v-model="date" @input="menu2 = false" landscape="landscape"></v-date-picker>
+          </v-menu>
+        </v-flex>
+      </v-layout>
+      <v-card-actions class="justify-center">
+        <v-flex sm4 d-flex>
+          <v-btn round class="success" @click="display">Search</v-btn>
+        </v-flex>
+      </v-card-actions>
+      <v-card-actions class="justify-center">
+        <v-flex sm2 d-flex>
+          <v-btn round class="error" @click="clear">Clear</v-btn>
+        </v-flex>
+      </v-card-actions>
+      <!--Performer list-->
+      <v-card flat class="pa-3" v-for="performer in performers" :key="performer.fullname">
+        <v-layout row wrap>
+          <v-flex xs6 sm4 md2>
+            <div class="caption grey--text">Full Name</div>
+            <div>{{ performer.fullname }}</div>
           </v-flex>
-        </v-card-actions>
-        <v-card-actions class="justify-center">
-          <v-flex sm4>
-            <v-select
-              :items="location"
-              label="Select location"
-              v-model="selected_location"
-              solo
-              v-show="categorySelected"
-            ></v-select>
+          <v-flex xs6 sm4 md2>
+            <div class="caption grey--text">Style</div>
+            <div v-for="style in performer.style" :key="style">{{style }}</div>
+            <div>{{style}}</div>
           </v-flex>
-        </v-card-actions>
-        <!--date-->
-        <v-layout class="justify-center">
-            <v-flex xs12 sm6 md4>
-              <v-menu
-                v-model="menu2"
-                :close-on-content-click="false"
-                :nudge-right="120"
-                lazy
-                transition="scale-transition"
-                offset-y
-                full-width
-                min-width="290px"
-              >
-                <template v-slot:activator="{ on }">
-                  <v-text-field
-                    v-model="date"
-                    label="Select date"
-                    prepend-icon="event"
-                    readonly
-                    v-on="on"
-                  ></v-text-field>
-                </template>
-                <v-date-picker v-model="date" @input="menu2 = false" landscape="landscape"></v-date-picker>
-              </v-menu>
-            </v-flex>
+          <v-flex xs6 sm4 md2>
+            <div class="caption grey--text">Experience</div>
+            <div>{{ performer.experience }}</div>
+          </v-flex>
+          <v-flex xs6 sm4 md2>
+            <div class="caption grey--text">Price</div>
+            <div> ${{ performer.price}}</div>
+          </v-flex>
+          <v-flex xs6 sm4 md2>
+            <div class="caption grey--text">Location</div>
+            <div>{{ performer.location}}</div>
+          </v-flex>
+          <v-flex xs6 sm4 md2>
+            <PopupProfile :uid = performer.uid :notBooked = true></PopupProfile>
+          </v-flex>
+          <v-btn flat color="green" :disabled="performer.sameUser" @click="book(performer.uid, performer.email, performer.fullname, performer.talent, performer.style, performer.location)">
+            Book
+          </v-btn>
         </v-layout>
-        <v-card-actions class="justify-center">
-          <v-flex sm4 d-flex>
-            <v-btn round class="success" @click="display">Search</v-btn>
-          </v-flex>
-        </v-card-actions>
-        <v-card-actions class="justify-center">
-          <v-flex sm2 d-flex>
-            <v-btn round class="error" @click="clear">Clear</v-btn>
-          </v-flex>
-        </v-card-actions>
-        <!--Performer list-->
-        <v-card flat class="pa-3" v-for="performer in performers" :key="performer.fullname">
-          <v-layout row wrap>
-            <v-flex xs6 sm4 md2>
-              <div class="caption grey--text">Full Name</div>
-              <div>{{ performer.fullname }}</div>
-            </v-flex>
-            <v-flex xs6 sm4 md2>
-              <div class="caption grey--text">Style</div>
-              <div v-for="style in performer.style" :key="style">{{style }}</div>
-            </v-flex>
-            <v-flex xs6 sm4 md2>
-              <div class="caption grey--text">Experience</div>
-              <div>{{ performer.experience }}</div>
-            </v-flex>
-            <v-flex xs6 sm4 md2>
-              <div class="caption grey--text">Price</div>
-              <div> ${{ performer.price}}</div>
-            </v-flex>
-            <v-flex xs6 sm4 md2>
-              <div class="caption grey--text">Location</div>
-              <div>{{ performer.location}}</div>
-            </v-flex>
-            <v-flex xs6 sm4 md2>
-              <PopupProfile :uid = performer.uid :notBooked = true></PopupProfile>
-            </v-flex>
-            <v-btn flat color="green" :disabled="performer.sameUser" @click="book(performer.uid, performer.email, performer.fullname, performer.talent, performer.style, performer.location)">
-              Book
-            </v-btn>
-          </v-layout>
-          <v-divider color="black"></v-divider>
-          <v-divider color="black"></v-divider>
-        </v-card>
-      </v-container>
+        <v-divider color="black"></v-divider>
+        <v-divider color="black"></v-divider>
+      </v-card>
+    </v-container>
   </div>
 </template>
 
@@ -272,7 +273,7 @@
       filteredStyles() {
         let styles = this.styles;
         return styles.filter(o => o.dependency === this.selected_talent)
-      },
+      }
       // submittableDate(){
       //   const date = new Date(this.date)
       //   date.setHours(this.time.getHours())
@@ -335,86 +336,86 @@
         else if(this.selected_talent === '' && this.selected_style === '') {
           this.performers = [];
           db.collection('performers')
-                  .where('location', '==', this.selected_location)
-                  .get()
-                  .then(doc => {
-                    const changes = doc.docChanges();
-                    changes.forEach(change => {
-                      if (change.type === 'added') {
-                        if(change.doc.data().uid === user.uid) {
-                          this.performers.push({
-                            ...change.doc.data(),
-                            id: change.doc.id,
-                            sameUser: true
-                          })
-                        }
-                        else {
-                          this.performers.push({
-                            ...change.doc.data(),
-                            id: change.doc.id,
-                            sameUser: false
-                          })
-                        }
-                      }
+            .where('location', '==', this.selected_location)
+            .get()
+            .then(doc => {
+              const changes = doc.docChanges();
+              changes.forEach(change => {
+                if (change.type === 'added') {
+                  if(change.doc.data().uid === user.uid) {
+                    this.performers.push({
+                      ...change.doc.data(),
+                      id: change.doc.id,
+                      sameUser: true
                     })
-                  })
+                  }
+                  else {
+                    this.performers.push({
+                      ...change.doc.data(),
+                      id: change.doc.id,
+                      sameUser: false
+                    })
+                  }
+                }
+              })
+            })
         }
         //if no style is selected, display list of matching talent and location
         else if(this.selected_style === '') {
-            this.performers = [];
-            db.collection('performers')
-                    .where('location', '==', this.selected_location)
-                    .where('talent', '==', this.selected_talent)
-                    .get()
-                    .then(doc => {
-                      const changes = doc.docChanges();
-                      changes.forEach(change => {
-                        if (change.type === 'added') {
-                          if(change.doc.data().uid === user.uid) {
-                            this.performers.push({
-                              ...change.doc.data(),
-                              id: change.doc.id,
-                              sameUser: true
-                            })
-                          }
-                          else {
-                            this.performers.push({
-                              ...change.doc.data(),
-                              id: change.doc.id,
-                              sameUser: false
-                            })
-                          }
-                        }
-                      })
+          this.performers = [];
+          db.collection('performers')
+            .where('location', '==', this.selected_location)
+            .where('talent', '==', this.selected_talent)
+            .get()
+            .then(doc => {
+              const changes = doc.docChanges();
+              changes.forEach(change => {
+                if (change.type === 'added') {
+                  if(change.doc.data().uid === user.uid) {
+                    this.performers.push({
+                      ...change.doc.data(),
+                      id: change.doc.id,
+                      sameUser: true
                     })
-          }
+                  }
+                  else {
+                    this.performers.push({
+                      ...change.doc.data(),
+                      id: change.doc.id,
+                      sameUser: false
+                    })
+                  }
+                }
+              })
+            })
+        }
         else if(this.selected_location === '') {
           this.performers = [];
           db.collection('performers')
-                  .where('talent', '==', this.selected_talent)
-                  .where('style', 'array-contains', this.selected_style)
-                  .get()
-                  .then(doc => {
-                    const changes = doc.docChanges();
-                    changes.forEach(change => {
-                      if (change.type === 'added') {
-                        if(change.doc.data().uid === user.uid) {
-                          this.performers.push({
-                            ...change.doc.data(),
-                            id: change.doc.id,
-                            sameUser: true
-                          })
-                        }
-                        else {
-                          this.performers.push({
-                            ...change.doc.data(),
-                            id: change.doc.id,
-                            sameUser: false
-                          })
-                        }
-                      }
+            .where('talent', '==', this.selected_talent)
+            .where('style', 'array-contains', this.selected_style)
+            .get()
+            .then(doc => {
+              const changes = doc.docChanges();
+              changes.forEach(change => {
+                if (change.type === 'added') {
+                  if(change.doc.data().uid === user.uid) {
+                    this.performers.push({
+                      ...change.doc.data(),
+                      id: change.doc.id,
+                      sameUser: true
                     })
-                  })
+                  }
+                  else {
+                    this.performers.push({
+                      ...change.doc.data(),
+                      id: change.doc.id,
+                      sameUser: false
+                    })
+                  }
+                }
+              })
+            })
         }
         //if style and location is selected, display list of matching talent, style and location
         else {
@@ -489,7 +490,7 @@
             console.log("isBook set to true!");
             alert('Successfully booked');
           });
-      }
+      },
     }
   }
 </script>
