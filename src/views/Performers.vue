@@ -160,7 +160,7 @@
             </v-flex>
             <v-flex xs6 sm4 md2>
               <div class="caption grey--text">Style</div>
-              <div>{{ formattedStyles(performer.style) }}</div>
+              <div>{{ performer.style }}</div>
             </v-flex>
             <v-flex xs6 sm4 md2>
               <div class="caption grey--text">Experience</div>
@@ -275,7 +275,7 @@
       filteredStyles() {
         let styles = this.styles;
         return styles.filter(o => o.dependency === this.selected_talent)
-      }
+      },
       // submittableDate(){
       //   const date = new Date(this.date)
       //   date.setHours(this.time.getHours())
@@ -492,10 +492,6 @@
             console.log("isBook set to true!");
             alert('Successfully booked');
           });
-      },
-      formattedStyles(styles) {
-        let stylesArray = [styles];
-        return stylesArray.splice(0, stylesArray.length - 1).join(', ') + stylesArray.splice(-1);
       }
     }
   }
