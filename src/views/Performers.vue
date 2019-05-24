@@ -517,13 +517,13 @@
       //resets talent, style and location dropdown
       clear() {
         this.$nextTick(() => {
-          this.selected_talent = '';
           this.selected_style = '';
           this.selected_location = '';
           this.date = new Date().toISOString().substr(0, 10);
-          document.getElementById("d").style.outline = "none";
-          document.getElementById("m").style.outline = "none";
-          document.getElementById("s").style.outline = "none";
+          // document.getElementById("d").style.outline = "none";
+          // document.getElementById("m").style.outline = "none";
+          // document.getElementById("s").style.outline = "none";
+          // this.categorySelected = false;
         });
       },
       book(uid, email,fullname,talent,style,location, imageUrl, ratings) {
