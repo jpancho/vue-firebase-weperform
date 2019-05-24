@@ -41,7 +41,7 @@
                     <v-card-title primary-title>
                       <div>
                         <div class="caption grey--text">Location</div>
-                        <div class="headline">{{ performer.location }}</div>
+                        <div class="title">{{ performer.location }}</div>
                       </div>
                     </v-card-title>
                   </v-flex>
@@ -49,7 +49,7 @@
                     <v-card-title primary-title>
                       <div>
                         <div class="caption grey--text">Booked for</div>
-                        <div class="headline">{{ performer.date }}</div>
+                        <div class="title">{{ performer.date }}</div>
                       </div>
                     </v-card-title>
                   </v-flex>
