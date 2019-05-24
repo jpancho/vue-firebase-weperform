@@ -15,18 +15,18 @@
           <v-card slot-scope="{ hover }"
                   :class="`elevation-${hover ? 12 : 2}`">
             <v-img
-              src="/assets/img/talents/dancer.jpg"
-              v-model="selected_talent"
-              style="cursor: pointer"
-              class="white--text"
-              @click="dancer"
-              height="200px"
-              id = "d"
+                    src="/assets/img/talents/dancer.jpg"
+                    v-model="selected_talent"
+                    style="cursor: pointer"
+                    class="white--text"
+                    @click="dancer"
+                    height="200px"
+                    id = "d"
             >
               <v-expand-transition>
                 <div
-                  class="d-flex transition-fast-in-fast-out lighten-2 v-card--reveal display-3 white--text font-weight-bold"
-                  style="height: 100%;"
+                        class="d-flex transition-fast-in-fast-out lighten-2 v-card--reveal display-3 white--text font-weight-bold"
+                        style="height: 100%;"
                 >
                   DANCER
                 </div>
@@ -41,18 +41,18 @@
           <v-card slot-scope="{ hover }"
                   :class="`elevation-${hover ? 12 : 2}`">
             <v-img
-              src="/assets/img/talents/musician.jpg"
-              v-model="selected_talent"
-              style="cursor: pointer"
-              class="white--text"
-              @click="musician"
-              height="200px"
-              id = "m"
+                    src="/assets/img/talents/musician.jpg"
+                    v-model="selected_talent"
+                    style="cursor: pointer"
+                    class="white--text"
+                    @click="musician"
+                    height="200px"
+                    id = "m"
             >
               <v-expand-transition>
                 <div
-                  class="d-flex transition-fast-in-fast-out lighten-2 v-card--reveal display-3 white--text font-weight-bold"
-                  style="height: 100%;"
+                        class="d-flex transition-fast-in-fast-out lighten-2 v-card--reveal display-3 white--text font-weight-bold"
+                        style="height: 100%;"
                 >
                   MUSICIAN
                 </div>
@@ -67,18 +67,18 @@
           <v-card slot-scope="{ hover }"
                   :class="`elevation-${hover ? 12 : 2}`">
             <v-img
-              src="/assets/img/talents/singer.jpg"
-              v-model="selected_talent"
-              style="cursor: pointer"
-              class="white--text"
-              @click="singer"
-              height="200px"
-              id = "s"
+                    src="/assets/img/talents/singer.jpg"
+                    v-model="selected_talent"
+                    style="cursor: pointer"
+                    class="white--text"
+                    @click="singer"
+                    height="200px"
+                    id = "s"
             >
               <v-expand-transition>
                 <div
-                  class="d-flex transition-fast-in-fast-out lighten-2 v-card--reveal display-3 white--text font-weight-bold"
-                  style="height: 100%;"
+                        class="d-flex transition-fast-in-fast-out lighten-2 v-card--reveal display-3 white--text font-weight-bold"
+                        style="height: 100%;"
                 >
                   SINGER
                 </div>
@@ -93,22 +93,22 @@
       <v-card-actions class="justify-center">
         <v-flex sm4>
           <v-select
-            :items="filteredStyles"
-            label="Select style"
-            v-model="selected_style"
-            solo
-            v-show="categorySelected"
+                  :items="filteredStyles"
+                  label="Select style"
+                  v-model="selected_style"
+                  solo
+                  v-show="categorySelected"
           ></v-select>
         </v-flex>
       </v-card-actions>
       <v-card-actions class="justify-center">
         <v-flex sm4>
           <v-select
-            :items="location"
-            label="Select location"
-            v-model="selected_location"
-            solo
-            v-show="categorySelected"
+                  :items="location"
+                  label="Select location"
+                  v-model="selected_location"
+                  solo
+                  v-show="categorySelected"
           ></v-select>
         </v-flex>
       </v-card-actions>
@@ -116,23 +116,23 @@
       <v-layout class="justify-center">
         <v-flex xs12 sm6 md4>
           <v-menu
-            v-model="menu2"
-            :close-on-content-click="false"
-            :nudge-right="120"
-            lazy
-            transition="scale-transition"
-            offset-y
-            full-width
-            min-width="290px"
+                  v-model="menu2"
+                  :close-on-content-click="false"
+                  :nudge-right="120"
+                  lazy
+                  transition="scale-transition"
+                  offset-y
+                  full-width
+                  min-width="290px"
           >
             <template v-slot:activator="{ on }">
               <v-text-field
-                v-model="date"
-                label="Select date"
-                prepend-icon="event"
-                readonly
-                v-on="on"
-                v-show="categorySelected"
+                      v-model="date"
+                      label="Select date"
+                      prepend-icon="event"
+                      readonly
+                      v-on="on"
+                      v-show="categorySelected"
               ></v-text-field>
             </template>
             <v-date-picker v-model="date" @input="menu2 = false" landscape="landscape"></v-date-picker>
@@ -306,122 +306,122 @@
         if (this.selected_style === '' && this.selected_location === '') {
           this.performers = [];
           db.collection('performers')
-            .where('talent', '==', this.selected_talent)
-            .where('availability', 'array-contains', availability)
-            .get()
-            .then(doc => {
-              const changes = doc.docChanges();
-              changes.forEach(change => {
-                if (change.type === 'added') {
-                  if(change.doc.data().uid === user.uid) {
-                    this.performers.push({
-                      ...change.doc.data(),
-                      id: change.doc.id,
-                      sameUser: true
+                  .where('talent', '==', this.selected_talent)
+                  .where('availability', 'array-contains', availability)
+                  .get()
+                  .then(doc => {
+                    const changes = doc.docChanges();
+                    changes.forEach(change => {
+                      if (change.type === 'added') {
+                        if(change.doc.data().uid === user.uid) {
+                          this.performers.push({
+                            ...change.doc.data(),
+                            id: change.doc.id,
+                            sameUser: true
+                          })
+                        }
+                        else {
+                          this.performers.push({
+                            ...change.doc.data(),
+                            id: change.doc.id,
+                            sameUser: false
+                          })
+                        }
+                      }
                     })
-                  }
-                  else {
-                    this.performers.push({
-                      ...change.doc.data(),
-                      id: change.doc.id,
-                      sameUser: false
-                    })
-                  }
-                }
-              })
-            })
+                  })
         }
         //if no talent and style is selected, display list of matching location
         else if(this.selected_talent === '' && this.selected_style === '') {
           this.performers = [];
           db.collection('performers')
-            .where('location', '==', this.selected_location)
-            .where('availability', 'array-contains', availability)
-            .get()
-            .then(doc => {
-              const changes = doc.docChanges();
-              changes.forEach(change => {
-                if (change.type === 'added') {
-                  if(change.doc.data().uid === user.uid) {
-                    this.performers.push({
-                      ...change.doc.data(),
-                      id: change.doc.id,
-                      sameUser: true
+                  .where('location', '==', this.selected_location)
+                  .where('availability', 'array-contains', availability)
+                  .get()
+                  .then(doc => {
+                    const changes = doc.docChanges();
+                    changes.forEach(change => {
+                      if (change.type === 'added') {
+                        if(change.doc.data().uid === user.uid) {
+                          this.performers.push({
+                            ...change.doc.data(),
+                            id: change.doc.id,
+                            sameUser: true
+                          })
+                        }
+                        else {
+                          this.performers.push({
+                            ...change.doc.data(),
+                            id: change.doc.id,
+                            sameUser: false
+                          })
+                        }
+                      }
                     })
-                  }
-                  else {
-                    this.performers.push({
-                      ...change.doc.data(),
-                      id: change.doc.id,
-                      sameUser: false
-                    })
-                  }
-                }
-              })
-            })
+                  })
         }
         //if no style is selected, display list of matching talent and location
         else if(this.selected_style === '') {
           this.performers = [];
           db.collection('performers')
-            .where('location', '==', this.selected_location)
-            .where('talent', '==', this.selected_talent)
-            .where('availability', 'array-contains', availability)
-            .get()
-            .then(doc => {
-              const changes = doc.docChanges();
-              changes.forEach(change => {
-                if (change.type === 'added') {
-                  if(change.doc.data().uid === user.uid) {
-                    this.performers.push({
-                      ...change.doc.data(),
-                      id: change.doc.id,
-                      sameUser: true
+                  .where('location', '==', this.selected_location)
+                  .where('talent', '==', this.selected_talent)
+                  .where('availability', 'array-contains', availability)
+                  .get()
+                  .then(doc => {
+                    const changes = doc.docChanges();
+                    changes.forEach(change => {
+                      if (change.type === 'added') {
+                        if(change.doc.data().uid === user.uid) {
+                          this.performers.push({
+                            ...change.doc.data(),
+                            id: change.doc.id,
+                            sameUser: true
+                          })
+                        }
+                        else {
+                          this.performers.push({
+                            ...change.doc.data(),
+                            id: change.doc.id,
+                            sameUser: false
+                          })
+                        }
+                      }
                     })
-                  }
-                  else {
-                    this.performers.push({
-                      ...change.doc.data(),
-                      id: change.doc.id,
-                      sameUser: false
-                    })
-                  }
-                }
-              })
-            })
+                  })
         }
         else if(this.selected_location === '') {
           this.performers = [];
           db.collection('performers')
-            .where('talent', '==', this.selected_talent)
-            .where('style', 'array-contains', this.selected_style)
-            .get()
-            .then(doc => {
-              const changes = doc.docChanges();
-              changes.forEach(change => {
-                if (change.type === 'added') {
-                  let arrayLength = change.doc.data().availability.length;
-                  for (let i = 0; i < arrayLength; i++) {
-                    if (change.doc.data().availability[i] === availability) {
-                      if (change.doc.data().uid === user.uid) {
-                        this.performers.push({
-                          ...change.doc.data(),
-                          id: change.doc.id,
-                          sameUser: true
-                        })
+                  .where('talent', '==', this.selected_talent)
+                  .where('style', 'array-contains', this.selected_style)
+                  .get()
+                  .then(doc => {
+                    const changes = doc.docChanges();
+                    changes.forEach(change => {
+                      if (change.type === 'added') {
+                        let arrayLength = change.doc.data().availability.length;
+                        for (let i = 0; i < arrayLength; i++) {
+                          if (change.doc.data().availability[i] === availability) {
+                            if (change.doc.data().uid === user.uid) {
+                              this.performers.push({
+                                ...change.doc.data(),
+                                id: change.doc.id,
+                                sameUser: true
+                              })
+                            }
+                            else {
+                              this.performers.push({
+                                ...change.doc.data(),
+                                id: change.doc.id,
+                                sameUser: false
+                              })
+                            }
+                          }
+                        }
                       }
-                      else {
-                        this.performers.push({
-                          ...change.doc.data(),
-                          id: change.doc.id,
-                          sameUser: false
-                        })
-                      }
-                    }
-                  }
-                }
-              })
-            })
+                    })
+                  })
         }
         //if style and location is selected, display list of matching talent, style and location
         else {
@@ -431,31 +431,31 @@
           query = query.where('style', 'array-contains', this.selected_style);
           query = query.where('location', '==', this.selected_location);
           query.get()
-            .then(doc => {
-              const changes = doc.docChanges();
-              changes.forEach(change => {
-                if (change.type === 'added') {
-                  let arrayLength = change.doc.data().availability.length;
-                  for (let i = 0; i < arrayLength; i++) {
-                    if (change.doc.data().availability[i] === availability) {
-                      if (change.doc.data().uid === user.uid) {
-                        this.performers.push({
-                          ...change.doc.data(),
-                          id: change.doc.id,
-                          sameUser: true
-                        })
-                      } else {
-                        this.performers.push({
-                          ...change.doc.data(),
-                          id: change.doc.id,
-                          sameUser: false
-                        })
+                  .then(doc => {
+                    const changes = doc.docChanges();
+                    changes.forEach(change => {
+                      if (change.type === 'added') {
+                        let arrayLength = change.doc.data().availability.length;
+                        for (let i = 0; i < arrayLength; i++) {
+                          if (change.doc.data().availability[i] === availability) {
+                            if (change.doc.data().uid === user.uid) {
+                              this.performers.push({
+                                ...change.doc.data(),
+                                id: change.doc.id,
+                                sameUser: true
+                              })
+                            } else {
+                              this.performers.push({
+                                ...change.doc.data(),
+                                id: change.doc.id,
+                                sameUser: false
+                              })
+                            }
+                          }
+                        }
                       }
-                    }
-                  }
-                }
-              })
-            })
+                    })
+                  })
         }
       },
       // mouseOver: function(){
@@ -478,7 +478,7 @@
         let ref = db.collection('performers').doc(uid);
 
         db.collection('users').doc(user.uid)
-          .collection('performersBooked').doc(uid).set({
+                .collection('performersBooked').doc(uid).set({
           uid: uid,
           email: email,
           fullname: fullname,
@@ -487,24 +487,25 @@
           location: location,
           date: this.date
         })
-          .then(function () {
-            // eslint-disable-next-line no-console
-            console.log("Performer booked!")
-          });
+                .then(function () {
+                  // eslint-disable-next-line no-console
+                  console.log("Performer booked!")
+                });
 
         return ref.set({
           isBooked: true
         }, {merge: true})
-          .then(function () {
-            // eslint-disable-next-line no-console
-            console.log("isBook set to true!");
-          });
+                .then(function () {
+                  // eslint-disable-next-line no-console
+                  console.log("isBook set to true!");
+                  alert('Performer booked');
+                });
       },
       countBookings() {
         db.collection('users').doc(user.uid)
-          .collection('performersBooked')
-          .get().then(snapshot => {
-            this.$store.dispatch('countAction', snapshot.size);
+                .collection('performersBooked')
+                .get().then(snapshot => {
+          this.$store.dispatch('countAction', snapshot.size);
         });
       },
       bookAndCount(uid, email,fullname,talent,style,location) {

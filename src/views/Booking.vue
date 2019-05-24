@@ -12,6 +12,9 @@
           <v-flex xs6 sm4 md2>
             <div class="caption grey--text">Full Name</div>
             <div>{{ performer.fullname }}</div>
+              <v-avatar size ="100" class ="grey lighten-2">
+                <!--<img :src="pullImage(performer.uid)" alt="">-->
+              </v-avatar>
           </v-flex>
           <v-flex xs6 sm4 md2>
             <div class="caption grey--text">Talent</div>
@@ -20,7 +23,6 @@
           <v-flex xs6 sm4 md2>
             <div class="caption grey--text">Style</div>
             <div v-for="style in performer.style" :key="style">{{ style}}</div>
-            <div>{{style}}</div>
           </v-flex>
           <v-flex xs6 sm4 md2>
             <div class="caption grey--text">Location</div>
@@ -58,56 +60,63 @@
       return {
         performers: [],
         uid: '',
-        imageUrl: ''
+        imageUrl: '',
       }
     },
     created() {
-      db.collection('users').doc(user.uid).get().then(doc => {
-        this.imageUrl = doc.data().imageUrl;
-      });
+      // db.collection('users').doc(user.uid).get().then(doc => {
+      //   this.imageUrl = doc.data().imageUrl;
+      // });
       this.show()
     },
     methods: {
       show() {
         // let ref = db.collection('performers').doc(uid);
-        let user = auth.currentUser;
         this.performers = [];
         db.collection('users').doc(user.uid)
-          .collection('performersBooked').get()
-          .then(doc => {
-            const changes = doc.docChanges();
-            changes.forEach(change => {
-              if (change.type === 'added') {
-                this.performers.push({
-                  ...change.doc.data(),
-                  id: change.doc.id
+                .collection('performersBooked').get()
+                .then(doc => {
+                  const changes = doc.docChanges();
+                  changes.forEach(change => {
+                    if (change.type === 'added') {
+                      this.performers.push({
+                        ...change.doc.data(),
+                        id: change.doc.id
+                      })
+                    }
+                  })
                 })
-              }
-            })
-          })
       },
       cancel(uid) {
         let ref = db.collection('performers').doc(uid);
         let user = auth.currentUser;
         db.collection('users').doc(user.uid)
-          .collection('performersBooked').doc(uid).delete();
+                .collection('performersBooked').doc(uid).delete();
         this.countBookings();
         return ref.set({
           isBooked: false
         }, {merge: true})
-          .then(function () {
-            // eslint-disable-next-line no-console
-            console.log("Booking is canceled!");
-            window.location.reload()
-          })
+                .then(function () {
+                  // eslint-disable-next-line no-console
+                  console.log("Booking is canceled!");
+                  window.location.reload()
+                  // window.location.replace('/bookings');
+                })
       },
       countBookings() {
         db.collection('users').doc(user.uid)
-          .collection('performersBooked')
-          .get().then(snapshot => {
+                .collection('performersBooked')
+                .get().then(snapshot => {
           this.$store.dispatch('countAction', snapshot.size);
         });
       },
+      pullImage(uid){
+        db.collection('users').doc(uid).get().then(doc=> {
+         this.imageUrl = doc.data().imageUrl;
+        });
+        return this.imageUrl
+      }
+
     }
   }
 </script>

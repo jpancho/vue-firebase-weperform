@@ -3,37 +3,37 @@
     <v-btn flat color="green" slot="activator">Post a Review</v-btn>
     <v-container grid-list-xl>
       <v-layout column justify-center>
-          <v-card>
-            <v-toolbar dark color="blue-grey">
-              <v-toolbar-title>Leave a review!</v-toolbar-title>
-              <v-spacer></v-spacer>
-            </v-toolbar>
-            <v-card-text>
-              <v-form>
-                <v-rating v-model="rating" background-color="orange lighten-3" color="orange" small></v-rating>
-                <v-textarea outline auto-grow
-                  label="Comment"
-                  v-model="subtext"
-                ></v-textarea>
-                <v-layout row justify-center>
-                  <v-card-actions>
-                    <v-spacer></v-spacer>
-                    <v-btn
-                      :loading="loading4"
-                      :disabled="loading4"
-                      color="info"
-                      @click="loader = 'loading4'"
-                      class="success"
-                      v-on:click="postReview"
-                    >
-                      Post
-                      <span class="custom-loader"></span>
-                    </v-btn>
-                  </v-card-actions>
-                </v-layout>
-              </v-form>
-            </v-card-text>
-          </v-card>
+        <v-card>
+          <v-toolbar dark color="blue-grey">
+            <v-toolbar-title>Leave a review!</v-toolbar-title>
+            <v-spacer></v-spacer>
+          </v-toolbar>
+          <v-card-text>
+            <v-form>
+              <v-rating v-model="rating" background-color="orange lighten-3" color="orange" small></v-rating>
+              <v-textarea outline auto-grow
+                          label="Comment"
+                          v-model="subtext"
+              ></v-textarea>
+              <v-layout row justify-center>
+                <v-card-actions>
+                  <v-spacer></v-spacer>
+                  <v-btn
+                          :loading="loading4"
+                          :disabled="loading4"
+                          color="info"
+                          @click="loader = 'loading4'"
+                          class="success"
+                          v-on:click="postReview"
+                  >
+                    Post
+                    <span class="custom-loader"></span>
+                  </v-btn>
+                </v-card-actions>
+              </v-layout>
+            </v-form>
+          </v-card-text>
+        </v-card>
       </v-layout>
     </v-container>
   </v-dialog>
@@ -51,10 +51,10 @@
         subtext: '',
         fulltext: '',
         imageUrl: '',
-        rating: 3,
-        averagerating: null,
-        totalrating: null,
-        numberofreviews: 1,
+        rating: 0,
+        averagerating: 0,
+        totalrating: 0,
+        numberofreviews: 0,
         loader: null,
         loading4: false,
         dialog: false
@@ -65,16 +65,18 @@
         this.imageUrl = doc.data().imageUrl;
         this.fullname = doc.data().fullname;
       });
+      db.collection('performers').doc(this.uid).get().then(doc => {
+        this.totalrating = doc.data().totalrating;
+        this.numberofreviews=doc.data().numberofreviews;
+        this.ratings=doc.data().ratings;
+      });
     },
     watch: {
       loader () {
         const l = this.loader;
         this[l] = !this[l];
-
         setTimeout(() => (this[l] = false), 2000);
-
         this.loader = null;
-
         setTimeout(() => this.dialog = false, 2000);
       }
     },
@@ -82,62 +84,30 @@
       postReview() {
         this.fulltext = '<span class=\'text--secondary\'>' + this.fullname + '</span> &mdash; ' + this.subtext;
         db.collection('performers').doc(this.uid)
-          .collection('reviews').add({
+                .collection('reviews').add({
           imageUrl: this.imageUrl,
           text: this.fulltext,
           uid: user.uid,
           rating: this.rating
         })
-          .then(function() {
-            // eslint-disable-next-line no-console
-              console.log("Review posted!");
-          });
-        db.collection('performers').doc(this.uid).get().then(doc => {
-          this.oldrating = doc.data().ratings;
-          this.numberofreviews = doc.data().numberofreviews;
-          this.totalrating = doc.data().totalrating;
-        });
-        if(this.oldrating > 0) {
-          // eslint-disable-next-line no-console
-          console.log("Bigger than zero");
+                .then(function() {
+                  // eslint-disable-next-line no-console
+                  console.log("Review posted!");
+                });
           this.numberofreviews += 1;
           this.totalrating += this.rating;
-          this.averagerating = this.totalrating/this.numberofreviews;
-          this.averagerating = (Math.round(this.averagerating * 2) / 2).toFixed(1);
-        }
-        else {
-          // eslint-disable-next-line no-console
-          console.log("No previous ratings");
-          this.totalrating = this.rating;
-          this.averagerating = this.rating;
-        }
+          this.ratings = this.totalrating/this.numberofreviews;
+          this.ratings = (Math.round(this.ratings * 2) / 2).toFixed(1);
         db.collection('performers').doc(this.uid).update({
           totalrating: this.totalrating,
-          ratings: this.averagerating,
+          ratings: this.ratings,
           numberofreviews: this.numberofreviews
         })
-          .then(function() {
-            // eslint-disable-next-line no-console
-            console.log("Aggregrate ratings updated!");
-        })
-        // db.collection('performers').doc(this.uid).update({
-        //   ratings: firebase.firestore.FieldValue.arrayUnion(user.uid + ": " + this.rating)
-        // })
-        //   .then(function() {
-        //     // eslint-disable-next-line no-console
-        //     console.log("Aggregrate rating updated!")
-        //   })
+                .then(function() {
+                  // eslint-disable-next-line no-console
+                  console.log("Aggregrate ratings updated!");
+                })
       },
-      // aggregrateRatings(performer) {
-      //   let arrayLength = performer.ratings.length();
-      //   let aggregrateRatings = 0;
-      //   for(let i = 0; i < arrayLength; i++) {
-      //     aggregrateRatings += performer.ratings[i].charAt(30);
-      //   }
-      //   aggregrateRatings = aggregrateRatings/(arrayLength + 1);
-      //   aggregrateRatings = (Math.round(aggregrateRatings * 2) / 2).toFixed(1)
-      //   this.ratings = aggregrateRatings
-      // }
     }
   }
 </script>
