@@ -179,6 +179,9 @@
                     // eslint-disable-next-line no-console
                     console.log("New image url set!")
                   })
+          db.collection('performers').doc(this.uid).update({
+            imageUrl: fileReader.result
+          });
         });
         fileReader.readAsDataURL(files[0]);
         this.image = files[0]
