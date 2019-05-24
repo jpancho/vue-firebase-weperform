@@ -128,6 +128,7 @@
 
 <script>
   import { db, auth } from '../firebase';
+  let user = auth.currentUser;
 
   export default {
     data() {
@@ -231,6 +232,12 @@
         ]
       }
     },
+    created() {
+      db.collection('users').doc(user.uid).get().then(doc => {
+        this.imageUrl = doc.data().imageUrl;
+      });
+      this.show()
+    },
     watch: {
       loader () {
         const l = this.loader;
@@ -259,10 +266,10 @@
         }
 
         else {
-          let user = auth.currentUser;
           db.collection('performers').doc(user.uid).set({
             uid: user.uid,
             email: user.email,
+            imageUrl:this.imageUrl,
             fullname: this.fullname,
             talent: this.selected_talent,
             style: this.selected_style,
@@ -270,7 +277,10 @@
             experience: this.selected_experience,
             availability: this.availability,
             price: this.price,
-            isBooked: false
+            isBooked: false,
+            ratings: "0",
+            numberofreviews:0,
+            totalrating:0
           })
             .then(function () {
               // eslint-disable-next-line no-console
