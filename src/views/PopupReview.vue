@@ -51,10 +51,9 @@
         subtext: '',
         fulltext: '',
         imageUrl: '',
-        rating: 0,
-        averagerating: 0,
-        totalrating: 0,
-        numberofreviews: 0,
+        rating: 1,
+        totalrating: null,
+        numberofreviews: 1,
         loader: null,
         loading4: false,
         dialog: false
