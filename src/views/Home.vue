@@ -78,7 +78,6 @@
     <v-divider color="grey"></v-divider>
     <v-divider color="grey"></v-divider>
     <p></p>
-
     <v-layout row>
       <h2 class="font-weight-light display-3 black--text">
         <pre class="change-font">Book a talent for your events</pre>
@@ -87,7 +86,7 @@
         <h4 class="title font-weight-light"><v-icon>check_circle</v-icon> <label class="font-weight-bold"> Stage shows</label></h4><p></p>
         <h4 class="title font-weight-light"><v-icon>check_circle</v-icon> <label class="font-weight-bold"> Birthday parties</label></h4><p></p>
         <h4 class="title font-weight-light"><v-icon>check_circle</v-icon> <label class="font-weight-bold"> Annual functions</label></h4><p></p>
-        <h4 class="title font-weight-light">You name it... We’ll help you book the
+        <h4 class="title font-weight-light">We’ll help you book the
           <label class="font-weight-bold red--text"> perfect talent </label> based on your needs!
         </h4>
       </h2>
@@ -95,7 +94,7 @@
       <v-flex md6>
         <v-card>
           <v-img
-                  src="assets/img/talents/dancer_stage.jpg"
+                  src="assets/img/talents/concert.jpg"
                   height="300px"
           >
           </v-img>
@@ -124,17 +123,19 @@
         <h2 class="font-weight-light display-3 black--text">
           <pre>Filtered search options</pre>
           <v-flex xs2 sm12 sm6 align-end>
-            <h4 class="title font-weight-light"><v-icon>check_circle</v-icon> <label class="font-weight-bold"> Genre:</label> Pick your category of artistic composition, as needed.</h4>
+            <h4 class="title font-weight-bold"><v-icon>check_circle</v-icon> Genre</h4>
             <p></p>
-            <h4 class="title font-weight-light"><v-icon>check_circle</v-icon> <label class="font-weight-bold"> Styles:</label> Choose various different styles, within specific genre.</h4>
+            <h4 class="title font-weight-bold"><v-icon>check_circle</v-icon> Styles</h4>
             <p></p>
-            <h4 class="title font-weight-light"><v-icon>check_circle</v-icon> <label class="font-weight-bold"> Pricing:</label> Each performer has their pricing listed depending on their level.</h4>
+            <h4 class="title font-weight-bold"><v-icon>check_circle</v-icon> Location</h4>
             <p></p>
-            <h4 class="title font-weight-light"><v-icon>check_circle</v-icon> <label class="font-weight-bold"> Location:</label> Search your ideal performer based on your own chosen location.</h4>
+            <h4 class="title font-weight-bold"><v-icon>check_circle</v-icon> Experience</h4>
             <p></p>
-            <h4 class="title font-weight-light"><v-icon>check_circle</v-icon> <label class="font-weight-bold"> Experience:</label> Get to know more about your performer based on experience.</h4>
+            <h4 class="title font-weight-bold"><v-icon>check_circle</v-icon> Availability</h4>
             <p></p>
-            <h4 class="title font-weight-light"><v-icon>check_circle</v-icon> <label class="font-weight-bold"> Availability:</label> Search and Book performers within your time.</h4>
+            <h4 class="title font-weight-light">Search for your <label class="font-weight-bold red--text"> ideal performer </label>
+              based on your category of artistic composition.
+            </h4>
           </v-flex>
         </h2>
       </v-flex>
@@ -150,6 +151,16 @@
     <v-layout>
       <h2 class="font-weight-light display-3 black--text">
         <pre>Platform promoting talent</pre>
+        <h4 class="title font-weight-light"><v-icon>check_circle</v-icon> <label class="font-weight-bold"> Represent yourself the way you want to</label></h4><p></p>
+        <h4 class="title font-weight-light"><v-icon>check_circle</v-icon> <label class="font-weight-bold"> Post your experience for recognition</label></h4><p></p>
+        <h4 class="title font-weight-light"><v-icon>check_circle</v-icon> <label class="font-weight-bold"> Earn while engaging others</label></h4><p></p>
+        <h4 class="title font-weight-light"><v-icon>check_circle</v-icon> <label class="font-weight-bold"> Build your own connections</label></h4><p></p>
+        <h4 class="title font-weight-light"><v-icon>check_circle</v-icon> <label class="font-weight-bold"> Become a performer!</label></h4><p></p>
+        <h4 class="title font-weight-light">The only platform giving chance to promote yourself, <br> as
+          <label class="font-weight-light font-italic">"with We</label>
+          <label class="font-weight-bold font-italic">Perform </label>
+          <label class="font-weight-light font-italic">you can perform better!"</label>
+        </h4>
       </h2>
       <v-spacer></v-spacer>
       <v-flex md6>
