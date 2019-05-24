@@ -149,43 +149,72 @@
           <v-btn round class="error" @click="clear">Clear</v-btn>
         </v-flex>
       </v-card-actions>
+    </v-container>
       <!--Performer list-->
-      <v-card flat class="pa-3" v-for="performer in performers" :key="performer.fullname">
-        <v-layout row wrap>
-          <v-flex xs6 sm4 md2>
-            <div class="caption grey--text">Full Name</div>
-            <div>{{ performer.fullname }}</div>
-            <v-rating v-model="performer.ratings" background-color="orange lighten-3" color="orange" small half-increments readonly></v-rating>
-          </v-flex>
-          <v-flex xs6 sm4 md2>
-            <div class="caption grey--text">Style</div>
-            <div v-for="style in performer.style" :key="style">{{style }}</div>
-            <div>{{style}}</div>
-          </v-flex>
-          <v-flex xs6 sm4 md2>
-            <div class="caption grey--text">Experience</div>
-            <div>{{ performer.experience }}</div>
-          </v-flex>
-          <v-flex xs6 sm4 md2>
-            <div class="caption grey--text">Price</div>
-            <div> ${{ performer.price}}</div>
-          </v-flex>
-          <v-flex xs6 sm4 md2>
-            <div class="caption grey--text">Location</div>
-            <div>{{ performer.location}}</div>
-          </v-flex>
-          <v-flex xs6 sm4 md2>
-            <PopupProfile :uid = performer.uid :notBooked = true></PopupProfile>
-            <v-btn flat color="green" :disabled="performer.sameUser" @click="bookAndCount(performer.uid, performer.email, performer.fullname, performer.talent, performer.style, performer.location)">
-              Book
-            </v-btn>
+      <v-container class="my-4" fluid grid-list-lg>
+        <v-layout column wrap>
+          <v-flex fill-height>
+            <v-card flat tile color="blue-grey darken-2" class=" white--text pa-3" v-for="performer in performers" :key="performer.fullname">
+              <v-layout row wrap>
+                <v-flex xs8 sm2 md2>
+                  <v-card-title primary-title>
+                    <div>
+                      <div class="caption grey--text">Name</div>
+                      <div class="headline">{{ performer.fullname }}</div>
+                    </div>
+                  </v-card-title>
+                </v-flex>
+                <v-flex xs8 sm2 md2>
+                  <v-card-title primary-title>
+                    <div>
+                      <div class="caption grey--text">Style</div>
+                      <div v-for="style in performer.style" :key="style" class="title">{{ style}}</div>
+                    </div>
+                  </v-card-title>
+                </v-flex>
+                <v-flex xs8 sm2 md2>
+                  <v-card-title primary-title>
+                    <div>
+                      <div class="caption grey--text">Experience</div>
+                      <div class="headline">{{ performer.experience }}</div>
+                    </div>
+                  </v-card-title>
+                </v-flex>
+                <v-flex xs8 sm2 md2>
+                  <v-card-title primary-title>
+                    <div>
+                      <div class="caption grey--text">Price</div>
+                      <div class="headline">${{ performer.price }}</div>
+                    </div>
+                  </v-card-title>
+                </v-flex>
+                <v-flex xs8 sm2 md2>
+                  <v-card-title primary-title>
+                    <div>
+                      <div class="caption grey--text">Location</div>
+                      <div class="headline">{{ performer.location }}</div>
+                    </div>
+                  </v-card-title>
+                </v-flex>
+              </v-layout>
+              <v-layout row wrap>
+                <PopupProfile :uid = performer.uid :notBooked = true></PopupProfile>
+                <v-btn flat color="green" :disabled="performer.sameUser" @click="bookAndCount(performer.uid, performer.email, performer.fullname, performer.talent, performer.style, performer.location)">
+                  Book
+                </v-btn>
+              </v-layout>
+              <v-layout row justify-space-around>
+                <v-flex md12>
+                  <v-divider color="white"></v-divider>
+                  <v-divider color="white"></v-divider>
+                  <v-divider color="white"></v-divider>
+                  <v-divider color="white"></v-divider>
+                </v-flex>
+              </v-layout>
+            </v-card>
           </v-flex>
         </v-layout>
-        <br>
-        <v-divider color="black"></v-divider>
-        <v-divider color="black"></v-divider>
-      </v-card>
-    </v-container>
+      </v-container>
   </div>
 </template>
 
