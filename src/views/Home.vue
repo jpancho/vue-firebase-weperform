@@ -2,10 +2,11 @@
   <div class="home">
     <div id="loader-wrapper">
       <div id="quotes">
-        <p class="display-1">Practice like you've never won.</p>
-        <p class="display-2">Perform like you've never lost.</p>
-        <span class="font-weight-light text--darken-4 display-4 text-uppercase blue--text">We</span>
-        <span class="display-4 text-uppercase blue--text">Perform</span>
+        <h1 class="font-weight-light text--darken-4 display-4 text-uppercase blue--text">
+          We<label class="display-4 text-uppercase blue--text">Perform</label>
+        </h1>
+        <p class="display-2 blue-grey--text">Practice like you've never won.</p>
+        <p class="display-2 blue-grey--text">Perform like you've never lost.</p>
       </div>
       <div id="loader"></div>
       <div class="loader-section section-left"></div>
@@ -156,10 +157,9 @@
         <h4 class="title font-weight-light"><v-icon>check_circle</v-icon> <label class="font-weight-bold"> Earn while engaging others</label></h4><p></p>
         <h4 class="title font-weight-light"><v-icon>check_circle</v-icon> <label class="font-weight-bold"> Build your own connections</label></h4><p></p>
         <h4 class="title font-weight-light"><v-icon>check_circle</v-icon> <label class="font-weight-bold"> Become a performer!</label></h4><p></p>
-        <h4 class="title font-weight-light">The only platform giving chance to promote yourself, <br> as
-          <label class="font-weight-light font-italic">"with We</label>
-          <label class="font-weight-bold font-italic">Perform </label>
-          <label class="font-weight-light font-italic">you can perform better!"</label>
+        <h4 class="title font-weight-light">The only platform giving chance to promote yourself,
+          <label class="font-weight-light red--text">We</label>
+          <label class="font-weight-bold red--text">Perform</label>.
         </h4>
       </h2>
       <v-spacer></v-spacer>
