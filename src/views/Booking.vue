@@ -7,12 +7,9 @@
       </h1>
     </v-toolbar-title>
 
-        <v-container class="my-4"
-                     fluid
-                     grid-list-lg
-        >
-          <v-layout column wrap justify-space-around>
-            <v-flex>
+        <v-container class="my-4" fluid grid-list-lg>
+          <v-layout column wrap>
+            <v-flex fill-height>
               <v-card flat tile color="blue-grey darken-2" class=" white--text pa-3" v-for="performer in performers" :key="performer.fullname">
                 <v-layout row wrap>
                   <v-flex xs8 sm2 md2>
@@ -27,7 +24,7 @@
                     <v-card-title primary-title>
                       <div>
                         <div class="caption grey--text">Category</div>
-                        <div class="title">{{ performer.talent }}</div>
+                        <div class="headline">{{ performer.talent }}</div>
                       </div>
                     </v-card-title>
                   </v-flex>
@@ -43,15 +40,15 @@
                     <v-card-title primary-title>
                       <div>
                         <div class="caption grey--text">Location</div>
-                        <div class="title">{{ performer.location }}</div>
+                        <div class="headline">{{ performer.location }}</div>
                       </div>
                     </v-card-title>
                   </v-flex>
                   <v-flex xs8 sm2 md2>
                     <v-card-title primary-title>
                       <div>
-                        <div class="caption grey--text">Date</div>
-                        <div class="title">{{ performer.date }}</div>
+                        <div class="caption grey--text">Booked for</div>
+                        <div class="headline">{{ performer.date }}</div>
                       </div>
                     </v-card-title>
                   </v-flex>
@@ -70,10 +67,14 @@
                     Cancel
                   </v-btn>
                 </v-layout>
-                <v-divider color="white"></v-divider>
-                <v-divider color="white"></v-divider>
-                <v-divider color="white"></v-divider>
-                <v-divider color="white"></v-divider>
+                <v-layout row justify-space-around>
+                  <v-flex md12>
+                    <v-divider color="white"></v-divider>
+                    <v-divider color="white"></v-divider>
+                    <v-divider color="white"></v-divider>
+                    <v-divider color="white"></v-divider>
+                  </v-flex>
+                </v-layout>
               </v-card>
             </v-flex>
           </v-layout>
