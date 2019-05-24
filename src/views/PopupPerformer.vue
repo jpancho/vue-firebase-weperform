@@ -131,6 +131,8 @@
   let user = auth.currentUser;
 
   export default {
+    name: 'PopupPerformer',
+    props: { imageUrl: String },
     data() {
       return {
         //text and values for first dropdown menu
