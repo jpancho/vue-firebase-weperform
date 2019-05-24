@@ -73,7 +73,7 @@
           </v-card>
         </v-flex>
       </v-layout>
-      <PopupPerformer v-show="!isPerformer"/>
+      <PopupPerformer :imageUrl = imageUrl v-show="!isPerformer"/>
       <PopupEditPerformer v-show="isPerformer"/>
     </v-container>
   </div>
