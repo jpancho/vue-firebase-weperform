@@ -17,6 +17,7 @@
                       <div>
                         <div class="caption grey--text">Name</div>
                         <div class="headline">{{ performer.fullname }}</div>
+                        <v-rating v-model="performer.ratings" background-color="orange lighten-3" color="orange" small half-increments readonly></v-rating>
                       </div>
                     </v-card-title>
                   </v-flex>
@@ -52,13 +53,15 @@
                       </div>
                     </v-card-title>
                   </v-flex>
-    <!--              <v-flex xs8 sm2 md2>-->
-    <!--                <PopupReview :uid = performer.uid></PopupReview>-->
-    <!--                <PopupProfile :uid = performer.uid :notBooked = false></PopupProfile>-->
-    <!--                <v-btn flat color="red" @click="cancel(performer.uid)">-->
-    <!--                  Cancel-->
-    <!--                </v-btn>-->
-    <!--              </v-flex>-->
+                  <v-flex xs8 sm2 md2>
+                    <v-card-title primary-title>
+                      <div>
+                        <v-avatar size="100" class="grey lighten-2">
+                          <img :src="performer.imageUrl" alt="">
+                        </v-avatar>
+                      </div>
+                    </v-card-title>
+                  </v-flex>
                 </v-layout>
                 <v-layout row wrap>
                   <PopupProfile :uid = performer.uid :notBooked = false></PopupProfile>

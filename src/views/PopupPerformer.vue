@@ -130,6 +130,8 @@
   import { db, auth } from '../firebase';
 
   export default {
+    name: 'PopupPerformer',
+    props: { imageUrl: String },
     data() {
       return {
         //text and values for first dropdown menu
@@ -270,7 +272,8 @@
             experience: this.selected_experience,
             availability: this.availability,
             price: this.price,
-            isBooked: false
+            isBooked: false,
+            imageUrl: this.imageUrl
           })
             .then(function () {
               // eslint-disable-next-line no-console

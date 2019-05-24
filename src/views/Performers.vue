@@ -197,10 +197,19 @@
                     </div>
                   </v-card-title>
                 </v-flex>
+                <v-flex xs8 sm2 md2>
+                  <v-card-title primary-title>
+                    <div>
+                      <v-avatar size="100" class="grey lighten-2">
+                        <img :src="performer.imageUrl" alt="">
+                      </v-avatar>
+                    </div>
+                  </v-card-title>
+                </v-flex>
               </v-layout>
               <v-layout row wrap>
                 <PopupProfile :uid = performer.uid :notBooked = true></PopupProfile>
-                <v-btn flat color="green" :disabled="performer.sameUser" @click="bookAndCount(performer.uid, performer.email, performer.fullname, performer.talent, performer.style, performer.location)">
+                <v-btn flat color="green" :disabled="performer.sameUser" @click="bookAndCount(performer.uid, performer.email, performer.fullname, performer.talent, performer.style, performer.location, performer.imageUrl, performer.ratings)">
                   Book
                 </v-btn>
               </v-layout>
@@ -504,7 +513,7 @@
           document.getElementById("s").style.outline = "none";
         });
       },
-      book(uid, email,fullname,talent,style,location) {
+      book(uid, email,fullname,talent,style,location, imageUrl, ratings) {
         let ref = db.collection('performers').doc(uid);
 
         db.collection('users').doc(user.uid)
@@ -515,7 +524,9 @@
           talent: talent,
           style: style,
           location: location,
-          date: this.date
+          date: this.date,
+          imageUrl: imageUrl,
+          ratings: ratings
         })
                 .then(function () {
                   // eslint-disable-next-line no-console
@@ -538,8 +549,8 @@
           this.$store.dispatch('countAction', snapshot.size);
         });
       },
-      bookAndCount(uid, email,fullname,talent,style,location) {
-        this.book(uid, email,fullname,talent,style,location);
+      bookAndCount(uid, email,fullname,talent,style,location, imageUrl, ratings) {
+        this.book(uid, email,fullname,talent,style,location, imageUrl, ratings);
         this.countBookings(uid);
       },
       convertDate(date) {
