@@ -6,44 +6,117 @@
         <span class="display-1"> Performers</span>
       </h1>
     </v-toolbar-title>
-    <v-container class="my-5">
-      <v-card flat class="pa-3" v-for="performer in performers" :key="performer.fullname">
-        <v-layout row wrap >
-          <v-flex xs6 sm4 md2>
-            <div class="caption grey--text">Full Name</div>
-            <div>{{ performer.fullname }}</div>
-              <v-avatar size ="100" class ="grey lighten-2">
-                <!--<img :src="pullImage(performer.uid)" alt="">-->
-              </v-avatar>
-          </v-flex>
-          <v-flex xs6 sm4 md2>
-            <div class="caption grey--text">Talent</div>
-            <div>{{ performer.talent }}</div>
-          </v-flex>
-          <v-flex xs6 sm4 md2>
-            <div class="caption grey--text">Style</div>
-            <div v-for="style in performer.style" :key="style">{{ style}}</div>
-          </v-flex>
-          <v-flex xs6 sm4 md2>
-            <div class="caption grey--text">Location</div>
-            <div>{{ performer.location }}</div>
-          </v-flex>
-          <v-flex xs6 sm4 md2>
-            <div class="caption grey--text">Date</div>
-            <div>{{ performer.date }}</div>
-          </v-flex>
-          <v-flex xs6 sm4 md2>
-            <PopupProfile :uid = performer.uid :notBooked = false></PopupProfile>
-            <v-btn flat color="red" @click="cancel(performer.uid)">
-              Cancel
-            </v-btn>
-            <PopupReview :uid = performer.uid></PopupReview>
-          </v-flex>
-        </v-layout>
-        <v-divider color="black"></v-divider>
-        <v-divider color="black"></v-divider>
-      </v-card>
-    </v-container>
+
+        <v-container class="my-4" fluid grid-list-lg>
+          <v-layout column wrap>
+            <v-flex fill-height>
+              <v-card flat tile color="blue-grey darken-2" class=" white--text pa-3" v-for="performer in performers" :key="performer.fullname">
+                <v-layout row wrap>
+                  <v-flex xs8 sm2 md2>
+                    <v-card-title primary-title>
+                      <div>
+                        <div class="caption grey--text">Name</div>
+                        <div class="headline">{{ performer.fullname }}</div>
+                      </div>
+                    </v-card-title>
+                  </v-flex>
+                  <v-flex xs8 sm2 md2>
+                    <v-card-title primary-title>
+                      <div>
+                        <div class="caption grey--text">Category</div>
+                        <div class="headline">{{ performer.talent }}</div>
+                      </div>
+                    </v-card-title>
+                  </v-flex>
+                  <v-flex xs8 sm2 md2>
+                    <v-card-title primary-title>
+                      <div>
+                        <div class="caption grey--text">Style</div>
+                        <div v-for="style in performer.style" :key="style" class="title">{{ style}}</div>
+                      </div>
+                    </v-card-title>
+                  </v-flex>
+                  <v-flex xs8 sm2 md2>
+                    <v-card-title primary-title>
+                      <div>
+                        <div class="caption grey--text">Location</div>
+                        <div class="headline">{{ performer.location }}</div>
+                      </div>
+                    </v-card-title>
+                  </v-flex>
+                  <v-flex xs8 sm2 md2>
+                    <v-card-title primary-title>
+                      <div>
+                        <div class="caption grey--text">Booked for</div>
+                        <div class="headline">{{ performer.date }}</div>
+                      </div>
+                    </v-card-title>
+                  </v-flex>
+    <!--              <v-flex xs8 sm2 md2>-->
+    <!--                <PopupReview :uid = performer.uid></PopupReview>-->
+    <!--                <PopupProfile :uid = performer.uid :notBooked = false></PopupProfile>-->
+    <!--                <v-btn flat color="red" @click="cancel(performer.uid)">-->
+    <!--                  Cancel-->
+    <!--                </v-btn>-->
+    <!--              </v-flex>-->
+                </v-layout>
+                <v-layout row wrap>
+                  <PopupProfile :uid = performer.uid :notBooked = false></PopupProfile>
+                  <PopupReview :uid = performer.uid></PopupReview>
+                  <v-btn flat color="red" @click="cancel(performer.uid)">
+                    Cancel
+                  </v-btn>
+                </v-layout>
+                <v-layout row justify-space-around>
+                  <v-flex md12>
+                    <v-divider color="white"></v-divider>
+                    <v-divider color="white"></v-divider>
+                    <v-divider color="white"></v-divider>
+                    <v-divider color="white"></v-divider>
+                  </v-flex>
+                </v-layout>
+              </v-card>
+            </v-flex>
+          </v-layout>
+        </v-container>
+    <!--<v-container class="my-5">-->
+      <!--<v-card flat class="pa-3" v-for="performer in performers" :key="performer.fullname">-->
+        <!--<v-layout row wrap >-->
+          <!--<v-flex xs6 sm4 md2>-->
+            <!--<div class="caption grey&#45;&#45;text">Full Name</div>-->
+            <!--<div>{{ performer.fullname }}</div>-->
+              <!--<v-avatar size ="100" class ="grey lighten-2">-->
+                <!--&lt;!&ndash;<img :src="pullImage(performer.uid)" alt="">&ndash;&gt;-->
+              <!--</v-avatar>-->
+          <!--</v-flex>-->
+          <!--<v-flex xs6 sm4 md2>-->
+            <!--<div class="caption grey&#45;&#45;text">Talent</div>-->
+            <!--<div>{{ performer.talent }}</div>-->
+          <!--</v-flex>-->
+          <!--<v-flex xs6 sm4 md2>-->
+            <!--<div class="caption grey&#45;&#45;text">Style</div>-->
+            <!--<div v-for="style in performer.style" :key="style">{{ style}}</div>-->
+          <!--</v-flex>-->
+          <!--<v-flex xs6 sm4 md2>-->
+            <!--<div class="caption grey&#45;&#45;text">Location</div>-->
+            <!--<div>{{ performer.location }}</div>-->
+          <!--</v-flex>-->
+          <!--<v-flex xs6 sm4 md2>-->
+            <!--<div class="caption grey&#45;&#45;text">Date</div>-->
+            <!--<div>{{ performer.date }}</div>-->
+          <!--</v-flex>-->
+          <!--<v-flex xs6 sm4 md2>-->
+            <!--<PopupProfile :uid = performer.uid :notBooked = false></PopupProfile>-->
+            <!--<v-btn flat color="red" @click="cancel(performer.uid)">-->
+              <!--Cancel-->
+            <!--</v-btn>-->
+            <!--<PopupReview :uid = performer.uid></PopupReview>-->
+          <!--</v-flex>-->
+        <!--</v-layout>-->
+        <!--<v-divider color="black"></v-divider>-->
+        <!--<v-divider color="black"></v-divider>-->
+      <!--</v-card>-->
+    <!--</v-container>-->
   </div>
 </template>
 
