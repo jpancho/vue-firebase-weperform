@@ -147,7 +147,7 @@
           .then(function () {
             // eslint-disable-next-line no-console
             console.log("isBook set to true!");
-            alert('Successfully booked');
+            alert('Performer booked');
           });
       },
       // pullImageUrl(uid) {

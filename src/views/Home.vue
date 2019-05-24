@@ -32,7 +32,7 @@
                     :src="item.src"
                     :title="item.title"
             >
-                  <p class="headline" @click="search">{{ item.title }}</p>
+              <p class="headline" @click="search">{{ item.title }}</p>
             </v-carousel-item>
           </md-card>
         </v-carousel>
@@ -81,7 +81,7 @@
 
     <v-layout row>
       <h2 class="font-weight-light display-3 black--text">
-        <pre>Book a talent for your events</pre>
+        <pre class="change-font">Book a talent for your events</pre>
         <h4 class="title font-weight-light"><v-icon>check_circle</v-icon> <label class="font-weight-bold"> Festivals</label></h4><p></p>
         <h4 class="title font-weight-light"><v-icon>check_circle</v-icon> <label class="font-weight-bold"> Weddings</label></h4><p></p>
         <h4 class="title font-weight-light"><v-icon>check_circle</v-icon> <label class="font-weight-bold"> Stage shows</label></h4><p></p>
@@ -95,8 +95,8 @@
       <v-flex md6>
         <v-card>
           <v-img
-            src="assets/img/talents/dancer_stage.jpg"
-            height="300px"
+                  src="assets/img/talents/dancer_stage.jpg"
+                  height="300px"
           >
           </v-img>
         </v-card>
@@ -114,8 +114,8 @@
       <v-flex sm12>
         <v-card max-width="700px">
           <v-img
-            src="assets/img/talents/dancer_perform.jpg"
-            height="300px"
+                  src="assets/img/talents/dancer_perform.jpg"
+                  height="300px"
           >
           </v-img>
         </v-card>
@@ -155,8 +155,8 @@
       <v-flex md6>
         <v-card>
           <v-img
-            src="assets/img/talents/singer_perform.jpg"
-            height="300px"
+                  src="assets/img/talents/singer_perform.jpg"
+                  height="300px"
           >
           </v-img>
         </v-card>
@@ -170,15 +170,15 @@
     <v-divider color="grey"></v-divider>
     <!--<p></p>-->
     <!--<v-layout>-->
-      <!--<v-flex xs4 sm12 sm8>-->
-        <!--<v-hover>-->
-          <!--<v-toolbar-title class="text-uppercase">-->
-            <!--<h2 align="center">-->
-              <!--<PopupPerformer/>-->
-            <!--</h2>-->
-          <!--</v-toolbar-title>-->
-        <!--</v-hover>-->
-      <!--</v-flex>-->
+    <!--<v-flex xs4 sm12 sm8>-->
+    <!--<v-hover>-->
+    <!--<v-toolbar-title class="text-uppercase">-->
+    <!--<h2 align="center">-->
+    <!--<PopupPerformer/>-->
+    <!--</h2>-->
+    <!--</v-toolbar-title>-->
+    <!--</v-hover>-->
+    <!--</v-flex>-->
     <!--</v-layout>-->
     <!--<p></p>-->
     <div class="footer">
@@ -277,58 +277,57 @@
 </template>
 
 <script>
-
-export default {
-  data() {
-    return {
-      items: [
-        {
-          src: '/assets/img/talents/dancer.jpg',
-          title: "Dancer"
-        },
-        {
-          src: '/assets/img/talents/musicians_stage.jpg',
-          title: "Musician"
-        },
-        {
-          src: '/assets/img/talents/singer_stage.jpg',
-          title: "Singer"
-        }
-      ]
-    }
-  },
-  methods: {
-    search() {
-      this.$router.replace('/performers')
+  export default {
+    data() {
+      return {
+        items: [
+          {
+            src: '/assets/img/talents/dancer.jpg',
+            title: "Dancer"
+          },
+          {
+            src: '/assets/img/talents/musicians_stage.jpg',
+            title: "Musician"
+          },
+          {
+            src: '/assets/img/talents/singer_stage.jpg',
+            title: "Singer"
+          }
+        ]
+      }
+    },
+    methods: {
+      search() {
+        this.$router.replace('/performers')
+      }
     }
   }
-}
 </script>
 
 <style scoped>
   #loader-wrapper {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1000;
-}
-#loader {
-  display: block;
-  position: relative;
-  left: 50%;
-  top: 25%;
-  width: 300px;
-  height: 300px;
-  margin: -150px 0 0 -150px;
-  border-radius: 50%;
-  border: 3px solid transparent;
-  border-top-color: #3498DB;
-   -webkit-animation: spin 1.5s linear infinite; /* Chrome, Opera 15+, Safari 5+ */
-  animation: spin 1.5s linear infinite; /* Chrome, Firefox 16+, IE 10+, Opera */
-  z-index: 1001;
-}
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+  }
+  #loader {
+    display: block;
+    position: relative;
+    left: 50%;
+    top: 25%;
+    width: 300px;
+    height: 300px;
+    margin: -150px 0 0 -150px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: #3498DB;
+    -webkit-animation: spin 1.5s linear infinite; /* Chrome, Opera 15+, Safari 5+ */
+    animation: spin 1.5s linear infinite; /* Chrome, Firefox 16+, IE 10+, Opera */
+    z-index: 1001;
+  }
   #quotes{
     color: white;
     font-size: 5vw;
@@ -355,7 +354,7 @@ export default {
     border-radius: 50%;
     border: 3px solid transparent;
     border-top-color: #E74C3C;
-     -webkit-animation: spin 3s linear infinite; /* Chrome, Opera 15+, Safari 5+ */
+    -webkit-animation: spin 3s linear infinite; /* Chrome, Opera 15+, Safari 5+ */
     animation: spin 3s linear infinite; /* Chrome, Firefox 16+, IE 10+, Opera */
   }
   #loader::after{
@@ -368,30 +367,30 @@ export default {
     border-radius: 50%;
     border: 3px solid transparent;
     border-top-color: #F9C927;
-     -webkit-animation: spin 1.5s linear infinite; /* Chrome, Opera 15+, Safari 5+ */
+    -webkit-animation: spin 1.5s linear infinite; /* Chrome, Opera 15+, Safari 5+ */
     animation: spin 1.5s linear infinite; /* Chrome, Firefox 16+, IE 10+, Opera */
   }
   @-webkit-keyframes spin {
     0% {
-       -webkit-transform: rotate(0deg);
-       -ms-transform: rotate(0deg);
+      -webkit-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
       transform: rotate(0deg);
     }
     100% {
-       -webkit-transform: rotate(360deg);
-       -ms-transform: rotate(360deg);
+      -webkit-transform: rotate(360deg);
+      -ms-transform: rotate(360deg);
       transform: rotate(360deg);
     }
   }
   @keyframes spin {
     0% {
-       -webkit-transform: rotate(0deg);
-       -ms-transform: rotate(0deg);
+      -webkit-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
       transform: rotate(0deg);
     }
     100% {
-       -webkit-transform: rotate(360deg);
-       -ms-transform: rotate(360deg);
+      -webkit-transform: rotate(360deg);
+      -ms-transform: rotate(360deg);
       transform: rotate(360deg);
     }
   }
@@ -410,29 +409,27 @@ export default {
     right: 0;
   }
   .loaded #loader-wrapper .loader-section.section-left{
-     -webkit-transform: translateX(-100%);
-     -ms-transform: translateX(-100%);
+    -webkit-transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
     transform: translateX(-100%);
-
-     -webkit-transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1.000);  /* Android 2.1+, Chrome 1-25, iOS 3.2-6.1, Safari 3.2-6  */
+    -webkit-transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1.000);  /* Android 2.1+, Chrome 1-25, iOS 3.2-6.1, Safari 3.2-6  */
     transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1.000);  /* Chrome 26, Firefox 16+, iOS 7+, IE 10+, Opera, Safari 6.1+  */
   }
   .loaded #loader-wrapper .loader-section.section-right{
-     -webkit-transform: translateX(100%);
-     -ms-transform: translateX(100%);
+    -webkit-transform: translateX(100%);
+    -ms-transform: translateX(100%);
     transform: translateX(100%);
-
-     -webkit-transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1.000);  /* Android 2.1+, Chrome 1-25, iOS 3.2-6.1, Safari 3.2-6  */
+    -webkit-transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1.000);  /* Android 2.1+, Chrome 1-25, iOS 3.2-6.1, Safari 3.2-6  */
     transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1.000);  /* Chrome 26, Firefox 16+, iOS 7+, IE 10+, Opera, Safari 6.1+  */
   }
   .loaded #loader{
     opacity: 0;
-     -webkit-transition: all 0.3s ease-out;  /* Android 2.1+, Chrome 1-25, iOS 3.2-6.1, Safari 3.2-6  */
+    -webkit-transition: all 0.3s ease-out;  /* Android 2.1+, Chrome 1-25, iOS 3.2-6.1, Safari 3.2-6  */
     transition: all 0.3s ease-out;  /* Chrome 26, Firefox 16+, iOS 7+, IE 10+, Opera, Safari 6.1+  */
   }
   .loaded #quotes{
     opacity: 0;
-     -webkit-transition: all 0.7s ease-out;  /* Android 2.1+, Chrome 1-25, iOS 3.2-6.1, Safari 3.2-6  */
+    -webkit-transition: all 0.7s ease-out;  /* Android 2.1+, Chrome 1-25, iOS 3.2-6.1, Safari 3.2-6  */
     transition: all 0.7s ease-out;  /* Chrome 26, Firefox 16+, iOS 7+, IE 10+, Opera, Safari 6.1+  */
   }
   .loaded #loader-wrapper {
@@ -440,14 +437,13 @@ export default {
     -webkit-transform: translateY(-100%);
     -ms-transform: translateY(-100%);
     transform: translateY(-100%);
-
     -webkit-transition: all 0.3s 1s ease-out; /* Android 2.1+, Chrome 1-25, iOS 3.2-6.1, Safari 3.2-6  */
     transition: all 0.3s 1s ease-out; /* Chrome 26, Firefox 16+, iOS 7+, IE 10+, Opera, Safari 6.1+  */
   }
- .headline{
+  .headline{
     color: honeydew;
-   padding: 410px 0;
-   text-align: center;
+    padding: 410px 0;
+    text-align: center;
   }
   h5{
     text-align: center;
@@ -490,4 +486,7 @@ export default {
   .footer li a{
     color: gainsboro;
   }
+  /*.change-font {*/
+    /*font-family: "Trebuchet MS", Helvetica, sans-serif*/
+  /*}*/
 </style>
